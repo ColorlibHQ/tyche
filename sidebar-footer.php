@@ -4,7 +4,7 @@
  *
  * @link    https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package shopper
+ * @package tyche
  */
 
 /**
@@ -37,7 +37,7 @@ if ( empty( $sidebars ) ) {
 /**
  * Handle the sizing of the footer columns based on the user selection
  */
-$count = (int) get_theme_mod( 'shopper_footer_layout', 4 );
+$count = (int) get_theme_mod( 'tyche_footer_layout', 4 );
 /**
  * Size can be set dynamically as well by counting the array elements
  * $size = 12 / count($sidebars);

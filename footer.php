@@ -6,7 +6,7 @@
  *
  * @link    https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Shopper
+ * @package Tyche
  */
 
 ?>
@@ -20,7 +20,7 @@
 </footer>
 <!-- / Footer -->
 <?php
-$enable_copyright = get_theme_mod( 'shopper_enable_copyright', '1' )
+$enable_copyright = get_theme_mod( 'tyche_enable_copyright', '1' )
 ?>
 <?php if ( $enable_copyright !== '0' ): ?>
     <!-- Copyright -->
@@ -51,7 +51,7 @@ $enable_copyright = get_theme_mod( 'shopper_enable_copyright', '1' )
 
 						<?php if ( $enable_copyright !== '0' ): ?>
                             <div class="copyright-text pull-right">
-								<?php echo wp_kses_post( get_theme_mod( 'shopper_copyright_contents', sprintf( 'Copyright &copy; ' . date( "Y" ) . ' <span class="sep">|</span> <a href="%s">Theme: Shopper</a> <span class="sep">|</span> Powered by WordPress.', 'https://colorlib.com/wp/themes/shopper/' ) ) ); ?>
+								<?php echo wp_kses_post( get_theme_mod( 'tyche_copyright_contents', sprintf( 'Copyright &copy; ' . date( "Y" ) . ' <span class="sep">|</span> <a href="%s">Theme: Tyche</a> <span class="sep">|</span> Powered by WordPress.', 'https://colorlib.com/wp/themes/tyche/' ) ) ); ?>
                             </div>
 						<?php endif; ?>
                     </div>

@@ -1,0 +1,339 @@
+/**
+/ Underscores default styling
+*/
+.main-navigation {
+  clear: both;
+  display: block;
+  float: left;
+  width: 100%;
+  background: #25262b;
+  ul {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+    background: #25262b;
+    ul {
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+      float: left;
+      position: absolute;
+      left: -999em;
+      z-index: 99999;
+
+      ul {
+        left: -999em;
+        top: 0;
+      }
+
+      li {
+        &:hover > ul,
+        &.focus > ul {
+          left: 100%;
+        }
+      }
+
+      a {
+        width: 150px;
+      }
+
+      :hover > a,
+      .focus > a {
+      }
+
+      a:hover,
+      a.focus {
+      }
+    }
+
+    li:hover > ul,
+    li.focus > ul {
+      left: -20px;
+    }
+  }
+
+  li {
+    float: left;
+    position: relative;
+
+    &:hover > a,
+    &.focus > a {
+    }
+  }
+
+  a {
+    display: block;
+    text-decoration: none;
+  }
+
+  .current_page_item > a,
+  .current-menu-item > a,
+  .current_page_ancestor > a,
+  .current-menu-ancestor > a {
+  }
+}
+
+/*
+* Small menu.
+*/
+.menu-toggle {
+  display: block;
+  width: 35px;
+  height: 35px;
+  color: $font__main;
+  border-color: $font__main;
+  background: transparent;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+#site-navigation.toggled ul {
+  display: inline-block;
+  > li {
+    > a {
+      /* Remove after element for small screens */
+      &:after {
+        display: none;
+      }
+    }
+    /* Remove hover effects for small screens */
+    &.menu-item-has-children {
+      > ul {
+        li {
+          a {
+            padding: 0 0 10px 0;
+          }
+          &:hover {
+            > a {
+              color: $color__text-main;
+            }
+          }
+          &.menu-item-has-children {
+            &:after {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* List items will be 100% wide, spanning across the whole width of device */
+  li {
+    display: block;
+    width: 100%;
+    padding-right: 0;
+    &.menu-item-has-children {
+      &:after {
+        display: none;
+      }
+      > ul {
+        li {
+          &:after {
+            display: none;
+          }
+          &:hover {
+            background-color: initial;
+          }
+        }
+      }
+    }
+    /* Remove big-screen styling for submenus, we display them little bit to the right */
+    ul {
+      box-shadow: none;
+      left: initial;
+      top: initial;
+      position: relative;
+      padding-left: 20px;
+      ul {
+        left: initial;
+        top: initial;
+        position: relative;
+        padding-left: 20px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .menu-toggle {
+    display: none;
+  }
+  .main-navigation ul {
+    display: block;
+  }
+}
+
+.comment-navigation,
+.posts-navigation,
+.post-navigation {
+
+  .site-main & {
+    margin: 0 0 1.5em;
+    overflow: hidden;
+  }
+
+  .nav-previous {
+    float: left;
+    width: 50%;
+  }
+
+  .nav-next {
+    float: right;
+    text-align: right;
+    width: 50%;
+  }
+}
+
+/* Tyche Menu Customization starts here */
+#site-navigation {
+  margin-top: 15px;
+  a {
+    font-size: 15px;
+    line-height: 25px;
+    position: relative;
+    color: #e5e5e5;
+    display: inline-block;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .menu {
+    border-top: 1px solid #35373e;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    background: transparent;
+    width: 100%;
+    @media(min-width: 768px) {
+      display: inline-block;
+    }
+    > li {
+      display: inline-block;
+      padding-right: 40px;
+      position: relative;
+      &.active,
+      &:hover {
+        color: #FFF;
+        > a, &:after {
+          color: $color__brand-primary;
+        }
+      }
+      > a {
+        position: relative;
+      }
+      &:last-of-type {
+        padding-right: 0;
+      }
+      &.menu-item-has-children {
+        &:after {
+          content: "\f107";
+          font-family: "FontAwesome";
+          font-size: 16px;
+          display: inline-block;
+          padding-left: 5px;
+          color: #e5e5e5;
+        }
+        &.active,
+        &:hover {
+          &:after {
+            color: $color__brand-primary;
+          }
+        }
+        > ul {
+          li {
+            &.menu-item-has-children {
+              position: relative;
+              &:after {
+                content: "\f105";
+                font-family: "FontAwesome";
+                font-size: 16px;
+                display: inline-block;
+                position: absolute;
+                right: 20px;
+                bottom: 5px;
+                color: #e5e5e5;
+              }
+              &:hover {
+                &:after {
+                  color: $color__brand-primary;
+                }
+              }
+              @media(min-width: 991px) {
+                &:hover {
+                  color: #FFF;
+                  background-color: #212226;
+                  > a, &:after {
+                    color: $color__brand-primary;
+                  }
+                }
+              }
+            }
+            a {
+              padding: 5px 20px;
+              font-size: 15px;
+            }
+          }
+        }
+      }
+      > ul {
+        &.sub-menu {
+          @media(min-width: 991px) {
+            &:before, &:after {
+              content: '';
+              height: 1px;
+              padding: 7px;
+              display: inline-block;
+              position: relative;
+              width: 100%;
+              background: #25262b;
+            }
+          }
+        }
+      }
+    }
+
+    li {
+      &.active,
+      &:hover {
+        color: #FFF;
+        > a, &:after {
+          color: $color__brand-primary;
+        }
+      }
+    }
+
+  }
+
+  @media(min-width: 991px) {
+    .sub-menu {
+      > li {
+        &:hover {
+          background-color: #212226;
+        }
+      }
+    }
+  }
+}
+
+.tyche-breadcrumbs {
+  margin: 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: #a7a7a7;
+  font-size: 13px;
+  span {
+    font-size: 13px;
+  }
+  .tyche-breadcrumb-sep {
+    margin-left: 2px;
+    margin-right: 4px;
+  }
+  a {
+    font-size: 13px;
+    color: #777;
+    &:hover,
+    &:focus{
+      color: $color__brand-primary-hover;
+    }
+  }
+}

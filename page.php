@@ -9,23 +9,23 @@
  *
  * @link    https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Shopper
+ * @package Tyche
  */
 
 get_header();
-$breadcrumbs_enabled = get_theme_mod( 'shopper_enable_post_breadcrumbs', '1' );
+$breadcrumbs_enabled = get_theme_mod( 'tyche_enable_post_breadcrumbs', '1' );
 if ( $breadcrumbs_enabled == '1' ) { ?>
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-				<?php shopper_breadcrumbs(); ?>
+				<?php tyche_breadcrumbs(); ?>
             </div>
         </div>
     </div>
 <?php } ?>
     <div class="container">
         <div class="row">
-            <div id="primary" class="content-area <?php echo ! shopper_has_sidebar() ? 'col-md-8' : 'col-md-12' ?>">
+            <div id="primary" class="content-area <?php echo ! tyche_has_sidebar() ? 'col-md-8' : 'col-md-12' ?>">
                 <main id="main" class="site-main" role="main">
 
 					<?php
@@ -45,7 +45,7 @@ if ( $breadcrumbs_enabled == '1' ) { ?>
             </div><!-- #primary -->
 
 			<?php
-			if ( ! shopper_has_sidebar() ) {
+			if ( ! tyche_has_sidebar() ) {
 				get_sidebar();
 			}
 			?>

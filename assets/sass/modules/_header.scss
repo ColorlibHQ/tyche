@@ -1,0 +1,33 @@
+.site-header {
+  background: #25262B;
+  padding-top: 15px;
+  .banner-wide {
+    float: right;
+  }
+  .custom-logo-link {
+    img {
+      width: 165px;
+      height: 70px;
+    }
+    color: #FFF;
+    font-size: 30px;
+    font-weight: 700;
+  }
+
+  @media (max-width: 767px) {
+    .header-logo {
+      text-align: center;
+      .custom-logo-link {
+        display: inline-block;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+    }
+
+    .menu-toggle {
+      padding: 5px;
+    }
+  }
+
+}
