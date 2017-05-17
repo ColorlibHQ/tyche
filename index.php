@@ -9,7 +9,7 @@
  *
  * @link    https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Shopper
+ * @package Tyche
  */
 get_header();
 if ( is_main_site() ) {
@@ -17,12 +17,12 @@ if ( is_main_site() ) {
 	echo '<img style="width:100%" src="' . $header->url . '" class="img-responsive" />';
 }
 
-$breadcrumbs_enabled = get_theme_mod( 'shopper_enable_post_breadcrumbs', '1' );
+$breadcrumbs_enabled = get_theme_mod( 'tyche_enable_post_breadcrumbs', '1' );
 if ( $breadcrumbs_enabled == '1' ) { ?>
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-				<?php shopper_breadcrumbs(); ?>
+				<?php tyche_breadcrumbs(); ?>
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@ if ( $breadcrumbs_enabled == '1' ) { ?>
 					<?php
 					if ( have_posts() ) :
 
-						if ( shopper_is_posts_page() ) : ?>
+						if ( tyche_is_posts_page() ) : ?>
                             <header>
                                 <h1 class="page-title"><?php echo get_the_title( (int) get_option( 'page_for_posts' ) ); ?></h1>
                             </header>

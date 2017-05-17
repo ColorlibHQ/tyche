@@ -4,16 +4,16 @@
  *
  * @link    https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *
- * @package Shopper
+ * @package Tyche
  */
 
 get_header();
-$breadcrumbs_enabled = get_theme_mod( 'shopper_enable_post_breadcrumbs', '1' );
+$breadcrumbs_enabled = get_theme_mod( 'tyche_enable_post_breadcrumbs', '1' );
 if ( $breadcrumbs_enabled == '1' ) { ?>
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
-				<?php shopper_breadcrumbs(); ?>
+				<?php tyche_breadcrumbs(); ?>
 			</div>
 		</div>
 	</div>
@@ -27,7 +27,7 @@ if ( $breadcrumbs_enabled == '1' ) { ?>
 					if ( have_posts() ) : ?>
 
 						<header class="page-header">
-							<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'shopper' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+							<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'tyche' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 						</header><!-- .page-header -->
 
 						<?php

@@ -1,0 +1,42 @@
+ul, ol {
+  font-family: 'Karla';
+  font-size: 15px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul:not(.nav):not(.nav-menu):not(.top-header-bar):not(.cart_list):not(.main-slider-info):not(.multilang-flags):not(.page-numbers):not(.tyche-pager):not(.client-logos):not(.primary-menu):not(.menu):not(.main-navigation):not(.sub-menu):not(.menu-items):not(.language-chooser):not(.tabs):not(.products):not(.meta-list):not(.product_list_widget) {
+  li {
+    &:before {
+      content: "\f105";
+      font-family: 'FontAwesome';
+      display: inline-block;
+      margin-left: 0;
+      width: 15px;
+      color: $color__brand-primary;
+    }
+  }
+}
+
+ol {
+  list-style: decimal;
+}
+
+li > ul,
+li > ol {
+  margin-bottom: 0;
+  margin-left: 1.5em;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin: 0 1.5em 1.5em;
+}
+

@@ -1,0 +1,259 @@
+.tyche-nav-tabs {
+    margin-bottom: 0;
+}
+.tyche-nav-tabs:after {
+    clear: both;
+    display: table;
+    content: " ";
+}
+.tyche-nav-tabs > li {
+    float: left;
+    margin-bottom: -1px;
+    display: block;
+}
+.tyche-nav-tabs > li > a {
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+    display: block;
+    padding: 10px 15px;
+	text-decoration: none;
+}
+.tyche-nav-tabs > li.active > a, .tyche-nav-tabs > li.active > a:focus, .tyche-nav-tabs > li.active > a:hover {
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+.tyche-nav-tabs > li.tyche-w-red-tab > a {
+    color: red;
+    font-weight: bold;
+}
+.tyche-tab-content {
+	background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    width: 960px;
+    float: left;
+}
+.tyche-tab-content > .tab-pane {
+    display: none;
+}
+.tyche-tab-content > .active {
+    display: block;
+}
+
+.tyche-tab-pane {
+	padding: 30px;
+}
+.tyche-tab-pane {
+    display: none;
+}
+.tyche-tab-pane.active {
+    display: block;
+}
+
+#tyche-theme-version {
+    font-size: 50%;
+    padding: 10px;
+    background: #ccc;
+}
+#tyche-w-screenshot {
+    border: 1px solid #ccc;
+    margin-top: 30px;
+}
+.tyche-w-activated {
+    cursor:not-allowed !important;
+}
+.tyche-tab-pane-half {
+    width: 45%;
+    float:left;
+    border-left: 1px solid #ccc;
+    padding-left: 20px;
+    margin-top: 15px;
+    padding-right: 20px;
+    margin-bottom: 15px;
+}
+.tyche-tab-content img {
+    max-width: 100%;
+}
+.tyche-tab-pane-first-half {
+    border-left: none;
+}
+.tyche-tab-pane-center {
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.tyche-welcome-title {
+    font-size: 32px;
+}
+.tyche-clear {
+    clear: both;
+}
+.tyche-child-theme-container {
+    position: relative;
+}
+.tyche-child-theme-description {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    overflow: auto;
+    box-sizing: border-box;
+    padding: 0;
+    max-width: 100%;
+    height: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    -webkit-transition: all 300ms ease-out;
+    -moz-transition: all 300ms ease-out;
+    -ms-transition: all 300ms ease-out;
+    -o-transition: all 300ms ease-out;
+    transition: all 300ms ease-out;
+    -webkit-transition-delay: 500ms;
+    -moz-transition-delay: 500ms;
+    -ms-transition-delay: 500ms;
+    -o-transition-delay: 500ms;
+    transition-delay: 500ms;
+}
+
+.tyche-child-theme-image-container {
+    position: relative;
+    overflow: hidden;
+}
+.tyche-child-theme-image-container img {
+    max-width: 100%;
+}
+.tyche-child-theme-details .theme-details {
+    padding: 10px;
+    background: none repeat scroll 0 0 #F1F1F1;
+    font-size: 18px;
+}
+
+.tyche-child-theme-details .theme-details.active {
+    background: none repeat scroll 0 0 #2B5F87;
+    color: #fff;
+}
+
+.tyche-child-theme-details .theme-details .theme-name {
+    float:left;
+}
+.tyche-child-theme-details .theme-details .preview {
+    margin-right: 2px;
+}
+.tyche-fre-pro table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.tyche-fre-pro table tr {
+    border-bottom: 1px solid #ddd;
+}
+.tyche-fre-pro table td {
+    padding: 30px;
+}
+.tyche-fre-pro table th {
+    padding-bottom: 30px;
+}
+.tyche-fre-pro table td span.dashicons-before:before {
+    font-size: 50px;
+    width: auto;
+    height: auto;
+}
+.tyche-fre-pro table td span.dashicons-yes:before {
+    color:green;
+}
+.tyche-fre-pro table td span.dashicons-no-alt:before {
+    color:red;
+}
+.tyche-fre-pro table tr.tyche-text-center {
+    text-align: center;
+}
+.tyche-actions-count {
+    padding: 0 6px;
+    display: inline-block;
+    background-color: #d54e21;
+    color: #fff;
+    font-size: 9px;
+    line-height: 17px;
+    font-weight: 600;
+    margin: 1px 0 0 2px;
+    vertical-align: top;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    z-index: 26;
+}
+.tyche-action-required-box {
+    position: relative;
+}
+.tyche-dismiss-required-action {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    cursor: pointer;
+    background-color: #D24A4A;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 14px;
+    line-height: 20px;
+}
+.tyche-dismiss-required-action:hover {
+    background-color: #CC8C8C;
+}
+
+#github.tyche-tab-pane {
+  text-align: center;
+}
+
+#github.tyche-tab-pane .tyche-tab-pane-half {
+  min-height: 160px;
+}
+
+#github.tyche-tab-pane .translate-button, #github .github-button {
+  margin-top: 20px;
+}
+
+#github.tyche-tab-pane .dashicons {
+  color: #0073aa;
+  font-size: 12px;
+  width: auto;
+}
+
+#github.tyche-tab-pane h4 {
+  margin:10px;;
+}
+
+#github.tyche-tab-pane p.review-link {
+  margin:0;
+}
+
+#github.tyche-tab-pane .tyche-tab-pane-half hr {
+  display: none;
+}
+
+/*Breakpoints*/
+
+@media (max-width: 1200px) {
+  .tyche-tab-content {
+    width: 98%;
+  }
+  .tyche-tab-pane-half {
+    width: 43%;
+  }
+}
+@media (max-width: 782px) {
+  #github.tyche-tab-pane .tyche-tab-pane-half hr {
+    display:block;
+  }
+
+  .tyche-tab-pane-half {
+    width: auto;
+    float: none;
+    border-left: none;
+  }
+  .tyche-welcome-title, .tyche-tab-content h1 {
+    line-height: 30px;
+  }
+  .tyche-fre-pro table td {
+    padding: 30px 10px;
+  }
+}

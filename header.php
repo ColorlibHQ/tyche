@@ -6,7 +6,7 @@
  *
  * @link    https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Shopper
+ * @package Tyche
  */
 
 ?><!DOCTYPE html>
@@ -26,7 +26,7 @@
 	/**
 	 * Enable / Disable the top bar
 	 */
-	if ( get_theme_mod( 'shopper_enable_top_bar', '1' ) !== '0' ) :
+	if ( get_theme_mod( 'tyche_enable_top_bar', '1' ) !== '0' ) :
 		get_template_part( 'template-parts/top-header' );
 	endif;
 	?>
@@ -42,7 +42,7 @@
 						if ( ! get_theme_mod( 'custom_logo' ) ) {
 							?>
 							<a class="custom-logo-link"
-							   href="<?php echo get_home_url() ?>"> <?php echo get_option( 'blogname', 'Shopper' ) ?></a>
+							   href="<?php echo get_home_url() ?>"> <?php echo get_option( 'blogname', 'Tyche' ) ?></a>
 							<?php
 						}
 					}
@@ -53,10 +53,10 @@
 					endif; ?>
 				</div>
 
-				<?php if ( get_theme_mod( 'shopper_show_banner', '1' ) !== '0' ): ?>
+				<?php if ( get_theme_mod( 'tyche_show_banner', '1' ) !== '0' ): ?>
 					<div class="col-sm-8 header-banner">
 						<?php
-						$banner = get_theme_mod( 'shopper_banner_type', 'image' );
+						$banner = get_theme_mod( 'tyche_banner_type', 'image' );
 						get_template_part( 'template-parts/banner/banner', $banner );
 						?>
 					</div>
@@ -82,7 +82,7 @@
 	/**
 	 * Enable / Disable the main slider
 	 */
-	if ( get_theme_mod( 'shopper_enable_main_slider', '1' ) !== '0' && basename( get_page_template() ) === 'frontpage-template.php' ) :
+	if ( get_theme_mod( 'tyche_enable_main_slider', '1' ) !== '0' && basename( get_page_template() ) === 'frontpage-template.php' ) :
 		get_template_part( 'template-parts/main-slider' );
 	endif;
 	?>

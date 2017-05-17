@@ -4,16 +4,16 @@
  *
  * @link    https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Shopper
+ * @package Tyche
  */
 
 get_header();
-$breadcrumbs_enabled = get_theme_mod( 'shopper_enable_post_breadcrumbs', '1' );
+$breadcrumbs_enabled = get_theme_mod( 'tyche_enable_post_breadcrumbs', '1' );
 if ( $breadcrumbs_enabled == '1' ) { ?>
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-				<?php shopper_breadcrumbs(); ?>
+				<?php tyche_breadcrumbs(); ?>
             </div>
         </div>
     </div>
