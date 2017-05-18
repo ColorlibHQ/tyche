@@ -51,7 +51,7 @@ $enable_copyright = get_theme_mod( 'tyche_enable_copyright', '1' )
 
 						<?php if ( $enable_copyright !== '0' ): ?>
                             <div class="copyright-text pull-right">
-								<?php echo wp_kses_post( get_theme_mod( 'tyche_copyright_contents', sprintf( 'Copyright &copy; ' . date( "Y" ) . ' <span class="sep">|</span> <a href="%s">Theme: Tyche</a> <span class="sep">|</span> Powered by WordPress.', 'https://colorlib.com/wp/themes/tyche/' ) ) ); ?>
+								<?php echo wp_kses_post( get_theme_mod( 'tyche_copyright_contents', sprintf( 'Copyright &copy; ' . date( "Y" ) . ' <span class="sep">|</span> <a href="%s">Theme: Tyche</a> <span class="sep">|</span> Powered by WordPress.', 'https://colorlib.com/tyche/' ) ) ); ?>
                             </div>
 						<?php endif; ?>
                     </div>

@@ -13,7 +13,7 @@ if ( $breadcrumbs_enabled == '1' ) { ?>
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-				<?php tyche_breadcrumbs(); ?>
+				<?php Tyche_Helper::add_breadcrumbs(); ?>
             </div>
         </div>
     </div>

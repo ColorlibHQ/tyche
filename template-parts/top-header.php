@@ -19,9 +19,9 @@
 		<?php if ( class_exists( 'WooCommerce' ) ): ?>
             <!-- Cart -->
             <li class="top-cart">
-                <a href="<?php echo esc_url( tyche_get_woocommerge_page( 'cart' ) ) ?>"><i
+                <a href="<?php echo esc_url( Tyche_Helper::get_woocommerge_page( 'cart' ) ) ?>"><i
                             class="fa fa-shopping-cart"></i> <?php echo esc_html__( 'My Cart', 'tyche' ) ?>
-                    - <?php echo esc_html( get_woocommerce_currency_symbol( get_woocommerce_currency() ) . ' ' . tyche_get_cart_total() ) ?>
+                    - <?php echo esc_html( get_woocommerce_currency_symbol( get_woocommerce_currency() ) . ' ' . Tyche_WooCommerce_Hooks::get_cart_total() ) ?>
                 </a>
             </li>
             <!-- / Cart -->
@@ -30,7 +30,7 @@
 		<?php if ( class_exists( 'WooCommerce' ) ): ?>
             <!-- Account -->
             <li class="top-account">
-                <a href="<?php echo esc_url( tyche_get_woocommerge_page( 'account' ) ) ?>"><i
+                <a href="<?php echo esc_url( Tyche_Helper::get_woocommerge_page( 'account' ) ) ?>"><i
                             class="fa fa-user"></i> <?php echo esc_html__( 'Account', 'tyche' ) ?></a>
             </li>
             <!-- / Account -->

@@ -10,18 +10,18 @@
 get_header();
 $breadcrumbs_enabled = get_theme_mod( 'tyche_enable_post_breadcrumbs', '1' );
 if ( $breadcrumbs_enabled == '1' ) { ?>
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12">
-				<?php tyche_breadcrumbs(); ?>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+				<?php Tyche_Helper::add_breadcrumbs(); ?>
+            </div>
+        </div>
+    </div>
 <?php } ?>
-	<div class="container">
-		<div class="row">
-			<div id="primary" class="content-area col-md-8">
-				<main id="main" class="site-main" role="main">
+    <div class="container">
+        <div class="row">
+            <div id="primary" class="content-area col-md-8">
+                <main id="main" class="site-main" role="main">
 
 					<?php
 					while ( have_posts() ) : the_post();
@@ -36,13 +36,13 @@ if ( $breadcrumbs_enabled == '1' ) { ?>
 					endwhile; // End of the loop.
 					?>
 
-				</main><!-- #main -->
-			</div><!-- #primary -->
+                </main><!-- #main -->
+            </div><!-- #primary -->
 
 			<?php
 			get_sidebar();
 			?>
-		</div>
-	</div>
+        </div>
+    </div>
 <?php
 get_footer();

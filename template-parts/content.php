@@ -24,7 +24,7 @@
         </div>
 
         <div class="tyche-blog-meta">
-			<?php tyche_post_meta(); ?>
+			<?php Tyche_Helper::post_meta(); ?>
         </div>
     </header><!-- .entry-header -->
 
@@ -41,7 +41,7 @@
 
 	<?php if ( is_single() ): ?>
         <footer class="entry - footer">
-			<?php tyche_entry_footer(); ?>
+			<?php Tyche_Helper::entry_footer(); ?>
         </footer><!-- .entry-footer -->
 	<?php endif; ?>
 

@@ -12,9 +12,10 @@
  * @package Tyche
  */
 get_header();
+
 if ( is_main_site() ) {
 	$header = get_custom_header();
-	echo '<img style="width:100%" src="' . $header->url . '" class="img-responsive" />';
+	//echo '<img style="width:100%" src="' . esc_url( $header->url ) . '" class="img-responsive" />';
 }
 
 $breadcrumbs_enabled = get_theme_mod( 'tyche_enable_post_breadcrumbs', '1' );
@@ -22,7 +23,7 @@ if ( $breadcrumbs_enabled == '1' ) { ?>
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-				<?php tyche_breadcrumbs(); ?>
+				<?php Tyche_Helper::add_breadcrumbs(); ?>
             </div>
         </div>
     </div>
@@ -35,9 +36,9 @@ if ( $breadcrumbs_enabled == '1' ) { ?>
 					<?php
 					if ( have_posts() ) :
 
-						if ( tyche_is_posts_page() ) : ?>
+						if ( Tyche_Helper::is_posts_page() ) : ?>
                             <header>
-                                <h1 class="page-title"><?php echo get_the_title( (int) get_option( 'page_for_posts' ) ); ?></h1>
+                                <h1 class="page-title"><?php echo esc_html( get_the_title( (int) get_option( 'page_for_posts' ) ) ); ?></h1>
                             </header>
 						<?php endif;
 

@@ -1,93 +1,174 @@
-var Tyche = {
-	initMainSlider   : function () {
-		jQuery('#main-slider').owlCarousel({
-			loop           : true,
-			nav            : true,
-			items          : 1,
-			dots           : false,
-			mouseDrag      : true,
-			navText        : [
-				"<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>" ],
-			navClass       : [ "main-slider-previous", "main-slider-next" ],
-			autoplay       : true,
-			autoplayTimeout: 17000,
-			responsive     : {
-				1  : {
-					nav: false
-				},
-				600: {
-					nav: false
-				},
-				991: {
-					nav: true,
+"use strict";
+(function ($) {
+	var Tyche = {
+		exists: function (e) {
+			return $(e).length > 0;
+		},
+
+		/* ==========================================================================
+		 handleMobileMenu
+		 ========================================================================== */
+		handleMobileMenu: function () {
+			var MOBILEBREAKPOINT = 991;
+			if ( $(window).width() > MOBILEBREAKPOINT ) {
+
+				$("#mobile-menu").hide();
+				$("#mobile-menu-trigger").removeClass("mobile-menu-opened").addClass("mobile-menu-closed");
+
+			} else {
+
+				if ( !Tyche.exists("#mobile-menu") ) {
+
+					$("#desktop-menu").clone().attr({
+						id     : "mobile-menu",
+						"class": ""
+					}).insertAfter("#site-navigation");
+
+					$("#mobile-menu > li > a, #mobile-menu > li > ul > li > a").each(function () {
+						var $t = $(this);
+						if ( $t.next().hasClass('sub-menu') || $t.next().is('ul') || $t.next().is('.sf-mega') ) {
+							$t.append('<span class="fa fa-angle-down mobile-menu-submenu-arrow mobile-menu-submenu-closed"></span>');
+						}
+					});
+
+					$(".mobile-menu-submenu-arrow").on("click", function (event) {
+						var $t = $(this);
+						if ( $t.hasClass("mobile-menu-submenu-closed") ) {
+							$t.removeClass("mobile-menu-submenu-closed fa-angle-down").addClass("mobile-menu-submenu-opened fa-angle-up").parent().siblings("ul, .sf-mega").slideDown(300);
+						} else {
+							$t.removeClass("mobile-menu-submenu-opened fa-angle-up").addClass("mobile-menu-submenu-closed fa-angle-down").parent().siblings("ul, .sf-mega").slideUp(300);
+						}
+						event.preventDefault();
+					});
+
+					$("#mobile-menu li, #mobile-menu li a, #mobile-menu ul").attr("style", "");
 
 				}
+
 			}
-		});
-	},
-	initProductSlider: function () {
-		var elements = jQuery('.tyche-product-slider');
-		elements.each(function () {
-			var selector = jQuery(this);
-			jQuery(this).owlCarousel({
-				loop      : false,
-				margin    : 30,
-				responsive: {
+
+		},
+
+		/* ==========================================================================
+		 showHideMobileMenu
+		 ========================================================================== */
+
+		showHideMobileMenu: function () {
+			$("#mobile-menu-trigger").on("click", function (event) {
+
+				var $t = $(this),
+						$n = $("#mobile-menu");
+
+				if ( $t.hasClass("mobile-menu-opened") ) {
+					$t.removeClass("mobile-menu-opened").addClass("mobile-menu-closed");
+					$n.slideUp(300);
+				} else {
+					$t.removeClass("mobile-menu-closed").addClass("mobile-menu-opened");
+					$n.slideDown(300);
+				}
+				event.preventDefault();
+
+			});
+
+		},
+
+		initMainSlider   : function () {
+			jQuery('#main-slider').owlCarousel({
+				loop           : true,
+				nav            : true,
+				items          : 1,
+				dots           : false,
+				mouseDrag      : true,
+				navText        : [
+					"<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>" ],
+				navClass       : [ "main-slider-previous", "main-slider-next" ],
+				autoplay       : true,
+				autoplayTimeout: 17000,
+				responsive     : {
 					1  : {
-						items: 1
+						nav: false
 					},
 					600: {
-						items: 2
+						nav: false
 					},
 					991: {
-						items: parseInt(jQuery(this).attr('data-attr-elements'))
+						nav: true,
+
 					}
 				}
 			});
+		},
+		initProductSlider: function () {
+			var elements = jQuery('.tyche-product-slider');
+			elements.each(function () {
+				var selector = jQuery(this);
+				jQuery(this).owlCarousel({
+					loop      : false,
+					margin    : 30,
+					responsive: {
+						1  : {
+							items: 1
+						},
+						600: {
+							items: 2
+						},
+						991: {
+							items: parseInt(jQuery(this).attr('data-attr-elements'))
+						}
+					}
+				});
 
-			jQuery(".tyche-product-slider-navigation .prev").on('click', function (event) {
-				event.preventDefault();
-				selector.trigger('prev.owl.carousel');
+				jQuery(".tyche-product-slider-navigation .prev").on('click', function (event) {
+					event.preventDefault();
+					selector.trigger('prev.owl.carousel');
+				});
+				jQuery(".tyche-product-slider-navigation .next").on('click', function (event) {
+					event.preventDefault();
+					selector.trigger('next.owl.carousel');
+				});
 			});
-			jQuery(".tyche-product-slider-navigation .next").on('click', function (event) {
-				event.preventDefault();
-				selector.trigger('next.owl.carousel');
-			});
-		});
 
-	},
-	initMultiLang    : function () {
-		var $selector = jQuery('#tyche_multilang_flag-chooser');
-		if ( !$selector.length ) {
-			return false;
+		},
+		initMultiLang    : function () {
+			var $selector = jQuery('#tyche_multilang_flag-chooser');
+			if ( !$selector.length ) {
+				return false;
+			}
+			var $active = $selector.find('.active'),
+					$class = $active.attr('class'),
+					$wrapper = jQuery('.top-multilang');
+			/* Remove active class */
+			$class = $class.replace(' active', '');
+			/* Remove lang prefix class */
+			$class = $class.replace('lang-', '');
+
+			switch ( $class ) {
+				case 'en':
+					$class = 'uk';
+					break;
+			}
+
+			var $image = tyche_variables.flags + $class + '.png';
+			$wrapper.prepend('<img src="' + $image + '" alt="country flag" />');
 		}
-		var $active = $selector.find('.active'),
-				$class = $active.attr('class'),
-				$wrapper = jQuery('.top-multilang');
-		/* Remove active class */
-		$class = $class.replace(' active', '');
-		/* Remove lang prefix class */
-		$class = $class.replace('lang-', '');
 
-		switch ( $class ) {
-			case 'en':
-				$class = 'uk';
-				break;
-		}
+	};
 
-		var $image = tyche_variables.flags + $class + '.png';
-		$wrapper.prepend('<img src="' + $image + '" alt="country flag" />');
-	}
+	jQuery(document).ready(function ($) {
+		Tyche.initMainSlider();
+		Tyche.initMultiLang();
+		Tyche.initProductSlider();
+		Tyche.handleMobileMenu();
+		Tyche.showHideMobileMenu();
+	});
 
-};
+	jQuery(window).load(function () {
 
-jQuery(document).ready(function ($) {
-	Tyche.initMainSlider();
-	Tyche.initMultiLang();
-	Tyche.initProductSlider();
+	});
 
-});
+	jQuery(window).resize(function () {
+		Tyche.handleMobileMenu();
+	});
+})(jQuery);
 
-jQuery(window).load(function () {
-
-});
+// non jQuery scripts below
