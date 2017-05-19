@@ -3,7 +3,7 @@
 */
 .tyche-pager {
   list-style-type: none;
-  margin: 0;
+  margin: 0 0 28px;
   padding: 0;
   display: inline-block;
   text-align: center;
@@ -11,6 +11,9 @@
   color: $color__title;
   a {
     color: $color__title;
+    &:hover, &:focus {
+      color: $color__brand-primary
+    }
   }
   li {
     display: inline-block;
@@ -20,15 +23,19 @@
       background-color: $color__title;
       a {
         color: #FFF;
+        &:hover, &:focus {
+          color: $color__brand-primary
+        }
       }
     }
     a {
       font-size: 16px;
-      padding: 4px 6px;
+      padding: 4px 8px;
       min-width: 22px;
       min-height: 22px;
-      &:hover {
+      &:hover, &:focus {
         text-decoration: none;
+        color: $color__brand-primary
       }
 
       .pager-text {
@@ -45,4 +52,146 @@
       }
     }
   }
+}
+
+/* =Post Pagination
+   ========================================================================== */
+
+.pagination {
+  margin: 56px 0 28px;
+}
+
+/*
+* 1. Clearfix hack
+*/
+
+.pagination:after { /* 1 */
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+.pagination .nav-links {
+  text-align: center;
+}
+
+.pagination .page-numbers {
+  display: inline-block;
+  margin-right: 20px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #2a313e;
+  &:hover, &:focus {
+    color: $color__brand-primary;
+  }
+}
+
+.pagination .page-numbers:last-child {
+  margin-right: 0;
+}
+
+.pagination .page-numbers.current {
+  min-width: 20px;
+  min-height: 20px;
+  border-radius: 4px;
+  background-color: #2a313e;
+  color: #ffffff;
+}
+
+.pagination-arrow-container {
+  font-size: 13px;
+  letter-spacing: 4px;
+}
+
+@media (max-width: 767px) {
+
+  .pagination .page-numbers {
+    display: none;
+  }
+
+  .pagination .page-numbers.prev,
+  .pagination .page-numbers.next,
+  .pagination .page-numbers.current {
+    display: inline-block;
+  }
+
+  .page-numbers.prev .screen-reader-text,
+  .page-numbers.next .screen-reader-text {
+    clip: auto;
+    height: auto;
+    overflow: auto;
+    position: relative !important;
+    width: auto;
+  }
+
+}
+
+/* =Page Links
+   ========================================================================== */
+
+.page-links {
+  margin: 28px 0;
+}
+
+.page-links .page-number {
+  padding: 4px;
+}
+
+.page-links {
+  color: #1a171c;
+}
+
+/* =Post Navigation
+   ========================================================================== */
+
+.post-navigation {
+  margin: 28px 0;
+}
+
+/*
+	 * 1. Clearfix hack
+	 */
+
+.post-navigation:after { /* 1 */
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+@media (min-width: 768px) {
+
+  .post-navigation .nav-previous {
+    float: left;
+    width: 50%;
+  }
+
+  .post-navigation .nav-next {
+    float: right;
+    text-align: right;
+    width: 50%;
+  }
+
+}
+
+@media (max-width: 767px) {
+
+  .post-navigation .nav-previous {
+    margin-bottom: 28px;
+  }
+
+}
+
+.post-navigation .nav-subtitle {
+  display: block;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #1a171c;
+  margin-bottom: 7px;
 }

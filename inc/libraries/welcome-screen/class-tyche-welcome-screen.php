@@ -93,9 +93,9 @@ class Tyche_Welcome_Screen {
 	 */
 	public function tyche_welcome_register_menu() {
 		$action_count = $this->count_actions();
-		$title        = $action_count > 0 ? 'About Newspaper X <span class="badge-action-count">' . esc_html( $action_count ) . '</span>' : 'About Newspaper X';
+		$title        = $action_count > 0 ? 'About Tyche <span class="badge-action-count">' . esc_html( $action_count ) . '</span>' : 'About Tyche';
 
-		add_theme_page( 'About Newspaper X', $title, 'edit_theme_options', 'tyche-welcome', array(
+		add_theme_page( 'About Tyche', $title, 'edit_theme_options', 'tyche-welcome', array(
 			$this,
 			'tyche_welcome_screen'
 		) );
@@ -122,9 +122,9 @@ class Tyche_Welcome_Screen {
 	public function tyche_welcome_admin_notice() {
 		?>
         <div class="updated notice is-dismissible">
-            <p><?php echo sprintf( esc_html__( 'Welcome! Thank you for choosing Newspaper X! To fully take advantage of the best our theme can offer please make sure you visit our %swelcome page%s.', 'tyche' ), '<a href="' . esc_url( admin_url( 'themes.php?page=tyche-welcome' ) ) . '">', '</a>' ); ?></p>
+            <p><?php echo sprintf( esc_html__( 'Welcome! Thank you for choosing Tyche! To fully take advantage of the best our theme can offer please make sure you visit our %swelcome page%s.', 'tyche' ), '<a href="' . esc_url( admin_url( 'themes.php?page=tyche-welcome' ) ) . '">', '</a>' ); ?></p>
             <p><a href="<?php echo esc_url( admin_url( 'themes.php?page=tyche-welcome' ) ); ?>" class="button"
-                  style="text-decoration: none;"><?php echo esc_html__( 'Get started with Newspaper X', 'tyche' ); ?></a>
+                  style="text-decoration: none;"><?php echo esc_html__( 'Get started with Tyche', 'tyche' ); ?></a>
             </p>
         </div>
 		<?php
@@ -368,10 +368,10 @@ class Tyche_Welcome_Screen {
 
         <div class="wrap about-wrap epsilon-wrap">
 
-            <h1><?php echo esc_html__( 'Welcome to Newspaper X! - Version ', 'tyche' ) . esc_html( $theme['Version'] ); ?></h1>
+            <h1><?php echo esc_html__( 'Welcome to Tyche! - Version ', 'tyche' ) . esc_html( $theme['Version'] ); ?></h1>
 
             <div
-                    class="about-text"><?php echo esc_html__( 'Newspaper X is now installed and ready to use! Get ready to build something beautiful. We hope you enjoy it! We want to make sure you have the best experience using Newspaper X and that is why we gathered here all the necessary information for you. We hope you will enjoy using Newspaper X, as much as we enjoy creating great products.', 'tyche' ); ?></div>
+                    class="about-text"><?php echo esc_html__( 'Tyche is now installed and ready to use! Get ready to build something beautiful. We hope you enjoy it! We want to make sure you have the best experience using Tyche and that is why we gathered here all the necessary information for you. We hope you will enjoy using Tyche, as much as we enjoy creating great products.', 'tyche' ); ?></div>
 
             <div class="wp-badge epsilon-welcome-logo"></div>
 

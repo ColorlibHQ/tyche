@@ -55,18 +55,21 @@ if ( empty( $sidebars ) ) {
 	$widgets = array( 'WP_Widget_Meta', 'WP_Widget_Recent_Posts', 'WP_Widget_Tag_Cloud', 'WP_Widget_Categories' );
 	$widgets = array_slice( $widgets, 0, $count );
 	?>
-    <div class="widgets-area">
-        <div class="container">
-            <div class="row">
-				<?php foreach ( $widgets as $widget ) { ?>
-                    <div class="col-md-<?php echo esc_attr( $size ) ?> col-sm-6">
-						<?php the_widget( $widget, array(), $args ); ?>
-                    </div>
-				<?php } ?>
+    <!-- Footer -->
+    <footer id="colophon" class="site-footer" role="contentinfo">
+        <div class="widgets-area">
+            <div class="container">
+                <div class="row">
+					<?php foreach ( $widgets as $widget ) { ?>
+                        <div class="col-md-<?php echo esc_attr( $size ) ?> col-sm-6">
+							<?php the_widget( $widget, array(), $args ); ?>
+                        </div>
+					<?php } ?>
+                </div>
             </div>
         </div>
-    </div>
-
+    </footer>
+    <!-- / Footer -->
 	<?php return false;
 }
 
@@ -76,14 +79,18 @@ if ( empty( $sidebars ) ) {
  */
 $sidebars = array_slice( $sidebars, 0, $count );
 ?>
-<div class="widgets-area">
-    <div class="container">
-        <div class="row">
-			<?php foreach ( $sidebars as $sidebar ): ?>
-                <div class="col-md-<?php echo $size ?> col-sm-6">
-					<?php dynamic_sidebar( $sidebar ); ?>
-                </div>
-			<?php endforeach; ?>
-        </div><!--.row-->
+<!-- Footer -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+    <div class="widgets-area">
+        <div class="container">
+            <div class="row">
+				<?php foreach ( $sidebars as $sidebar ): ?>
+                    <div class="col-md-<?php echo $size ?> col-sm-6">
+						<?php dynamic_sidebar( $sidebar ); ?>
+                    </div>
+				<?php endforeach; ?>
+            </div><!--.row-->
+        </div>
     </div>
-</div>
+</footer>
+<!-- / Footer -->

@@ -7,10 +7,10 @@
  * @package Tyche
  */
 
-if ( is_active_sidebar( 'sidebar' ) ) { ?>
-<aside id="secondary" class="col-md-4 widget-area" role="complementary">
-    <?php dynamic_sidebar( 'sidebar' ); ?>
-</aside><!-- #secondary -->
+if ( is_active_sidebar( 'shop-sidebar' ) ) { ?>
+    <aside id="secondary" class="col-md-4 widget-area" role="complementary">
+		<?php dynamic_sidebar( 'shop-sidebar' ); ?>
+    </aside><!-- #secondary -->
 <?php } else { ?>
     <aside id="secondary" class="col-md-4 widget-area" role="complementary">
 		<?php
@@ -21,7 +21,14 @@ if ( is_active_sidebar( 'sidebar' ) ) { ?>
 			'WP_Widget_Tag_Cloud',
 			'WP_Widget_Categories'
 		);
-		$args    = array(
+
+		if ( class_exists( 'WooCommerce' ) ) {
+			$widgets = array(
+				'WC_Widget_Product_Search',
+			);
+		}
+
+		$args = array(
 			'before_title' => '<h5 class="widget-title"><span>',
 			'after_title'  => '</span></h5>'
 		);

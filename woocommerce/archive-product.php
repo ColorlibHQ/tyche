@@ -23,26 +23,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header( 'shop' ); ?>
 <div class="container">
     <div class="row">
-		<?php
-		/**
-		 * woocommerce_before_main_content hook.
-		 *
-		 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
-		 * @hooked woocommerce_breadcrumb - 20
-		 * @hooked WC_Structured_Data::generate_website_data() - 30
-		 */
-		do_action( 'woocommerce_before_main_content' );
-		?>
-    </div>
-    <div class="row">
-        <div class="<?php echo is_active_sidebar( 'shop-sidebar' ) ? 'col-md-8' : '' ?>">
+        <div class="col-md-12">
+			<?php
+			/**
+			 * woocommerce_before_main_content hook.
+			 *
+			 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
+			 * @hooked woocommerce_breadcrumb - 20
+			 * @hooked WC_Structured_Data::generate_website_data() - 30
+			 */
+			do_action( 'woocommerce_before_main_content' );
+			?>
 
 			<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
 
                 <h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
 
 			<?php endif; ?>
-
+        </div>
+    </div>
+    <div class="row">
+        <div class="<?php echo is_active_sidebar( 'shop-sidebar' ) ? 'col-md-8 tyche-has-sidebar' : 'col-md-12' ?>">
 			<?php
 			/**
 			 * woocommerce_archive_description hook.

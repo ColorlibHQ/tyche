@@ -79,6 +79,9 @@
           background: transparent;
           left: 25px;
           position: relative;
+          option {
+            color: $color__title;
+          }
         }
 
         img {

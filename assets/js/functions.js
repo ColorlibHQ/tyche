@@ -5,6 +5,17 @@
 			return $(e).length > 0;
 		},
 
+		initStyleSelects: function () {
+			var selects = $('select');
+			$.each(selects, function () {
+				if ( $(this).parent().hasClass('styled-select') ) {
+					return false;
+				}
+
+				$(this).wrap('<div class="styled-select"></div>');
+			});
+		},
+
 		/* ==========================================================================
 		 handleMobileMenu
 		 ========================================================================== */
@@ -150,6 +161,48 @@
 
 			var $image = tyche_variables.flags + $class + '.png';
 			$wrapper.prepend('<img src="' + $image + '" alt="country flag" />');
+		},
+
+		updateAjaxCart: function () {
+			console.log('aaaa');
+
+			/**
+			 * During ajax, we lose scope - so declare "self"
+			 * @type {*}
+			 */
+			var self = $(this),
+					/**
+					 * Create the args object for the AJAX call
+					 *
+					 * action [ Class, Method Name ]
+					 * args [ parameters to be sent to method ]
+					 *
+					 * @type {{action: [*]}}
+					 */
+					args = {
+						'action': [ 'Tyche_WooCommerce_Hooks', 'get_cart_total' ]
+					};
+
+			/**
+			 * Initiate the AJAX function
+			 *
+			 * Note that the Epsilon_Framework class, has the following method :
+			 *
+			 * public function epsilon_framework_ajax_action(){};
+			 *
+			 * which is used as a proxy to gather $_POST data, verify it
+			 * and call the needed function, in this case : Epsilon_Framework::dismiss_required_action()
+			 *
+			 */
+			$.ajax({
+				type    : "POST",
+				data    : { action: 'tyche_ajax_action', args: args },
+				dataType: "json",
+				url     : WPUrls.ajaxurl,
+				success : function (data) {
+					console.log(data);
+				}
+			})
 		}
 
 	};
@@ -160,6 +213,7 @@
 		Tyche.initProductSlider();
 		Tyche.handleMobileMenu();
 		Tyche.showHideMobileMenu();
+		Tyche.initStyleSelects();
 	});
 
 	jQuery(window).load(function () {
@@ -168,6 +222,11 @@
 
 	jQuery(window).resize(function () {
 		Tyche.handleMobileMenu();
+	});
+
+	jQuery(document.body).on('updated_cart_totals', function () {
+		console.log('aaa');
+		Tyche.updateAjaxCart();
 	});
 })(jQuery);
 

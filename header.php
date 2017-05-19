@@ -68,20 +68,20 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-	                    <?php
-	                    wp_nav_menu(
-		                    array(
-			                    'menu'           => 'primary',
-			                    'theme_location' => 'primary',
-			                    'depth'          => 3,
-			                    'container'      => '',
-			                    'menu_id'        => 'desktop-menu',
-			                    'menu_class'     => 'sf-menu',
-			                    'fallback_cb'    => 'Tyche_Navwalker::fallback',
-			                    'walker'         => new Tyche_Navwalker()
-		                    )
-	                    );
-	                    ?>
+						<?php
+						wp_nav_menu(
+							array(
+								'menu'           => 'primary',
+								'theme_location' => 'primary',
+								'depth'          => 3,
+								'container'      => '',
+								'menu_id'        => 'desktop-menu',
+								'menu_class'     => 'sf-menu',
+								'fallback_cb'    => 'Tyche_Navwalker::fallback',
+								'walker'         => new Tyche_Navwalker()
+							)
+						);
+						?>
                         <!-- /// Mobile Menu Trigger //////// -->
                         <a href="#" id="mobile-menu-trigger">
                             <i class="fa fa-bars"></i>
@@ -102,5 +102,4 @@
 	endif;
 	?>
 
-    <div>
-        <div class="site-content">
+    <div class="site-content">

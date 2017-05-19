@@ -13,7 +13,7 @@
         <div class="col">
             <h3><i class="dashicons dashicons-book-alt"></i><?php esc_html_e( 'Documentation', 'tyche' ); ?></h3>
             <p>
-                <i><?php esc_html_e( 'This is the place to go to reference different aspects of the theme. Our online documentation is an incredible resource for learning the ins and outs of using Newspaper X.', 'tyche' ) ?></i>
+                <i><?php esc_html_e( 'This is the place to go to reference different aspects of the theme. Our online documentation is an incredible resource for learning the ins and outs of using Tyche.', 'tyche' ) ?></i>
             </p>
             <p>
                 <a target="_blank"

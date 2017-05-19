@@ -28,7 +28,7 @@
         </div>
     </header><!-- .entry-header -->
 
-    <div class="entry - content">
+    <div class="entry-content">
 		<?php
 		the_content( esc_html__( 'Read More', 'tyche' ) );
 
@@ -40,7 +40,7 @@
     </div><!-- .entry-content -->
 
 	<?php if ( is_single() ): ?>
-        <footer class="entry - footer">
+        <footer class="entry-footer">
 			<?php Tyche_Helper::entry_footer(); ?>
         </footer><!-- .entry-footer -->
 	<?php endif; ?>

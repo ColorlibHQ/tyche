@@ -60,7 +60,7 @@
     .title {
       float: left;
       display: inline-block;
-      width: 90%;
+      width: 88%;
       .entry-title {
         margin: 0 0 13px 0;
         line-height: 29px;
@@ -71,6 +71,9 @@
             color: $color__brand-primary;
           }
         }
+      }
+      @media (max-width: 768px) {
+        width: 78%;
       }
     }
     .meta {
@@ -105,7 +108,6 @@
     background: $color__brand-primary;
     color: #FFF;
     display: inline-block;
-    margin-top: 20px;
     &:hover,
     &:active,
     &:focus {
@@ -118,6 +120,7 @@
   .entry-tags {
     font-weight: 700;
     font-size: 15px;
+    margin-top: 20px;
     color: $color__title;
     a {
       color: $color__title;

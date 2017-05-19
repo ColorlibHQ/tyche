@@ -9,7 +9,7 @@ ul {
   margin: 0;
 }
 
-.entry-content ul {
+.entry-content ul, .widget ul {
   li {
     &:before {
       content: "\f105";

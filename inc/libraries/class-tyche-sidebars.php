@@ -4,9 +4,9 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Class MedZone_Sidebars
+ * Class Tyche_Sidebars
  */
-class MedZone_Sidebars {
+class Tyche_Sidebars {
 	/**
 	 * @var array
 	 */
@@ -37,7 +37,7 @@ class MedZone_Sidebars {
 		$this->sidebars = array(
 			array(
 				'id'            => 'sidebar',
-				'name'          => esc_html__( '[Blog] Sidebar #1', 'tyche' ),
+				'name'          => esc_html__( '[Blog] Sidebar', 'tyche' ),
 				'before_title'  => '<h5 class="widget-title"><span>',
 				'after_title'   => '</span></h5>',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',

@@ -15,32 +15,24 @@ get_header();
 
 if ( is_main_site() ) {
 	$header = get_custom_header();
-	//echo '<img style="width:100%" src="' . esc_url( $header->url ) . '" class="img-responsive" />';
+	if ( ! empty( $header->url ) ) {
+		echo '<img style="width:100%" src="' . esc_url( $header->url ) . '" class="img-responsive" />';
+	}
 }
-
-$breadcrumbs_enabled = get_theme_mod( 'tyche_enable_post_breadcrumbs', '1' );
-if ( $breadcrumbs_enabled == '1' ) { ?>
+?>
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-				<?php Tyche_Helper::add_breadcrumbs(); ?>
+            <div class="col-md-12">
+                <header>
+                    <h1 class="page-title margin-top"><?php echo esc_html( get_the_title( (int) get_option( 'page_for_posts' ) ) ); ?></h1>
+                </header>
             </div>
         </div>
-    </div>
-<?php } ?>
-    <div class="container">
         <div class="row">
             <div id="primary" class="content-area col-md-8">
                 <main id="main" class="site-main" role="main">
-
 					<?php
 					if ( have_posts() ) :
-
-						if ( Tyche_Helper::is_posts_page() ) : ?>
-                            <header>
-                                <h1 class="page-title"><?php echo esc_html( get_the_title( (int) get_option( 'page_for_posts' ) ) ); ?></h1>
-                            </header>
-						<?php endif;
 
 						/* Start the Loop */
 						while ( have_posts() ) : the_post();
@@ -54,7 +46,12 @@ if ( $breadcrumbs_enabled == '1' ) { ?>
 
 						endwhile;
 
-						the_posts_navigation();
+						the_posts_pagination(
+							array(
+								'prev_text' => '<span class="pagination-arrow-container"><span class="fa fa-long-arrow-left"></span> ' . esc_html__( 'PREV', 'tyche' ) . '</span>',
+								'next_text' => '<span class="pagination-arrow-container">' . esc_html__( 'NEXT', 'tyche' ) . ' <span class="fa fa-long-arrow-right"></span></span>'
+							)
+						);
 
 					else :
 

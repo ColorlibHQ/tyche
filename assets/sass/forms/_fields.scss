@@ -21,12 +21,20 @@ textarea {
   font-size: 16px;
   &:focus {
     color: $color__text-input-focus;
+    outline: none;
   }
 }
 
 select {
   border: 1px solid $color__border-input;
   font-size: 16px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: '';
+  &:focus {
+    outline: none;
+  }
 }
 
 textarea {
@@ -59,4 +67,23 @@ textarea {
     }
   }
 
+}
+
+.styled-select {
+  position: relative;
+  select {
+    z-index: 2;
+    background:transparent;
+  }
+  &:after {
+    position: absolute;
+    content: '\f107';
+    color: $color__brand-primary;
+    top: 3px;
+    right: 15px;
+    font-family: 'FontAwesome';
+    font-size: 20px;
+    cursor: pointer;
+    z-index: -1;
+  }
 }

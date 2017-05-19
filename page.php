@@ -23,10 +23,12 @@ if ( $breadcrumbs_enabled == '1' ) { ?>
         </div>
     </div>
 <?php } ?>
+<?php
+$shop_page = Tyche_Helper::has_sidebar();
+?>
     <div class="container">
         <div class="row">
-            <div id="primary"
-                 class="content-area <?php echo ! Tyche_Helper::has_sidebar() ? 'col-md-8' : 'col-md-12' ?>">
+            <div id="primary" class="content-area col-md-8 tyche-has-sidebar">
                 <main id="main" class="site-main" role="main">
 
 					<?php
@@ -46,7 +48,9 @@ if ( $breadcrumbs_enabled == '1' ) { ?>
             </div><!-- #primary -->
 
 			<?php
-			if ( ! Tyche_Helper::has_sidebar() ) {
+			if ( $shop_page ) {
+				get_sidebar( 'shop' );
+			} else {
 				get_sidebar();
 			}
 			?>

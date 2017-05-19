@@ -10,10 +10,10 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see           https://docs.woocommerce.com/document/template-structure/
- * @author        WooThemes
- * @package       WooCommerce/Templates
- * @version       3.0.3
+ * @see         https://docs.woocommerce.com/document/template-structure/
+ * @author      WooThemes
+ * @package     WooCommerce/Templates
+ * @version     3.0.7
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -28,12 +28,13 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
         <tbody>
 		<?php
 		$quantites_required = false;
+		$previous_post      = $post;
 
 		foreach ( $grouped_products as $grouped_product ) {
 			$post_object        = get_post( $grouped_product->get_id() );
 			$quantites_required = $quantites_required || ( $grouped_product->is_purchasable() && ! $grouped_product->has_options() );
 
-			setup_postdata( $GLOBALS['post'] =& $post_object );
+			setup_postdata( $post =& $post_object );
 			?>
             <tr id="product-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <td>
@@ -41,9 +42,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 						<?php woocommerce_template_loop_add_to_cart(); ?>
 
 					<?php elseif ( $grouped_product->is_sold_individually() ) : ?>
-                        <input type="checkbox"
-                               name="<?php echo esc_attr( 'quantity[' . $grouped_product->get_id() . ']' ); ?>"
-                               value="1" class="wc-grouped-product-add-to-cart-checkbox"/>
+                        <input type="checkbox" name="<?php echo esc_attr( 'quantity[' . $grouped_product->get_id() . ']' ); ?>" value="1" class="wc-grouped-product-add-to-cart-checkbox" />
 
 					<?php else : ?>
 						<?php
@@ -68,7 +67,7 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
                 </td>
                 <td class="label">
                     <label for="product-<?php echo $grouped_product->get_id(); ?>">
-						<?php echo $grouped_product->is_visible() ? '<a href="' . esc_url( apply_filters( 'woocommerce_grouped_product_list_link', get_permalink(), $grouped_product->get_id() ) ) . '">' . get_the_title() . '</a>' : get_the_title(); ?>
+						<?php echo $grouped_product->is_visible() ? '<a href="' . esc_url( apply_filters( 'woocommerce_grouped_product_list_link', get_permalink( $grouped_product->get_id() ), $grouped_product->get_id() ) ) . '">' . $grouped_product->get_name() . '</a>' : $grouped_product->get_name(); ?>
                     </label>
                 </td>
 				<?php do_action( 'woocommerce_grouped_product_list_before_price', $grouped_product ); ?>
@@ -81,20 +80,20 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
             </tr>
 			<?php
 		}
-		wp_reset_postdata();
+		// Return data to original post.
+		setup_postdata( $post =& $previous_post );
 		?>
         </tbody>
     </table>
 
-    <input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>"/>
+    <input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $product->get_id() ); ?>" />
 
 	<?php if ( $quantites_required ) : ?>
 
 		<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
         <button type="submit" class="single_add_to_cart_button button alt"><span
-                    class="fa fa-shopping-cart"></span><?php echo esc_html( $product->single_add_to_cart_text() ); ?>
-        </button>
+                    class="fa fa-shopping-cart"></span><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
 
 		<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
 

@@ -37,6 +37,13 @@ class Tyche {
 	}
 
 	/**
+	 * Tyche sidebars
+	 */
+	public function init_sidebars() {
+		new Tyche_Sidebars();
+	}
+
+	/**
 	 * Tyche customizer
 	 */
 	public function init_customizer() {
@@ -51,11 +58,19 @@ class Tyche {
 	}
 
 	/**
+	 * Initiate woocommerce hooks
+	 */
+	public function init_woocommerce_hooks() {
+		new Tyche_WooCommerce_Hooks();
+	}
+
+	/**
 	 * Initiate the welcome screen
 	 */
 	public function init_welcome_screen() {
 		if ( is_admin() ) {
-			global $tyche_required_actions;
+			global $tyche_required_actions, $tyche_recommended_plugins;
+			$tyche_recommended_plugins = array();
 			/*
 			 * id - unique id; required
 			 * title
@@ -125,7 +140,7 @@ class Tyche {
 		add_image_size( 'tyche-blog-post-image', '730', '435', true );
 		add_image_size( 'tyche-slider-image', '1600', '545', true );
 		add_image_size( 'tyche-recent-post-list-image', '65', '65', true );
-		add_image_size( 'tyche-recent-post-alternate-image', 160, 90, true );
+		add_image_size( 'tyche-recent-post-alternate-image', '160', '90', true );
 
 		/**
 		 * Menus

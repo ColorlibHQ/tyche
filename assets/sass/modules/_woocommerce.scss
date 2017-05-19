@@ -55,7 +55,19 @@
     margin-top: 0;
     line-height: 30px;
   }
-  form.checkout_coupon,
+
+  form.checkout_coupon {
+    border: none;
+    padding: 0;
+    .button {
+      background: $color__brand-primary;
+      color: #FFF;
+      padding: 10px 30px;
+      &:hover {
+        background: lighten($color__brand-primary, 5%);
+      }
+    }
+  }
   form.login,
   form.register {
     border: none;
@@ -109,13 +121,25 @@
       padding-left: 60px;
     }
   }
+
   .woocommerce-result-count {
     color: $color__brand-primary;
     margin-bottom: 30px;
+    margin-top: 5px;
     text-align: right;
     display: block;
     width: 80%;
   }
+  .tyche-has-sidebar {
+    .woocommerce-result-count {
+      width: 68%;
+    }
+
+    ul.products li.product, ul.products li.product {
+      width: 30.80%;
+    }
+  }
+
   .woocommerce-ordering {
     select.orderby {
       border-radius: 4px;
@@ -311,9 +335,14 @@
       }
     }
   }
+  .wc-proceed-to-checkout a {
+    border: none;
+  }
   table.shop_table {
-    background: $color__title;
     border-collapse: collapse;
+    thead {
+      background: $color__title;
+    }
     td {
       padding: 12px;
     }
@@ -510,7 +539,7 @@
       .cart_item {
         .product-name {
           font-weight: 400;
-          border-right: 1px solid #ebebeb;
+          border-right: 1px solid rgba(0,0,0,.1);;
         }
         .product-quantity {
           font-weight: 700;
@@ -550,22 +579,22 @@
     table.shop_table th.product-total {
       background-color: #ebebeb;
       color: $color__title;
-      border-top: 1px solid #ebebeb;
-      border-left: 1px solid #ebebeb;
-      border-bottom: 1px solid #ebebeb;
+      border-top: 1px solid rgba(0,0,0,.1);;
+      border-left: 1px solid rgba(0,0,0,.1);;
+      border-bottom: 1px solid rgba(0,0,0,.1);;
       font-weight: 700;
       font-size: 15px;
     }
     table.shop_table th.product-total {
       border-left: 3px solid #fff;
-      border-right: 1px solid #ebebeb;
+      border-right: 1px solid rgba(0,0,0,.1);;
     }
   }
 }
 
 .woocommerce-checkout {
   #payment {
-    background: #ebebeb;
+    background: rgba(0,0,0,.1);;
     padding-bottom: 10px;
     div.payment_box {
       background-color: #FFF !important;
@@ -959,5 +988,30 @@
         color: $color__text-main;
       }
     }
+  }
+}
+
+.woocommerce-checkout {
+  .tyche-has-sidebar {
+    #customer_details {
+      .col-1, .col-2 {
+        width: 100%;
+      }
+    }
+  }
+
+  #order_review {
+    table {
+      .cart-subtotal, .order-total {
+        td {
+          border-left: 1px solid rgba(0,0,0,.1);;
+        }
+        th {
+          color: $color__title;
+          border-bottom: 1px solid rgba(0,0,0,.1);;
+        }
+      }
+    }
+
   }
 }

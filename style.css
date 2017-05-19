@@ -1233,6 +1233,12 @@ h6 {
   font-size: 18px;
   line-height: 24px; }
 
+.page-title {
+  margin-top: 0;
+  text-transform: uppercase; }
+  .page-title.margin-top {
+    margin-top: 20px; }
+
 p {
   margin-bottom: 35px;
   color: #717171;
@@ -1313,7 +1319,7 @@ ul {
   padding: 0;
   margin: 0; }
 
-.entry-content ul li:before {
+.entry-content ul li:before, .widget ul li:before {
   content: "\f105";
   font-family: 'FontAwesome';
   display: inline-block;
@@ -1782,11 +1788,18 @@ textarea {
   input[type="datetime-local"]:focus,
   input[type="color"]:focus,
   textarea:focus {
-    color: #111; }
+    color: #111;
+    outline: none; }
 
 select {
   border: 1px solid #ccc;
-  font-size: 16px; }
+  font-size: 16px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: ''; }
+  select:focus {
+    outline: none; }
 
 textarea {
   width: 100%; }
@@ -1810,6 +1823,22 @@ textarea {
     border-color: #f77761;
     color: #FFF; }
 
+.styled-select {
+  position: relative; }
+  .styled-select select {
+    z-index: 2;
+    background: transparent; }
+  .styled-select:after {
+    position: absolute;
+    content: '\f107';
+    color: #F66249;
+    top: 3px;
+    right: 15px;
+    font-family: 'FontAwesome';
+    font-size: 20px;
+    cursor: pointer;
+    z-index: -1; }
+
 /*--------------------------------------------------------------
 # Navigation
 --------------------------------------------------------------*/
@@ -1817,11 +1846,11 @@ textarea {
 ## Links
 --------------------------------------------------------------*/
 a {
-  color: royalblue; }
+  color: #F66249; }
   a:visited {
-    color: purple; }
+    color: #f88c7a; }
   a:hover, a:focus, a:active {
-    color: midnightblue; }
+    color: #f43818; }
   a:focus {
     outline: thin dotted; }
   a:hover, a:active {
@@ -2105,7 +2134,8 @@ a {
   padding-top: 30px;
   padding-bottom: 30px;
   color: #a7a7a7;
-  font-size: 13px; }
+  font-size: 13px;
+  line-height: 12px; }
   .tyche-breadcrumbs span {
     font-size: 13px; }
   .tyche-breadcrumbs .tyche-breadcrumb-sep {
@@ -2214,7 +2244,7 @@ a {
 */
 .tyche-pager {
   list-style-type: none;
-  margin: 0;
+  margin: 0 0 28px;
   padding: 0;
   display: inline-block;
   text-align: center;
@@ -2222,6 +2252,8 @@ a {
   color: #2a313e; }
   .tyche-pager a {
     color: #2a313e; }
+    .tyche-pager a:hover, .tyche-pager a:focus {
+      color: #F66249; }
   .tyche-pager li {
     display: inline-block;
     border-radius: 4px;
@@ -2230,13 +2262,16 @@ a {
       background-color: #2a313e; }
       .tyche-pager li.active a {
         color: #FFF; }
+        .tyche-pager li.active a:hover, .tyche-pager li.active a:focus {
+          color: #F66249; }
     .tyche-pager li a {
       font-size: 16px;
-      padding: 4px 6px;
+      padding: 4px 8px;
       min-width: 22px;
       min-height: 22px; }
-      .tyche-pager li a:hover {
-        text-decoration: none; }
+      .tyche-pager li a:hover, .tyche-pager li a:focus {
+        text-decoration: none;
+        color: #F66249; }
       .tyche-pager li a .pager-text {
         font-size: 13px;
         letter-spacing: 4px; }
@@ -2246,6 +2281,113 @@ a {
         .tyche-pager li a .pager-text.right {
           margin-right: 10px;
           margin-left: 30px; }
+
+/* =Post Pagination
+   ========================================================================== */
+.pagination {
+  margin: 56px 0 28px; }
+
+/*
+* 1. Clearfix hack
+*/
+.pagination:after {
+  /* 1 */
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0; }
+
+.pagination .nav-links {
+  text-align: center; }
+
+.pagination .page-numbers {
+  display: inline-block;
+  margin-right: 20px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: #2a313e; }
+  .pagination .page-numbers:hover, .pagination .page-numbers:focus {
+    color: #F66249; }
+
+.pagination .page-numbers:last-child {
+  margin-right: 0; }
+
+.pagination .page-numbers.current {
+  min-width: 20px;
+  min-height: 20px;
+  border-radius: 4px;
+  background-color: #2a313e;
+  color: #ffffff; }
+
+.pagination-arrow-container {
+  font-size: 13px;
+  letter-spacing: 4px; }
+
+@media (max-width: 767px) {
+  .pagination .page-numbers {
+    display: none; }
+
+  .pagination .page-numbers.prev,
+  .pagination .page-numbers.next,
+  .pagination .page-numbers.current {
+    display: inline-block; }
+
+  .page-numbers.prev .screen-reader-text,
+  .page-numbers.next .screen-reader-text {
+    clip: auto;
+    height: auto;
+    overflow: auto;
+    position: relative !important;
+    width: auto; } }
+/* =Page Links
+   ========================================================================== */
+.page-links {
+  margin: 28px 0; }
+
+.page-links .page-number {
+  padding: 4px; }
+
+.page-links {
+  color: #1a171c; }
+
+/* =Post Navigation
+   ========================================================================== */
+.post-navigation {
+  margin: 28px 0; }
+
+/*
+	 * 1. Clearfix hack
+	 */
+.post-navigation:after {
+  /* 1 */
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0; }
+
+@media (min-width: 768px) {
+  .post-navigation .nav-previous {
+    float: left;
+    width: 50%; }
+
+  .post-navigation .nav-next {
+    float: right;
+    text-align: right;
+    width: 50%; } }
+@media (max-width: 767px) {
+  .post-navigation .nav-previous {
+    margin-bottom: 28px; } }
+.post-navigation .nav-subtitle {
+  display: block;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #1a171c;
+  margin-bottom: 7px; }
 
 /*--------------------------------------------------------------
 # Accessibility
@@ -2331,7 +2473,10 @@ a {
 # Widgets
 --------------------------------------------------------------*/
 .widget {
-  margin: 0 0 1.5em; }
+  margin: 0 0 50px; }
+  .widget .widget-title {
+    margin-top: 0;
+    margin-bottom: 25px; }
   .widget.widget_search form {
     position: relative; }
   .widget.widget_search input {
@@ -2363,24 +2508,35 @@ a {
     border: none;
     text-indent: -99999999999px;
     text-align: center; }
-  .widget.widget_categories ul li, .widget.widget_recent_entries ul li, .widget.widget_archive ul li, .widget.widget_meta ul li {
+  .widget.widget_categories ul li, .widget.widget_recent_entries ul li, .widget.widget_archive ul li, .widget.widget_meta ul li, .widget.widget_pages ul li, .widget.widget_nav_menu ul li {
     color: #F66249; }
-    .widget.widget_categories ul li a, .widget.widget_recent_entries ul li a, .widget.widget_archive ul li a, .widget.widget_meta ul li a {
+    .widget.widget_categories ul li a, .widget.widget_recent_entries ul li a, .widget.widget_archive ul li a, .widget.widget_meta ul li a, .widget.widget_pages ul li a, .widget.widget_nav_menu ul li a {
       color: #F66249; }
-      .widget.widget_categories ul li a:hover, .widget.widget_recent_entries ul li a:hover, .widget.widget_archive ul li a:hover, .widget.widget_meta ul li a:hover {
+      .widget.widget_categories ul li a:hover, .widget.widget_recent_entries ul li a:hover, .widget.widget_archive ul li a:hover, .widget.widget_meta ul li a:hover, .widget.widget_pages ul li a:hover, .widget.widget_nav_menu ul li a:hover {
         color: #f43818; }
   .widget.widget_tag_cloud a {
     display: inline-block;
+    white-space: nowrap !important;
     margin: 0 4px 9px 0;
-    padding: 0 8px;
+    padding: 8px;
     border: 1px solid #e1e1e1;
-    border-radius: 14px;
+    border-radius: 0;
     color: #777777;
-    transition: background-color 250ms cubic-bezier(0.075, 0.82, 0.165, 1) 0s; }
+    transition: background-color 250ms cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+    font-size: 15px !important; }
     .widget.widget_tag_cloud a:hover {
       background-color: #F66249;
       color: #ffffff;
       border-color: #F66249; }
+  .widget.widget_product_search {
+    position: relative; }
+    .widget.widget_product_search .search-field {
+      padding: 9px;
+      width: 100%; }
+    .widget.widget_product_search input[type="submit"] {
+      position: absolute;
+      top: 0;
+      right: 0; }
   .widget.widget_calendar {
     border: 1px solid #e1e1e1;
     border-radius: 3px;
@@ -2431,7 +2587,8 @@ a {
           line-height: 44px;
           display: block; }
           .widget.widget_calendar #wp-calendar td a:hover, .widget.widget_calendar #wp-calendar td a:focus, .widget.widget_calendar #wp-calendar th a:hover, .widget.widget_calendar #wp-calendar th a:focus {
-            text-decoration: none; }
+            text-decoration: none;
+            background: #f43818; }
       .widget.widget_calendar #wp-calendar #prev {
         position: absolute;
         top: 5px;
@@ -2556,18 +2713,16 @@ a {
         .widget.widget_tyche_companion_recent .tyche-recent-post-widget .tyche-post-content p a:hover {
           color: #f43818; }
 
-#secondary {
-  margin-top: 93px; }
-  #secondary .widget_categories, #secondary .widget_archive {
-    overflow: hidden; }
-  #secondary select {
-    max-width: initial;
-    width: 100%;
-    height: 34px;
-    overflow: hidden;
-    -webkit-appearance: none;
-    border-radius: 0;
-    padding: 5px; }
+#secondary .widget_categories, #secondary .widget_archive {
+  overflow: hidden; }
+#secondary select {
+  max-width: initial;
+  width: 100%;
+  height: 34px;
+  overflow: hidden;
+  -webkit-appearance: none;
+  border-radius: 0;
+  padding: 5px; }
 
 .single-post #secondary {
   margin-top: 0; }
@@ -2736,7 +2891,7 @@ a {
   .tyche-blog-post .tyche-blog-meta .title {
     float: left;
     display: inline-block;
-    width: 90%; }
+    width: 88%; }
     .tyche-blog-post .tyche-blog-meta .title .entry-title {
       margin: 0 0 13px 0;
       line-height: 29px;
@@ -2745,6 +2900,9 @@ a {
         color: #2a313e; }
         .tyche-blog-post .tyche-blog-meta .title .entry-title a:hover {
           color: #F66249; }
+    @media (max-width: 768px) {
+      .tyche-blog-post .tyche-blog-meta .title {
+        width: 78%; } }
   .tyche-blog-post .tyche-blog-meta .meta {
     float: left; }
     .tyche-blog-post .tyche-blog-meta .meta ul {
@@ -2765,8 +2923,7 @@ a {
 .tyche-blog-post .more-link {
   background: #F66249;
   color: #FFF;
-  display: inline-block;
-  margin-top: 20px; }
+  display: inline-block; }
   .tyche-blog-post .more-link:hover, .tyche-blog-post .more-link:active, .tyche-blog-post .more-link:focus {
     border-color: #f43818;
     background: #f43818;
@@ -2774,6 +2931,7 @@ a {
 .tyche-blog-post .entry-tags {
   font-weight: 700;
   font-size: 15px;
+  margin-top: 20px;
   color: #2a313e; }
   .tyche-blog-post .entry-tags a {
     color: #2a313e;
@@ -2970,6 +3128,8 @@ a {
         background: transparent;
         left: 25px;
         position: relative; }
+        .top-header-bar-container .top-header-bar li.top-multilang select option {
+          color: #2a313e; }
       .top-header-bar-container .top-header-bar li.top-multilang img {
         width: 20px;
         position: absolute;
@@ -3146,6 +3306,7 @@ a {
 --------------------------------------------------------------*/
 .site-footer {
   margin-top: 30px;
+  padding-top: 30px;
   padding-bottom: 30px;
   background: #25262b;
   color: #e3e3e3;
@@ -3158,7 +3319,43 @@ a {
       margin-right: 8px;
       color: #FFF; }
   .site-footer .widget {
-    font-size: 15px; }
+    font-size: 15px;
+    margin-bottom: 30px; }
+    .site-footer .widget ul li a {
+      color: #fff; }
+      .site-footer .widget ul li a:hover, .site-footer .widget ul li a:focus {
+        color: #F66249; }
+    .site-footer .widget .styled-select {
+      overflow: hidden; }
+      .site-footer .widget .styled-select select {
+        color: #fff;
+        padding: 5px;
+        width: 100%; }
+        .site-footer .widget .styled-select select option {
+          color: #2a313e; }
+      .site-footer .widget .styled-select:after {
+        z-index: 1; }
+    .site-footer .widget.widget_search input {
+      background: transparent;
+      color: #fff; }
+    .site-footer .widget.widget_product_search input[type="submit"] {
+      position: relative;
+      display: inline-block;
+      margin-top: 5px;
+      background: #F66249;
+      color: #fff; }
+    .site-footer .widget.widget_shopping_cart ul li a {
+      color: #fff; }
+      .site-footer .widget.widget_shopping_cart ul li a:hover, .site-footer .widget.widget_shopping_cart ul li a:focus {
+        color: #F66249; }
+    .site-footer .widget .product_list_widget li a {
+      color: #fff; }
+      .site-footer .widget .product_list_widget li a:hover, .site-footer .widget .product_list_widget li a:focus {
+        color: #F66249; }
+    .site-footer .widget .product_list_widget li a > span {
+      color: #fff; }
+      .site-footer .widget .product_list_widget li a > span:hover, .site-footer .widget .product_list_widget li a > span:focus {
+        color: #F66249; }
   .site-footer h1, .site-footer h2, .site-footer h3, .site-footer h4, .site-footer h5, .site-footer h6 {
     color: #FFF;
     margin-top: 30px;
@@ -3264,29 +3461,32 @@ a {
 .woocommerce .page-title {
   margin-top: 0;
   line-height: 30px; }
-.woocommerce form.checkout_coupon,
-.woocommerce form.login,
-.woocommerce form.register {
+.woocommerce form.checkout_coupon {
   border: none;
   padding: 0; }
   .woocommerce form.checkout_coupon .button,
   .woocommerce form.checkout_coupon button,
   .woocommerce form.checkout_coupon input[type="button"],
   .woocommerce form.checkout_coupon input[type="reset"],
-  .woocommerce form.checkout_coupon input[type="submit"], .woocommerce form.checkout_coupon .tyche-blog-post .more-link, .tyche-blog-post .woocommerce form.checkout_coupon .more-link, .woocommerce form.checkout_coupon .main-slider .hero-caption .btn-group a, .main-slider .hero-caption .btn-group .woocommerce form.checkout_coupon a, .woocommerce form.checkout_coupon div.product form.cart .button, .woocommerce div.product form.cart form.checkout_coupon .button, .woocommerce form.checkout_coupon .tyche-product-slider-container .tyche-companion-banner a, .tyche-product-slider-container .tyche-companion-banner .woocommerce form.checkout_coupon a,
+  .woocommerce form.checkout_coupon input[type="submit"], .woocommerce form.checkout_coupon .tyche-blog-post .more-link, .tyche-blog-post .woocommerce form.checkout_coupon .more-link, .woocommerce form.checkout_coupon .main-slider .hero-caption .btn-group a, .main-slider .hero-caption .btn-group .woocommerce form.checkout_coupon a, .woocommerce form.checkout_coupon div.product form.cart .button, .woocommerce div.product form.cart form.checkout_coupon .button, .woocommerce form.checkout_coupon .tyche-product-slider-container .tyche-companion-banner a, .tyche-product-slider-container .tyche-companion-banner .woocommerce form.checkout_coupon a {
+    background: #F66249;
+    color: #FFF;
+    padding: 10px 30px; }
+    .woocommerce form.checkout_coupon .button:hover,
+    .woocommerce form.checkout_coupon button:hover,
+    .woocommerce form.checkout_coupon input[type="button"]:hover,
+    .woocommerce form.checkout_coupon input[type="reset"]:hover,
+    .woocommerce form.checkout_coupon input[type="submit"]:hover, .woocommerce form.checkout_coupon .tyche-blog-post .more-link:hover, .tyche-blog-post .woocommerce form.checkout_coupon .more-link:hover, .woocommerce form.checkout_coupon .main-slider .hero-caption .btn-group a:hover, .main-slider .hero-caption .btn-group .woocommerce form.checkout_coupon a:hover, .woocommerce form.checkout_coupon div.product form.cart .button:hover, .woocommerce div.product form.cart form.checkout_coupon .button:hover, .woocommerce form.checkout_coupon .tyche-product-slider-container .tyche-companion-banner a:hover, .tyche-product-slider-container .tyche-companion-banner .woocommerce form.checkout_coupon a:hover {
+      background: #f77761; }
+.woocommerce form.login,
+.woocommerce form.register {
+  border: none;
+  padding: 0; }
   .woocommerce form.login .button,
   .woocommerce form.login button,
   .woocommerce form.login input[type="button"],
   .woocommerce form.login input[type="reset"],
-  .woocommerce form.login input[type="submit"],
-  .woocommerce form.login .tyche-blog-post .more-link,
-  .tyche-blog-post .woocommerce form.login .more-link,
-  .woocommerce form.login .main-slider .hero-caption .btn-group a,
-  .main-slider .hero-caption .btn-group .woocommerce form.login a,
-  .woocommerce form.login div.product form.cart .button,
-  .woocommerce div.product form.cart form.login .button,
-  .woocommerce form.login .tyche-product-slider-container .tyche-companion-banner a,
-  .tyche-product-slider-container .tyche-companion-banner .woocommerce form.login a,
+  .woocommerce form.login input[type="submit"], .woocommerce form.login .tyche-blog-post .more-link, .tyche-blog-post .woocommerce form.login .more-link, .woocommerce form.login .main-slider .hero-caption .btn-group a, .main-slider .hero-caption .btn-group .woocommerce form.login a, .woocommerce form.login div.product form.cart .button, .woocommerce div.product form.cart form.login .button, .woocommerce form.login .tyche-product-slider-container .tyche-companion-banner a, .tyche-product-slider-container .tyche-companion-banner .woocommerce form.login a,
   .woocommerce form.register .button,
   .woocommerce form.register button,
   .woocommerce form.register input[type="button"],
@@ -3305,24 +3505,11 @@ a {
     padding: 10px 30px;
     display: block;
     margin-top: 20px; }
-    .woocommerce form.checkout_coupon .button:hover,
-    .woocommerce form.checkout_coupon button:hover,
-    .woocommerce form.checkout_coupon input[type="button"]:hover,
-    .woocommerce form.checkout_coupon input[type="reset"]:hover,
-    .woocommerce form.checkout_coupon input[type="submit"]:hover, .woocommerce form.checkout_coupon .tyche-blog-post .more-link:hover, .tyche-blog-post .woocommerce form.checkout_coupon .more-link:hover, .woocommerce form.checkout_coupon .main-slider .hero-caption .btn-group a:hover, .main-slider .hero-caption .btn-group .woocommerce form.checkout_coupon a:hover, .woocommerce form.checkout_coupon div.product form.cart .button:hover, .woocommerce div.product form.cart form.checkout_coupon .button:hover, .woocommerce form.checkout_coupon .tyche-product-slider-container .tyche-companion-banner a:hover, .tyche-product-slider-container .tyche-companion-banner .woocommerce form.checkout_coupon a:hover,
     .woocommerce form.login .button:hover,
     .woocommerce form.login button:hover,
     .woocommerce form.login input[type="button"]:hover,
     .woocommerce form.login input[type="reset"]:hover,
-    .woocommerce form.login input[type="submit"]:hover,
-    .woocommerce form.login .tyche-blog-post .more-link:hover,
-    .tyche-blog-post .woocommerce form.login .more-link:hover,
-    .woocommerce form.login .main-slider .hero-caption .btn-group a:hover,
-    .main-slider .hero-caption .btn-group .woocommerce form.login a:hover,
-    .woocommerce form.login div.product form.cart .button:hover,
-    .woocommerce div.product form.cart form.login .button:hover,
-    .woocommerce form.login .tyche-product-slider-container .tyche-companion-banner a:hover,
-    .tyche-product-slider-container .tyche-companion-banner .woocommerce form.login a:hover,
+    .woocommerce form.login input[type="submit"]:hover, .woocommerce form.login .tyche-blog-post .more-link:hover, .tyche-blog-post .woocommerce form.login .more-link:hover, .woocommerce form.login .main-slider .hero-caption .btn-group a:hover, .main-slider .hero-caption .btn-group .woocommerce form.login a:hover, .woocommerce form.login div.product form.cart .button:hover, .woocommerce div.product form.cart form.login .button:hover, .woocommerce form.login .tyche-product-slider-container .tyche-companion-banner a:hover, .tyche-product-slider-container .tyche-companion-banner .woocommerce form.login a:hover,
     .woocommerce form.register .button:hover,
     .woocommerce form.register button:hover,
     .woocommerce form.register input[type="button"]:hover,
@@ -3367,9 +3554,14 @@ a {
 .woocommerce .woocommerce-result-count {
   color: #F66249;
   margin-bottom: 30px;
+  margin-top: 5px;
   text-align: right;
   display: block;
   width: 80%; }
+.woocommerce .tyche-has-sidebar .woocommerce-result-count {
+  width: 68%; }
+.woocommerce .tyche-has-sidebar ul.products li.product, .woocommerce .tyche-has-sidebar ul.products li.product {
+  width: 30.80%; }
 .woocommerce .woocommerce-ordering select.orderby {
   border-radius: 4px;
   border-color: #e1e1e1;
@@ -3539,9 +3731,12 @@ a {
     padding-top: 0;
     padding-bottom: 0;
     margin: 0; }
+.woocommerce .wc-proceed-to-checkout a {
+  border: none; }
 .woocommerce table.shop_table {
-  background: #2a313e;
   border-collapse: collapse; }
+  .woocommerce table.shop_table thead {
+    background: #2a313e; }
   .woocommerce table.shop_table td {
     padding: 12px; }
   .woocommerce table.shop_table .product-name,
@@ -3686,7 +3881,7 @@ a {
     background-color: #FFF; }
   .woocommerce #order_review table .cart_item .product-name {
     font-weight: 400;
-    border-right: 1px solid #ebebeb; }
+    border-right: 1px solid rgba(0, 0, 0, 0.1); }
   .woocommerce #order_review table .cart_item .product-quantity {
     font-weight: 700;
     color: #2a313e; }
@@ -3711,17 +3906,17 @@ a {
 .woocommerce #order_review table.shop_table th.product-total {
   background-color: #ebebeb;
   color: #2a313e;
-  border-top: 1px solid #ebebeb;
-  border-left: 1px solid #ebebeb;
-  border-bottom: 1px solid #ebebeb;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   font-weight: 700;
   font-size: 15px; }
 .woocommerce #order_review table.shop_table th.product-total {
   border-left: 3px solid #fff;
-  border-right: 1px solid #ebebeb; }
+  border-right: 1px solid rgba(0, 0, 0, 0.1); }
 
 .woocommerce-checkout #payment {
-  background: #ebebeb;
+  background: rgba(0, 0, 0, 0.1);
   padding-bottom: 10px; }
   .woocommerce-checkout #payment div.payment_box {
     background-color: #FFF !important; }
@@ -4007,6 +4202,14 @@ a {
     color: #ffab1a; }
   .woocommerce .widget_rating_filter .wc-layered-nav-rating a {
     color: #717171; }
+
+.woocommerce-checkout .tyche-has-sidebar #customer_details .col-1, .woocommerce-checkout .tyche-has-sidebar #customer_details .col-2 {
+  width: 100%; }
+.woocommerce-checkout #order_review table .cart-subtotal td, .woocommerce-checkout #order_review table .order-total td {
+  border-left: 1px solid rgba(0, 0, 0, 0.1); }
+.woocommerce-checkout #order_review table .cart-subtotal th, .woocommerce-checkout #order_review table .order-total th {
+  color: #2a313e;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
 
 /*--------------------------------------------------------------
 # Infinite scroll

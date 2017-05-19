@@ -190,12 +190,14 @@ class Tyche_Helper {
 	public static function categorized_blog() {
 		if ( false === ( $all_the_cool_cats = get_transient( 'tyche_categories' ) ) ) {
 			// Create an array of all the categories that are attached to posts.
-			$all_the_cool_cats = get_categories( array(
-				                                     'fields'     => 'ids',
-				                                     'hide_empty' => 1,
-				                                     // We only need to know if there is more than one category.
-				                                     'number'     => 2,
-			                                     ) );
+			$all_the_cool_cats = get_categories(
+				array(
+					'fields'     => 'ids',
+					'hide_empty' => 1,
+					// We only need to know if there is more than one category.
+					'number'     => 2,
+				)
+			);
 
 			// Count the number of categories that are attached to the posts.
 			$all_the_cool_cats = count( $all_the_cool_cats );
@@ -295,7 +297,7 @@ class Tyche_Helper {
 	 */
 	public static function has_sidebar() {
 		if ( class_exists( 'WooCommerce' ) ) {
-			if ( is_cart() || is_account_page() ) {
+			if ( is_cart() || is_account_page() || is_checkout() || is_checkout_pay_page() ) {
 				return true;
 			}
 		}

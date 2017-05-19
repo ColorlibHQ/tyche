@@ -17,16 +17,72 @@ class Tyche_WooCommerce_Hooks {
 		remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper' );
 		remove_action( 'woocommerce_after_main_content', 'woocommerce_after_main_content' );
 		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price' );
-		remove_action( 'woocommerce_pagination', 'woocommerce_pagination', 10 );
+		remove_action( 'woocommerce_after_shop_loop', 'woocommerce_pagination' );
 
 		/**
 		 * Add actions
 		 */
 		add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 25 );
-		add_action( 'woocommerce_pagination', array( $this, 'woocommerce_pagination' ), 10 );
+		add_action( 'woocommerce_after_shop_loop', array( $this, 'pagination' ), 10 );
 		add_action( 'after_setup_theme', array( $this, 'wpcom_setup' ) );
+		add_action( 'after_switch_theme', array( $this, 'change_image_dimensions' ), 1 );
+
+		/**
+		 * Add Filters
+		 */
+		add_filter( 'loop_shop_columns', array( $this, 'loop_columns' ) );
 	}
 
+	/**
+	 * Change default image dimensions
+	 */
+	public function change_image_dimensions() {
+		global $pagenow;
+
+		if ( ! isset( $_GET['activated'] ) || $pagenow != 'themes.php' ) {
+			return;
+		}
+
+		$catalog   = array(
+			'width'  => '255',
+			'height' => '320',
+			'crop'   => 1
+		);
+		$single    = array(
+			'width'  => '540',
+			'height' => '500',
+			'crop'   => 1
+		);
+		$thumbnail = array(
+			'width'  => '65',
+			'height' => '75',
+			'crop'   => 0
+		);
+
+		// Image sizes
+		update_option( 'shop_catalog_image_size', $catalog );        // Product category thumbs
+		update_option( 'shop_single_image_size', $single );        // Single product image
+		update_option( 'shop_thumbnail_image_size', $thumbnail );    // Image gallery thumbs
+	}
+
+	/**
+	 * If we have a sidebar, create a 3 column layout instead of 4
+	 *
+	 * @return int
+	 */
+	public function loop_columns() {
+		if ( is_active_sidebar( 'shop-sidebar' ) ) {
+			return 3;
+		}
+
+		return 4;
+	}
+
+	/**
+	 * Get cart total
+	 *
+	 * @return float|int
+	 */
 	public static function get_cart_total() {
 		if ( function_exists( 'WC' ) ) {
 			return WC()->cart->cart_contents_total;
@@ -35,6 +91,9 @@ class Tyche_WooCommerce_Hooks {
 		return 0;
 	}
 
+	/**
+	 * WP Commerce Setup
+	 */
 	public function wpcom_setup() {
 		global $themecolors;
 
@@ -50,7 +109,7 @@ class Tyche_WooCommerce_Hooks {
 		}
 	}
 
-	public function woocommerce_pagination() {
+	public function pagination() {
 
 		if ( is_singular() ) {
 			return;
