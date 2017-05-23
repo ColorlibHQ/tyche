@@ -70,7 +70,7 @@ script:
     # -n flag: Do not print warnings. (shortcut for --warning-severity=0)
     # --standard: Use WordPress-Extra as the standard (specificed in phpcs.xml)
     # --extensions: Only sniff PHP files.
-    - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/scripts/phpcs -p -s -v -n . --standard=./phpcs.xml --extensions=php; fi
+    - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/scripts/phpcs -p . --standard=WordPress; fi
     # Run the theme JavaScript partials through ESLint.
     - if [[ "$SNIFF" == "1" ]]; then eslint -c ./.eslintrc.js ./assets/js/functions; fi
 
