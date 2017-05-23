@@ -23,9 +23,10 @@ if ( $breadcrumbs_enabled == '1' ) { ?>
     <div class="row">
         <div class="col-sm-6">
 			<?php
-			if ( have_posts() ) : while ( have_posts() ) : the_post();
-				the_content();
-			endwhile;
+			if ( have_posts() ) :
+				while ( have_posts() ) : the_post();
+					the_content();
+				endwhile;
 			endif;
 			?>
         </div>
@@ -58,10 +59,10 @@ if ( $breadcrumbs_enabled == '1' ) { ?>
     </div>
 
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
 			<?php echo do_shortcode( get_theme_mod( 'tyche_contact_page_shortcode_form', '' ) ) ?>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-8">
             <div id="tyche-map">
 				<?php echo do_shortcode( get_theme_mod( 'tyche_contact_page_shortcode_map', '' ) ) ?>
             </div>

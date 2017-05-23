@@ -197,7 +197,37 @@ class Tyche_Navwalker extends Walker_Nav_Menu {
 				echo ' class="' . esc_attr( $menu_class ) . '"';
 			}
 			echo '>';
-			echo '<li><a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '" title="">' . esc_html__( 'Add a menu', 'medzone' ) . '</a></li>';
+			echo '<li><a href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '" title="">' . esc_html__( 'Add a menu', 'tyche' ) . '</a></li>';
+			echo '</ul>';
+			if ( $container ) {
+				echo '</' . esc_attr( $container ) . '>';
+			}
+		} else {
+			/* Get Arguments. */
+			$container       = $args['container'];
+			$container_id    = $args['container_id'];
+			$container_class = $args['container_class'];
+			$menu_class      = $args['menu_class'];
+			$menu_id         = $args['menu_id'];
+			if ( $container ) {
+				echo '<' . esc_attr( $container );
+				if ( $container_id ) {
+					echo ' id="' . esc_attr( $container_id ) . '"';
+				}
+				if ( $container_class ) {
+					echo ' class="' . sanitize_html_class( $container_class ) . '"';
+				}
+				echo '>';
+			}
+			echo '<ul';
+			if ( $menu_id ) {
+				echo ' id="' . esc_attr( $menu_id ) . '"';
+			}
+			if ( $menu_class ) {
+				echo ' class="' . esc_attr( $menu_class ) . '"';
+			}
+			echo '>';
+			echo '<li><a href="' . esc_url( get_home_url() ) . '" title="">' . esc_html__( 'Home', 'tyche' ) . '</a></li>';
 			echo '</ul>';
 			if ( $container ) {
 				echo '</' . esc_attr( $container ) . '>';

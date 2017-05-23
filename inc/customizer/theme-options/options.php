@@ -221,23 +221,21 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'settings' => 'tyche_frontpage_sections',
 	'label'    => esc_html__( 'Enable / Disable sections', 'tyche' ),
 	'section'  => 'frontpage_sections_general',
-	'type'     => 'multicheck',
+	'type'     => 'sortable',
 	'default'  => array(
 		'content-area-1',
 		'content-area-2',
 		'content-area-3',
 		'content-area-4',
 		'content-area-5',
-		'content-area-6'
 	),
 	'priority' => 11,
 	'choices'  => array(
-		'content-area-1' => esc_attr__( 'Section 1', 'tyche' ),
-		'content-area-2' => esc_attr__( 'Section 2', 'tyche' ),
-		'content-area-3' => esc_attr__( 'Section 3', 'tyche' ),
-		'content-area-4' => esc_attr__( 'Section 4', 'tyche' ),
-		'content-area-5' => esc_attr__( 'Section 5', 'tyche' ),
-		'content-area-6' => esc_attr__( 'Section 6', 'tyche' ),
+		'content-area-1' => esc_attr__( 'Content Widget Area #1', 'tyche' ),
+		'content-area-2' => esc_attr__( 'Content Widget Area #2', 'tyche' ),
+		'content-area-3' => esc_attr__( 'Content Widget Area #3', 'tyche' ),
+		'content-area-4' => esc_attr__( 'Content Widget Area #4', 'tyche' ),
+		'content-area-5' => esc_attr__( 'Content Widget Area #5', 'tyche' ),
 	),
 ) );
 
@@ -265,19 +263,20 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 		'value' => esc_attr__( 'Background Image', 'tyche' ),
 	),
 	'default'   => array(
+		'image_bg'        => get_template_directory_uri() . '/assets/images/hero.jpg',
 		'cta_text'        => '2016',
 		'cta_subtext'     => 'Autumn Collection',
 		'button_one_text' => 'Shop Now',
 		'button_two_text' => 'Learn More',
-		'button_one_url'  => 'http://colorlib.com',
-		'button_two_url'  => 'http://colorlib.com',
+		'button_one_url'  => 'https://colorlib.com',
+		'button_two_url'  => 'https://colorlib.com',
 	),
 	'settings'  => 'tyche_slider_bg',
 	'fields'    => array(
 		'image_bg'        => array(
 			'type'    => 'image',
 			'label'   => esc_attr__( 'Image', 'tyche' ),
-			'default' => '',
+			'default' => get_template_directory_uri() . '/assets/images/hero.jpg',
 		),
 		'cta_text'        => array(
 			'type'    => 'text',

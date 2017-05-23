@@ -86,9 +86,15 @@
       width: 100%;
     }
     input[type="submit"] {
-      position: absolute;
-      top: 0;
-      right: 0;
+      display: inline-block;
+      margin-top: 15px;
+      background: $color__brand-primary;
+      color: #fff;
+      &:hover,
+      &:active,
+      &:focus {
+        background: $color__brand-primary-hover;
+      }
     }
   }
 
@@ -212,9 +218,26 @@
     }
   }
 
+  &.widget_tyche_companion_products, &.widget_tyche_companion_recent {
+    .widget-title {
+      margin-bottom: 40px;
+      margin-top: 30px;
+      font-size: 30px;
+      > span {
+        font-size: 30px;
+      }
+    }
+  }
+
   &.widget_tyche_companion_recent {
+    @media(min-width: 582px) {
+      &.no-title {
+        margin-top: 100px;
+      }
+    }
     .tyche-recent-post-alternate-widget {
       display: inline-block;
+      width: 100%;
       border-bottom: 1px solid #e3e3e3;
       padding-bottom: 30px;
       margin-bottom: 30px;
@@ -267,6 +290,7 @@
           a {
             font-size: 20px;
             color: $color__title;
+            font-weight: bold;
             &:hover {
               color: $color__brand-primary-hover;
             }
@@ -295,6 +319,11 @@
     .tyche-recent-post-widget {
       display: inline-block;
       margin-bottom: 15px;
+      .tyche-title {
+        p {
+          font-weight: bold;
+        }
+      }
       .tyche-image {
         display: inline-block;
         margin-right: 15px;
@@ -340,11 +369,10 @@
 .content-area-2,
 .content-area-3,
 .content-area-4,
-.content-area-5,
-.content-area-6 {
+.content-area-5 {
   h1, h2, h3, h4, h5, h6 {
     margin-top: 30px;
-    margin-bottom: 45px;
+    margin-bottom: 30px;
     span {
       font-size: 20px;
       color: $color__title;
@@ -361,4 +389,18 @@
       }
     }
   }
+}
+
+.content-area-2 {
+  border-top: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.content-area-4 {
+  margin-bottom: 30px;
+}
+
+.content-area-1, .content-area-4 {
+  background: #f7f7f9;
+  margin-bottom: 0;
 }

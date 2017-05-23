@@ -1,9 +1,8 @@
 <?php
 
-wp_enqueue_script( 'owlCarousel-js' );
-wp_enqueue_style( 'owlCarousel-main-css' );
-wp_enqueue_style( 'owlCarousel-theme-css' );
-
+wp_enqueue_script( 'owlCarousel' );
+wp_enqueue_style( 'owlCarousel' );
+wp_enqueue_style( 'owlCarousel-theme' );
 
 $posts = Tyche_Helper::get_products( $params ); ?>
 
@@ -12,8 +11,10 @@ $posts = Tyche_Helper::get_products( $params ); ?>
         <a class="prev" href="#"><i class="fa fa-angle-left"></i></a>
         <a class="next" href="#"><i class="fa fa-angle-right"></i></a>
     </div>
+	<?php $image = wp_get_attachment_image_src( $params['image'], 'full' ) ?>
     <div class="col-sm-3 hidden-xs">
-        <div class="tyche-companion-banner" style="background-image:url('<?php echo esc_attr( $params['image'] ) ?>')">
+        <div class="tyche-companion-banner"
+			<?php echo ! empty( $image[0] ) ? 'style="background-image:url(' . esc_url( $image[0] ) . ')"' : '' ?>>
             <div class="tyche-companion-banner-caption">
 				<?php if ( ! empty( $params['first_line'] ) ): ?>
                     <span class="first_line"> <?php echo esc_html( $params['first_line'] ) ?> </span>
@@ -36,8 +37,7 @@ $posts = Tyche_Helper::get_products( $params ); ?>
 				global $product;
 				global $post; ?>
                 <div class="item">
-                    <div
-                            class="tyche-product <?php echo ! empty( $params['color'] ) ? esc_attr( $params['color'] ) : '' ?>">
+                    <div class="tyche-product <?php echo ! empty( $params['color'] ) ? esc_attr( $params['color'] ) : '' ?>">
                         <div class="tyche-product-image">
 							<?php if ( $product->is_on_sale() ) : ?>
 
@@ -49,7 +49,7 @@ $posts = Tyche_Helper::get_products( $params ); ?>
 							$image = '<img src="' . get_template_directory_uri() . '/assets/images/product-placeholder.jpg" />';
 
 							if ( has_post_thumbnail() ) {
-								$image = woocommerce_get_product_thumbnail();
+								$image = woocommerce_get_product_thumbnail( 'shop_catalog' );
 							};
 
 							echo wp_kses_post( $image );
@@ -58,7 +58,7 @@ $posts = Tyche_Helper::get_products( $params ); ?>
                         <div class="tyche-product-body">
                             <h3><?php woocommerce_template_loop_product_link_open() ?><?php echo get_the_title(); ?><?php woocommerce_template_loop_product_link_close() ?></h3>
 
-							<?php if ( $rating_html = wc_get_rating_html( $product->get_average_rating() ) ) : ?>
+							<?php if ( $params['show_rating'] == 'yes' && ( $rating_html = wc_get_rating_html( $product->get_average_rating() ) ) ) : ?>
 								<?php echo $rating_html; ?>
 							<?php endif; ?>
 

@@ -83,7 +83,7 @@
 
 		},
 
-		initMainSlider   : function () {
+		initMainSlider: function () {
 			jQuery('#main-slider').owlCarousel({
 				loop           : true,
 				nav            : true,
@@ -109,11 +109,15 @@
 				}
 			});
 		},
+
 		initProductSlider: function () {
-			var elements = jQuery('.tyche-product-slider');
+			var elements = jQuery('.tyche-product-slider-container');
 			elements.each(function () {
-				var selector = jQuery(this);
-				jQuery(this).owlCarousel({
+				var selector = jQuery(this).find('.tyche-product-slider'),
+						prev = jQuery(this).find('.tyche-product-slider-navigation .prev'),
+						next = jQuery(this).find('.tyche-product-slider-navigation .next');
+
+				selector.owlCarousel({
 					loop      : false,
 					margin    : 30,
 					responsive: {
@@ -124,16 +128,16 @@
 							items: 2
 						},
 						991: {
-							items: parseInt(jQuery(this).attr('data-attr-elements'))
+							items: parseInt(selector.attr('data-attr-elements'))
 						}
 					}
 				});
 
-				jQuery(".tyche-product-slider-navigation .prev").on('click', function (event) {
+				prev.on('click', function (event) {
 					event.preventDefault();
 					selector.trigger('prev.owl.carousel');
 				});
-				jQuery(".tyche-product-slider-navigation .next").on('click', function (event) {
+				next.on('click', function (event) {
 					event.preventDefault();
 					selector.trigger('next.owl.carousel');
 				});

@@ -16,8 +16,7 @@ $posts = Tyche_Helper::get_products( $params ); ?>
 				global $product;
 				global $post; ?>
                 <div class="item">
-                    <div
-                            class="tyche-product <?php echo esc_attr( ! empty( $params['color'] ) ? $params['color'] : '' ) ?>">
+                    <div class="tyche-product <?php echo esc_attr( ! empty( $params['color'] ) ? $params['color'] : '' ) ?>">
                         <div class="tyche-product-image">
 							<?php if ( $product->is_on_sale() ) : ?>
 
@@ -28,7 +27,7 @@ $posts = Tyche_Helper::get_products( $params ); ?>
 							<?php
 							$image = '<img src="' . get_template_directory_uri() . '/assets/images/product-placeholder.jpg" />';
 							if ( has_post_thumbnail() ) {
-								$image = woocommerce_get_product_thumbnail();
+								$image = woocommerce_get_product_thumbnail( 'shop_catalog' );
 							};
 							echo wp_kses_post( $image );
 							?>

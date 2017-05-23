@@ -21,15 +21,15 @@ $posts = Tyche_Helper::get_products( $params ); ?>
 							<?php
 							$image = '<img src="' . get_template_directory_uri() . '/assets/images/image-placeholder-160x115.jpg" />';
 							if ( has_post_thumbnail() ) {
-								$image = woocommerce_get_product_thumbnail( 'shop_single_image' );
+								$image = get_the_post_thumbnail( get_the_ID(), 'tyche-product-layout-c' );
 							};
 							echo wp_kses_post( $image );
 							?>
                         </div>
                     </div>
                     <div class="col-xs-6">
-                        <div class="tyche-product-body">
-                            <h3><?php woocommerce_template_loop_product_link_open() ?><?php echo get_the_title(); ?><?php woocommerce_template_loop_product_link_close() ?></h3>
+                        <div class="tyche-product-body text-left">
+                            <h3><?php woocommerce_template_loop_product_link_open() ?><?php echo wp_kses_post( get_the_title() ); ?><?php woocommerce_template_loop_product_link_close() ?></h3>
 
 							<?php if ( $price_html = $product->get_price_html() ) : ?>
                                 <span class="price"><?php echo $price_html; ?></span>

@@ -38,15 +38,15 @@
           padding: 0 10px;
           height: 30px;
           position: relative;
-          left: -6px;
+          left: -5px;
           font-size: 15px;
         }
 
         margin-right: 11px;
       }
       &.top-cart {
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 40px;
+        padding-right: 40px;
         background: $color__brand-primary;
         a {
           &:hover {
@@ -61,12 +61,12 @@
         border-left: 1px solid #353940;
         overflow: hidden;
         position: relative;
-        min-width: 150px;
+        min-width: 115px;
         &:after {
           content: '\f107';
           position: absolute;
           top: 1px;
-          right: 0px;
+          right: 0;
           display: block;
           color: #FFF;
           font-family: 'FontAwesome';
@@ -93,8 +93,8 @@
 
       }
       &.top-account {
-        padding-left: 15px;
-        margin-right: 15px;
+        padding-left: 20px;
+        margin-right: 20px;
         border-left: 1px solid #353940;
         a {
           &:hover {

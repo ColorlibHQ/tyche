@@ -47,7 +47,47 @@ class Tyche_Sidebars {
 			array(
 				'id'            => 'content-area-1',
 				'name'          => esc_html__( 'Content Widget Area #1', 'tyche' ),
-				'description'   => esc_html__( 'Actual page content', 'tyche' ),
+				'description'   => esc_html__( 'Full width section', 'tyche' ),
+				'before_title'  => '<h3 class="widget-title"><span>',
+				'after_title'   => '</span></h3>',
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>'
+			),
+
+			array(
+				'id'            => 'content-area-2-a',
+				'name'          => esc_html__( 'Content Widget Area #2 A', 'tyche' ),
+				'description'   => esc_html__( 'Sidebar served as a column in the content', 'tyche' ),
+				'before_title'  => '<h3 class="widget-title"><span>',
+				'after_title'   => '</span></h3>',
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>'
+			),
+
+			array(
+				'id'            => 'content-area-2-b',
+				'name'          => esc_html__( 'Content Widget Area #2 B', 'tyche' ),
+				'description'   => esc_html__( 'Sidebar served as a column in the content', 'tyche' ),
+				'before_title'  => '<h3 class="widget-title"><span>',
+				'after_title'   => '</span></h3>',
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>'
+			),
+
+			array(
+				'id'            => 'content-area-2-c',
+				'name'          => esc_html__( 'Content Widget Area #2 C', 'tyche' ),
+				'description'   => esc_html__( 'Sidebar served as a column in the content', 'tyche' ),
+				'before_title'  => '<h3 class="widget-title"><span>',
+				'after_title'   => '</span></h3>',
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>'
+			),
+
+			array(
+				'id'            => 'content-area-3',
+				'name'          => esc_html__( 'Content Widget Area #3', 'tyche' ),
+				'description'   => esc_html__( 'Full width section', 'tyche' ),
 				'before_title'  => '<h3 class="widget-title"><span>',
 				'after_title'   => '</span></h3>',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
@@ -56,9 +96,19 @@ class Tyche_Sidebars {
 
 
 			array(
-				'id'            => 'content-area-2',
-				'name'          => esc_html__( 'Content Widget Area #2', 'tyche' ),
-				'description'   => esc_html__( 'Actual page content', 'tyche' ),
+				'id'            => 'content-area-4-a',
+				'name'          => esc_html__( 'Content Widget Area #4 A', 'tyche' ),
+				'description'   => esc_html__( 'Sidebar served as a column in the content', 'tyche' ),
+				'before_title'  => '<h3 class="widget-title"><span>',
+				'after_title'   => '</span></h3>',
+				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</div>'
+			),
+
+			array(
+				'id'            => 'content-area-4-b',
+				'name'          => esc_html__( 'Content Widget Area #4 B', 'tyche' ),
+				'description'   => esc_html__( 'Sidebar served as a column in the content', 'tyche' ),
 				'before_title'  => '<h3 class="widget-title"><span>',
 				'after_title'   => '</span></h3>',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
@@ -67,71 +117,9 @@ class Tyche_Sidebars {
 
 
 			array(
-				'id'            => 'content-area-3-a',
-				'name'          => esc_html__( 'Content Widget Area #3 A', 'tyche' ),
-				'description'   => esc_html__( 'Actual page content', 'tyche' ),
-				'before_title'  => '<h3 class="widget-title"><span>',
-				'after_title'   => '</span></h3>',
-				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget'  => '</div>'
-			),
-
-			array(
-				'id'            => 'content-area-3-b',
-				'name'          => esc_html__( 'Content Widget Area #3 B', 'tyche' ),
-				'description'   => esc_html__( 'Actual page content', 'tyche' ),
-				'before_title'  => '<h3 class="widget-title"><span>',
-				'after_title'   => '</span></h3>',
-				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget'  => '</div>'
-			),
-
-			array(
-				'id'            => 'content-area-3-c',
-				'name'          => esc_html__( 'Content Widget Area #3 C', 'tyche' ),
-				'description'   => esc_html__( 'Actual page content', 'tyche' ),
-				'before_title'  => '<h3 class="widget-title"><span>',
-				'after_title'   => '</span></h3>',
-				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget'  => '</div>'
-			),
-
-			array(
-				'id'            => 'content-area-4',
-				'name'          => esc_html__( 'Content Widget Area #4', 'tyche' ),
-				'description'   => esc_html__( 'Actual page content', 'tyche' ),
-				'before_title'  => '<h3 class="widget-title"><span>',
-				'after_title'   => '</span></h3>',
-				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget'  => '</div>'
-			),
-
-
-			array(
-				'id'            => 'content-area-5-a',
-				'name'          => esc_html__( 'Content Widget Area #5 A', 'tyche' ),
-				'description'   => esc_html__( 'Actual page content', 'tyche' ),
-				'before_title'  => '<h3 class="widget-title"><span>',
-				'after_title'   => '</span></h3>',
-				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget'  => '</div>'
-			),
-
-			array(
-				'id'            => 'content-area-5-b',
-				'name'          => esc_html__( 'Content Widget Area #5 B', 'tyche' ),
-				'description'   => esc_html__( 'Actual page content', 'tyche' ),
-				'before_title'  => '<h3 class="widget-title"><span>',
-				'after_title'   => '</span></h3>',
-				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget'  => '</div>'
-			),
-
-
-			array(
-				'id'            => 'content-area-6',
-				'name'          => esc_html__( 'Content Widget Area #6', 'tyche' ),
-				'description'   => esc_html__( 'Actual page content', 'tyche' ),
+				'id'            => 'content-area-5',
+				'name'          => esc_html__( 'Content Widget Area #5', 'tyche' ),
+				'description'   => esc_html__( 'Full width section', 'tyche' ),
 				'before_title'  => '<h3 class="widget-title"><span>',
 				'after_title'   => '</span></h3>',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
@@ -190,7 +178,10 @@ class Tyche_Sidebars {
 	 * Initiate widgets
 	 */
 	public function initiate_widgets() {
-		$widgets = array();
+		$widgets = array(
+			'Widget_Tyche_Products',
+			'Widget_Tyche_Recent_Posts'
+		);
 
 		foreach ( $widgets as $widget ) {
 			new $widget();

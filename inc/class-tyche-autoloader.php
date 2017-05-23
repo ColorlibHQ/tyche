@@ -19,13 +19,14 @@ class Tyche_Autoloader {
 		$bind  = implode( '-', $parts );
 
 		$directories = array(
-			get_template_directory() . '/inc/',
-			get_template_directory() . '/inc/libraries/',
-			get_template_directory() . '/inc/helpers/',
-			get_template_directory() . '/inc/customizer/',
-			get_template_directory() . '/inc/libraries/epsilon-framework/',
-			get_template_directory() . '/inc/libraries/welcome-screen/'
+			dirname( __FILE__ ),
+			dirname( __FILE__ ) . '/libraries/',
+			dirname( __FILE__ ) . '/helpers/',
+			dirname( __FILE__ ) . '/customizer/',
+			dirname( __FILE__ ) . '/libraries/epsilon-framework/',
+			dirname( __FILE__ ) . '/libraries/welcome-screen/'
 		);
+
 
 		foreach ( $directories as $directory ) {
 			if ( file_exists( $directory . '/class-' . strtolower( $bind ) . '.php' ) ) {

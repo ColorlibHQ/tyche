@@ -16,17 +16,12 @@ $tyche = new Tyche();
 /**
  * Add TGM class
  */
-require_once get_template_directory() . '/inc/class-tgm-plugin-activation.php';
+require_once dirname( __FILE__ ) . '/inc/class-tgm-plugin-activation.php';
 
 add_action( 'tgmpa_register', 'tyche_register_required_plugins' );
 
 function tyche_register_required_plugins() {
 	$plugins = array(
-		array(
-			'name'     => 'Tyche Companion',
-			'slug'     => 'tyche-companion',
-			'required' => false,
-		),
 		array(
 			'name'     => 'Contact Form 7',
 			'slug'     => 'contact-form-7',

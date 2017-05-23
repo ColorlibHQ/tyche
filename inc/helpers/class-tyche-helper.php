@@ -25,7 +25,7 @@ class Tyche_Helper {
 	public static function get_posts( $args ) {
 
 		$atts = array(
-			'cat'            => is_array( $args['cats'] ) ? implode( ',', $args['cats'] ) : '',
+			'cat'            => $args['cats'],
 			'posts_per_page' => $args['limit'],
 			'order'          => $args['order'],
 			'offset'         => $args['offset'],
@@ -46,10 +46,13 @@ class Tyche_Helper {
 	 */
 	public static function get_products( $args ) {
 		$atts = array(
-			'product_cat'    => is_array( $args['cats'] ) ? implode( ',', $args['cats'] ) : '',
 			'posts_per_page' => isset( $args['posts_per_page'] ) ? $args['posts_per_page'] : 10,
 			'post_type'      => 'product',
 		);
+
+		if ( $args['cats'] !== '' ) {
+			$atts['product_cat'] = $args['cats'];
+		}
 
 		$posts = new WP_Query( $atts );
 
@@ -229,13 +232,6 @@ class Tyche_Helper {
 	}
 
 	/**
-	 * @param array $args
-	 */
-	public static function the_posts_navigation( $args = array() ) {
-		echo get_the_posts_navigation( $args );
-	}
-
-	/**
 	 * Post meta
 	 */
 	public static function post_meta() {
@@ -324,5 +320,18 @@ class Tyche_Helper {
 				return false;
 				break;
 		}
+	}
+
+	/**
+	 * Get attachment image
+	 *
+	 * @param $args
+	 */
+	public static function get_attachment_image( $args ) {
+		$id  = intval( $args['attachment_id'] );
+		$src = array( 'img' => wp_get_attachment_image( $id, false ) );
+
+		echo json_encode( $src );
+		wp_die();
 	}
 }

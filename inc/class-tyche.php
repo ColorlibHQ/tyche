@@ -22,6 +22,10 @@ class Tyche {
 		 */
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueues' ) );
 		/**
+		 * Admin enqueue
+		 */
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueues' ) );
+		/**
 		 * Declare content width
 		 */
 		add_action( 'after_setup_theme', array( $this, 'content_width' ), 10 );
@@ -55,6 +59,10 @@ class Tyche {
 	 */
 	public function init_kirki() {
 		new tyche_Kirki();
+	}
+
+	public function init_hooks() {
+		new Tyche_Hooks();
 	}
 
 	/**
@@ -128,6 +136,18 @@ class Tyche {
 
 	}
 
+	public function admin_enqueues() {
+		global $pagenow;
+		if ( 'widgets.php' === $pagenow ) {
+			wp_enqueue_script( 'media-upload' );
+			wp_enqueue_script( 'thickbox' );
+			wp_enqueue_style( 'thickbox' );
+
+			wp_enqueue_script( 'tyche-image-upload', get_template_directory_uri() . '/assets/js/upload-media.js', array( 'jquery' ) );
+			wp_enqueue_style( 'tyche-image-upload', get_template_directory_uri() . '/assets/css/upload-media.css' );
+		}
+	}
+
 	public function theme_setup() {
 		/**
 		 * Load text domain
@@ -139,6 +159,7 @@ class Tyche {
 		 */
 		add_image_size( 'tyche-blog-post-image', '730', '435', true );
 		add_image_size( 'tyche-slider-image', '1600', '545', true );
+		add_image_size( 'tyche-product-layout-c', '160', '120', true );
 		add_image_size( 'tyche-recent-post-list-image', '65', '65', true );
 		add_image_size( 'tyche-recent-post-alternate-image', '160', '90', true );
 

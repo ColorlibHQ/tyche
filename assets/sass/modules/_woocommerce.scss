@@ -51,11 +51,16 @@
       }
     }
   }
+
   .page-title {
     margin-top: 0;
     line-height: 30px;
   }
-
+  &.home {
+    .page-title {
+      margin-top: 30px;
+    }
+  }
   form.checkout_coupon {
     border: none;
     padding: 0;
@@ -539,7 +544,7 @@
       .cart_item {
         .product-name {
           font-weight: 400;
-          border-right: 1px solid rgba(0,0,0,.1);;
+          border-right: 1px solid rgba(0, 0, 0, .1);;
         }
         .product-quantity {
           font-weight: 700;
@@ -579,22 +584,22 @@
     table.shop_table th.product-total {
       background-color: #ebebeb;
       color: $color__title;
-      border-top: 1px solid rgba(0,0,0,.1);;
-      border-left: 1px solid rgba(0,0,0,.1);;
-      border-bottom: 1px solid rgba(0,0,0,.1);;
+      border-top: 1px solid rgba(0, 0, 0, .1);;
+      border-left: 1px solid rgba(0, 0, 0, .1);;
+      border-bottom: 1px solid rgba(0, 0, 0, .1);;
       font-weight: 700;
       font-size: 15px;
     }
     table.shop_table th.product-total {
       border-left: 3px solid #fff;
-      border-right: 1px solid rgba(0,0,0,.1);;
+      border-right: 1px solid rgba(0, 0, 0, .1);;
     }
   }
 }
 
 .woocommerce-checkout {
   #payment {
-    background: rgba(0,0,0,.1);;
+    background: rgba(0, 0, 0, .1);;
     padding-bottom: 10px;
     div.payment_box {
       background-color: #FFF !important;
@@ -623,6 +628,17 @@
 
 .tyche-product {
   text-align: center;
+  .added_to_cart.wc-forward {
+    background-color: $color__brand-primary;
+    font-size: 14px;
+    padding: 12px 8px;
+    border-radius: 4px;
+    color: #fff;
+    &:hover,
+    &:focus {
+      background-color: $color__brand-primary-hover;
+    }
+  }
   .tyche-product-image {
     overflow: hidden;
     position: relative;
@@ -654,12 +670,17 @@
     font-size: 18px;
     line-height: 18px;
     margin-bottom: 5px;
+    margin-top: 10px;
     a {
       color: $color__title;
+      &:hover,
+      &:focus {
+        color: $color__brand-primary;
+      }
     }
   }
   .button {
-    margin-top: 20px;
+    margin-top: 10px;
     text-transform: uppercase;
   }
   .price {
@@ -798,8 +819,8 @@
   position: relative;
   .tyche-product-slider-navigation {
     position: absolute;
-    top: -75px;
-    right: 0;
+    top: -65px;
+    right: 15px;
     display: inline-block;
     a {
       height: 30px;
@@ -810,9 +831,12 @@
       display: inline-block;
       background-color: #f1f1f3;
       line-height: 30px;
+      &:hover,
       &:focus,
       &:active {
         outline: none;
+        background-color: $color__brand-primary;
+        color: #fff;
       }
     }
   }
@@ -834,7 +858,7 @@
     }
     .tyche-companion-banner-caption {
       z-index: 1;
-      padding: 35px;
+      padding: 10px;
       position: absolute;
       top: 50%;
       left: 0;
@@ -1004,14 +1028,35 @@
     table {
       .cart-subtotal, .order-total {
         td {
-          border-left: 1px solid rgba(0,0,0,.1);;
+          border-left: 1px solid rgba(0, 0, 0, .1);;
         }
         th {
           color: $color__title;
-          border-bottom: 1px solid rgba(0,0,0,.1);;
+          border-bottom: 1px solid rgba(0, 0, 0, .1);;
         }
       }
     }
 
+  }
+}
+
+.cross-sells, .cart_totals {
+  h2 {
+    font-size: 25px;
+    line-height: 30px;
+  }
+}
+
+.woocommerce-message {
+  font-size: 15px;
+}
+
+.ajax_add_to_cart.loading {
+  &:after {
+    color: #fff;
+    font-family: 'FontAwesome';
+    content: '\f250';
+    margin-left: 5px;
+    position: relative;
   }
 }

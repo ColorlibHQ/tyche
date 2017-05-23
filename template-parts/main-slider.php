@@ -7,12 +7,11 @@
  * @package Tyche
  */
 
-$images = get_theme_mod( 'tyche_slider_bg', '' );
+$images = get_theme_mod( 'tyche_slider_bg', array() );
 
 ?>
 <!-- Main Slider -->
 <section class="main-slider">
-
 	<?php if ( ! empty( $images ) ): ?>
         <div class="owl-carousel owl-theme" id="main-slider">
 			<?php foreach ( $images as $image ): ?>
@@ -42,7 +41,7 @@ $images = get_theme_mod( 'tyche_slider_bg', '' );
     <div class="main-slider-bar hidden-xs">
         <div class="container">
             <ul class="main-slider-info">
-                <li class="col-sm-4 col-xs-12">
+                <li class="col-sm-4">
                     <div class="main-slider-info-cell">
                         <div class="cell-icon">
 							<?php
@@ -61,7 +60,7 @@ $images = get_theme_mod( 'tyche_slider_bg', '' );
 						</span>
                     </div>
                 </li>
-                <li class="col-sm-4 col-xs-12">
+                <li class="col-sm-4">
                     <div class="main-slider-info-cell">
                         <div class="cell-icon">
 							<?php
@@ -80,7 +79,7 @@ $images = get_theme_mod( 'tyche_slider_bg', '' );
 						</span>
                     </div>
                 </li>
-                <li class="col-sm-4 col-xs-12">
+                <li class="col-sm-4">
                     <div class="main-slider-info-cell">
                         <div class="cell-icon">
 							<?php

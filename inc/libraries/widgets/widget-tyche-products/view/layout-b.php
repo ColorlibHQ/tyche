@@ -29,7 +29,7 @@ $posts = Tyche_Helper::get_products( $params ); ?>
 							<?php
 							$image = '<img src="' . get_template_directory_uri() . '/assets/images/product-placeholder.jpg" />';
 							if ( has_post_thumbnail() ) {
-								$image = woocommerce_get_product_thumbnail();
+								$image = woocommerce_get_product_thumbnail( 'shop_catalog' );
 							};
 							echo wp_kses_post( $image );
 							?>
@@ -37,7 +37,7 @@ $posts = Tyche_Helper::get_products( $params ); ?>
                         <div class="tyche-product-body">
                             <h3><?php woocommerce_template_loop_product_link_open() ?><?php echo get_the_title(); ?><?php woocommerce_template_loop_product_link_close() ?></h3>
 
-							<?php if ( $rating_html = wc_get_rating_html( $product->get_average_rating() ) ) : ?>
+	                        <?php if ( $params['show_rating'] == 'yes' && ( $rating_html = wc_get_rating_html( $product->get_average_rating() ) ) ) : ?>
 								<?php echo $rating_html; ?>
 							<?php endif; ?>
 
@@ -64,8 +64,10 @@ $posts = Tyche_Helper::get_products( $params ); ?>
 			<?php endwhile; ?>
         </div>
     </div>
+	<?php $image = wp_get_attachment_image_src( $params['image'], 'full' ) ?>
     <div class="col-sm-3 hidden-xs">
-        <div class="tyche-companion-banner" style="background-image:url('<?php echo $params['image'] ?>')">
+        <div class="tyche-companion-banner"
+			<?php echo ! empty( $image[0] ) ? 'style="background-image:url(' . esc_url( $image[0] ) . ')"' : '' ?>>
             <div class="tyche-companion-banner-caption">
 				<?php if ( ! empty( $params['first_line'] ) ): ?>
                     <span class="first_line"> <?php echo $params['first_line'] ?> </span>
