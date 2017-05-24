@@ -33,7 +33,7 @@ $posts = Tyche_Helper::get_posts( $params ); ?>
 			<p>
 				<a href="<?php echo esc_url( get_the_permalink() ); ?>"><?php echo wp_kses_post( wp_trim_words( get_the_title(), 5 ) ); ?></a>
 			</p>
-			<?php echo wp_kses_post( Tyche_Helper::get_post_meta_without_date( get_the_ID() ) ); ?>
+			<?php echo Tyche_Helper::get_post_meta_without_date( get_the_ID() ); ?>
 		</div>
 	</div>
 

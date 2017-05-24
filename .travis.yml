@@ -67,7 +67,7 @@ script:
   - jshint ./assets/js/*.js
   # Run the plugin through JavaScript Code Style checker.
   - jscs ./assets/js/*.js
-  # We ignore woocommerce folders, it's their business
+  # We ignore woocommerce folders / tgm plugin class, it's their business
   - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./*.php --standard=./phpcs.ruleset.xml --extensions=php
   - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/*.php --standard=./phpcs.ruleset.xml --extensions=php --ignore=./woocommerce/*.php,./inc/class-tgm-plugin-activation.php
   - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php --ignore=./woocommerce/**/*.php

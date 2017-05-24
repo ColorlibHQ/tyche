@@ -113,7 +113,12 @@ class Tyche {
 		wp_enqueue_script( 'owlCarousel', get_template_directory_uri() . '/assets/js/owl-carousel/owl.carousel.min.js', array( 'jquery' ), '1.3.3', true );
 		wp_enqueue_style( 'owlCarousel', get_template_directory_uri() . '/assets/css/owl-carousel/owl.carousel.min.css' );
 		wp_enqueue_style( 'owlCarousel-theme', get_template_directory_uri() . '/assets/css/owl-carousel/owl.theme.default.css' );
-		wp_register_script( 'tyche-scripts', get_template_directory_uri() . '/assets/js/functions.js', array( 'jquery' ), '', false );
+		wp_enqueue_script( 'jquery-zoom', get_template_directory_uri() . '/assets/js/jquery-zoom/jquery.zoom.min.js', array( 'jquery' ), '1.3.3', true );
+		wp_register_script( 'tyche-scripts', get_template_directory_uri() . '/assets/js/functions.js', array(
+			'jquery',
+			'jquery-zoom',
+			'owlCarousel',
+		), '', false );
 
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
@@ -169,10 +174,12 @@ class Tyche {
 		/**
 		 * Menus
 		 */
-		register_nav_menus( array(
-			'primary' => esc_html__( 'Primary', 'tyche' ),
-			'social'  => esc_html__( 'Copyright Social', 'tyche' ),
-		) );
+		register_nav_menus(
+			array(
+				'primary' => esc_html__( 'Primary', 'tyche' ),
+				'social'  => esc_html__( 'Copyright Social', 'tyche' ),
+			)
+		);
 		/**
 		 * Theme Supports
 		 */

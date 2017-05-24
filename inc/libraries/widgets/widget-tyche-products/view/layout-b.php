@@ -31,7 +31,24 @@ $posts = Tyche_Helper::get_products( $params ); ?>
 							if ( has_post_thumbnail() ) {
 								$image = woocommerce_get_product_thumbnail( 'shop_catalog' );
 							};
-							echo wp_kses_post( $image );
+							$max_size = get_the_post_thumbnail_url( get_the_ID(), 'shop_single' );
+							$image = str_replace( ' class=', ' data-src="' . $max_size . '" class=', $image );
+
+							$allowed_tags = array(
+								'img'      => array(
+									'data-srcset' => true,
+									'data-src'    => true,
+									'srcset'      => true,
+									'sizes'       => true,
+									'src'         => true,
+									'class'       => true,
+									'alt'         => true,
+									'width'       => true,
+									'height'      => true,
+								),
+								'noscript' => array(),
+							);
+							echo wp_kses( $image, $allowed_tags );
 							?>
 						</div>
 						<div class="tyche-product-body">

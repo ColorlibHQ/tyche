@@ -66,7 +66,7 @@ class Tyche_Breadcrumbs {
 
 		// Setup default array for changeable variables
 		$defaults = array(
-			'home_prefix'            => get_theme_mod( 'tyche_blog_breadcrumb_menu_prefix', esc_html__( ' ', 'tyche' ) ),
+			'home_prefix'            => get_theme_mod( 'tyche_blog_breadcrumb_menu_prefix', '' ),
 			'separator'              => get_theme_mod( 'tyche_blog_breadcrumb_menu_separator', '/' ),
 			'show_post_type_archive' => '1',
 			'show_terms'             => get_theme_mod( 'tyche_blog_breadcrumb_menu_post_category', 1 ),
@@ -114,10 +114,7 @@ class Tyche_Breadcrumbs {
 		$options = get_option( 'wpseo_internallinks' );
 
 		// Support for Yoast Breadcrumbs
-		if ( function_exists( 'yoast_breadcrumb' ) &&
-			 $options &&
-			 true === $options['breadcrumbs-enable']
-		) {
+		if ( function_exists( 'yoast_breadcrumb' ) && $options && true === $options['breadcrumbs-enable'] ) {
 			ob_start();
 			yoast_breadcrumb();
 			$this->html_markup = ob_get_clean();
@@ -144,34 +141,24 @@ class Tyche_Breadcrumbs {
 		$this->html_markup .= $this->get_breadcrumb_home();
 
 		// Woocommerce path prefix (e.g "Shop" )
-		if ( class_exists( 'WooCommerce' ) &&
-			 ( ( is_woocommerce() && is_archive() && ! is_shop() ) || is_cart() || is_checkout() || is_account_page() )
-		) {
+		if ( class_exists( 'WooCommerce' ) && ( ( is_woocommerce() && is_archive() && ! is_shop() ) || is_cart() || is_checkout() || is_account_page() ) ) {
 			$this->html_markup .= $this->get_woocommerce_shop_page();
 		}
 
 		// bbPress path prefix (e.g "Forums" )
-		if ( class_exists( 'bbPress' ) &&
-			 is_bbpress() &&
-			 ( bbp_is_topic_archive() || bbp_is_single_user() || bbp_is_search() )
-		) {
+		if ( class_exists( 'bbPress' ) && is_bbpress() && ( bbp_is_topic_archive() || bbp_is_single_user() || bbp_is_search() ) ) {
 			$this->html_markup .= $this->get_bbpress_main_archive_page();
 		}
 
 		// Single Posts and Pages (of all post types)
 		if ( is_singular() ) {
 			// If the post type of the current post has an archive link, display the archive breadcrumb
-			if ( isset( $this->post->post_type ) &&
-				 get_post_type_archive_link( false ) &&
-				 $this->show_post_type_archive
-			) {
+			if ( isset( $this->post->post_type ) && get_post_type_archive_link( false ) && $this->show_post_type_archive ) {
 				$this->html_markup .= $this->get_post_type_archive( false );
 			}
 
 			// If the post doesn't have parents
-			if ( isset( $this->post->post_parent ) &&
-				 0 == $this->post->post_parent
-			) {
+			if ( isset( $this->post->post_parent ) && 0 == $this->post->post_parent ) {
 				$this->html_markup .= $this->get_post_terms();
 				// If there are parents; mostly for pages
 			} else {
@@ -188,10 +175,7 @@ class Tyche_Breadcrumbs {
 				if ( is_search() ) {
 					$this->html_markup .= $this->get_breadcrumb_leaf_markup( 'search' );
 				}
-			} elseif ( is_tax() ||
-					   is_tag() ||
-					   is_category()
-			) {
+			} elseif ( is_tax() || is_tag() || is_category() ) {
 				// If we have a tag archive, add the tag prefix
 				if ( is_tag() ) {
 					$this->html_markup .= $this->tag_archive_prefix;
@@ -203,9 +187,7 @@ class Tyche_Breadcrumbs {
 				global $wp_locale;
 				// Set variables
 				$year = esc_html( get_query_var( 'year' ) );
-				if ( is_month() ||
-					 is_day()
-				) {
+				if ( is_month() || is_day() ) {
 					$month      = get_query_var( 'monthnum' );
 					$month_name = $wp_locale->get_month( $month );
 				}
@@ -230,9 +212,7 @@ class Tyche_Breadcrumbs {
 				// 404 Page
 			} elseif ( is_404() ) {
 				// Special treatment for Events Calendar to avoid 404 messages on list view
-				if ( class_exists( 'TribeEvents' ) &&
-					 tribe_is_event() || is_events_archive()
-				) {
+				if ( class_exists( 'TribeEvents' ) && tribe_is_event() || is_events_archive() ) {
 					$this->html_markup .= $this->get_breadcrumb_leaf_markup( 'events' );
 					// Default case
 				} else {
@@ -434,9 +414,7 @@ class Tyche_Breadcrumbs {
 		$terms_markup = '';
 
 		// Make sure we have hierarchical taxonomy and parents
-		if ( 0 != $term->parent &&
-			 is_taxonomy_hierarchical( $term->taxonomy )
-		) {
+		if ( 0 != $term->parent && is_taxonomy_hierarchical( $term->taxonomy ) ) {
 			$term_ancestors = get_ancestors( $term->term_id, $term->taxonomy );
 			$term_ancestors = array_reverse( $term_ancestors );
 			// Loop through ancestors to get the full tree
@@ -462,17 +440,13 @@ class Tyche_Breadcrumbs {
 		$link             = '';
 		$archive_title    = 'Title';
 		if ( is_object( $post_type_object ) ) {
-
-			if ( 'product' == $post_type &&
-				 $woocommerce_shop_page = $this->get_woocommerce_shop_page( $linked )
-			) {
+			$woocommerce_shop_page = $this->get_woocommerce_shop_page( $linked );
+			if ( 'product' == $post_type && $woocommerce_shop_page ) {
 				return $woocommerce_shop_page;
 			}
 
 			// bbPress: make sure that the Forums slug and link are correct
-			if ( class_exists( 'bbPress' ) &&
-				 'topic' == $post_type
-			) {
+			if ( class_exists( 'bbPress' ) && 'topic' == $post_type ) {
 				$archive_title = bbp_get_forum_archive_title();
 				if ( $linked ) {
 					$link = esc_url( get_post_type_archive_link( bbp_get_forum_post_type() ) );
@@ -483,9 +457,7 @@ class Tyche_Breadcrumbs {
 
 			// Default case
 			// Check if the post type has a non empty label
-			if ( isset( $post_type_object->label ) &&
-				 '' !== $post_type_object->label
-			) {
+			if ( isset( $post_type_object->label ) && '' !== $post_type_object->label ) {
 				$archive_title = $post_type_object->label;
 				// Alternatively check for a non empty menu name
 			} elseif ( isset( $post_type_object->labels->menu_name ) && '' !== $post_type_object->labels->menu_name ) {
@@ -515,13 +487,10 @@ class Tyche_Breadcrumbs {
 		$post_type        = 'product';
 		$post_type_object = get_post_type_object( $post_type );
 		$shop_page_markup = '';
-		$link = '';
+		$link             = '';
 
 		// Make sure we are on a woocommerce page
-		if ( is_object( $post_type_object ) &&
-			 class_exists( 'WooCommerce' ) &&
-			 ( is_woocommerce() || is_cart() || is_checkout() || is_account_page() )
-		) {
+		if ( is_object( $post_type_object ) && class_exists( 'WooCommerce' ) && ( is_woocommerce() || is_cart() || is_checkout() || is_account_page() ) ) {
 			// Get shop page id and then its name
 			$shop_page_id   = wc_get_page_id( 'shop' );
 			$shop_page_name = wc_get_page_id( 'shop' ) ? get_the_title( wc_get_page_id( 'shop' ) ) : '';
@@ -620,9 +589,9 @@ class Tyche_Breadcrumbs {
 
 		// Init vars
 		$microdata_itemscope = '';
-		$microdata_url = '';
-		$microdata_title = '';
-		$separator_markup = '';
+		$microdata_url       = '';
+		$microdata_title     = '';
+		$separator_markup    = '';
 
 		// Setup the elements attributes for breadcrumb microdata rich snippets
 		if ( $microdata ) {

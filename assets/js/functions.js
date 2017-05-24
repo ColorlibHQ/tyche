@@ -169,6 +169,12 @@
       $( '.tyche-multilang-menu' ).menu();
     },
 
+    initZoom: function() {
+      $( '.tyche-product-image' ).zoom( {
+        url: $( this ).find( 'img' ).attr( 'data-src' )
+      } );
+    },
+
     updateAjaxCart: function() {
       /**
        * During ajax, we lose scope - so declare "self"
@@ -219,6 +225,7 @@
     Tyche.handleMobileMenu();
     Tyche.showHideMobileMenu();
     Tyche.initStyleSelects();
+    Tyche.initZoom();
   } );
 
   jQuery( window ).load( function() {
