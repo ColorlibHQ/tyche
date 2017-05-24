@@ -39,24 +39,24 @@ class Tyche_WooCommerce_Hooks {
 	public function change_image_dimensions() {
 		global $pagenow;
 
-		if ( ! isset( $_GET['activated'] ) || $pagenow != 'themes.php' ) {
+		if ( ! isset( $_GET['activated'] ) || 'themes.php' !== $pagenow ) {
 			return;
 		}
 
 		$catalog   = array(
 			'width'  => '255',
 			'height' => '320',
-			'crop'   => 1
+			'crop'   => 1,
 		);
 		$single    = array(
 			'width'  => '540',
 			'height' => '500',
-			'crop'   => 1
+			'crop'   => 1,
 		);
 		$thumbnail = array(
 			'width'  => '65',
 			'height' => '75',
-			'crop'   => 0
+			'crop'   => 0,
 		);
 
 		// Image sizes

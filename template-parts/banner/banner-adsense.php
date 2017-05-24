@@ -1,4 +1,9 @@
 <?php
+/**
+ * Adsense Banner template
+ *
+ * @package Tyche
+ */
 
 $code = get_theme_mod( 'tyche_banner_adsense_code', '' );
 

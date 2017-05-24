@@ -20,12 +20,15 @@ require_once dirname( __FILE__ ) . '/inc/class-tgm-plugin-activation.php';
 
 add_action( 'tgmpa_register', 'tyche_register_required_plugins' );
 
+/**
+ * Register required plugins
+ */
 function tyche_register_required_plugins() {
 	$plugins = array(
 		array(
 			'name'     => 'Contact Form 7',
 			'slug'     => 'contact-form-7',
-			'required' => false
+			'required' => false,
 		),
 		array(
 			'name'     => 'Google Maps',

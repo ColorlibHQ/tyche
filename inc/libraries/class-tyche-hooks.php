@@ -31,11 +31,11 @@ class Tyche_Hooks {
 		 */
 		add_action( 'wp_ajax_tyche_ajax_action', array(
 			$this,
-			'tyche_ajax_action'
+			'tyche_ajax_action',
 		) );
 		add_action( 'wp_ajax_nopriv_tyche_ajax_action', array(
 			$this,
-			'tyche_ajax_action'
+			'tyche_ajax_action',
 		) );
 	}
 
@@ -84,16 +84,25 @@ class Tyche_Hooks {
 	 * Ajax handler
 	 */
 	public function tyche_ajax_action() {
-		if ( $_POST['action'] !== 'tyche_ajax_action' ) {
-			wp_die( json_encode( array( 'status' => false, 'error' => 'Not allowed' ) ) );
+		if ( 'tyche_ajax_action' !== $_POST['action'] ) {
+			wp_die( json_encode( array(
+				'status' => false,
+				'error' => 'Not allowed',
+			) ) );
 		}
 
-		if ( count( $_POST['args']['action'] ) !== 2 ) {
-			wp_die( json_encode( array( 'status' => false, 'error' => 'Not allowed' ) ) );
+		if ( 2 !== count( $_POST['args']['action'] ) ) {
+			wp_die( json_encode( array(
+				'status' => false,
+				'error' => 'Not allowed',
+			) ) );
 		}
 
 		if ( ! class_exists( $_POST['args']['action'][0] ) ) {
-			wp_die( json_encode( array( 'status' => false, 'error' => 'Class does not exist' ) ) );
+			wp_die( json_encode( array(
+				'status' => false,
+				'error' => 'Class does not exist',
+			) ) );
 		}
 
 		$class  = $_POST['args']['action'][0];
@@ -103,9 +112,15 @@ class Tyche_Hooks {
 		$response = $class::$method( $args );
 
 		if ( 'ok' == $response ) {
-			wp_die( json_encode( array( 'status' => true, 'message' => 'ok' ) ) );
+			wp_die( json_encode( array(
+				'status' => true,
+				'message' => 'ok',
+			) ) );
 		}
 
-		wp_die( json_encode( array( 'status' => false, 'message' => 'nok' ) ) );
+		wp_die( json_encode( array(
+			'status' => false,
+			'message' => 'nok',
+		) ) );
 	}
 }

@@ -1,4 +1,9 @@
 <?php
+/**
+ * Products widget
+ *
+ * @package Tyche
+ */
 
 /**
  * Class Widget_Tyche_Products
@@ -6,20 +11,34 @@
 class Widget_Tyche_Products extends WP_Widget {
 
 	/**
+	 * Widget constructor
+	 *
 	 * @internal
 	 */
 	public function __construct() {
+		/**
+		 * Parent constructor
+		 * @param string $id_base         Optional Base ID for the widget, lowercase and unique. If left empty,
+		 *                                a portion of the widget's class name will be used Has to be unique.
+		 * @param string $name            Name for the widget displayed on the configuration page.
+		 * @param array  $widget_options  Optional. Widget options. See wp_register_sidebar_widget() for information
+		 *                                on accepted arguments. Default empty array.
+		 * @param array  $control_options Optional. Widget control options. See wp_register_widget_control() for
+		 *                                information on accepted arguments. Default empty array.
+		 */
 		parent::__construct(
-			'Tyche_Companion_Products', // Base ID
-			__( 'Tyche Companion Products', 'tyche' ), // Name
+			'Tyche_Companion_Products',
+			__( 'Tyche Companion Products', 'tyche' ),
 			array(
 				'description'                 => esc_html__( 'Recent Posts!', 'tyche' ),
-				'customize_selective_refresh' => true
-			) // Args
+				'customize_selective_refresh' => true,
+			)
 		);
 	}
 
 	/**
+	 * The actual frontend widget
+	 *
 	 * @param array $args
 	 * @param array $instance
 	 */
@@ -58,7 +77,7 @@ class Widget_Tyche_Products extends WP_Widget {
 
 		echo $args['before_widget'];
 
-		if ( $params['show_title'] == 'yes' ) {
+		if ( 'yes' === $params['show_title'] ) {
 			echo $title;
 		}
 
@@ -85,7 +104,7 @@ class Widget_Tyche_Products extends WP_Widget {
 		wp_localize_script( 'tyche_media_upload_js', 'WPUrls', array(
 			'siteurl' => get_option( 'siteurl' ),
 			'theme'   => get_template_directory_uri(),
-			'ajaxurl' => admin_url( 'admin-ajax.php' )
+			'ajaxurl' => admin_url( 'admin-ajax.php' ),
 		) );
 
 		$defaults = array(
@@ -106,188 +125,188 @@ class Widget_Tyche_Products extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $defaults );
 
 		?>
-        <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'tyche' ); ?>
-                :</label>
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"
-                   name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text"
-                   value="<?php echo esc_attr( $instance['title'] ); ?>"/>
-        </p>
-        <p>
-            <label
-                    for="<?php echo esc_attr( $this->get_field_id( 'show_title' ) ); ?>"><?php esc_html_e( 'Show Title', 'tyche' );
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'tyche' ); ?>
+				:</label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"
+				   name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text"
+				   value="<?php echo esc_attr( $instance['title'] ); ?>"/>
+		</p>
+		<p>
+			<label
+					for="<?php echo esc_attr( $this->get_field_id( 'show_title' ) ); ?>"><?php esc_html_e( 'Show Title', 'tyche' );
 				?>:</label>
-            <select name="<?php echo esc_attr( $this->get_field_name( 'show_title' ) ); ?>"
-                    id="<?php echo esc_attr( $this->get_field_id( 'show_title' ) ); ?>" class="widefat"
-                    style="height: auto;">
-                <option value="yes" <?php echo ( $instance['show_title'] == 'yes' ) ? 'selected' : '' ?>>
+			<select name="<?php echo esc_attr( $this->get_field_name( 'show_title' ) ); ?>"
+					id="<?php echo esc_attr( $this->get_field_id( 'show_title' ) ); ?>" class="widefat"
+					style="height: auto;">
+				<option value="yes" <?php echo ( 'yes' === $instance['show_title'] ) ? 'selected' : '' ?>>
 					<?php echo esc_html__( 'Yes', 'tyche' ) ?>
-                </option>
-                <option value="no" <?php echo ( $instance['show_title'] == 'no' ) ? 'selected' : '' ?>>
+				</option>
+				<option value="no" <?php echo ( 'no' === $instance['show_title'] ) ? 'selected' : '' ?>>
 					<?php echo esc_html__( 'No', 'tyche' ) ?>
-                </option>
-            </select>
-        </p>
+				</option>
+			</select>
+		</p>
 
-        <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'cats' ) ); ?>"><?php esc_html_e( 'Categories', 'ensign' ); ?>
-                :</label>
-            <select name="<?php echo esc_attr( $this->get_field_name( 'cats' ) ); ?>"
-                    id="<?php echo esc_attr( $this->get_field_id( 'cats' ) ); ?>" class="widefat" style="height: auto;"
-                    size="">
-                <option value="" <?php echo empty( $instance['cats'] ) ? 'selected="selected"' : ''; ?>><?php esc_html_e( '&ndash; Select a category &ndash;', 'tyche' ) ?></option>
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'cats' ) ); ?>"><?php esc_html_e( 'Categories', 'ensign' ); ?>
+				:</label>
+			<select name="<?php echo esc_attr( $this->get_field_name( 'cats' ) ); ?>"
+					id="<?php echo esc_attr( $this->get_field_id( 'cats' ) ); ?>" class="widefat" style="height: auto;"
+					size="">
+				<option value="" <?php echo empty( $instance['cats'] ) ? 'selected="selected"' : ''; ?>><?php esc_html_e( '&ndash; Select a category &ndash;', 'tyche' ) ?></option>
 				<?php
 				$categories = get_terms( 'product_cat' );
 
 				foreach ( $categories as $category ) { ?>
-                    <option value="<?php echo esc_attr( $category->name ); ?>" <?php selected( esc_attr( $category->name ), $instance['cats'] ); ?>><?php echo esc_html( $category->name ); ?></option>
+					<option value="<?php echo esc_attr( $category->name ); ?>" <?php selected( esc_attr( $category->name ), $instance['cats'] ); ?>><?php echo esc_html( $category->name ); ?></option>
 				<?php } ?>
-            </select>
-        </p>
+			</select>
+		</p>
 
-        <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'color' ) ); ?>"><?php esc_html_e( 'Color', 'tyche' ); ?>
-                :</label>
-            <select name="<?php echo esc_attr( $this->get_field_name( 'color' ) ); ?>"
-                    id="<?php echo esc_attr( $this->get_field_id( 'color' ) ); ?>" class="widefat"
-                    style="height: auto;">
-                <option value="primary" <?php echo ( $instance['color'] == 'primary' ) ? 'selected' : '' ?>>
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'color' ) ); ?>"><?php esc_html_e( 'Color', 'tyche' ); ?>
+				:</label>
+			<select name="<?php echo esc_attr( $this->get_field_name( 'color' ) ); ?>"
+					id="<?php echo esc_attr( $this->get_field_id( 'color' ) ); ?>" class="widefat"
+					style="height: auto;">
+				<option value="primary" <?php echo ( 'primary' === $instance['color'] ) ? 'selected' : '' ?>>
 					<?php echo esc_html__( 'Red', 'tyche' ) ?>
-                </option>
-                <option value="secondary" <?php echo ( $instance['color'] == 'secondary' ) ? 'selected' : '' ?>>
+				</option>
+				<option value="secondary" <?php echo ( 'secondary' === $instance['color'] ) ? 'selected' : '' ?>>
 					<?php echo esc_html__( 'Beige', 'tyche' ) ?>
-                </option>
-                <option value="green" <?php echo ( $instance['color'] == 'green' ) ? 'selected' : '' ?>>
+				</option>
+				<option value="green" <?php echo ( 'green' === $instance['color'] ) ? 'selected' : '' ?>>
 					<?php echo esc_html__( 'Green', 'tyche' ) ?>
-                </option>
-                <option value="blue" <?php echo ( $instance['color'] == 'blue' ) ? 'selected' : '' ?>>
+				</option>
+				<option value="blue" <?php echo ( 'blue' === $instance['color'] ) ? 'selected' : '' ?>>
 					<?php echo esc_html__( 'Blue', 'tyche' ) ?>
-                </option>
-                <option value="light_blue" <?php echo ( $instance['color'] == 'light_blue' ) ? 'selected' : '' ?>>
+				</option>
+				<option value="light_blue" <?php echo ( 'light_blue' === $instance['color'] ) ? 'selected' : '' ?>>
 					<?php echo esc_html__( 'Light Blue', 'tyche' ) ?>
-                </option>
-                <option value="black" <?php echo ( $instance['color'] == 'black' ) ? 'selected' : '' ?>>
+				</option>
+				<option value="black" <?php echo ( 'black' === $instance['color'] ) ? 'selected' : '' ?>>
 					<?php echo esc_html__( 'Black', 'tyche' ) ?>
-                </option>
-                <option value="orange" <?php echo ( $instance['color'] == 'orange' ) ? 'selected' : '' ?>>
+				</option>
+				<option value="orange" <?php echo ( 'orange' === $instance['color'] ) ? 'selected' : '' ?>>
 					<?php echo esc_html__( 'Orange', 'tyche' ) ?>
-                </option>
-            </select>
-        </p>
-        <p>
-            <label
-                    for="<?php echo esc_attr( $this->get_field_id( 'show_rating' ) ); ?>"><?php esc_html_e( 'Show Product Rating', 'tyche' );
+				</option>
+			</select>
+		</p>
+		<p>
+			<label
+					for="<?php echo esc_attr( $this->get_field_id( 'show_rating' ) ); ?>"><?php esc_html_e( 'Show Product Rating', 'tyche' );
 				?>:</label>
-            <select name="<?php echo esc_attr( $this->get_field_name( 'show_rating' ) ); ?>"
-                    id="<?php echo esc_attr( $this->get_field_id( 'show_rating' ) ); ?>" class="widefat"
-                    style="height: auto;">
-                <option value="yes" <?php echo ( $instance['show_rating'] == 'yes' ) ? 'selected' : '' ?>>
+			<select name="<?php echo esc_attr( $this->get_field_name( 'show_rating' ) ); ?>"
+					id="<?php echo esc_attr( $this->get_field_id( 'show_rating' ) ); ?>" class="widefat"
+					style="height: auto;">
+				<option value="yes" <?php echo ( 'yes' === $instance['show_rating'] ) ? 'selected' : '' ?>>
 					<?php echo esc_html__( 'Yes', 'tyche' ) ?>
-                </option>
-                <option value="no" <?php echo ( $instance['show_title'] == 'no' ) ? 'selected' : '' ?>>
+				</option>
+				<option value="no" <?php echo ( 'no' === $instance['show_rating'] ) ? 'selected' : '' ?>>
 					<?php echo esc_html__( 'No', 'tyche' ) ?>
-                </option>
-            </select>
-        </p>
-        <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'layout' ) ); ?>"><?php esc_html_e( 'Layout (banner position left/right/no banner/list)', 'tyche' ); ?>
-                :</label>
-        <div class="widget-layouts">
-            <a href="javascript:void(0)"
-               data-layout="layout-a" <?php echo ( $instance['layout'] == 'layout-a' ) ? 'class="selected"' : '' ?>>
-                <img src="<?php echo get_template_directory_uri() . '/assets/images/layout-a.png' ?>"/>
-            </a>
-            <a href="javascript:void(0)"
-               data-layout="layout-b" <?php echo ( $instance['layout'] == 'layout-b' ) ? 'class="selected"' : '' ?>>
-                <img src="<?php echo get_template_directory_uri() . '/assets/images/layout-b.png' ?>"/>
-            </a>
-            <a href="javascript:void(0)"
-               data-layout="layout-c" <?php echo ( $instance['layout'] == 'layout-c' ) ? 'class="selected"' : '' ?>>
-                <img src="<?php echo get_template_directory_uri() . '/assets/images/layout-c.png' ?>"/>
-            </a>
-            <a href="javascript:void(0)"
-               data-layout="layout-d" <?php echo ( $instance['layout'] == 'layout-d' ) ? 'class="selected"' : '' ?>>
-                <img src="<?php echo get_template_directory_uri() . '/assets/images/layout-d.png' ?>"/>
-            </a>
-        </div>
+				</option>
+			</select>
+		</p>
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'layout' ) ); ?>"><?php esc_html_e( 'Layout (banner position left/right/no banner/list)', 'tyche' ); ?>
+				:</label>
+		<div class="widget-layouts">
+			<a href="javascript:void(0)"
+			   data-layout="layout-a" <?php echo ( 'layout-a' === $instance['layout'] ) ? 'class="selected"' : '' ?>>
+				<img src="<?php echo esc_url( get_template_directory_uri() ) . '/assets/images/layout-a.png' ?>"/>
+			</a>
+			<a href="javascript:void(0)"
+			   data-layout="layout-b" <?php echo ( 'layout-b' === $instance['layout'] ) ? 'class="selected"' : '' ?>>
+				<img src="<?php echo esc_url( get_template_directory_uri() ) . '/assets/images/layout-b.png' ?>"/>
+			</a>
+			<a href="javascript:void(0)"
+			   data-layout="layout-c" <?php echo ( 'layout-c' === $instance['layout'] ) ? 'class="selected"' : '' ?>>
+				<img src="<?php echo esc_url( get_template_directory_uri() ) . '/assets/images/layout-c.png' ?>"/>
+			</a>
+			<a href="javascript:void(0)"
+			   data-layout="layout-d" <?php echo ( 'layout-d' === $instance['layout'] ) ? 'class="selected"' : '' ?>>
+				<img src="<?php echo esc_url( get_template_directory_uri() ) . '/assets/images/layout-d.png' ?>"/>
+			</a>
+		</div>
 
-        <select name="<?php echo esc_attr( $this->get_field_name( 'layout' ) ); ?>"
-                id="<?php echo esc_attr( $this->get_field_id( 'layout' ) ); ?>" class="widefat layout-select hidden"
-                style="height: auto;">
-            <option value="layout-a" <?php echo ( $instance['layout'] == 'layout-a' ) ? 'selected' : '' ?>>
+		<select name="<?php echo esc_attr( $this->get_field_name( 'layout' ) ); ?>"
+				id="<?php echo esc_attr( $this->get_field_id( 'layout' ) ); ?>" class="widefat layout-select hidden"
+				style="height: auto;">
+			<option value="layout-a" <?php echo ( 'layout-a' === $instance['layout'] ) ? 'selected' : '' ?>>
 				<?php echo esc_html__( 'Products with banner on the left side', 'tyche' ) ?>
-            </option>
-            <option value="layout-b" <?php echo ( $instance['layout'] == 'layout-b' ) ? 'selected' : '' ?>>
+			</option>
+			<option value="layout-b" <?php echo ( 'layout-b' === $instance['layout'] ) ? 'selected' : '' ?>>
 				<?php echo esc_html__( 'Products with banner on the right side', 'tyche' ) ?>
-            </option>
-            <option value="layout-c" <?php echo ( $instance['layout'] == 'layout-c' ) ? 'selected' : '' ?>>
+			</option>
+			<option value="layout-c" <?php echo ( 'layout-c' === $instance['layout'] ) ? 'selected' : '' ?>>
 				<?php echo esc_html__( 'Products without banner', 'tyche' ) ?>
-            </option>
-            <option value="layout-d" <?php echo ( $instance['layout'] == 'layout-d' ) ? 'selected' : '' ?>>
+			</option>
+			<option value="layout-d" <?php echo ( 'layout-d' === $instance['layout'] ) ? 'selected' : '' ?>>
 				<?php echo esc_html__( 'Product list', 'tyche' ) ?>
-            </option>
-        </select>
+			</option>
+		</select>
 
-        </p>
+		</p>
 
-        <p class="tyche-media-control"
-           data-delegate-container="<?php echo esc_attr( $this->get_field_id( 'image' ) ) ?>">
-            <label for="<?php echo esc_attr( $this->get_field_id( 'image' ) ); ?>"><?php esc_html_e( 'Banner Image', 'tyche' );
+		<p class="tyche-media-control"
+		   data-delegate-container="<?php echo esc_attr( $this->get_field_id( 'image' ) ) ?>">
+			<label for="<?php echo esc_attr( $this->get_field_id( 'image' ) ); ?>"><?php esc_html_e( 'Banner Image', 'tyche' );
 				?>:</label>
 
 			<?php echo wp_get_attachment_image( $instance['image'], 'full', false ); ?>
 
-            <input type="hidden"
-                   name="<?php echo esc_attr( $this->get_field_name( 'image' ) ); ?>"
-                   id="<?php echo esc_attr( $this->get_field_id( 'image' ) ); ?>"
-                   value="<?php echo absint( $instance['image'] ); ?>"
-                   class="image-id">
+			<input type="hidden"
+				   name="<?php echo esc_attr( $this->get_field_name( 'image' ) ); ?>"
+				   id="<?php echo esc_attr( $this->get_field_id( 'image' ) ); ?>"
+				   value="<?php echo absint( $instance['image'] ); ?>"
+				   class="image-id">
 
-            <button type="button" class="button upload-button"><?php esc_html_e( 'Choose Image', 'tyche' ); ?></button>
-            <button type="button" class="button remove-button"><?php esc_html_e( 'Remove Image', 'tyche' ); ?></button>
-        </p>
+			<button type="button" class="button upload-button"><?php esc_html_e( 'Choose Image', 'tyche' ); ?></button>
+			<button type="button" class="button remove-button"><?php esc_html_e( 'Remove Image', 'tyche' ); ?></button>
+		</p>
 
 
-        <p>
-            <label
-                    for="<?php echo esc_attr( $this->get_field_id( 'first_line' ) ); ?>"><?php esc_html_e( 'Banner First Line', 'tyche' ); ?>
-                :</label>
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'first_line' ) ); ?>"
-                   name="<?php echo esc_attr( $this->get_field_name( 'first_line' ) ); ?>" type="text"
-                   value="<?php echo $instance['first_line']; ?>"/>
-        </p>
-        <p>
-            <label
-                    for="<?php echo esc_attr( $this->get_field_id( 'second_line' ) ); ?>"><?php esc_html_e( 'Banner Second Line', 'tyche' ); ?>
-                :</label>
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'second_line' ) ); ?>"
-                   name="<?php echo esc_attr( $this->get_field_name( 'second_line' ) ); ?>" type="text"
-                   value="<?php echo esc_attr( $instance['second_line'] ); ?>"/>
-        </p>
-        <p>
-            <label
-                    for="<?php echo esc_attr( $this->get_field_id( 'third_line' ) ); ?>"><?php esc_html_e( 'Banner Third Line', 'tyche' ); ?>
-                :</label>
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'third_line' ) ); ?>"
-                   name="<?php echo esc_attr( $this->get_field_name( 'third_line' ) ); ?>" type="text"
-                   value="<?php echo $instance['third_line']; ?>"/>
-        </p>
-        <p>
-            <label
-                    for="<?php echo esc_attr( $this->get_field_id( 'button_link' ) ); ?>"><?php esc_html_e( 'Banner Button Link', 'tyche' ); ?>
-                :</label>
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'button_link' ) ); ?>"
-                   name="<?php echo esc_attr( $this->get_field_name( 'button_link' ) ); ?>" type="text"
-                   value="<?php echo $instance['button_link']; ?>"/>
-        </p>
-        <p>
-            <label
-                    for="<?php echo esc_attr( $this->get_field_id( 'button_label' ) ); ?>"><?php esc_html_e( 'Banner Button Label', 'tyche' ); ?>
-                :</label>
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'button_label' ) ); ?>"
-                   name="<?php echo esc_attr( $this->get_field_name( 'button_label' ) ); ?>" type="text"
-                   value="<?php echo $instance['button_label']; ?>"/>
-        </p>
+		<p>
+			<label
+					for="<?php echo esc_attr( $this->get_field_id( 'first_line' ) ); ?>"><?php esc_html_e( 'Banner First Line', 'tyche' ); ?>
+				:</label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'first_line' ) ); ?>"
+				   name="<?php echo esc_attr( $this->get_field_name( 'first_line' ) ); ?>" type="text"
+				   value="<?php echo esc_attr( $instance['first_line'] ); ?>"/>
+		</p>
+		<p>
+			<label
+					for="<?php echo esc_attr( $this->get_field_id( 'second_line' ) ); ?>"><?php esc_html_e( 'Banner Second Line', 'tyche' ); ?>
+				:</label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'second_line' ) ); ?>"
+				   name="<?php echo esc_attr( $this->get_field_name( 'second_line' ) ); ?>" type="text"
+				   value="<?php echo esc_attr( $instance['second_line'] ); ?>"/>
+		</p>
+		<p>
+			<label
+					for="<?php echo esc_attr( $this->get_field_id( 'third_line' ) ); ?>"><?php esc_html_e( 'Banner Third Line', 'tyche' ); ?>
+				:</label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'third_line' ) ); ?>"
+				   name="<?php echo esc_attr( $this->get_field_name( 'third_line' ) ); ?>" type="text"
+				   value="<?php echo esc_attr( $instance['third_line'] ); ?>"/>
+		</p>
+		<p>
+			<label
+					for="<?php echo esc_attr( $this->get_field_id( 'button_link' ) ); ?>"><?php esc_html_e( 'Banner Button Link', 'tyche' ); ?>
+				:</label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'button_link' ) ); ?>"
+				   name="<?php echo esc_attr( $this->get_field_name( 'button_link' ) ); ?>" type="text"
+				   value="<?php echo esc_attr( $instance['button_link'] ); ?>"/>
+		</p>
+		<p>
+			<label
+					for="<?php echo esc_attr( $this->get_field_id( 'button_label' ) ); ?>"><?php esc_html_e( 'Banner Button Label', 'tyche' ); ?>
+				:</label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'button_label' ) ); ?>"
+				   name="<?php echo esc_attr( $this->get_field_name( 'button_label' ) ); ?>" type="text"
+				   value="<?php echo esc_attr( $instance['button_label'] ); ?>"/>
+		</p>
 		<?php
 
 	}

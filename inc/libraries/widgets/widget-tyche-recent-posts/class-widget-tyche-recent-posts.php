@@ -1,22 +1,45 @@
 <?php
+/**
+ * Recent Post Widget
+ *
+ * @package Tyche
+ */
 
+/**
+ * Class Widget_Tyche_Recent_Posts
+ */
 class Widget_Tyche_Recent_Posts extends WP_Widget {
 
 	/**
+	 * Widget constructor
+	 *
 	 * @internal
 	 */
 	public function __construct() {
+		/**
+		 * Parent Constructor
+		 *
+		 * @param string $id_base         Optional Base ID for the widget, lowercase and unique. If left empty,
+		 *                                a portion of the widget's class name will be used Has to be unique.
+		 * @param string $name            Name for the widget displayed on the configuration page.
+		 * @param array  $widget_options  Optional. Widget options. See wp_register_sidebar_widget() for information
+		 *                                on accepted arguments. Default empty array.
+		 * @param array  $control_options Optional. Widget control options. See wp_register_widget_control() for
+		 *                                information on accepted arguments. Default empty array.
+		 */
 		parent::__construct(
-			'Tyche_Companion_Recent', // Base ID
-			__( 'Tyche Companion Recent Posts', 'tyche' ), // Name
+			'Tyche_Companion_Recent',
+			__( 'Tyche Companion Recent Posts', 'tyche' ),
 			array(
 				'description'                 => esc_html__( 'Recent Posts!', 'tyche' ),
-				'customize_selective_refresh' => true
-			) // Args
+				'customize_selective_refresh' => true,
+			)
 		);
 	}
 
 	/**
+	 * The actual frontend widget
+	 *
 	 * @param array $args
 	 * @param array $instance
 	 */
@@ -24,9 +47,8 @@ class Widget_Tyche_Recent_Posts extends WP_Widget {
 		$params = array(
 			'order'   => 'DESC',
 			'orderby' => 'date',
-			'cats'    => ''
+			'cats'    => '',
 		);
-
 
 		$defaults = array(
 			'title'      => esc_html__( 'Recent Posts', 'tyche' ),
@@ -45,20 +67,20 @@ class Widget_Tyche_Recent_Posts extends WP_Widget {
 		$title = $args['before_title'] . $params['title'] . $args['after_title'];
 
 		$filepath = dirname( __FILE__ ) . '/view/default.php';
-		if ( $instance['show_date'] == 'yes' ) {
+		if ( 'yes' === $instance['show_date'] ) {
 			$filepath = dirname( __FILE__ ) . '/view/alternate.php';
 		}
 
 		$args['before_widget'] = str_replace( 'class="', 'class="tyche-recent-posts ', $args['before_widget'] );
 
-		if ( $instance['show_title'] === 'no' ) {
+		if ( 'no' === $instance['show_title'] ) {
 			$args['before_widget'] = str_replace( 'class="tyche-recent-posts', 'class="tyche-recent-posts no-title', $args['before_widget'] );
 		}
 
 		echo $args['before_widget'];
 
-		if ( $params['show_title'] == 'yes' ) {
-			echo $title;
+		if ( 'yes' === $params['show_title'] ) {
+			echo wp_kses_post( $title );
 		}
 
 		if ( file_exists( $filepath ) ) {
@@ -91,61 +113,60 @@ class Widget_Tyche_Recent_Posts extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $defaults );
 
 		?>
-        <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'tyche' ); ?>
-                :</label>
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"
-                   name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text"
-                   value="<?php echo esc_attr( $instance['title'] ); ?>"/>
-        </p>
-        <p>
-            <label
-                    for="<?php echo esc_attr( $this->get_field_id( 'show_title' ) ); ?>"><?php esc_html_e( 'Show Title', 'tyche' );
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'tyche' ); ?>
+				:</label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"
+				   name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text"
+				   value="<?php echo esc_attr( $instance['title'] ); ?>"/>
+		</p>
+		<p>
+			<label
+					for="<?php echo esc_attr( $this->get_field_id( 'show_title' ) ); ?>"><?php esc_html_e( 'Show Title', 'tyche' );
 				?>:</label>
-            <select name="<?php echo esc_attr( $this->get_field_name( 'show_title' ) ); ?>"
-                    id="<?php echo esc_attr( $this->get_field_id( 'show_title' ) ); ?>" class="widefat"
-                    style="height: auto;">
-                <option value="yes" <?php echo ( $instance['show_title'] == 'yes' ) ? 'selected' : '' ?>>
+			<select name="<?php echo esc_attr( $this->get_field_name( 'show_title' ) ); ?>"
+					id="<?php echo esc_attr( $this->get_field_id( 'show_title' ) ); ?>" class="widefat"
+					style="height: auto;">
+				<option value="yes" <?php echo ( 'yes' === $instance['show_title'] ) ? 'selected' : '' ?>>
 					<?php echo esc_html__( 'Yes', 'tyche' ) ?>
-                </option>
-                <option value="no" <?php echo ( $instance['show_title'] == 'no' ) ? 'selected' : '' ?>>
+				</option>
+				<option value="no" <?php echo ( 'no' === $instance['show_title'] ) ? 'selected' : '' ?>>
 					<?php echo esc_html__( 'No', 'tyche' ) ?>
-                </option>
-            </select>
-        </p>
-        <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>"><?php esc_html_e( 'Show Date', 'tyche' );
+				</option>
+			</select>
+		</p>
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>"><?php esc_html_e( 'Show Date', 'tyche' );
 				?>:</label>
-            <select name="<?php echo esc_attr( $this->get_field_name( 'show_date' ) ); ?>"
-                    id="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>" class="widefat"
-                    style="height: auto;">
-                <option value="yes" <?php echo ( $instance['show_date'] == 'yes' ) ? 'selected' : '' ?>>
+			<select name="<?php echo esc_attr( $this->get_field_name( 'show_date' ) ); ?>"
+					id="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>" class="widefat"
+					style="height: auto;">
+				<option value="yes" <?php echo ( 'yes' === $instance['show_date'] ) ? 'selected' : '' ?>>
 					<?php echo esc_html__( 'Yes', 'tyche' ) ?>
-                </option>
-                <option value="no" <?php echo ( $instance['show_date'] == 'no' ) ? 'selected' : '' ?>>
+				</option>
+				<option value="no" <?php echo ( 'no' === $instance['show_date'] ) ? 'selected' : '' ?>>
 					<?php echo esc_html__( 'No', 'tyche' ) ?>
-                </option>
-            </select>
-        </p>
+				</option>
+			</select>
+		</p>
 
-        <p>
-            <label
-                    for="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"><?php esc_html_e( 'Number of posts', 'tyche' ); ?>
-                :</label>
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"
-                   name="<?php echo esc_attr( $this->get_field_name( 'limit' ) ); ?>" type="number"
-                   value="<?php echo esc_attr( $instance['limit'] ); ?>"
-                   min="-1"/>
-        </p>
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"><?php esc_html_e( 'Number of posts', 'tyche' ); ?>
+				:</label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"
+				   name="<?php echo esc_attr( $this->get_field_name( 'limit' ) ); ?>" type="number"
+				   value="<?php echo esc_attr( $instance['limit'] ); ?>"
+				   min="-1"/>
+		</p>
 
-        <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'offset' ) ); ?>"><?php esc_html_e( 'Offset', 'tyche' ); ?>
-                :</label>
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'offset' ) ); ?>"
-                   name="<?php echo esc_attr( $this->get_field_name( 'offset' ) ); ?>" type="number"
-                   value="<?php echo $instance['offset']; ?>"
-                   min="-1"/>
-        </p>
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'offset' ) ); ?>"><?php esc_html_e( 'Offset', 'tyche' ); ?>
+				:</label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'offset' ) ); ?>"
+				   name="<?php echo esc_attr( $this->get_field_name( 'offset' ) ); ?>" type="number"
+				   value="<?php echo $instance['offset']; ?>"
+				   min="-1"/>
+		</p>
 
 		<?php
 

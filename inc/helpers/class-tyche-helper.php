@@ -29,7 +29,7 @@ class Tyche_Helper {
 			'posts_per_page' => $args['limit'],
 			'order'          => $args['order'],
 			'offset'         => $args['offset'],
-			'orderby'        => $args['orderby']
+			'orderby'        => $args['orderby'],
 		);
 
 		$posts = new WP_Query( $atts );
@@ -50,7 +50,7 @@ class Tyche_Helper {
 			'post_type'      => 'product',
 		);
 
-		if ( $args['cats'] !== '' ) {
+		if ( '' !== $args['cats'] ) {
 			$atts['product_cat'] = $args['cats'];
 		}
 
@@ -126,8 +126,8 @@ class Tyche_Helper {
 	public static function check_archive() {
 
 		$return = array(
-			'type' => NULL,
-			'id'   => NULL,
+			'type' => null,
+			'id'   => null,
 		);
 
 		if ( is_category() ) {
@@ -177,8 +177,8 @@ class Tyche_Helper {
 	 * @return bool
 	 */
 	public static function on_iis() {
-		$sSoftware = strtolower( $_SERVER["SERVER_SOFTWARE"] );
-		if ( strpos( $sSoftware, "microsoft-iis" ) !== false ) {
+		$s_software = strtolower( $_SERVER['SERVER_SOFTWARE'] );
+		if ( strpos( $s_software, 'microsoft-iis' ) !== false ) {
 			return true;
 		}
 
@@ -191,7 +191,8 @@ class Tyche_Helper {
 	 * @return bool
 	 */
 	public static function categorized_blog() {
-		if ( false === ( $all_the_cool_cats = get_transient( 'tyche_categories' ) ) ) {
+		$all_the_cool_cats = get_transient( 'tyche_categories' );
+		if ( false === $all_the_cool_cats ) {
 			// Create an array of all the categories that are attached to posts.
 			$all_the_cool_cats = get_categories(
 				array(
@@ -236,13 +237,13 @@ class Tyche_Helper {
 	 */
 	public static function post_meta() {
 		?>
-        <div class="date">
+		<div class="date">
 			<?php
 			echo '<span class="day">' . esc_html( get_the_date( 'd' ) ) . '</span>';
 			echo '<span class="month">' . esc_html( get_the_date( 'M' ) ) . '</span>';
 			?>
-        </div>
-        <div class="title">
+		</div>
+		<div class="title">
 			<?php
 			if ( is_single() ) :
 				the_title( '<h1 class="entry-title">', '</h1>' );
@@ -250,8 +251,8 @@ class Tyche_Helper {
 				the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 			endif;
 			?>
-        </div>
-        <div class="meta">
+		</div>
+		<div class="meta">
 			<?php
 			$comments = wp_count_comments( get_the_ID() );
 			global $authordata;
@@ -263,7 +264,7 @@ class Tyche_Helper {
 
 			echo $html;
 			?>
-        </div>
+		</div>
 		<?php
 	}
 
@@ -329,7 +330,9 @@ class Tyche_Helper {
 	 */
 	public static function get_attachment_image( $args ) {
 		$id  = intval( $args['attachment_id'] );
-		$src = array( 'img' => wp_get_attachment_image( $id, false ) );
+		$src = array(
+			'img' => wp_get_attachment_image( $id, false ),
+		);
 
 		echo json_encode( $src );
 		wp_die();

@@ -1,4 +1,9 @@
-<?php /* Template Name: Front Page Template */
+<?php
+/**
+ * Template Name: Front Page Template
+ *
+ * @package Tyche
+ */
 
 /**
  * Grab the header

@@ -67,11 +67,11 @@ script:
   #- jscs ./assets/js/*.js
 
   - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./*.php --standard=./phpcs.ruleset.xml --extensions=php
-  - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/*.php --standard=./phpcs.ruleset.xml --extensions=php
-  - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php
-  - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php
+  - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/*.php --standard=./phpcs.ruleset.xml --extensions=php --ignore=./woocommerce/*.php,./inc/class-tgm-plugin-activation.php
+  - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php --ignore=./woocommerce/**/*.php
+  - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php --ignore=./woocommerce/**/**/*.php
   - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/**/**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php
-  - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/**/**/**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php
+  - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/**/**/**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php --ignore=./inc/libraries/widgets/widget-tyche-products/view/*.php
 
 # Receive notifications for build results.
 # @link http://docs.travis-ci.com/user/notifications/#Email-notifications

@@ -26,13 +26,13 @@ class Tyche_Frontpage {
 		 */
 		$this->set_sidebars(
 			get_theme_mod( 'tyche_frontpage_sections',
-			               array(
-				               'content-area-1',
-				               'content-area-2',
-				               'content-area-3',
-				               'content-area-4',
-				               'content-area-5',
-			               )
+				array(
+					'content-area-1',
+					'content-area-2',
+					'content-area-3',
+					'content-area-4',
+					'content-area-5',
+				)
 			)
 		);
 
@@ -51,9 +51,13 @@ class Tyche_Frontpage {
 	 */
 	public function generate_output() {
 		foreach ( $this->sidebars as $sidebar ) {
-			do_action( 'before-' . $sidebar, $arg = '' );
+			$arg = '';
+			do_action( 'before_' . $sidebar, $arg );
+
 			get_template_part( 'template-parts/frontpage-widgets/' . $sidebar );
-			do_action( 'after-', $arg = '' );
+
+			do_action( 'after_' . $sidebar, $arg );
+
 		}
 	}
 }

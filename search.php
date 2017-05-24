@@ -9,26 +9,27 @@
 
 get_header();
 $breadcrumbs_enabled = get_theme_mod( 'tyche_enable_post_breadcrumbs', '1' );
-if ( $breadcrumbs_enabled == '1' ) { ?>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
+if ( '1' === $breadcrumbs_enabled ) { ?>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
 				<?php Tyche_Helper::add_breadcrumbs(); ?>
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 <?php } ?>
-    <div class="container">
-        <div class="row">
-            <div id="primary" class="content-area col-md-8">
-                <main id="main" class="site-main" role="main">
+	<div class="container">
+		<div class="row">
+			<div id="primary" class="content-area col-md-8">
+				<main id="main" class="site-main" role="main">
 
 					<?php
 					if ( have_posts() ) : ?>
 
-                        <header class="page-header">
-                            <h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'tyche' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
-                        </header><!-- .page-header -->
+						<header class="page-header">
+							<?php /* translators: placeholder is search query  */?>
+							<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'tyche' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+						</header><!-- .page-header -->
 
 						<?php
 						/* Start the Loop */
@@ -51,13 +52,13 @@ if ( $breadcrumbs_enabled == '1' ) { ?>
 
 					endif; ?>
 
-                </main><!-- #main -->
-            </div><!-- #primary -->
+				</main><!-- #main -->
+			</div><!-- #primary -->
 			<?php
 			get_sidebar();
 			?>
-        </div>
-    </div>
+		</div>
+	</div>
 
 <?php
 get_footer();

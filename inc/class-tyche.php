@@ -90,8 +90,8 @@ class Tyche {
 
 			$tyche_required_actions = array(
 				array(
-					"id"    => 'tyche-req-ac-install-additional-plugins',
-					"title" => esc_html__( 'Please install plugins recommended through the notices.', 'tyche' ),
+					'id'    => 'tyche-req-ac-install-additional-plugins',
+					'title' => esc_html__( 'Please install plugins recommended through the notices.', 'tyche' ),
 				),
 			);
 
@@ -118,13 +118,13 @@ class Tyche {
 		// Localize the script with new data
 		$pass_it_by = array(
 			'base'  => get_site_url( 'url' ),
-			'flags' => get_site_url( 'url' ) . '/wp-content/plugins/qtranslate-x/flags/'
+			'flags' => get_site_url( 'url' ) . '/wp-content/plugins/qtranslate-x/flags/',
 		);
 		wp_localize_script( 'tyche-scripts', 'tyche_variables', $pass_it_by );
 
 		$scheme = get_theme_mod( 'tyche_color_scheme', 'red' );
 
-		if ( $scheme !== 'red' ) {
+		if ( 'red' !== $scheme ) {
 			wp_enqueue_style( 'tyche-style-alternate', get_stylesheet_directory_uri() . '/css/style-' . $scheme . '.css' );
 		} else {
 			wp_enqueue_style( 'tyche-style', get_stylesheet_uri() );
@@ -167,9 +167,9 @@ class Tyche {
 		 * Menus
 		 */
 		register_nav_menus( array(
-			                    'primary' => esc_html__( 'Primary', 'tyche' ),
-			                    'social'  => esc_html__( 'Copyright Social', 'tyche' ),
-		                    ) );
+			'primary' => esc_html__( 'Primary', 'tyche' ),
+			'social'  => esc_html__( 'Copyright Social', 'tyche' ),
+		) );
 		/**
 		 * Theme Supports
 		 */
@@ -197,7 +197,7 @@ class Tyche {
 			'default-text-color' => '000000',
 			'width'              => 1000,
 			'height'             => 250,
-			'flex-height'        => true
+			'flex-height'        => true,
 		) ) );
 		add_theme_support( 'woocommerce' );
 		add_theme_support( 'customize-selective-refresh-widgets' );

@@ -55,7 +55,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 		'orange'    => array(
 			'#ffab1a',
 		),
-	)
+	),
 ) );
 
 /**
@@ -104,7 +104,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'section'           => 'theme_options_contact_page',
 	'default'           => '',
 	'priority'          => 12,
-	'sanitize_callback' => array( 'tyche_Kirki', 'unfiltered' )
+	'sanitize_callback' => array( 'tyche_Kirki', 'unfiltered' ),
 ) );
 
 tyche_Kirki::add_field( 'tyche_theme', array(
@@ -114,7 +114,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'section'           => 'theme_options_contact_page',
 	'default'           => '',
 	'priority'          => 13,
-	'sanitize_callback' => array( 'tyche_Kirki', 'unfiltered' )
+	'sanitize_callback' => array( 'tyche_Kirki', 'unfiltered' ),
 ) );
 
 tyche_Kirki::add_field( 'tyche_theme', array(
@@ -155,7 +155,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'section'           => 'theme_options_general',
 	'default'           => 'http://colorlib.com',
 	'priority'          => 16,
-	'sanitize_callback' => 'esc_url_raw'
+	'sanitize_callback' => 'esc_url_raw',
 ) );
 
 tyche_Kirki::add_field( 'tyche_theme', array(
@@ -201,7 +201,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'settings' => 'tyche_copyright_contents',
 	'label'    => esc_html__( 'Copyright Contents', 'tyche' ),
 	'section'  => 'theme_options_footer',
-	'default'  => 'Copyright &copy; ' . date( "Y" ) . ' | Powered by WordPress.',
+	'default'  => 'Copyright &copy; ' . date( 'Y' ) . ' | Powered by WordPress.',
 	'priority' => 12,
 ) );
 
@@ -308,7 +308,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 			'label'   => esc_html__( 'Button #2 URL', 'tyche' ),
 			'default' => 'http://colorlib.com',
 		),
-	)
+	),
 ) );
 
 tyche_Kirki::add_field( 'tyche_theme', array(
@@ -317,7 +317,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'section'  => 'frontpage_sections_bigtitle_info',
 	'default'  => 'FREE SHIPPING',
 	'label'    => esc_html__( 'Info Section #1 Text', 'shoper' ),
-	'priority' => 10
+	'priority' => 10,
 ) );
 
 tyche_Kirki::add_field( 'tyche_theme', array(
@@ -326,7 +326,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'default'  => 'On all orders over 90$',
 	'section'  => 'frontpage_sections_bigtitle_info',
 	'label'    => esc_html__( 'Info Section #1 Subtext', 'shoper' ),
-	'priority' => 11
+	'priority' => 11,
 ) );
 
 tyche_Kirki::add_field( 'tyche_theme', array(
@@ -334,7 +334,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'settings' => 'info_section_one_icon',
 	'section'  => 'frontpage_sections_bigtitle_info',
 	'label'    => esc_html__( 'Info Section #1 Icon', 'shoper' ),
-	'priority' => 12
+	'priority' => 12,
 ) );
 
 tyche_Kirki::add_field( 'tyche_theme', array(
@@ -343,7 +343,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'default'  => 'CALL US ANYTIME',
 	'section'  => 'frontpage_sections_bigtitle_info',
 	'label'    => esc_html__( 'Info Section #2 Text', 'shoper' ),
-	'priority' => 13
+	'priority' => 13,
 ) );
 
 tyche_Kirki::add_field( 'tyche_theme', array(
@@ -352,7 +352,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'default'  => '+04786445953',
 	'section'  => 'frontpage_sections_bigtitle_info',
 	'label'    => esc_html__( 'Info Section #2 Subtext', 'shoper' ),
-	'priority' => 14
+	'priority' => 14,
 ) );
 
 tyche_Kirki::add_field( 'tyche_theme', array(
@@ -360,7 +360,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'settings' => 'info_section_two_icon',
 	'section'  => 'frontpage_sections_bigtitle_info',
 	'label'    => esc_html__( 'Info Section #2 Icon', 'shoper' ),
-	'priority' => 15
+	'priority' => 15,
 ) );
 
 tyche_Kirki::add_field( 'tyche_theme', array(
@@ -369,7 +369,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'default'  => 'OUR LOCATION',
 	'section'  => 'frontpage_sections_bigtitle_info',
 	'label'    => esc_html__( 'Info Section #1 Text', 'shoper' ),
-	'priority' => 16
+	'priority' => 16,
 ) );
 
 tyche_Kirki::add_field( 'tyche_theme', array(
@@ -378,7 +378,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'section'  => 'frontpage_sections_bigtitle_info',
 	'default'  => '557-6308 Lacinia Road. NYC',
 	'label'    => esc_html__( 'Info Section #3 Subtext', 'shoper' ),
-	'priority' => 17
+	'priority' => 17,
 ) );
 
 tyche_Kirki::add_field( 'tyche_theme', array(
@@ -386,5 +386,5 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'settings' => 'info_section_three_icon',
 	'section'  => 'frontpage_sections_bigtitle_info',
 	'label'    => esc_html__( 'Info Section #3 Icon', 'shoper' ),
-	'priority' => 18
+	'priority' => 18,
 ) );

@@ -62,7 +62,8 @@ class Tyche_Navwalker extends Walker_Nav_Menu {
 		} elseif ( 0 === strcasecmp( $item->attr_title, 'disabled' ) ) {
 			$output .= $indent . '<li role="presentation" class="disabled"><a href="#">' . esc_attr( $item->title ) . '</a>';
 		} else {
-			$class_names = $value = '';
+			$class_names = '';
+			$value = '';
 			$classes     = empty( $item->classes ) ? array() : (array) $item->classes;
 			$classes[]   = 'menu-item-' . $item->ID;
 			$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
@@ -123,7 +124,7 @@ class Tyche_Navwalker extends Walker_Nav_Menu {
 			$item_output .= ( $args->has_children && 0 === $depth ) ? ' <span class="caret"></span></a>' : '</a>';
 			$item_output .= $args->after;
 			$output      .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
-		}
+		}// End if().
 	}
 
 	/**
@@ -232,6 +233,6 @@ class Tyche_Navwalker extends Walker_Nav_Menu {
 			if ( $container ) {
 				echo '</' . esc_attr( $container ) . '>';
 			}
-		}
+		}// End if().
 	}
 }

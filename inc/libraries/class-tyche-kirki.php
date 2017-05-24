@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * ensuring that all CSS & fonts still work.
  * It does not handle the customizer options, simply the frontend CSS.
  */
-class tyche_Kirki {
+class Tyche_Kirki {
 
 	protected static $config = array();
 	protected static $fields = array();
@@ -35,8 +35,8 @@ class tyche_Kirki {
 	 * @return bool
 	 */
 	public static function tyche_on_iis() {
-		$sSoftware = strtolower( $_SERVER["SERVER_SOFTWARE"] );
-		if ( strpos( $sSoftware, "microsoft-iis" ) !== false ) {
+		$s_software = strtolower( $_SERVER['SERVER_SOFTWARE'] );
+		if ( strpos( $s_software, 'microsoft-iis' ) !== false ) {
 			return true;
 		}
 
@@ -50,7 +50,6 @@ class tyche_Kirki {
 	 * @param    string $field_id  The field_id (defined as 'settings' in the field arguments)
 	 *
 	 * @return    mixed    the saved value of the field.
-	 *
 	 */
 	public static function get_option( $config_id = '', $field_id = '' ) {
 		// if Kirki exists, use it.
@@ -185,7 +184,7 @@ class tyche_Kirki {
 								array(
 									'element'  => $args['output'],
 									'property' => $output_property,
-								)
+								),
 							);
 						} else {
 							foreach ( $subfield['output'] as $key => $output ) {
@@ -202,7 +201,7 @@ class tyche_Kirki {
 				}
 			}
 			self::$fields[ $args['settings'] ] = $args;
-		}
+		}// End if().
 	}
 
 	/**
@@ -219,7 +218,7 @@ class tyche_Kirki {
 		if ( ! empty( $styles ) ) {
 			// enqueue the theme's style.css file
 			$current_theme = ( wp_get_theme() );
-			wp_enqueue_style( $current_theme->stylesheet . '_no-kirki', get_stylesheet_uri(), NULL, NULL );
+			wp_enqueue_style( $current_theme->stylesheet . '_no-kirki', get_stylesheet_uri(), null, null );
 			wp_add_inline_style( $current_theme->stylesheet . '_no-kirki', $styles );
 		}
 	}
@@ -279,7 +278,7 @@ class tyche_Kirki {
 								$font_weight = str_replace( 'italic', '', $subvalue );
 								$font_weight = ( in_array( $font_weight, array(
 									'',
-									'regular'
+									'regular',
 								) ) ) ? '400' : $font_weight;
 								// Is this italic?
 								$is_italic                                         = ( false !== strpos( $subvalue, 'italic' ) );
@@ -302,10 +301,10 @@ class tyche_Kirki {
 							}
 							$css[ $media_query ][ $element ][ $property ] = $subvalue;
 						}
-					}
-				}
-			}
-		}
+					}// End if().
+				}// End if().
+			}// End foreach().
+		}// End foreach().
 		// Process the array of CSS properties and produce the final CSS
 		$final_css = '';
 		if ( ! is_array( $css ) || empty( $css ) ) {
@@ -375,7 +374,7 @@ class tyche_Kirki {
 						if ( ! is_array( $response ) ) {
 							// the url was not properly formatted,
 							// cache for 12 hours and continue to the next field
-							set_transient( $key, NULL, 12 * HOUR_IN_SECONDS );
+							set_transient( $key, null, 12 * HOUR_IN_SECONDS );
 							continue;
 						}
 						// check the response headers.
@@ -390,11 +389,11 @@ class tyche_Kirki {
 					}
 					// If the font-link is valid, enqueue it.
 					if ( $url_is_valid ) {
-						wp_enqueue_style( $key, $url, NULL, NULL );
+						wp_enqueue_style( $key, $url, null, null );
 					}
-				}
-			}
-		}
+				}// End if().
+			}// End if().
+		}// End foreach().
 	}
 
 	public static function unfiltered( $field ) {

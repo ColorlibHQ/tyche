@@ -51,7 +51,7 @@ class Tyche_Sidebars {
 				'before_title'  => '<h3 class="widget-title"><span>',
 				'after_title'   => '</span></h3>',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget'  => '</div>'
+				'after_widget'  => '</div>',
 			),
 
 			array(
@@ -61,7 +61,7 @@ class Tyche_Sidebars {
 				'before_title'  => '<h3 class="widget-title"><span>',
 				'after_title'   => '</span></h3>',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget'  => '</div>'
+				'after_widget'  => '</div>',
 			),
 
 			array(
@@ -71,7 +71,7 @@ class Tyche_Sidebars {
 				'before_title'  => '<h3 class="widget-title"><span>',
 				'after_title'   => '</span></h3>',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget'  => '</div>'
+				'after_widget'  => '</div>',
 			),
 
 			array(
@@ -81,7 +81,7 @@ class Tyche_Sidebars {
 				'before_title'  => '<h3 class="widget-title"><span>',
 				'after_title'   => '</span></h3>',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget'  => '</div>'
+				'after_widget'  => '</div>',
 			),
 
 			array(
@@ -91,9 +91,8 @@ class Tyche_Sidebars {
 				'before_title'  => '<h3 class="widget-title"><span>',
 				'after_title'   => '</span></h3>',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget'  => '</div>'
+				'after_widget'  => '</div>',
 			),
-
 
 			array(
 				'id'            => 'content-area-4-a',
@@ -102,7 +101,7 @@ class Tyche_Sidebars {
 				'before_title'  => '<h3 class="widget-title"><span>',
 				'after_title'   => '</span></h3>',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget'  => '</div>'
+				'after_widget'  => '</div>',
 			),
 
 			array(
@@ -112,9 +111,8 @@ class Tyche_Sidebars {
 				'before_title'  => '<h3 class="widget-title"><span>',
 				'after_title'   => '</span></h3>',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget'  => '</div>'
+				'after_widget'  => '</div>',
 			),
-
 
 			array(
 				'id'            => 'content-area-5',
@@ -123,7 +121,7 @@ class Tyche_Sidebars {
 				'before_title'  => '<h3 class="widget-title"><span>',
 				'after_title'   => '</span></h3>',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget'  => '</div>'
+				'after_widget'  => '</div>',
 			),
 
 			array(
@@ -133,9 +131,8 @@ class Tyche_Sidebars {
 				'before_title'  => '<h5 class="widget-title"><span>',
 				'after_title'   => '</span></h5>',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
-				'after_widget'  => '</div>'
+				'after_widget'  => '</div>',
 			),
-
 
 			array(
 				'id'            => 'footer-sidebar-1',
@@ -170,7 +167,7 @@ class Tyche_Sidebars {
 				'after_title'   => '</h5>',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</div>',
-			)
+			),
 		);
 	}
 
@@ -180,7 +177,7 @@ class Tyche_Sidebars {
 	public function initiate_widgets() {
 		$widgets = array(
 			'Widget_Tyche_Products',
-			'Widget_Tyche_Recent_Posts'
+			'Widget_Tyche_Recent_Posts',
 		);
 
 		foreach ( $widgets as $widget ) {

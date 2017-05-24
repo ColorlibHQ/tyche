@@ -1,17 +1,36 @@
 <?php
+/**
+ * Contact Widget
+ *
+ * @package Tyche
+ */
 
+/**
+ * Class Widget_Tyche_Contact
+ */
 class Widget_Tyche_Contact extends WP_Widget {
 	/**
 	 * @internal
 	 */
 	public function __construct() {
+		/**
+		 * Parent Constructor
+		 *
+		 * @param string $id_base         Optional Base ID for the widget, lowercase and unique. If left empty,
+		 *                                a portion of the widget's class name will be used Has to be unique.
+		 * @param string $name            Name for the widget displayed on the configuration page.
+		 * @param array  $widget_options  Optional. Widget options. See wp_register_sidebar_widget() for information
+		 *                                on accepted arguments. Default empty array.
+		 * @param array  $control_options Optional. Widget control options. See wp_register_widget_control() for
+		 *                                information on accepted arguments. Default empty array.
+		 */
 		parent::__construct(
-			'Tyche_Companion_Contact', // Base ID
-			__( 'Tyche Companion Contact Widget', 'tyche' ), // Name
+			'Tyche_Companion_Contact',
+			__( 'Tyche Companion Contact Widget', 'tyche' ),
 			array(
 				'description'                 => esc_html__( 'Tyche Companion Contact Widget', 'tyche' ),
-				'customize_selective_refresh' => true
-			) // Args
+				'customize_selective_refresh' => true,
+			)
 		);
 	}
 
@@ -20,35 +39,37 @@ class Widget_Tyche_Contact extends WP_Widget {
 	 * @param array $instance
 	 */
 	public function widget( $args, $instance ) {
-		extract( $args );
 		$params = array();
 
-		if ( empty( $instance ) ) {
-			$instance = array(
-				'contact_title' => esc_html__( 'Contact', 'tyche' ),
-				'address'       => esc_html__( '123 Street Name, City, England.', 'tyche' ),
-				'phone'         => esc_html__( '(123) 456-7890', 'tyche' ),
-				'email'         => esc_html__( 'mail@shopper.com', 'tyche' ),
-			);
-
-		}
+		$defaults = array(
+			'contact_title' => esc_html__( 'Contact', 'tyche' ),
+			'address'       => esc_html__( '123 Street Name, City, England.', 'tyche' ),
+			'phone'         => esc_html__( '(123) 456-7890', 'tyche' ),
+			'email'         => esc_html__( 'mail@shopper.com', 'tyche' ),
+		);
+		$instance = wp_parse_args( (array) $instance, $defaults );
 
 		foreach ( $instance as $key => $value ) {
 			$params[ $key ] = $value;
 		}
 
+		$title = $args['before_title'] . $params['title'] . $args['after_title'];
+
 		$filepath = dirname( __FILE__ ) . '/view/default.php';
 
-		$instance = $params;
+		$args['before_widget'] = str_replace( 'class="', 'class="tyche-companion-contact-widget ', $args['before_widget'] );
 
-		$before_widget = str_replace( 'class="', 'class="tyche-companion-contact-widget ', $before_widget );
-		echo $before_widget;
+		echo $args['before_widget'];
+
+		if ( 'yes' === $params['show_title'] ) {
+			echo wp_kses_post( $title );
+		}
 
 		if ( file_exists( $filepath ) ) {
 			include $filepath;
 		}
 
-		echo $after_widget;
+		echo $args['after_widget'];
 	}
 
 	/**
@@ -68,41 +89,37 @@ class Widget_Tyche_Contact extends WP_Widget {
 			'email'         => esc_html( 'mail@shopper.com' ),
 		);
 
-		// Merge the user-selected arguments with the defaults.
 		$instance = wp_parse_args( (array) $instance, $defaults );
-		// Extract the array to allow easy use of variables.
-		extract( $instance );
-		// Loads the widget form.
 		?>
 
-        <p>
-            <label
-                    for="<?php echo $this->get_field_id( 'contact_title' ); ?>"><?php _e( 'Contact section title:' ); ?></label>
-            <input class="widefat" id="<?php echo $this->get_field_id( 'contact_title' ); ?>"
-                   name="<?php echo $this->get_field_name( 'contact_title' ); ?>" type="text"
-                   value="<?php echo esc_attr( $contact_title ); ?>">
-        </p>
-        <p>
-            <label
-                    for="<?php echo $this->get_field_id( 'address' ); ?>"><?php _e( 'Address:' ); ?></label>
-            <input class="widefat" id="<?php echo $this->get_field_id( 'address' ); ?>"
-                   name="<?php echo $this->get_field_name( 'address' ); ?>" type="text"
-                   value="<?php echo esc_attr( $address ); ?>">
-        </p>
-        <p>
-            <label
-                    for="<?php echo $this->get_field_id( 'phone' ); ?>"><?php _e( 'Phone number:' ); ?></label>
-            <input class="widefat" id="<?php echo $this->get_field_id( 'phone' ); ?>"
-                   name="<?php echo $this->get_field_name( 'phone' ); ?>" type="tel"
-                   value="<?php echo esc_attr( $phone ); ?>">
-        </p>
-        <p>
-            <label
-                    for="<?php echo $this->get_field_id( 'email' ); ?>"><?php _e( 'Email:' ); ?></label>
-            <input class="widefat" id="<?php echo $this->get_field_id( 'email' ); ?>"
-                   name="<?php echo $this->get_field_name( 'email' ); ?>" type="email"
-                   value="<?php echo esc_attr( $email ); ?>">
-        </p>
+		<p>
+			<label
+					for="<?php echo esc_attr( $this->get_field_id( 'contact_title' ) ); ?>"><?php esc_html_e( 'Contact section title:', 'tyche' ); ?></label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'contact_title' ) ); ?>"
+				   name="<?php echo esc_attr( $this->get_field_name( 'contact_title' ) ); ?>" type="text"
+				   value="<?php echo esc_attr( $instance['contact_title'] ); ?>">
+		</p>
+		<p>
+			<label
+					for="<?php echo esc_attr( $this->get_field_id( 'address' ) ); ?>"><?php _e( 'Address:' ); ?></label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'address' ) ); ?>"
+				   name="<?php echo esc_attr( $this->get_field_name( 'address' ) ); ?>" type="text"
+				   value="<?php echo esc_attr( $instance['address'] ); ?>">
+		</p>
+		<p>
+			<label
+					for="<?php echo esc_attr( $this->get_field_id( 'phone' ) ); ?>"><?php _e( 'Phone number:' ); ?></label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'phone' ) ); ?>"
+				   name="<?php echo esc_attr( $this->get_field_name( 'phone' ) ); ?>" type="tel"
+				   value="<?php echo esc_attr( $instance['phone'] ); ?>">
+		</p>
+		<p>
+			<label
+					for="<?php echo esc_attr( $this->get_field_id( 'email' ) ); ?>"><?php _e( 'Email:' ); ?></label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'email' ) ); ?>"
+				   name="<?php echo esc_attr( $this->get_field_name( 'email' ) ); ?>" type="email"
+				   value="<?php echo esc_attr( $instance['email'] ); ?>">
+		</p>
 
 		<?php
 	}
@@ -119,10 +136,10 @@ class Widget_Tyche_Contact extends WP_Widget {
 	 */
 	function update( $new_instance, $old_instance ) {
 		$instance                  = $old_instance;
-		$instance['contact_title'] = esc_html( $new_instance['contact_title'] );
-		$instance['address']       = esc_html( $new_instance['address'] );
-		$instance['phone']         = esc_html( $new_instance['phone'] );
-		$instance['email']         = esc_html( $new_instance['email'] );
+		$instance['contact_title'] = strip_tags( $new_instance['contact_title'] );
+		$instance['address']       = strip_tags( $new_instance['address'] );
+		$instance['phone']         = strip_tags( $new_instance['phone'] );
+		$instance['email']         = strip_tags( $new_instance['email'] );
 
 		return $instance;
 	}

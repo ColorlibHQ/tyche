@@ -14,7 +14,7 @@ $mysidebars = array(
 	'footer-sidebar-1',
 	'footer-sidebar-2',
 	'footer-sidebar-3',
-	'footer-sidebar-4'
+	'footer-sidebar-4',
 );
 
 /**
@@ -49,27 +49,27 @@ $size = 12 / $count;
 if ( empty( $sidebars ) ) {
 	$args = array(
 		'before_title' => '<h3 class="widget-title">',
-		'after_title'  => '</h3>'
+		'after_title'  => '</h3>',
 	);
 
 	$widgets = array( 'WP_Widget_Meta', 'WP_Widget_Recent_Posts', 'WP_Widget_Tag_Cloud', 'WP_Widget_Categories' );
 	$widgets = array_slice( $widgets, 0, $count );
 	?>
-    <!-- Footer -->
-    <footer id="colophon" class="site-footer" role="contentinfo">
-        <div class="widgets-area">
-            <div class="container">
-                <div class="row">
+	<!-- Footer -->
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="widgets-area">
+			<div class="container">
+				<div class="row">
 					<?php foreach ( $widgets as $widget ) { ?>
-                        <div class="col-md-<?php echo esc_attr( $size ) ?> col-sm-6">
+						<div class="col-md-<?php echo esc_attr( $size ) ?> col-sm-6">
 							<?php the_widget( $widget, array(), $args ); ?>
-                        </div>
+						</div>
 					<?php } ?>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- / Footer -->
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- / Footer -->
 	<?php return false;
 }
 
@@ -81,16 +81,16 @@ $sidebars = array_slice( $sidebars, 0, $count );
 ?>
 <!-- Footer -->
 <footer id="colophon" class="site-footer" role="contentinfo">
-    <div class="widgets-area">
-        <div class="container">
-            <div class="row">
-				<?php foreach ( $sidebars as $sidebar ): ?>
-                    <div class="col-md-<?php echo $size ?> col-sm-6">
+	<div class="widgets-area">
+		<div class="container">
+			<div class="row">
+				<?php foreach ( $sidebars as $sidebar ) : ?>
+					<div class="col-md-<?php echo $size ?> col-sm-6">
 						<?php dynamic_sidebar( $sidebar ); ?>
-                    </div>
+					</div>
 				<?php endforeach; ?>
-            </div><!--.row-->
-        </div>
-    </div>
+			</div><!--.row-->
+		</div>
+	</div>
 </footer>
 <!-- / Footer -->

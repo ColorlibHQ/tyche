@@ -1,4 +1,12 @@
 <?php
+/**
+ * Template part for displaying content-area-3
+ *
+ * @link    https://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package Tyche
+ */
+
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }

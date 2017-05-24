@@ -24,9 +24,8 @@ class Tyche_Autoloader {
 			dirname( __FILE__ ) . '/helpers/',
 			dirname( __FILE__ ) . '/customizer/',
 			dirname( __FILE__ ) . '/libraries/epsilon-framework/',
-			dirname( __FILE__ ) . '/libraries/welcome-screen/'
+			dirname( __FILE__ ) . '/libraries/welcome-screen/',
 		);
-
 
 		foreach ( $directories as $directory ) {
 			if ( file_exists( $directory . '/class-' . strtolower( $bind ) . '.php' ) ) {
@@ -39,7 +38,7 @@ class Tyche_Autoloader {
 		/**
 		 * Load widgets
 		 */
-		if ( ( count( $parts ) > 2 ) && $parts[0] == 'Widget' && $parts[1] == 'Tyche' ) {
+		if ( ( count( $parts ) > 2 ) && 'Widget' == $parts[0] && 'Tyche' == $parts[1] ) {
 			$path = get_template_directory() . '/inc/libraries/widgets/' . strtolower( $bind ) . '/class-' . strtolower( $bind ) . '.php';
 			if ( file_exists( $path ) ) {
 				require_once $path;
