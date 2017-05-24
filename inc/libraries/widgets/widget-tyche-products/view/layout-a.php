@@ -58,7 +58,7 @@ $posts = Tyche_Helper::get_products( $params ); ?>
 						<div class="tyche-product-body">
 							<h3><?php woocommerce_template_loop_product_link_open() ?><?php echo get_the_title(); ?><?php woocommerce_template_loop_product_link_close() ?></h3>
 
-							<?php if ( 'yes' === $params['show_rating'] && ( $rating_html = wc_get_rating_html( $product->get_average_rating() ) ) ) : ?>
+							<?php if ( 'yes' === $params['show_rating'] && $rating_html = wc_get_rating_html( $product->get_average_rating() ) ) : ?>
 								<?php echo $rating_html; ?>
 							<?php endif; ?>
 
