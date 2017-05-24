@@ -20,7 +20,6 @@ matrix:
 
     include:
         - php: '5.6'
-          env: SNIFF=1
         - php: '7.0'
         - php: '7.1'
 
@@ -33,46 +32,46 @@ matrix:
 # e.g. copy database configurations, environment variables, etc.
 # Failures in this section will result in build status 'errored'.
 before_script:
-    - export PHPCS_DIR=/tmp/phpcs
-    - export SNIFFS_DIR=/tmp/sniffs
-    # Install the latest version of Node (required to run ESLint).
-    - nvm install stable
-    # Install CodeSniffer for WordPress Coding Standards checks.
-    - if [[ "$SNIFF" == "1" ]]; then git clone -b master --depth 1 https://github.com/squizlabs/PHP_CodeSniffer.git $PHPCS_DIR; fi
-    # Install WordPress Coding Standards.
-    - if [[ "$SNIFF" == "1" ]]; then git clone -b master --depth 1 https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git $SNIFFS_DIR; fi
-    # Install PHP Compatibility sniffs.
-    - if [[ "$SNIFF" == "1" ]]; then git clone -b master --depth 1 https://github.com/wimg/PHPCompatibility.git $SNIFFS_DIR/PHPCompatibility; fi
-    # Set install path for PHPCS sniffs.
-    # @link https://github.com/squizlabs/PHP_CodeSniffer/blob/4237c2fc98cc838730b76ee9cee316f99286a2a7/CodeSniffer.php#L1941
-    - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/scripts/phpcs --config-set installed_paths $SNIFFS_DIR; fi
-    # After CodeSniffer install you should refresh your path.
-    - if [[ "$SNIFF" == "1" ]]; then phpenv rehash; fi
-    # Install ESLint: The pluggable linting utility for JavaScript and JSX.
-    # @link http://eslint.org/
-    - if [[ "$SNIFF" == "1" ]]; then npm install -g eslint; fi
-    # Install WordPress JavaScript Coding Standards shareable config for ESLint.
-    # @link https://www.npmjs.com/package/eslint-config-wordpress
-    - if [[ "$SNIFF" == "1" ]]; then npm install -g eslint-config-wordpress; fi
+  - export PHPCS_DIR=/tmp/phpcs
+  - export SNIFFS_DIR=/tmp/sniffs
+  # Install CodeSniffer for WordPress Coding Standards checks.
+  - git clone -b 2.9 --depth 1 https://github.com/squizlabs/PHP_CodeSniffer.git $PHPCS_DIR
+  # Install WordPress Coding Standards.
+  - git clone -b master --depth 1 https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git $SNIFFS_DIR
+  # Install PHP Compatibility sniffs.
+  - git clone -b master --depth 1 https://github.com/wimg/PHPCompatibility.git $SNIFFS_DIR/PHPCompatibility
+  # Set install path for PHPCS sniffs.
+  # @link https://github.com/squizlabs/PHP_CodeSniffer/blob/4237c2fc98cc838730b76ee9cee316f99286a2a7/CodeSniffer.php#L1941
+  - $PHPCS_DIR/scripts/phpcs --config-set installed_paths $SNIFFS_DIR
+  # After CodeSniffer install you should refresh your path.
+  - phpenv rehash
+  # Install JSCS: JavaScript Code Style checker.
+  # @link http://jscs.info/
+  - npm install -g jscs
+  # Install JSHint, a JavaScript Code Quality Tool.
+  # @link http://jshint.com/docs/
+  - npm install -g jshint
+  # Pull in the WP Core jshint rules.
+  - wget https://develop.svn.wordpress.org/trunk/.jshintrc
 
 # Run test script commands.
 # Default is specific to project language.
 # All commands must exit with code 0 on success. Anything else is considered failure.
 script:
-    # Search for PHP syntax errors.
-    - find -L . -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
-    # WordPress Coding Standards.
-    # @link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards
-    # @link http://pear.php.net/package/PHP_CodeSniffer/
-    # -p flag: Show progress of the run.
-    # -s flag: Show sniff codes in all reports.
-    # -v flag: Print verbose output.
-    # -n flag: Do not print warnings. (shortcut for --warning-severity=0)
-    # --standard: Use WordPress-Extra as the standard (specificed in phpcs.xml)
-    # --extensions: Only sniff PHP files.
-    - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/scripts/phpcs -p . --standard=WordPress; fi
-    # Run the theme JavaScript partials through ESLint.
-    - if [[ "$SNIFF" == "1" ]]; then eslint -c ./.eslintrc.js ./assets/js/functions; fi
+  - mkdir -p build/logs
+  # Search for PHP syntax errors.
+  - find -L . -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
+  # Run the plugin through JSHint.
+  #- jshint ./assets/js/*.js
+  # Run the plugin through JavaScript Code Style checker.
+  #- jscs ./assets/js/*.js
+
+  - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./*.php --standard=./phpcs.ruleset.xml --extensions=php
+  - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/*.php --standard=./phpcs.ruleset.xml --extensions=php
+  - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php
+  - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php
+  - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/**/**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php
+  - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/**/**/**/**/*.php --standard=./phpcs.ruleset.xml --extensions=php
 
 # Receive notifications for build results.
 # @link http://docs.travis-ci.com/user/notifications/#Email-notifications
