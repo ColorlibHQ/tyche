@@ -1,8 +1,11 @@
 'use strict';
 
 module.exports = function( grunt ) {
-  grunt.loadTasks( 'tasks' );
+  // load all tasks
+  require('load-grunt-tasks')(grunt, { scope: 'devDependencies' });
+
   grunt.config.init( {
+    pkg: grunt.file.readJSON('package.json'),
     checktextdomain: {
       standard: {
         options: {

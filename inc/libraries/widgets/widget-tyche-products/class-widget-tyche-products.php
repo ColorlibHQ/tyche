@@ -149,7 +149,7 @@ class Widget_Tyche_Products extends WP_Widget {
 		</p>
 
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'cats' ) ); ?>"><?php esc_html_e( 'Categories', 'ensign' ); ?>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'cats' ) ); ?>"><?php esc_html_e( 'Categories', 'tyche' ); ?>
 				:</label>
 			<select name="<?php echo esc_attr( $this->get_field_name( 'cats' ) ); ?>"
 					id="<?php echo esc_attr( $this->get_field_id( 'cats' ) ); ?>" class="widefat" style="height: auto;"
