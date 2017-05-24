@@ -178,7 +178,6 @@ class Tyche_Sidebars {
 		$widgets = array(
 			'Widget_Tyche_Products',
 			'Widget_Tyche_Recent_Posts',
-			'Widget_Tyche_Social'
 		);
 
 		foreach ( $widgets as $widget ) {

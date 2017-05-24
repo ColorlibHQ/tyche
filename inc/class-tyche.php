@@ -120,7 +120,7 @@ class Tyche {
 			'base'  => get_site_url( 'url' ),
 			'flags' => get_site_url( 'url' ) . '/wp-content/plugins/qtranslate-x/flags/',
 		);
-		wp_localize_script( 'tyche-scripts', 'tyche_variables', $pass_it_by );
+		wp_localize_script( 'tyche-scripts', 'tycheVariables', $pass_it_by );
 
 		$scheme = get_theme_mod( 'tyche_color_scheme', 'red' );
 
