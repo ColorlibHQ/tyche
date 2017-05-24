@@ -56,10 +56,10 @@ before_script:
   # Pull in the WP Core jshint rules.
   - wget https://develop.svn.wordpress.org/trunk/.jshintrc
   # Install grunt
-  - npm install grunt-cli --save-dev
+  - npm install -g grunt-cli
   - npm install
   # Install checktextdmain
-  - npm install grunt-checktextdomain --save-dev
+  - npm install -g grunt-checktextdomain
 
 # Run test script commands.
 # Default is specific to project language.
