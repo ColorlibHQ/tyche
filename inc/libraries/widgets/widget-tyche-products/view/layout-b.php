@@ -78,7 +78,7 @@ $posts = Tyche_Helper::get_products( $params ); ?>
 				<?php if ( ! empty( $params['third_line'] ) ) : ?>
 					<span class="third_line"> <?php echo $params['third_line'] ?> </span>
 				<?php endif; ?>
-				<?php if ( ! empty( $params['button_label'] && ! empty( $params['button_link'] ) ) ) : ?>
+				<?php if ( ! empty( $params['button_label'] ) && ! empty( $params['button_link'] ) ) : ?>
 					<a href="<?php echo $params['button_link'] ?>"><?php echo $params['button_label'] ?></a>
 				<?php endif; ?>
 			</div>

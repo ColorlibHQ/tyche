@@ -31,7 +31,8 @@ $posts = Tyche_Helper::get_products( $params ); ?>
 						<div class="tyche-product-body text-left">
 							<h3><?php woocommerce_template_loop_product_link_open() ?><?php echo wp_kses_post( get_the_title() ); ?><?php woocommerce_template_loop_product_link_close() ?></h3>
 
-							<?php if ( $price_html = $product->get_price_html() ) : ?>
+							<?php $price_html = $product->get_price_html(); ?>
+							<?php if ( $price_html ) : ?>
 								<span class="price"><?php echo $price_html; ?></span>
 							<?php endif; ?>
 
