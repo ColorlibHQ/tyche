@@ -28,8 +28,15 @@ if ( post_password_required() ) {
 		<h2 class="comments-title">
 			<?php
 			printf( // WPCS: XSS OK.
-				esc_html( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'tyche' ) ),
-				number_format_i18n( get_comments_number() ),
+				/* translators: 1: number of comments, 2: post title */
+				esc_html( _nx(
+					'%1$s thought on &ldquo;%2$s&rdquo;',
+					'%1$s thoughts on &ldquo;%2$s&rdquo;',
+					get_comments_number(),
+					'comments title',
+					'tyche'
+				) ),
+				number_format_i18n( $comments_number ),
 				'<span>' . get_the_title() . '</span>'
 			);
 			?>
