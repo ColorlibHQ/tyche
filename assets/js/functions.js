@@ -1,5 +1,6 @@
-'use strict';
+/*jshint -W065 */
 (function( $ ) {
+  'use strict';
   var Tyche = {
     exists: function( e ) {
       return $( e ).length > 0;
@@ -34,7 +35,7 @@
 
           $( '#desktop-menu' ).clone().attr( {
             id: 'mobile-menu',
-            class: ''
+            'class': ''
           } ).insertAfter( '#site-navigation' );
 
           $( '#mobile-menu > li > a, #mobile-menu > li > ul > li > a' ).

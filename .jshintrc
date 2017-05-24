@@ -15,19 +15,10 @@
   "unused": false,
   "browser": true,
   "globals": {
-    "_": false,
-    "Backbone": false,
     "jQuery": false,
-    "JSON": false,
     "wp": false,
-    "Tyche": false,
-    "jsvars":false,
-    "CodeMirror":false,
-    "tinyMCE":false,
-    "unserialize":false,
-    "serialize":false,
-    "Color": false,
-    "wpColorPickerL10n": false,
-    "Fuse": false
+    "tycheVariables": false,
+    "WPUrls": false,
+    "console":false
   }
 }
