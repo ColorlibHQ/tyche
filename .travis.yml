@@ -64,9 +64,9 @@ script:
   # Search for PHP syntax errors.
   - find -L . -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
   # Run the plugin through JSHint.
-  #- jshint ./assets/js/*.js
+  - jshint ./assets/js/*.js
   # Run the plugin through JavaScript Code Style checker.
-  #- jscs ./assets/js/*.js
+  - jscs ./assets/js/*.js
 
   - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./*.php --standard=./phpcs.ruleset.xml --extensions=php
   - $PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/*.php --standard=./phpcs.ruleset.xml --extensions=php --ignore=./woocommerce/*.php,./inc/class-tgm-plugin-activation.php
