@@ -166,7 +166,7 @@
     },
 
     initMultiLang: function() {
-      $('.tyche-multilang-menu').menu();
+      $( '.tyche-multilang-menu' ).menu();
     },
 
     updateAjaxCart: function() {
