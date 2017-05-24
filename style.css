@@ -3181,7 +3181,6 @@ a {
     .top-header-bar-container .top-header-bar li.top-multilang {
       margin-right: 15px;
       border-left: 1px solid #353940;
-      overflow: hidden;
       position: relative;
       min-width: 115px; }
       .top-header-bar-container .top-header-bar li.top-multilang:after {
@@ -3192,21 +3191,15 @@ a {
         display: block;
         color: #FFF;
         font-family: 'FontAwesome'; }
-      .top-header-bar-container .top-header-bar li.top-multilang select {
-        width: 110%;
-        margin-left: 15px;
-        border: none;
-        color: #FFF;
-        background: transparent;
-        left: 25px;
-        position: relative; }
-        .top-header-bar-container .top-header-bar li.top-multilang select option {
-          color: #2a313e; }
+      .top-header-bar-container .top-header-bar li.top-multilang .multilang-toggle {
+        margin-left: 15px; }
+        .top-header-bar-container .top-header-bar li.top-multilang .multilang-toggle img {
+          margin-right: 5px;
+          margin-bottom: 3px;
+          display: inline-block; }
       .top-header-bar-container .top-header-bar li.top-multilang img {
         width: 20px;
-        position: absolute;
-        top: 18px;
-        left: 15px; }
+        position: relative; }
     .top-header-bar-container .top-header-bar li.top-account {
       padding-left: 20px;
       margin-right: 20px;
@@ -3235,6 +3228,61 @@ a {
         text-align: center; }
         .top-header-bar-container .top-header-bar li.top-search .pull-right {
           float: none !important; } }
+
+/*--------------------------------------------------------------
+# Multilang menu
+--------------------------------------------------------------*/
+.tyche-multilang-menu {
+  background: #25262B;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 8px 0 rgba(0, 0, 0, 0.12);
+  color: #ffffff;
+  font-size: 16px;
+  padding: 16px 0;
+  position: absolute;
+  top: 48px;
+  transform: scale(0);
+  transition: transform 0.2s;
+  z-index: 96;
+  margin: 0; }
+  .tyche-multilang-menu.show {
+    transform: scale(1); }
+  .tyche-multilang-menu.menu--right {
+    transform-origin: top right; }
+  .tyche-multilang-menu.menu--left {
+    transform-origin: top left; }
+  .tyche-multilang-menu li {
+    display: block;
+    min-height: 32px;
+    line-height: 16px;
+    margin: 8px 0;
+    padding: 0 16px;
+    width: 100%; }
+    .tyche-multilang-menu li.menu-separator {
+      background: #eee;
+      height: 1px;
+      min-height: 0;
+      margin: 12px 0;
+      padding: 0; }
+      .tyche-multilang-menu li.menu-separator:hover {
+        background: #eee; }
+    .tyche-multilang-menu li:first-child {
+      margin-top: 0; }
+    .tyche-multilang-menu li:last-child {
+      margin-bottom: 0; }
+    .tyche-multilang-menu li:hover {
+      background: #F66249; }
+  .tyche-multilang-menu a {
+    color: inherit;
+    display: block;
+    height: 32px;
+    line-height: 32px;
+    padding: 0;
+    text-decoration: none;
+    width: 100%;
+    white-space: nowrap; }
+    .tyche-multilang-menu a:hover {
+      color: #F66249; }
 
 /*--------------------------------------------------------------
 # Modules ## Header

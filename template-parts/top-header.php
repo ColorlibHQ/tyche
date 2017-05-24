@@ -23,36 +23,40 @@
 					<?php if ( class_exists( 'WooCommerce' ) ) : ?>
 						<!-- Cart -->
 						<li class="top-cart">
-							<a href="<?php echo esc_url( Tyche_Helper::get_woocommerge_page( 'cart' ) ) ?>"><i
-										class="fa fa-shopping-cart"></i> <?php echo esc_html__( 'My Cart', 'tyche' ) ?>
+							<a href="<?php echo esc_url( Tyche_Helper::get_woocommerge_page( 'cart' ) ) ?>"><i class="fa fa-shopping-cart"></i> <?php echo esc_html__( 'My Cart', 'tyche' ) ?>
 								- <?php echo esc_html( get_woocommerce_currency_symbol( get_woocommerce_currency() ) . ' ' . Tyche_WooCommerce_Hooks::get_cart_total() ) ?>
 							</a>
-						</li>
-						<!-- / Cart -->
+						</li> <!-- / Cart -->
 					<?php endif; ?>
 
 					<?php if ( class_exists( 'WooCommerce' ) ) : ?>
 						<!-- Account -->
 						<li class="top-account">
-							<a href="<?php echo esc_url( Tyche_Helper::get_woocommerge_page( 'account' ) ) ?>"><i
-										class="fa fa-user"></i> <?php echo esc_html__( 'Account', 'tyche' ) ?></a>
-						</li>
-						<!-- / Account -->
+							<a href="<?php echo esc_url( Tyche_Helper::get_woocommerge_page( 'account' ) ) ?>"><i class="fa fa-user"></i> <?php echo esc_html__( 'Account', 'tyche' ) ?>
+							</a>
+						</li><!-- / Account -->
 					<?php endif; ?>
 
-					<?php if ( function_exists( 'qtranxf_generateLanguageSelectCode' ) ) : ?>
+					<?php if ( function_exists( 'pll_the_languages' ) ) : ?>
 						<!-- Multi language picker -->
 						<li class="top-multilang">
 							<?php
-							$type = array(
-								'type' => 'dropdown',
-							);
-							qtranxf_generateLanguageSelectCode( $type, 'tyche_multilang_flag' )
+							$current_lang = pll_current_language( 'name' );
+							$current_flag = pll_current_language( 'flag' );
 							?>
-						</li>
-						<!-- / Multi language picker -->
-					<?php endif; ?>
+							<a href="#" class="multilang-toggle" id="multilang-toggle"> <?php echo $current_flag . esc_html( $current_lang ) ?> </a>
+							<ul class="tyche-multilang-menu" data-menu data-menu-toggle="#multilang-toggle">
+								<?php
+								$args = array(
+									'show_flags' => 1,
+									'show_names' => 1,
+								);
 
+								pll_the_languages( $args );
+								?>
+							</ul>
+						</li><!-- / Multi language picker -->
+					<?php endif; ?>
 					<?php
 					$enable_search_bar = get_theme_mod( 'tyche_enable_top_bar_search', 'enabled' );
 					?>
@@ -60,24 +64,19 @@
 						<!-- Top Search -->
 						<li class="top-search">
 							<!-- Search Form -->
-							<form role="search" method="get" class="pull-right" id="searchform_topbar"
-								  action="<?php echo esc_url( home_url( '/' ) ); ?>">
+							<form role="search" method="get" class="pull-right" id="searchform_topbar" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 								<label>
 									<span class="screen-reader-text"><?php esc_html__( 'Search for:', 'tyche' ) ?></span>
-									<input class="search-field-top-bar" id="search-field-top-bar"
-										   placeholder="Search ..."
-										   value="" name="s"
-										   type="search">
+									<input class="search-field-top-bar" id="search-field-top-bar" placeholder="Search ..." value="" name="s" type="search">
 								</label>
-								<button id="search-top-bar-submit" type="submit" class="search-top-bar-submit"><span
-											class="fa fa-search"></span></button>
+								<button id="search-top-bar-submit" type="submit" class="search-top-bar-submit">
+									<span class="fa fa-search"></span>
+								</button>
 							</form>
-						</li>
-						<!-- / Top Search -->
+						</li><!-- / Top Search -->
 					<?php endif; ?>
 				</ul>
 			</div>
 		</div>
 	</div>
-</header>
-<!-- /Top Header Bar -->
+</header><!-- /Top Header Bar -->

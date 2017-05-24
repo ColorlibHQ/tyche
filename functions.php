@@ -41,8 +41,8 @@ function tyche_register_required_plugins() {
 			'required' => false,
 		),
 		array(
-			'name'     => 'qTranslate X',
-			'slug'     => 'qtranslate-x',
+			'name'     => 'Polylang',
+			'slug'     => 'polylang',
 			'required' => false,
 		),
 

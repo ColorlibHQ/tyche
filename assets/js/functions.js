@@ -166,31 +166,7 @@
     },
 
     initMultiLang: function() {
-      var $selector = jQuery( '#tyche_multilang_flag-chooser' ),
-          image, $active, $class, $wrapper;
-
-      if ( ! $selector.length ) {
-        return false;
-      }
-
-      $active = $selector.find( '.active' );
-      $class = $active.attr( 'class' );
-      $wrapper = jQuery( '.top-multilang' );
-
-      /* Remove active class */
-      $class = $class.replace( ' active', '' );
-
-      /* Remove lang prefix class */
-      $class = $class.replace( 'lang-', '' );
-
-      switch ( $class ) {
-        case 'en':
-          $class = 'uk';
-          break;
-      }
-
-      image = tycheVariables.flags + $class + '.png';
-      $wrapper.prepend( '<img src="' + image + '" alt="country flag" />' );
+      $('.tyche-multilang-menu').menu();
     },
 
     updateAjaxCart: function() {
