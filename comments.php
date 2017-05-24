@@ -36,7 +36,7 @@ if ( post_password_required() ) {
 					'comments title',
 					'tyche'
 				) ),
-				number_format_i18n( $comments_number ),
+				number_format_i18n( get_comments_number() ),
 				'<span>' . get_the_title() . '</span>'
 			);
 			?>
