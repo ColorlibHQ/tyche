@@ -78,8 +78,13 @@ class Tyche {
 	/**
 	 * Init Epsilon Framework
 	 */
-	public function init_epsilon(){
+	public function init_epsilon() {
+		$args = array(
+			'sections' => array( 'recommended-actions', 'pro' ),
+			'path'     => '/inc/libraries',
+		);
 
+		new Epsilon_Framework( $args );
 	}
 
 	/**
