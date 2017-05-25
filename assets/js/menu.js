@@ -37,6 +37,10 @@
         top: targetOffset.top + ( $target.outerHeight() / 2 ) + 25
       };
 
+      if ( windowWidth <= 768 ) {
+        position.top = 40;
+      }
+
       if ( targetOffset.left > windowWidth / 2 ) {
         this.$el.addClass( 'menu--right' ).removeClass( 'menu--left' );
 
@@ -45,7 +49,7 @@
       } else {
         this.$el.addClass( 'menu--left' ).removeClass( 'menu--right' );
 
-        position.left = targetOffset.left + ( $target.outerWidth() / 2 );
+        position.left = -15;
         position.right = 'auto';
       }
 

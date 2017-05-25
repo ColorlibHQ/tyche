@@ -24,10 +24,10 @@ class Tyche_Customizer {
 		$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 		$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
-		$wp_customize->get_section( 'title_tagline' )->panel    = 'appearance';
-		$wp_customize->get_section( 'title_tagline' )->title    = esc_html__( 'General Options', 'tyche' );
-		$wp_customize->get_section( 'colors' )->panel           = 'appearance';
-		$wp_customize->get_section( 'background_image' )->panel = 'appearance';
+		$wp_customize->get_section( 'title_tagline' )->panel    = 'theme_options';
+		$wp_customize->get_section( 'title_tagline' )->priority = 1;
+		$wp_customize->get_section( 'colors' )->priority        = 2;
+		$wp_customize->get_section( 'colors' )->panel           = 'theme_options';
 
 		if ( ! class_exists( 'Kirki' ) ) {
 			require_once get_template_directory() . '/inc/libraries/class-kirki-installer-section.php';
@@ -36,7 +36,7 @@ class Tyche_Customizer {
 		/**
 		 * Add the theme configuration
 		 */
-		tyche_Kirki::add_config( 'tyche_theme', array(
+		Tyche_Kirki::add_config( 'tyche_theme', array(
 			'option_type' => 'theme_mod',
 			'capability'  => 'edit_theme_options',
 		) );
@@ -67,17 +67,19 @@ class Tyche_Customizer {
 	public function customizer_enqueues() {
 		wp_enqueue_media();
 		wp_enqueue_style( 'tyche_media_upload_css', get_template_directory_uri() . '/inc/customizer/assets/css/upload-media.css' );
-		wp_enqueue_script( 'tyche_media_upload_js', get_template_directory_uri() . '/inc/customizer/assets/js/upload-media.js', array( 'jquery' ) );
+		wp_enqueue_script(
+			'tyche_media_upload_js',
+			get_template_directory_uri() . '/inc/customizer/assets/js/upload-media.js',
+			array(
+				'jquery',
+				'customize-controls',
+			)
+		);
 		wp_localize_script( 'tyche_media_upload_js', 'WPUrls', array(
 			'siteurl' => get_option( 'siteurl' ),
 			'theme'   => get_template_directory_uri(),
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
 		) );
-		wp_enqueue_script( 'tyche-image-upload', get_template_directory_uri() . '/assets/js/upload-media.js', array(
-			'jquery',
-			'customize-controls',
-		) );
-		wp_enqueue_style( 'tyche-image-upload', get_template_directory_uri() . '/assets/css/upload-media.css' );
 	}
 
 }

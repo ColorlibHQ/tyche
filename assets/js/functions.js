@@ -175,6 +175,17 @@
       } );
     },
 
+    initAdsenseLoader: function() {
+      var selector = $( '.tyche-adsense' );
+      if ( selector.length ) {
+        selector.adsenseLoader( {
+          onLoad: function( $ad ) {
+            $ad.addClass( 'adsense--loaded' );
+          }
+        } );
+      }
+    },
+
     updateAjaxCart: function() {
       /**
        * During ajax, we lose scope - so declare "self"

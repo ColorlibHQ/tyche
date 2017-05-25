@@ -58,7 +58,7 @@ class Tyche {
 	 * Initiate kirki
 	 */
 	public function init_kirki() {
-		new tyche_Kirki();
+		new Tyche_Kirki();
 	}
 
 	/**
@@ -107,6 +107,7 @@ class Tyche {
 				array(
 					'id'    => 'tyche-req-ac-install-additional-plugins',
 					'title' => esc_html__( 'Please install plugins recommended through the notices.', 'tyche' ),
+					'check' => true,
 				),
 			);
 
@@ -126,6 +127,7 @@ class Tyche {
 		wp_enqueue_style( 'owlCarousel', get_template_directory_uri() . '/assets/css/owl-carousel/owl.carousel.min.css' );
 		wp_enqueue_style( 'owlCarousel-theme', get_template_directory_uri() . '/assets/css/owl-carousel/owl.theme.default.css' );
 		wp_enqueue_script( 'jquery-zoom', get_template_directory_uri() . '/assets/js/jquery-zoom/jquery.zoom.min.js', array( 'jquery' ), '1.3.3', true );
+		wp_register_script( 'adsenseloader', get_template_directory_uri() . '/assets/js/adsenseloader/jquery.adsenseloader.min.js', array( 'jquery' ), '1.0.0', true );
 		wp_register_script( 'tyche-scripts', get_template_directory_uri() . '/assets/js/functions.js', array(
 			'jquery',
 			'jquery-zoom',
@@ -210,10 +212,6 @@ class Tyche {
 			'width'      => 165,
 			'flex-width' => true,
 		) );
-		add_theme_support( 'custom-background', apply_filters( 'tyche_custom_background_args', array(
-			'default-color' => 'ffffff',
-			'default-image' => '',
-		) ) );
 		add_theme_support( 'custom-header', apply_filters( 'tyche_custom_header_args', array(
 			'default-image'      => '',
 			'default-text-color' => '000000',
@@ -221,7 +219,12 @@ class Tyche {
 			'height'             => 250,
 			'flex-height'        => true,
 		) ) );
+
 		add_theme_support( 'woocommerce' );
+		add_theme_support( 'wc-product-gallery-zoom' );
+		add_theme_support( 'wc-product-gallery-lightbox' );
+		add_theme_support( 'wc-product-gallery-slider' );
+
 		add_theme_support( 'customize-selective-refresh-widgets' );
 
 		// Add theme support for Infinite Scroll.

@@ -8,7 +8,12 @@
 if ( ! class_exists( 'Kirki' ) ) {
 	global $wp_customize;
 
-	$wp_customize->add_setting( 'kirki_installer_setting', array() );
+	$wp_customize->add_setting(
+		'kirki_installer_setting',
+		array(
+			'sanitize_callback' => '__return_true',
+		)
+	);
 	$wp_customize->add_control( 'kirki_installer_control', array(
 		'section'  => 'kirki_installer',
 		'settings' => 'kirki_installer_setting',
@@ -18,7 +23,7 @@ if ( ! class_exists( 'Kirki' ) ) {
 /**
  *  Section information
  */
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'settings' => 'tyche_frontpage_settings',
 	'label'    => esc_html__( 'Front Page Settings', 'tyche' ),
 	'section'  => 'frontpage_settings',
@@ -27,7 +32,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'priority' => 11,
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'settings' => 'tyche_color_scheme',
 	'label'    => esc_html__( 'Color Scheme', 'tyche' ),
 	'section'  => 'colors',
@@ -36,24 +41,38 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'choices'  => array(
 		'red'       => array(
 			'#f66249',
+			'#25262b',
+			'#717171',
 		),
 		'beige'     => array(
 			'#eaab76',
+			'#25262b',
+			'#717171',
 		),
 		'black'     => array(
 			'#252525',
+			'#25262b',
+			'#717171',
 		),
 		'green'     => array(
 			'#99ca45',
+			'#25262b',
+			'#717171',
 		),
 		'blue'      => array(
 			'#263585',
+			'#25262b',
+			'#717171',
 		),
 		'lightblue' => array(
 			'#2279d3',
+			'#25262b',
+			'#717171',
 		),
 		'orange'    => array(
 			'#ffab1a',
+			'#25262b',
+			'#717171',
 		),
 	),
 ) );
@@ -61,7 +80,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 /**
  * Theme Options Panel
  */
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'     => 'toggle',
 	'settings' => 'tyche_enable_top_bar',
 	'label'    => esc_html__( 'Enable Header Top Bar', 'tyche' ),
@@ -70,7 +89,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'priority' => 10,
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'     => 'toggle',
 	'settings' => 'tyche_enable_post_breadcrumbs',
 	'label'    => esc_html__( 'Enable Breadcrumbs', 'tyche' ),
@@ -79,7 +98,22 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'priority' => 12,
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
+	'type'     => 'radio-buttonset',
+	'settings' => 'tyche_shop_layout',
+	'label'    => esc_html__( 'Shop Layout', 'tyche' ),
+	'section'  => 'theme_options_general',
+	'default'  => 'fullwidth',
+	'priority' => 13,
+	'choices'  => array(
+		'left'      => esc_attr__( 'Left Sidebar', 'tyche' ),
+		'fullwidth' => esc_attr__( 'Full Width', 'tyche' ),
+		'right'     => esc_attr__( 'Right Sidebar', 'tyche' ),
+	),
+) );
+
+
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'     => 'text',
 	'settings' => 'tyche_contact_phone',
 	'label'    => esc_html__( 'Contact Phone', 'tyche' ),
@@ -88,7 +122,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'priority' => 10,
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'     => 'text',
 	'settings' => 'tyche_contact_address',
 	'label'    => esc_html__( 'Contact Address', 'tyche' ),
@@ -97,27 +131,27 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'priority' => 11,
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'              => 'text',
 	'settings'          => 'tyche_contact_page_shortcode_form',
 	'label'             => esc_html__( 'Contact Form Shortcode', 'tyche' ),
 	'section'           => 'theme_options_contact_page',
 	'default'           => '',
 	'priority'          => 12,
-	'sanitize_callback' => array( 'tyche_Kirki', 'unfiltered' ),
+	'sanitize_callback' => array( 'Tyche_Kirki', 'unfiltered' ),
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'              => 'text',
 	'settings'          => 'tyche_contact_page_shortcode_map',
 	'label'             => esc_html__( 'Google Map Shortcode', 'tyche' ),
 	'section'           => 'theme_options_contact_page',
 	'default'           => '',
 	'priority'          => 13,
-	'sanitize_callback' => array( 'tyche_Kirki', 'unfiltered' ),
+	'sanitize_callback' => array( 'Tyche_Kirki', 'unfiltered' ),
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'     => 'toggle',
 	'settings' => 'tyche_show_banner',
 	'label'    => esc_html__( 'Enable Banner in Header', 'tyche' ),
@@ -126,7 +160,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'priority' => 13,
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'     => 'radio',
 	'settings' => 'tyche_banner_type',
 	'label'    => esc_html__( 'Banner Type', 'tyche' ),
@@ -139,16 +173,23 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	),
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'     => 'image',
 	'settings' => 'tyche_banner_image',
 	'label'    => esc_html__( 'Banner Image', 'tyche' ),
 	'section'  => 'theme_options_general',
 	'default'  => get_template_directory_uri() . '/assets/images/banner.jpg',
 	'priority' => 15,
+	'required' => array(
+		array(
+			'setting'  => 'tyche_banner_type',
+			'value'    => 'image',
+			'operator' => '==',
+		),
+	),
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'              => 'text',
 	'settings'          => 'tyche_banner_link',
 	'label'             => esc_html__( 'Banner URL', 'tyche' ),
@@ -156,9 +197,16 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'default'           => 'http://colorlib.com',
 	'priority'          => 16,
 	'sanitize_callback' => 'esc_url_raw',
+	'required'          => array(
+		array(
+			'setting'  => 'tyche_banner_type',
+			'value'    => 'image',
+			'operator' => '==',
+		),
+	),
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'     => 'code',
 	'settings' => 'tyche_banner_adsense_code',
 	'label'    => esc_html__( 'AdSense Code', 'tyche' ),
@@ -170,24 +218,32 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 		'theme'    => 'monokai',
 		'height'   => 250,
 	),
+	'required' => array(
+		array(
+			'setting'  => 'tyche_banner_type',
+			'value'    => 'adsense',
+			'operator' => '==',
+		),
+	),
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
+	'type'     => 'radio-buttonset',
 	'settings' => 'tyche_footer_layout',
-	'type'     => 'radio-image',
 	'label'    => esc_html__( 'Layout', 'tyche' ),
 	'section'  => 'theme_options_footer',
 	'default'  => '4',
 	'priority' => 10,
 	'choices'  => array(
-		'1' => get_template_directory_uri() . '/assets/images/1-column.png',
-		'2' => get_template_directory_uri() . '/assets/images/2-column.png',
-		'3' => get_template_directory_uri() . '/assets/images/3-column.png',
-		'4' => get_template_directory_uri() . '/assets/images/4-column.png',
+		'1' => esc_attr__( '1 Column', 'tyche' ),
+		'2' => esc_attr__( '2 Column', 'tyche' ),
+		'3' => esc_attr__( '3 Column', 'tyche' ),
+		'4' => esc_attr__( '4 Column', 'tyche' ),
 	),
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'     => 'toggle',
 	'settings' => 'tyche_enable_copyright',
 	'label'    => esc_html__( 'Enable Copyright', 'tyche' ),
@@ -196,7 +252,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'priority' => 11,
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'     => 'text',
 	'settings' => 'tyche_copyright_contents',
 	'label'    => esc_html__( 'Copyright Contents', 'tyche' ),
@@ -208,7 +264,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 /**
  * Frontpage settings
  */
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'     => 'toggle',
 	'settings' => 'tyche_enable_main_slider',
 	'label'    => esc_html__( 'Enable Front Page Slider', 'tyche' ),
@@ -217,7 +273,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'priority' => 10,
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'settings' => 'tyche_frontpage_sections',
 	'label'    => esc_html__( 'Enable / Disable sections', 'tyche' ),
 	'section'  => 'frontpage_sections_general',
@@ -239,21 +295,21 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	),
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'settings' => 'tyche_slider_layout',
-	'type'     => 'radio-image',
+	'type'     => 'radio-buttonset',
 	'label'    => esc_html__( 'Layout', 'tyche' ),
 	'section'  => 'frontpage_sections_bigtitle_images',
 	'default'  => 'left',
 	'priority' => 10,
 	'choices'  => array(
-		'left'   => get_template_directory_uri() . '/assets/images/align-left.png',
-		'center' => get_template_directory_uri() . '/assets/images/align-center.png',
-		'right'  => get_template_directory_uri() . '/assets/images/align-right.png',
+		'left'   => esc_attr__( 'Align Left', 'tyche' ),
+		'center' => esc_attr__( 'Align Center', 'tyche' ),
+		'right'  => esc_attr__( 'Align Right', 'tyche' ),
 	),
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'      => 'repeater',
 	'label'     => esc_attr__( 'Slider Backgrounds', 'tyche' ),
 	'section'   => 'frontpage_sections_bigtitle_images',
@@ -311,7 +367,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	),
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'     => 'text',
 	'settings' => 'info_section_one_text',
 	'section'  => 'frontpage_sections_bigtitle_info',
@@ -320,7 +376,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'priority' => 10,
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'     => 'text',
 	'settings' => 'info_section_one_subtext',
 	'default'  => 'On all orders over 90$',
@@ -329,7 +385,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'priority' => 11,
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'     => 'dashicons',
 	'settings' => 'info_section_one_icon',
 	'section'  => 'frontpage_sections_bigtitle_info',
@@ -337,7 +393,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'priority' => 12,
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'     => 'text',
 	'settings' => 'info_section_two_text',
 	'default'  => 'CALL US ANYTIME',
@@ -346,7 +402,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'priority' => 13,
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'     => 'text',
 	'settings' => 'info_section_two_subtext',
 	'default'  => '+04786445953',
@@ -355,7 +411,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'priority' => 14,
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'     => 'dashicons',
 	'settings' => 'info_section_two_icon',
 	'section'  => 'frontpage_sections_bigtitle_info',
@@ -363,7 +419,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'priority' => 15,
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'     => 'text',
 	'settings' => 'info_section_three_text',
 	'default'  => 'OUR LOCATION',
@@ -372,7 +428,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'priority' => 16,
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'     => 'text',
 	'settings' => 'info_section_three_subtext',
 	'section'  => 'frontpage_sections_bigtitle_info',
@@ -381,7 +437,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'priority' => 17,
 ) );
 
-tyche_Kirki::add_field( 'tyche_theme', array(
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'     => 'dashicons',
 	'settings' => 'info_section_three_icon',
 	'section'  => 'frontpage_sections_bigtitle_info',

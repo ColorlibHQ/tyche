@@ -45,9 +45,9 @@ class Widget_Tyche_Recent_Posts extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		$params = array(
-			'order'   => 'DESC',
-			'orderby' => 'date',
-			'cats'    => '',
+			'order'               => 'DESC',
+			'orderby'             => 'date',
+			'cats'                => '',
 		);
 
 		$defaults = array(
@@ -116,17 +116,12 @@ class Widget_Tyche_Recent_Posts extends WP_Widget {
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'tyche' ); ?>
 				:</label>
-			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"
-				   name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text"
-				   value="<?php echo esc_attr( $instance['title'] ); ?>"/>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>"/>
 		</p>
 		<p>
-			<label
-					for="<?php echo esc_attr( $this->get_field_id( 'show_title' ) ); ?>"><?php esc_html_e( 'Show Title', 'tyche' );
+			<label for="<?php echo esc_attr( $this->get_field_id( 'show_title' ) ); ?>"><?php esc_html_e( 'Show Title', 'tyche' );
 				?>:</label>
-			<select name="<?php echo esc_attr( $this->get_field_name( 'show_title' ) ); ?>"
-					id="<?php echo esc_attr( $this->get_field_id( 'show_title' ) ); ?>" class="widefat"
-					style="height: auto;">
+			<select name="<?php echo esc_attr( $this->get_field_name( 'show_title' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'show_title' ) ); ?>" class="widefat" style="height: auto;">
 				<option value="yes" <?php echo ( 'yes' === $instance['show_title'] ) ? 'selected' : '' ?>>
 					<?php echo esc_html__( 'Yes', 'tyche' ) ?>
 				</option>
@@ -138,9 +133,7 @@ class Widget_Tyche_Recent_Posts extends WP_Widget {
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>"><?php esc_html_e( 'Show Date', 'tyche' );
 				?>:</label>
-			<select name="<?php echo esc_attr( $this->get_field_name( 'show_date' ) ); ?>"
-					id="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>" class="widefat"
-					style="height: auto;">
+			<select name="<?php echo esc_attr( $this->get_field_name( 'show_date' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>" class="widefat" style="height: auto;">
 				<option value="yes" <?php echo ( 'yes' === $instance['show_date'] ) ? 'selected' : '' ?>>
 					<?php echo esc_html__( 'Yes', 'tyche' ) ?>
 				</option>
@@ -153,19 +146,13 @@ class Widget_Tyche_Recent_Posts extends WP_Widget {
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"><?php esc_html_e( 'Number of posts', 'tyche' ); ?>
 				:</label>
-			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"
-				   name="<?php echo esc_attr( $this->get_field_name( 'limit' ) ); ?>" type="number"
-				   value="<?php echo esc_attr( $instance['limit'] ); ?>"
-				   min="-1"/>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'limit' ) ); ?>" type="number" value="<?php echo esc_attr( $instance['limit'] ); ?>" min="-1"/>
 		</p>
 
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'offset' ) ); ?>"><?php esc_html_e( 'Offset', 'tyche' ); ?>
 				:</label>
-			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'offset' ) ); ?>"
-				   name="<?php echo esc_attr( $this->get_field_name( 'offset' ) ); ?>" type="number"
-				   value="<?php echo $instance['offset']; ?>"
-				   min="-1"/>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'offset' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'offset' ) ); ?>" type="number" value="<?php echo $instance['offset']; ?>" min="-1"/>
 		</p>
 
 		<?php

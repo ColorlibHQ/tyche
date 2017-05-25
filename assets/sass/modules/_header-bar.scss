@@ -63,10 +63,8 @@
         min-width: 115px;
         &:after {
           content: '\f107';
-          position: absolute;
-          top: 1px;
-          right: 0;
-          display: block;
+          position: relative;
+          display: inline-block;
           color: #FFF;
           font-family: 'FontAwesome';
         }
@@ -109,6 +107,12 @@
           border-left: none;
           margin-right: 0;
         }
+        &.top-multilang {
+          .multilang-toggle {
+            margin-left: 0;
+          }
+        }
+
         &.top-search {
           text-align: center;
           .pull-right {

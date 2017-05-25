@@ -2713,13 +2713,7 @@ a {
           position: absolute;
           color: transparent;
           background: transparent; }
-  .widget.widget_tyche_companion_products .widget-title, .widget.widget_tyche_companion_recent .widget-title {
-    margin-bottom: 40px;
-    margin-top: 30px;
-    font-size: 30px; }
-    .widget.widget_tyche_companion_products .widget-title > span, .widget.widget_tyche_companion_recent .widget-title > span {
-      font-size: 30px; }
-  @media (min-width: 582px) {
+  @media (min-width: 990px) {
     .widget.widget_tyche_companion_recent.no-title {
       margin-top: 100px; } }
   .widget.widget_tyche_companion_recent .tyche-recent-post-alternate-widget {
@@ -2791,7 +2785,8 @@ a {
             display: none; }
   .widget.widget_tyche_companion_recent .tyche-recent-post-widget {
     display: inline-block;
-    margin-bottom: 15px; }
+    margin-bottom: 15px;
+    width: 100%; }
     .widget.widget_tyche_companion_recent .tyche-recent-post-widget .tyche-title p {
       font-weight: bold; }
     .widget.widget_tyche_companion_recent .tyche-recent-post-widget .tyche-image {
@@ -2805,9 +2800,9 @@ a {
         .widget.widget_tyche_companion_recent .tyche-recent-post-widget .tyche-post-content p a:hover {
           color: #f43818; }
 
-#secondary .widget_categories, #secondary .widget_archive {
+#secondary .widget_categories, #secondary .widget_archive, .page-template-frontpage-template .widget_categories, .page-template-frontpage-template .widget_archive {
   overflow: hidden; }
-#secondary select {
+#secondary select, .page-template-frontpage-template select {
   max-width: initial;
   width: 100%;
   height: 34px;
@@ -2815,6 +2810,12 @@ a {
   -webkit-appearance: none;
   border-radius: 0;
   padding: 5px; }
+#secondary .widget_tyche_companion_products .widget-title, #secondary .widget_tyche_companion_recent .widget-title, .page-template-frontpage-template .widget_tyche_companion_products .widget-title, .page-template-frontpage-template .widget_tyche_companion_recent .widget-title {
+  margin-bottom: 40px;
+  margin-top: 30px;
+  font-size: 30px; }
+  #secondary .widget_tyche_companion_products .widget-title > span, #secondary .widget_tyche_companion_recent .widget-title > span, .page-template-frontpage-template .widget_tyche_companion_products .widget-title > span, .page-template-frontpage-template .widget_tyche_companion_recent .widget-title > span {
+    font-size: 30px; }
 
 .single-post #secondary {
   margin-top: 0; }
@@ -3185,10 +3186,8 @@ a {
       min-width: 115px; }
       .top-header-bar-container .top-header-bar li.top-multilang:after {
         content: '\f107';
-        position: absolute;
-        top: 1px;
-        right: 0;
-        display: block;
+        position: relative;
+        display: inline-block;
         color: #FFF;
         font-family: 'FontAwesome'; }
       .top-header-bar-container .top-header-bar li.top-multilang .multilang-toggle {
@@ -3218,6 +3217,8 @@ a {
         .top-header-bar-container .top-header-bar li.top-account, .top-header-bar-container .top-header-bar li.top-multilang {
           border-left: none;
           margin-right: 0; }
+        .top-header-bar-container .top-header-bar li.top-multilang .multilang-toggle {
+          margin-left: 0; }
         .top-header-bar-container .top-header-bar li.top-search {
           text-align: center; }
           .top-header-bar-container .top-header-bar li.top-search .pull-right {
@@ -3309,6 +3310,43 @@ a {
         margin-bottom: 20px; }
     .site-header .menu-toggle {
       padding: 5px; } }
+
+.header-banner {
+  text-align: right; }
+  @media screen and (max-width: 767px) {
+    .header-banner {
+      margin-top: 15px; } }
+  .header-banner .tyche-adsense {
+    width: 728px;
+    height: 90px;
+    display: block; }
+  .header-banner .tyche-adsense:before {
+    display: none !important; }
+  .header-banner .tyche-adsense ins {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: transparent; }
+  @media screen and (max-width: 991px) {
+    .header-banner .tyche-adsense {
+      width: 720px;
+      height: 90px; }
+    .header-banner .tyche-adsense:before {
+      content: '991'; } }
+  .header-banner .adsense__loading {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: table;
+    position: absolute;
+    top: 0;
+    left: 0; }
+  .header-banner .adsense--loaded .adsense__loading {
+    display: none; }
+  .header-banner .adsense__loading span {
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell; }
 
 .site-description {
   margin-bottom: 0; }

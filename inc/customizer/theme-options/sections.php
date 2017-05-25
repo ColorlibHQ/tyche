@@ -17,7 +17,7 @@ if ( ! class_exists( 'Kirki' ) ) {
 Tyche_Kirki::add_section( 'theme_options_general', array(
 	'title'      => esc_html__( 'General', 'tyche' ),
 	'panel'      => 'theme_options',
-	'priority'   => 11,
+	'priority'   => 0,
 	'capability' => 'edit_theme_options',
 ) );
 

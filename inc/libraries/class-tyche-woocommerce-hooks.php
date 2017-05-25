@@ -60,9 +60,9 @@ class Tyche_WooCommerce_Hooks {
 		);
 
 		// Image sizes
-		update_option( 'shop_catalog_image_size', $catalog );        // Product category thumbs
-		update_option( 'shop_single_image_size', $single );        // Single product image
-		update_option( 'shop_thumbnail_image_size', $thumbnail );    // Image gallery thumbs
+		update_option( 'shop_catalog_image_size', $catalog );
+		update_option( 'shop_single_image_size', $single );
+		update_option( 'shop_thumbnail_image_size', $thumbnail );
 	}
 
 	/**
@@ -71,7 +71,9 @@ class Tyche_WooCommerce_Hooks {
 	 * @return int
 	 */
 	public function loop_columns() {
-		if ( is_active_sidebar( 'shop-sidebar' ) ) {
+		$layout = get_theme_mod( 'tyche_shop_layout', 'fullwidth' );
+
+		if ( is_active_sidebar( 'shop-sidebar' ) && 'fullwidth' !== $layout ) {
 			return 3;
 		}
 

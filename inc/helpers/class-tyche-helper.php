@@ -25,11 +25,12 @@ class Tyche_Helper {
 	public static function get_posts( $args ) {
 
 		$atts = array(
-			'cat'            => $args['cats'],
-			'posts_per_page' => $args['limit'],
-			'order'          => $args['order'],
-			'offset'         => $args['offset'],
-			'orderby'        => $args['orderby'],
+			'cat'                 => $args['cats'],
+			'posts_per_page'      => $args['limit'],
+			'order'               => $args['order'],
+			'offset'              => $args['offset'],
+			'orderby'             => $args['orderby'],
+			'ignore_sticky_posts' => true,
 		);
 
 		$posts = new WP_Query( $atts );

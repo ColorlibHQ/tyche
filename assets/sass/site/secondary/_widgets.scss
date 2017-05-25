@@ -218,19 +218,8 @@
     }
   }
 
-  &.widget_tyche_companion_products, &.widget_tyche_companion_recent {
-    .widget-title {
-      margin-bottom: 40px;
-      margin-top: 30px;
-      font-size: 30px;
-      > span {
-        font-size: 30px;
-      }
-    }
-  }
-
   &.widget_tyche_companion_recent {
-    @media(min-width: 582px) {
+    @media(min-width: 990px) {
       &.no-title {
         margin-top: 100px;
       }
@@ -319,6 +308,7 @@
     .tyche-recent-post-widget {
       display: inline-block;
       margin-bottom: 15px;
+      width:100%;
       .tyche-title {
         p {
           font-weight: bold;
@@ -344,7 +334,7 @@
   }
 }
 
-#secondary {
+#secondary, .page-template-frontpage-template {
   .widget_categories, .widget_archive {
     overflow: hidden;
   }
@@ -356,6 +346,17 @@
     -webkit-appearance: none;
     border-radius: 0;
     padding: 5px;
+  }
+
+  .widget_tyche_companion_products, .widget_tyche_companion_recent {
+    .widget-title {
+      margin-bottom: 40px;
+      margin-top: 30px;
+      font-size: 30px;
+      > span {
+        font-size: 30px;
+      }
+    }
   }
 }
 
