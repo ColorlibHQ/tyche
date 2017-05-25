@@ -36,7 +36,6 @@ matrix:
 before_script:
   - export PHPCS_DIR=/tmp/phpcs
   - export SNIFFS_DIR=/tmp/sniffs
-  - git submodule add https://github.com/MachoThemes/epsilon-framework inc/libraries/epsilon-framework
   # Install CodeSniffer for WordPress Coding Standards checks.
   - git clone -b 2.9 --depth 1 https://github.com/squizlabs/PHP_CodeSniffer.git $PHPCS_DIR
   # Install WordPress Coding Standards.
