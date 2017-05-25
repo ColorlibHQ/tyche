@@ -9,7 +9,8 @@
 	<!-- Include the WordPress ruleset, with exclusions. -->
 	<rule ref="WordPress-Core">
 	</rule>
-
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/woocommerce/*</exclude-pattern>
 	<!-- Include sniffs for PHP cross-version compatibility. -->
 	<rule ref="PHPCompatibility"/>
 </ruleset>

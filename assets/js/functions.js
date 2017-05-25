@@ -170,6 +170,10 @@
     },
 
     initZoom: function() {
+      $.each( $( '.product' ), function() {
+        $(this).find('img').wrap('<div class="tyche-product-image"></div>');
+      } );
+
       $( '.tyche-product-image' ).zoom( {
         url: $( this ).find( 'img' ).attr( 'data-src' )
       } );

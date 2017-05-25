@@ -33,6 +33,9 @@ class Tyche_Welcome_Screen {
 		add_action( 'admin_init', array( $this, 'tyche_set_pages' ) );
 	}
 
+	/**
+	 * Set pages as static/blog
+	 */
 	public function tyche_set_pages() {
 		if ( ! empty( $_GET ) ) {
 			/**
@@ -54,6 +57,9 @@ class Tyche_Welcome_Screen {
 	}
 
 
+	/**
+	 * Activate plugin
+	 */
 	public function tyche_activate_plugin() {
 		if ( ! empty( $_GET ) ) {
 			/**
@@ -67,6 +73,9 @@ class Tyche_Welcome_Screen {
 		}
 	}
 
+	/**
+	 * Deactivate plugin
+	 */
 	public function tyche_deactivate_plugin() {
 		if ( ! empty( $_GET ) ) {
 			/**
@@ -89,13 +98,12 @@ class Tyche_Welcome_Screen {
 	 * Creates the dashboard page
 	 *
 	 * @see   add_theme_page()
-	 * @since 1.8.2.4
 	 */
 	public function tyche_welcome_register_menu() {
 		$action_count = $this->count_actions();
-		$title        = $action_count > 0 ? 'About Tyche <span class="badge-action-count">' . esc_html( $action_count ) . '</span>' : 'About Tyche';
+		$title        = $action_count > 0 ? esc_html__( 'About Tyche', 'tyche' ) . '<span class="badge-action-count">' . esc_html( $action_count ) . '</span>' : esc_html__( 'About Tyche', 'tyche' );
 
-		add_theme_page( 'About Tyche', $title, 'edit_theme_options', 'tyche-welcome', array(
+		add_theme_page( esc_html__( 'About Tyche', 'tyche' ), $title, 'edit_theme_options', 'tyche-welcome', array(
 			$this,
 			'tyche_welcome_screen',
 		) );
@@ -104,7 +112,6 @@ class Tyche_Welcome_Screen {
 	/**
 	 * Adds an admin notice upon successful activation.
 	 *
-	 * @since 1.8.2.4
 	 */
 	public function tyche_activation_admin_notice() {
 		global $pagenow;
@@ -117,15 +124,14 @@ class Tyche_Welcome_Screen {
 	/**
 	 * Display an admin notice linking to the welcome screen
 	 *
-	 * @since 1.8.2.4
 	 */
 	public function tyche_welcome_admin_notice() {
 		?>
 		<div class="updated notice is-dismissible">
-			<?php /* translators: placeholder is a link */?>
+			<?php /* translators: placeholder is a link */ ?>
 			<p><?php echo sprintf( esc_html__( 'Welcome! Thank you for choosing Tyche! To fully take advantage of the best our theme can offer please make sure you visit our %1$swelcome page%2$s.', 'tyche' ), '<a href="' . esc_url( admin_url( 'themes.php?page=tyche-welcome' ) ) . '">', '</a>' ); ?></p>
-			<p><a href="<?php echo esc_url( admin_url( 'themes.php?page=tyche-welcome' ) ); ?>" class="button"
-				  style="text-decoration: none;"><?php echo esc_html__( 'Get started with Tyche', 'tyche' ); ?></a>
+			<p>
+				<a href="<?php echo esc_url( admin_url( 'themes.php?page=tyche-welcome' ) ); ?>" class="button" style="text-decoration: none;"><?php echo esc_html__( 'Get started with Tyche', 'tyche' ); ?></a>
 			</p>
 		</div>
 		<?php
@@ -134,7 +140,6 @@ class Tyche_Welcome_Screen {
 	/**
 	 * Load welcome screen css and javascript
 	 *
-	 * @since  1.8.2.4
 	 */
 	public function tyche_welcome_style_and_scripts( $hook_suffix ) {
 
@@ -151,43 +156,20 @@ class Tyche_Welcome_Screen {
 	}
 
 	/**
-	 * Load scripts for customizer page
-	 *
-	 * @since  1.8.2.4
-	 */
-	public function tyche_welcome_scripts_for_customizer() {
-
-		wp_enqueue_style( 'tyche-welcome-screen-customizer-css', get_template_directory_uri() . '/inc/libraries/welcome-screen/css/welcome_customizer.css' );
-		wp_enqueue_script( 'tyche-welcome-screen-customizer-js', get_template_directory_uri() . '/inc/libraries/welcome-screen/js/welcome_customizer.js', array( 'jquery' ), '20120206', true );
-
-		wp_localize_script( 'tyche-welcome-screen-customizer-js', 'newspaperXWelcomeScreenCustomizerObject', array(
-			'nr_actions_required' => absint( $this->count_actions() ),
-			'aboutpage'           => esc_url( admin_url( 'themes.php?page=tyche-welcome&tab=recommended_actions' ) ),
-			'customizerpage'      => esc_url( admin_url( 'customize.php#recommended_actions' ) ),
-			'themeinfo'           => esc_html__( 'View Theme Info', 'tyche' ),
-		) );
-	}
-
-	/**
 	 * Dismiss required actions
 	 *
-	 * @since 1.8.2.4
 	 */
 	public function tyche_dismiss_required_action_callback() {
-
 		global $tyche_required_actions;
 
 		$action_id = ( isset( $_GET['id'] ) ) ? $_GET['id'] : 0;
 
-		echo esc_html( $action_id ); /* this is needed and it's the id of the dismissable required action */
+		echo absint( $action_id );
 
-		if ( ! empty( $action_id ) ) :
-
+		if ( ! empty( $action_id ) ) {
 			/* if the option exists, update the record for the specified id */
-			if ( get_option( 'tyche_show_required_actions' ) ) :
-
+			if ( get_option( 'tyche_show_required_actions' ) ) {
 				$tyche_show_required_actions = get_option( 'tyche_show_required_actions' );
-
 				switch ( $_GET['todo'] ) {
 					case 'add';
 						$tyche_show_required_actions[ $action_id ] = true;
@@ -196,39 +178,27 @@ class Tyche_Welcome_Screen {
 						$tyche_show_required_actions[ $action_id ] = false;
 						break;
 				}
-
 				update_option( 'tyche_show_required_actions', $tyche_show_required_actions );
-
-				/* create the new option,with false for the specified id */
-			else :
-
+			} else {
 				$tyche_show_required_actions_new = array();
-
-				if ( ! empty( $tyche_required_actions ) ) :
-
-					foreach ( $tyche_required_actions as $tyche_required_action ) :
-
-						if ( $tyche_required_action['id'] == $action_id ) :
+				if ( ! empty( $tyche_required_actions ) ) {
+					foreach ( $tyche_required_actions as $tyche_required_action ) {
+						if ( $tyche_required_action['id'] == $action_id ) {
 							$tyche_show_required_actions_new[ $tyche_required_action['id'] ] = false;
-						else :
+						} else {
 							$tyche_show_required_actions_new[ $tyche_required_action['id'] ] = true;
-						endif;
-
-					endforeach;
-
+						}
+					}
 					update_option( 'tyche_show_required_actions', $tyche_show_required_actions_new );
+				}
+			}
+		}
 
-				endif;
-
-			endif;
-
-		endif;
-
-		die(); // this is required to return a proper result
+		wp_die();
 	}
 
 	/**
-	 *
+	 * Count remaining actions
 	 */
 	public function count_actions() {
 		global $tyche_required_actions;
@@ -259,6 +229,11 @@ class Tyche_Welcome_Screen {
 		return $i;
 	}
 
+	/**
+	 * @param $slug
+	 *
+	 * @return array|mixed|object|WP_Error
+	 */
 	public function call_plugin_api( $slug ) {
 		include_once( ABSPATH . 'wp-admin/includes/plugin-install.php' );
 		$call_api = get_transient( 'tyche_plugin_information_transient_' . $slug );
@@ -289,6 +264,11 @@ class Tyche_Welcome_Screen {
 		return $call_api;
 	}
 
+	/**
+	 * @param $slug
+	 *
+	 * @return array
+	 */
 	public function check_active( $slug ) {
 		if ( file_exists( ABSPATH . 'wp-content/plugins/' . $slug . '/' . $slug . '.php' ) ) {
 			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
@@ -307,6 +287,11 @@ class Tyche_Welcome_Screen {
 		);
 	}
 
+	/**
+	 * @param $arr
+	 *
+	 * @return mixed
+	 */
 	public function check_for_icon( $arr ) {
 		if ( ! empty( $arr['svg'] ) ) {
 			$plugin_icon_url = $arr['svg'];
@@ -321,6 +306,12 @@ class Tyche_Welcome_Screen {
 		return $plugin_icon_url;
 	}
 
+	/**
+	 * @param $state
+	 * @param $slug
+	 *
+	 * @return string
+	 */
 	public function create_action_link( $state, $slug ) {
 		switch ( $state ) {
 			case 'install':
@@ -336,24 +327,30 @@ class Tyche_Welcome_Screen {
 				);
 				break;
 			case 'deactivate':
-				return add_query_arg( array(
-					'action'        => 'deactivate',
-					'plugin'        => rawurlencode( $slug . '/' . $slug . '.php' ),
-					'plugin_status' => 'all',
-					'paged'         => '1',
-					'_wpnonce'      => wp_create_nonce( 'deactivate-plugin_' . $slug . '/' . $slug . '.php' ),
-				), network_admin_url( 'plugins.php' ) );
+				return add_query_arg(
+					array(
+						'action'        => 'deactivate',
+						'plugin'        => rawurlencode( $slug . '/' . $slug . '.php' ),
+						'plugin_status' => 'all',
+						'paged'         => '1',
+						'_wpnonce'      => wp_create_nonce( 'deactivate-plugin_' . $slug . '/' . $slug . '.php' ),
+					),
+					network_admin_url( 'plugins.php' )
+				);
 				break;
 			case 'activate':
-				return add_query_arg( array(
-					'action'        => 'activate',
-					'plugin'        => rawurlencode( $slug . '/' . $slug . '.php' ),
-					'plugin_status' => 'all',
-					'paged'         => '1',
-					'_wpnonce'      => wp_create_nonce( 'activate-plugin_' . $slug . '/' . $slug . '.php' ),
-				), network_admin_url( 'plugins.php' ) );
+				return add_query_arg(
+					array(
+						'action'        => 'activate',
+						'plugin'        => rawurlencode( $slug . '/' . $slug . '.php' ),
+						'plugin_status' => 'all',
+						'paged'         => '1',
+						'_wpnonce'      => wp_create_nonce( 'activate-plugin_' . $slug . '/' . $slug . '.php' ),
+					),
+					network_admin_url( 'plugins.php' )
+				);
 				break;
-		}
+		} // End switch().
 	}
 
 	/**
@@ -369,29 +366,17 @@ class Tyche_Welcome_Screen {
 		$theme        = wp_get_theme();
 		$active_tab   = isset( $_GET['tab'] ) ? $_GET['tab'] : 'getting_started';
 		$action_count = $this->count_actions();
-
 		?>
 
 		<div class="wrap about-wrap epsilon-wrap">
-
 			<h1><?php echo esc_html__( 'Welcome to Tyche! - Version ', 'tyche' ) . esc_html( $theme['Version'] ); ?></h1>
-
-			<div
-					class="about-text"><?php echo esc_html__( 'Tyche is now installed and ready to use! Get ready to build something beautiful. We hope you enjoy it! We want to make sure you have the best experience using Tyche and that is why we gathered here all the necessary information for you. We hope you will enjoy using Tyche, as much as we enjoy creating great products.', 'tyche' ); ?></div>
-
+			<div class="about-text"><?php echo esc_html__( 'Tyche is now installed and ready to use! Get ready to build something beautiful. We hope you enjoy it! We want to make sure you have the best experience using Tyche and that is why we gathered here all the necessary information for you. We hope you will enjoy using Tyche, as much as we enjoy creating great products.', 'tyche' ); ?></div>
 			<div class="wp-badge epsilon-welcome-logo"></div>
-
-
 			<h2 class="nav-tab-wrapper wp-clearfix">
-				<a href="<?php echo esc_url( admin_url( 'themes.php?page=tyche-welcome&tab=getting_started' ) ); ?>"
-				   class="nav-tab <?php echo 'getting_started' === $active_tab ? 'nav-tab-active' : ''; ?>"><?php echo esc_html__( 'Getting Started', 'tyche' ); ?></a>
-				<a href="<?php echo esc_url( admin_url( 'themes.php?page=tyche-welcome&tab=recommended_actions' ) ); ?>"
-				   class="nav-tab <?php echo 'recommended_actions' === $active_tab ? 'nav-tab-active' : ''; ?> "><?php echo esc_html__( 'Recommended Actions', 'tyche' ); ?>
-					<?php echo $action_count > 0 ? '<span class="badge-action-count">' . esc_html( $action_count ) . '</span>' : '' ?></a>
-				<a href="<?php echo esc_url( admin_url( 'themes.php?page=tyche-welcome&tab=recommended_plugins' ) ); ?>"
-				   class="nav-tab <?php echo 'recommended_plugins' === $active_tab ? 'nav-tab-active' : ''; ?> "><?php echo esc_html__( 'Recommended Plugins', 'tyche' ); ?></a>
-				<a href="<?php echo esc_url( admin_url( 'themes.php?page=tyche-welcome&tab=support' ) ); ?>"
-				   class="nav-tab <?php echo 'support' === $active_tab ? 'nav-tab-active' : ''; ?> "><?php echo esc_html__( 'Support', 'tyche' ); ?></a>
+				<a href="<?php echo esc_url( admin_url( 'themes.php?page=tyche-welcome&tab=getting_started' ) ); ?>" class="nav-tab <?php echo 'getting_started' === $active_tab ? 'nav-tab-active' : ''; ?>"><?php echo esc_html__( 'Getting Started', 'tyche' ); ?></a>
+				<a href="<?php echo esc_url( admin_url( 'themes.php?page=tyche-welcome&tab=recommended_actions' ) ); ?>" class="nav-tab <?php echo 'recommended_actions' === $active_tab ? 'nav-tab-active' : ''; ?> "><?php echo esc_html__( 'Recommended Actions', 'tyche' ); ?><?php echo $action_count > 0 ? '<span class="badge-action-count">' . esc_html( $action_count ) . '</span>' : '' ?></a>
+				<a href="<?php echo esc_url( admin_url( 'themes.php?page=tyche-welcome&tab=recommended_plugins' ) ); ?>" class="nav-tab <?php echo 'recommended_plugins' === $active_tab ? 'nav-tab-active' : ''; ?> "><?php echo esc_html__( 'Recommended Plugins', 'tyche' ); ?></a>
+				<a href="<?php echo esc_url( admin_url( 'themes.php?page=tyche-welcome&tab=support' ) ); ?>" class="nav-tab <?php echo 'support' === $active_tab ? 'nav-tab-active' : ''; ?> "><?php echo esc_html__( 'Support', 'tyche' ); ?></a>
 			</h2>
 
 			<?php
@@ -413,8 +398,6 @@ class Tyche_Welcome_Screen {
 					break;
 			}
 			?>
-
-
 		</div><!--/.wrap.about-wrap-->
 
 		<?php

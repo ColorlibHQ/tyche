@@ -47,6 +47,7 @@ class Widget_Tyche_Contact extends WP_Widget {
 			'phone'         => esc_html__( '(123) 456-7890', 'tyche' ),
 			'email'         => esc_html__( 'mail@tyche.com', 'tyche' ),
 		);
+
 		$instance = wp_parse_args( (array) $instance, $defaults );
 
 		foreach ( $instance as $key => $value ) {
@@ -57,7 +58,7 @@ class Widget_Tyche_Contact extends WP_Widget {
 
 		$filepath = dirname( __FILE__ ) . '/view/default.php';
 
-		$args['before_widget'] = str_replace( 'class="', 'class="tyche-companion-contact-widget ', $args['before_widget'] );
+		$args['before_widget'] = str_replace( 'class="', 'class="tyche-contact-widget ', $args['before_widget'] );
 
 		echo $args['before_widget'];
 
@@ -101,21 +102,21 @@ class Widget_Tyche_Contact extends WP_Widget {
 		</p>
 		<p>
 			<label
-					for="<?php echo esc_attr( $this->get_field_id( 'address' ) ); ?>"><?php _e( 'Address:', 'tyche' ); ?></label>
+					for="<?php echo esc_attr( $this->get_field_id( 'address' ) ); ?>"><?php esc_html_e( 'Address:', 'tyche' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'address' ) ); ?>"
 				   name="<?php echo esc_attr( $this->get_field_name( 'address' ) ); ?>" type="text"
 				   value="<?php echo esc_attr( $instance['address'] ); ?>">
 		</p>
 		<p>
 			<label
-					for="<?php echo esc_attr( $this->get_field_id( 'phone' ) ); ?>"><?php _e( 'Phone number:', 'tyche' ); ?></label>
+					for="<?php echo esc_attr( $this->get_field_id( 'phone' ) ); ?>"><?php esc_html_e( 'Phone number:', 'tyche' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'phone' ) ); ?>"
 				   name="<?php echo esc_attr( $this->get_field_name( 'phone' ) ); ?>" type="tel"
 				   value="<?php echo esc_attr( $instance['phone'] ); ?>">
 		</p>
 		<p>
 			<label
-					for="<?php echo esc_attr( $this->get_field_id( 'email' ) ); ?>"><?php _e( 'Email:', 'tyche' ); ?></label>
+					for="<?php echo esc_attr( $this->get_field_id( 'email' ) ); ?>"><?php esc_html_e( 'Email:', 'tyche' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'email' ) ); ?>"
 				   name="<?php echo esc_attr( $this->get_field_name( 'email' ) ); ?>" type="email"
 				   value="<?php echo esc_attr( $instance['email'] ); ?>">

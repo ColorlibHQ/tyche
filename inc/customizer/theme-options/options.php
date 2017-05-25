@@ -243,7 +243,7 @@ tyche_Kirki::add_field( 'tyche_theme', array(
 	'settings' => 'tyche_slider_layout',
 	'type'     => 'radio-image',
 	'label'    => esc_html__( 'Layout', 'tyche' ),
-	'section'  => 'frontpage_sections_bigtitle',
+	'section'  => 'frontpage_sections_bigtitle_images',
 	'default'  => 'left',
 	'priority' => 10,
 	'choices'  => array(

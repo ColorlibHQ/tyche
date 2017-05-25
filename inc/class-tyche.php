@@ -76,6 +76,13 @@ class Tyche {
 	}
 
 	/**
+	 * Init Epsilon Framework
+	 */
+	public function init_epsilon(){
+
+	}
+
+	/**
 	 * Initiate the welcome screen
 	 */
 	public function init_welcome_screen() {
