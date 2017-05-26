@@ -53,4 +53,3 @@ deploy:
   file: tyche.zip
   on:
     repo: MachoThemes/tyche
-    tags: true
