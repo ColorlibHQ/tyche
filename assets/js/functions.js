@@ -59,7 +59,7 @@
           input.val( parseInt( input.val() ) + 1 ).trigger( 'change' );
           break;
         case 'down':
-          if ( '0' == input.val() ) {
+          if ( '0' === input.val() ) {
             return;
           }
           input.val( parseInt( input.val() ) - 1 ).trigger( 'change' );

@@ -40,6 +40,7 @@ script:
   --extensions=php --ignore=./node_modules/**/**/**/*.php"
 - "$PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/**/**/**/**/*.php --standard=./phpcs.ruleset.xml
   --extensions=php --ignore=./node_modules/**/**/**/**/*.php"
+- grunt build-archive
 notifications:
   email: false
 cache:
