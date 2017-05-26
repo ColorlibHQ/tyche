@@ -1,4 +1,4 @@
-sudo: false
+sudo: true
 language: php
 env:
   global:
@@ -48,6 +48,8 @@ script:
 - "$PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/**/**/**/**/*.php --standard=./phpcs.ruleset.xml
   --extensions=php --ignore=./node_modules/**/**/**/**/*.php"
 - grunt build-archive
+- ./build.sh
+
 notifications:
   email: false
 cache:
