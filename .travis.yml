@@ -59,6 +59,7 @@ before_deploy:
   - git config --global user.email "${GIT_EMAIL}"
   - git config --global user.name "${GIT_NAME}"
   - git config --global push.default simple
+  - git remote rm origin
   - git remote add origin https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git
   - export GIT_TAG=V2.$YEAR-$MONTH.$TRAVIS_BUILD_NUMBER
   - git fetch --tags
