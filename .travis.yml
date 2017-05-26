@@ -48,7 +48,7 @@ script:
 - "$PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/**/**/**/**/*.php --standard=./phpcs.ruleset.xml
   --extensions=php --ignore=./node_modules/**/**/**/**/*.php"
 - grunt build-archive
-- ./bin/build.sh
+- ./build.sh
 
 notifications:
   email: false
@@ -56,7 +56,7 @@ cache:
   directories:
   - node_modules
 before_deploy:
-  - ./bin/deploy.sh
+  - ./deploy.sh
 deploy:
   provider: releases
   api_key:
