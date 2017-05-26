@@ -122,7 +122,7 @@ module.exports = function( grunt ) {
       build: {
         options: {
           pretty: true,
-          archive: 'build/<%= pkg.name %>.zip'
+          archive: '<%= pkg.name %>.zip'
         },
         expand: true,
         cwd: 'build/',
