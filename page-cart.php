@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all pages.
+ * The template for displaying the cart
  *
  * This is the template that displays all pages by default.
  * Please note that this is the WordPress construct of pages
@@ -23,9 +23,6 @@ if ( '1' === $breadcrumbs_enabled ) { ?>
 		</div>
 	</div>
 <?php } ?>
-<?php
-$shop_page = Tyche_Helper::has_sidebar();
-?>
 	<div class="container">
 		<div class="row">
 			<div id="primary" class="content-area col-md-12">

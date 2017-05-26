@@ -35,12 +35,6 @@ get_header( 'shop' ); ?>
 			 */
 			do_action( 'woocommerce_before_main_content' );
 			?>
-
-			<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-
-				<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
-
-			<?php endif; ?>
 		</div>
 	</div>
 	<div class="row">
@@ -66,6 +60,12 @@ get_header( 'shop' ); ?>
 			 */
 			do_action( 'woocommerce_archive_description' );
 			?>
+
+			<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
+
+				<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
+
+			<?php endif; ?>
 
 			<?php if ( have_posts() ) : ?>
 

@@ -119,37 +119,40 @@ class Tyche {
 	 * Enqueue styles and scripts
 	 */
 	public function enqueues() {
+		/**
+		 * Enqueue styles
+		 */
 		wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Karla:400,700' );
-		wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css' );
+		wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/vendors/fontawesome/font-awesome.min.css' );
+		wp_enqueue_style( 'owlCarousel', get_template_directory_uri() . '/assets/vendors/owl-carousel/owl.carousel.min.css' );
+		wp_enqueue_style( 'owlCarousel-theme', get_template_directory_uri() . '/assets/vendors/owl-carousel/owl.theme.default.css' );
+		wp_enqueue_style( 'dashicons' );
+		wp_enqueue_style( 'tyche', get_stylesheet_uri() );
+
+		$scheme = get_theme_mod( 'tyche_color_scheme', 'red' );
+		if ( 'red' !== $scheme ) {
+			wp_enqueue_style( 'tyche-style', get_stylesheet_directory_uri() . '/assets/css/style-' . $scheme . '.css' );
+		} else {
+			wp_enqueue_style( 'tyche-style', get_stylesheet_directory_uri() . '/assets/css/style.css' );
+		}
+
+		/**
+		 * Enqueue scripts
+		 */
 		wp_enqueue_script( 'tyche-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '', true );
-		wp_enqueue_script( 'tyche-multilang-menu', get_template_directory_uri() . '/assets/js/menu.js', array(), '', true );
-		wp_enqueue_script( 'owlCarousel', get_template_directory_uri() . '/assets/js/owl-carousel/owl.carousel.min.js', array( 'jquery' ), '1.3.3', true );
-		wp_enqueue_style( 'owlCarousel', get_template_directory_uri() . '/assets/css/owl-carousel/owl.carousel.min.css' );
-		wp_enqueue_style( 'owlCarousel-theme', get_template_directory_uri() . '/assets/css/owl-carousel/owl.theme.default.css' );
-		wp_enqueue_script( 'jquery-zoom', get_template_directory_uri() . '/assets/js/jquery-zoom/jquery.zoom.min.js', array( 'jquery' ), '1.3.3', true );
-		wp_register_script( 'adsenseloader', get_template_directory_uri() . '/assets/js/adsenseloader/jquery.adsenseloader.min.js', array( 'jquery' ), '1.0.0', true );
+		wp_enqueue_script( 'tyche-multilang-menu', get_template_directory_uri() . '/assets/vendors/menu/menu.min.js', array(), '', true );
+		wp_enqueue_script( 'owlCarousel', get_template_directory_uri() . '/assets/vendors/owl-carousel/owl.carousel.min.js', array( 'jquery' ), '1.3.3', true );
+		wp_enqueue_script( 'jquery-zoom', get_template_directory_uri() . '/assets/vendors/jquery-zoom/jquery.zoom.min.js', array( 'jquery' ), '1.3.3', true );
+		wp_register_script( 'adsenseloader', get_template_directory_uri() . '/assets/vendors/adsenseloader/jquery.adsenseloader.min.js', array( 'jquery' ), '1.0.0', true );
 		wp_register_script( 'tyche-scripts', get_template_directory_uri() . '/assets/js/functions.js', array(
 			'jquery',
 			'jquery-zoom',
 			'owlCarousel',
 		), '', false );
-
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
 		}
-
-		$scheme = get_theme_mod( 'tyche_color_scheme', 'red' );
-
-		if ( 'red' !== $scheme ) {
-			wp_enqueue_style( 'tyche-style-alternate', get_stylesheet_directory_uri() . '/css/style-' . $scheme . '.css' );
-		} else {
-			wp_enqueue_style( 'tyche-style', get_stylesheet_uri() );
-		}
-
-		// Enqueued script with localized data.
 		wp_enqueue_script( 'tyche-scripts' );
-		wp_enqueue_style( 'dashicons' );
-
 	}
 
 	/**

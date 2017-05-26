@@ -6,6 +6,29 @@
       return $( e ).length > 0;
     },
 
+    initNumberFields: function() {
+      var inputs = $( '.quantity > input.qty ' );
+      $.each( inputs, function() {
+        $( this ).wrap( '<div class="styled-number"></div>' );
+        $( this ).
+            parent().
+            append(
+                '<a href="#" class="arrow-up incrementor"  data-increment="up"><span class="dashicons dashicons-plus"></span></a>' );
+        $( this ).
+            parent().
+            prepend(
+                '<a href="#" class="arrow-down incrementor" data-increment="down"><span class="dashicons dashicons-minus"></span></a>' );
+      } );
+
+      /**
+       * Add/subtract from the input type number fields
+       */
+      $( '.incrementor' ).on( 'click', function( e ) {
+        e.preventDefault();
+        Tyche._calcValue( $( this ) );
+      } );
+    },
+
     initStyleSelects: function() {
       var selects = $( 'select' );
       $.each( selects, function() {
@@ -13,8 +36,35 @@
           return false;
         }
 
+        if ( $( this ).parent().hasClass( 'value' ) ) {
+          return false;
+        }
+
         $( this ).wrap( '<div class="styled-select"></div>' );
       } );
+    },
+
+    /**
+     * Calculate the value of the input number fields
+     *
+     * @param el
+     * @private
+     */
+    _calcValue: function( el ) {
+      var input = $( el.siblings( 'input' ) ),
+          unit = input.siblings( 'span' );
+
+      switch ( $( el ).attr( 'data-increment' ) ) {
+        case 'up':
+          input.val( parseInt( input.val() ) + 1 ).trigger( 'change' );
+          break;
+        case 'down':
+          if ( 0 == input.val() ) {
+            return;
+          }
+          input.val( parseInt( input.val() ) - 1 ).trigger( 'change' );
+          break;
+      }
     },
 
     /* ==========================================================================
@@ -236,6 +286,7 @@
     Tyche.handleMobileMenu();
     Tyche.showHideMobileMenu();
     Tyche.initStyleSelects();
+    Tyche.initNumberFields();
     Tyche.initZoom();
   } );
 
