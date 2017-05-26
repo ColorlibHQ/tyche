@@ -74,6 +74,22 @@
       }
     }
 
+    &.widget_tyche_companion_recent {
+      .tyche-recent-post-widget {
+        .tyche-post-content {
+          p {
+            a {
+              color: #fff;
+              &:hover, &:focus {
+                color: $color__brand-primary;
+              }
+            }
+
+          }
+        }
+      }
+    }
+
     .product_list_widget {
       li {
         a {

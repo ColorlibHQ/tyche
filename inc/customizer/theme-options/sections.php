@@ -81,7 +81,7 @@ $wp_customize->add_section(
 		array(
 			'title'       => esc_html__( 'Tyche - WooCommerce', 'tyche' ),
 			'button_text' => esc_html__( 'Documentation', 'tyche' ),
-			'button_url'  => esc_url_raw( 'https://colorlib.com' ),
+			'button_url'  => esc_url_raw( 'https://colorlib.com/wp/support/tyche/' ),
 			'priority'    => 1,
 		)
 	)

@@ -332,7 +332,7 @@ Tyche_Kirki::add_field( 'tyche_theme', array(
 		'image_bg'        => array(
 			'type'    => 'image',
 			'label'   => esc_attr__( 'Image', 'tyche' ),
-			'default' => get_template_directory_uri() . '/assets/images/hero.jpg',
+			'default' => '',
 		),
 		'cta_text'        => array(
 			'type'    => 'text',
@@ -352,7 +352,7 @@ Tyche_Kirki::add_field( 'tyche_theme', array(
 		'button_one_url'  => array(
 			'type'    => 'text',
 			'label'   => esc_html__( 'Button #1 URL', 'tyche' ),
-			'default' => 'http://colorlib.com',
+			'default' => 'https://colorlib.com',
 		),
 		'button_two_text' => array(
 			'type'    => 'text',
@@ -362,7 +362,7 @@ Tyche_Kirki::add_field( 'tyche_theme', array(
 		'button_two_url'  => array(
 			'type'    => 'text',
 			'label'   => esc_html__( 'Button #2 URL', 'tyche' ),
-			'default' => 'http://colorlib.com',
+			'default' => 'https://colorlib.com',
 		),
 	),
 ) );
