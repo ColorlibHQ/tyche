@@ -37,6 +37,24 @@ class Tyche_Hooks {
 			$this,
 			'tyche_ajax_action',
 		) );
+
+		/**
+		 * Register TGMPA
+		 */
+		add_action( 'tgmpa_register', array( $this, 'register_required_plugins' ) );
+		add_action( 'admin_init', array( $this, 'save_tgmpa_state' ) );
+	}
+
+	/**
+	 * Save the tgmpa state to the database
+	 */
+	public function save_tgmpa_state() {
+		$instance = TGM_Plugin_Activation::get_instance();
+		$option   = get_option( 'tyche_tgmpa_saved_state' );
+
+		if ( 'plugins-installed' !== $option && $instance->is_tgmpa_complete() ) {
+			update_option( 'tyche_tgmpa_saved_state', 'plugins-installed' );
+		}
 	}
 
 	/**
@@ -81,28 +99,88 @@ class Tyche_Hooks {
 	}
 
 	/**
+	 * Register required plugins
+	 */
+	function register_required_plugins() {
+		$plugins = array(
+			array(
+				'name'     => 'Contact Form 7',
+				'slug'     => 'contact-form-7',
+				'required' => false,
+			),
+			array(
+				'name'     => 'Google Maps',
+				'slug'     => 'google-maps',
+				'required' => false,
+			),
+			array(
+				'name'     => 'WooCommerce',
+				'slug'     => 'woocommerce',
+				'required' => false,
+			),
+			array(
+				'name'     => 'Polylang',
+				'slug'     => 'polylang',
+				'required' => false,
+			),
+			array(
+				'name'     => 'Kirki Toolkit',
+				'slug'     => 'kirki',
+				'required' => false,
+			),
+
+		);
+
+		$config = array(
+			'id'           => 'tyche',
+			'default_path' => '',
+			'menu'         => 'tgmpa-install-plugins',
+			'has_notices'  => true,
+			'dismissable'  => true,
+			'dismiss_msg'  => '',
+			'is_automatic' => false,
+			'message'      => '',
+		);
+
+		tgmpa( $plugins, $config );
+	}
+
+
+	/**
 	 * Ajax handler
 	 */
 	public function tyche_ajax_action() {
 		if ( 'tyche_ajax_action' !== $_POST['action'] ) {
-			wp_die( json_encode( array(
-				'status' => false,
-				'error' => 'Not allowed',
-			) ) );
+			wp_die(
+				json_encode(
+					array(
+						'status' => false,
+						'error'  => 'Not allowed',
+					)
+				)
+			);
 		}
 
 		if ( 2 !== count( $_POST['args']['action'] ) ) {
-			wp_die( json_encode( array(
-				'status' => false,
-				'error' => 'Not allowed',
-			) ) );
+			wp_die(
+				json_encode(
+					array(
+						'status' => false,
+						'error'  => 'Not allowed',
+					)
+				)
+			);
 		}
 
 		if ( ! class_exists( $_POST['args']['action'][0] ) ) {
-			wp_die( json_encode( array(
-				'status' => false,
-				'error' => 'Class does not exist',
-			) ) );
+			wp_die(
+				json_encode(
+					array(
+						'status' => false,
+						'error'  => 'Class does not exist',
+					)
+				)
+			);
 		}
 
 		$class  = $_POST['args']['action'][0];
@@ -112,15 +190,23 @@ class Tyche_Hooks {
 		$response = $class::$method( $args );
 
 		if ( 'ok' == $response ) {
-			wp_die( json_encode( array(
-				'status' => true,
-				'message' => 'ok',
-			) ) );
+			wp_die(
+				json_encode(
+					array(
+						'status'  => true,
+						'message' => 'ok',
+					)
+				)
+			);
 		}
 
-		wp_die( json_encode( array(
-			'status' => false,
-			'message' => 'nok',
-		) ) );
+		wp_die(
+			json_encode(
+				array(
+					'status'  => false,
+					'message' => 'nok',
+				)
+			)
+		);
 	}
 }

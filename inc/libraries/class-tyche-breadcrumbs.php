@@ -57,10 +57,14 @@ class Tyche_Breadcrumbs {
 	private $html_markup;
 
 	/**
+	 * @var
+	 */
+	private $options;
+
+	/**
 	 * Class Constructor
 	 */
 	public function __construct() {
-
 		// Initialize object variables
 		$this->post = ( isset( $GLOBALS['post'] ) ? $GLOBALS['post'] : null );
 
@@ -89,18 +93,7 @@ class Tyche_Breadcrumbs {
 		$this->search_prefix          = $defaults['search_prefix'];
 		$this->error_prefix           = $defaults['error_prefix'];
 
-		$separators = array(
-			'rarr'      => '&rarr;',
-			'middot'    => '&middot;',
-			'diez'      => '&#35;',
-			'ampersand' => '&#38;',
-			'/'         => '/',
-		);
-
-		$this->home_label = esc_html__( 'Home ', 'tyche' );
-		// Set separator
-		$this->separator = $separators[ $this->separator ];
-
+		$this->home_label = __( 'Home ', 'tyche' );
 	}
 
 	/**
@@ -109,8 +102,6 @@ class Tyche_Breadcrumbs {
 	 * @return void
 	 */
 	public function get_breadcrumbs() {
-
-		// Get the WordPress SEO options if activated; else will return FALSE
 		$options = get_option( 'wpseo_internallinks' );
 
 		// Support for Yoast Breadcrumbs
@@ -186,8 +177,30 @@ class Tyche_Breadcrumbs {
 			} elseif ( is_date() ) {
 				global $wp_locale;
 				// Set variables
-				$year = esc_html( get_query_var( 'year' ) );
-				if ( is_month() || is_day() ) {
+				$year      = esc_html( get_query_var( 'year' ) );
+				$permalink = get_option( 'permalink_structure' );
+				if ( '' === $permalink ) {
+					$query = get_query_var( 'm' );
+
+					switch ( strlen( $query ) ) {
+						case 8:
+							$year       = substr( $query, 0, 4 );
+							$month      = substr( $query, 4, 2 );
+							$month_name = $wp_locale->get_month( $month );
+							$day        = substr( $query, 6, 2 );
+							break;
+						case 6:
+							$year       = substr( $query, 0, 4 );
+							$month      = substr( $query, 4, 2 );
+							$month_name = $wp_locale->get_month( $month );
+							break;
+						case 4:
+							$year = substr( $query, 0, 4 );
+							break;
+					}
+				}
+
+				if ( ( is_month() || is_day() ) && ! empty( $permalink ) ) {
 					$month      = get_query_var( 'monthnum' );
 					$month_name = $wp_locale->get_month( $month );
 				}
@@ -236,7 +249,7 @@ class Tyche_Breadcrumbs {
 	 * @return string The HTML markup of the wrapped breadcrumb path
 	 */
 	private function wrap_breadcrumbs() {
-		$this->html_markup = sprintf( '<nav class="tyche-breadcrumbs">%s</nav>', $this->html_markup );
+		$this->html_markup = sprintf( '<div class="tyche-breadcrumbs">%s</div>', $this->html_markup );
 	}
 
 	/**
@@ -287,6 +300,18 @@ class Tyche_Breadcrumbs {
 
 	}
 
+	public function get_latest_post_page() {
+		$page_id = get_option( 'page_for_posts', false );
+		if ( ! $page_id ) {
+			return false;
+		}
+
+		return array(
+			'link' => get_permalink( $page_id ),
+			'name' => get_post( $page_id ),
+		);
+	}
+
 	/**
 	 * Construct the full post term tree path and add its HTML markup
 	 *
@@ -295,17 +320,20 @@ class Tyche_Breadcrumbs {
 	private function get_post_terms() {
 		$terms_markup = '';
 
-		// If terms are disabled, nothing is to do
-		if ( ! $this->show_terms ) {
-			return $terms_markup;
-		}
-
 		// Get the post terms
-		if ( 'post' == $this->post->post_type ) {
+		if ( 'post' == $this->post->post_type || 'page' == $this->post->post_type ) {
 			$taxonomy = 'category';
 
+			/*
+			// Muscle Core Portfolio
+			} elseif ( $this->post->post_type == 'project' ) {
+				$taxonomy = 'project_category';
+			*/
+
+			// Woocommerce
 		} elseif ( 'product' == $this->post->post_type && class_exists( 'WooCommerce' ) && is_woocommerce() ) {
 			$taxonomy = 'product_cat';
+			// The Events Calendar
 		} elseif ( 'tribe_events' == $this->post->post_type ) {
 			$taxonomy = 'tribe_events_cat';
 			// For other post types don't return a terms tree to reduce possible errors
@@ -438,9 +466,12 @@ class Tyche_Breadcrumbs {
 		$post_type        = $wp_query->query_vars['post_type'];
 		$post_type_object = get_post_type_object( $post_type );
 		$link             = '';
-		$archive_title    = 'Title';
+		// Dirty fix
+		$archive_title = 'Title';
+		// Check if we have a post type object
 		if ( is_object( $post_type_object ) ) {
 			$woocommerce_shop_page = $this->get_woocommerce_shop_page( $linked );
+			// Woocommerce: archive name should be same as shop page name
 			if ( 'product' == $post_type && $woocommerce_shop_page ) {
 				return $woocommerce_shop_page;
 			}
@@ -538,13 +569,32 @@ class Tyche_Breadcrumbs {
 				$title = $term->name;
 				break;
 			case 'year':
-				$title = esc_html( get_query_var( 'year' ) );
+				$permalink = get_option( 'permalink_structure' );
+				if ( empty( $permalink ) ) {
+					$query = get_query_var( 'm' );
+					$title = substr( $query, 0, 4 );
+				} else {
+					$title = esc_html( get_query_var( 'year' ) );
+				}
 				break;
 			case 'month':
-				$title = $wp_locale->get_month( get_query_var( 'monthnum' ) );
+				$permalink = get_option( 'permalink_structure' );
+				if ( empty( $permalink ) ) {
+					$query = get_query_var( 'm' );
+					$month = substr( $query, 4, 2 );
+					$title = $wp_locale->get_month( $month );
+				} else {
+					$title = $wp_locale->get_month( get_query_var( 'monthnum' ) );
+				}
 				break;
 			case 'day':
-				$title = get_query_var( 'day' );
+				$permalink = get_option( 'permalink_structure' );
+				if ( empty( $permalink ) ) {
+					$query = get_query_var( 'm' );
+					$title = substr( $query, 6, 2 );
+				} else {
+					$title = get_query_var( 'day' );
+				}
 				break;
 			case 'author':
 				$user  = $wp_query->get_queried_object();

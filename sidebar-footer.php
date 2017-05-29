@@ -28,13 +28,6 @@ foreach ( $mysidebars as $column ) {
 };
 
 /**
- * If the array is empty, terminate here
- */
-if ( empty( $sidebars ) ) {
-	return false;
-}
-
-/**
  * Handle the sizing of the footer columns based on the user selection
  */
 $count = (int) get_theme_mod( 'tyche_footer_layout', 4 );
@@ -52,7 +45,7 @@ if ( empty( $sidebars ) ) {
 		'after_title'  => '</h3>',
 	);
 
-	$widgets = array( 'WP_Widget_Meta', 'WP_Widget_Recent_Posts', 'WP_Widget_Tag_Cloud', 'WP_Widget_Categories' );
+	$widgets = array( 'WP_Widget_Meta', 'WP_Widget_Recent_Posts', 'WP_Widget_Calendar', 'WP_Widget_Categories' );
 	$widgets = array_slice( $widgets, 0, $count );
 	?>
 	<!-- Footer -->

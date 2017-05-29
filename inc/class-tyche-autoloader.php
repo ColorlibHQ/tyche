@@ -49,3 +49,8 @@ class Tyche_Autoloader {
 }
 
 $autoloader = new Tyche_Autoloader();
+
+/**
+ * Load the tgmpa class here
+ */
+require_once get_template_directory() . '/inc/libraries/class-tgm-plugin-activation.php';

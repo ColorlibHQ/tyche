@@ -38,7 +38,7 @@ get_header( 'shop' ); ?>
 		</div>
 	</div>
 	<div class="row">
-		<?php if ( is_active_sidebar( 'shop-sidebar' ) && 'left' === $layout ): ?>
+		<?php if ( is_active_sidebar( 'shop-sidebar' ) && 'left' === $layout ) : ?>
 			<div class="col-md-4 hidden-xs">
 				<?php
 				/**
@@ -129,7 +129,7 @@ get_header( 'shop' ); ?>
 
 			<?php endif; ?>
 		</div>
-		<?php if ( is_active_sidebar( 'shop-sidebar' ) && 'right' === $layout ): ?>
+		<?php if ( is_active_sidebar( 'shop-sidebar' ) && 'right' === $layout ) : ?>
 			<div class="col-md-4 hidden-xs">
 				<?php
 				/**

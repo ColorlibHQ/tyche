@@ -53,7 +53,7 @@ class Tyche_Customizer {
 	 *
 	 */
 	public function customize_preview_js() {
-		wp_enqueue_script( 'tyche_customizer', get_template_directory_uri() . '/inc/customizer/assets/js/previewer.js', array( 'customize-preview' ), '201512', true );
+		wp_enqueue_script( 'tyche_customizer', get_template_directory_uri() . '/inc/customizer/assets/js/previewer.js', array( 'customize-preview' ), '2011232', true );
 		wp_localize_script( 'tyche_customizer', 'WPUrls', array(
 			'siteurl' => get_option( 'siteurl' ),
 			'theme'   => get_template_directory_uri(),

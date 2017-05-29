@@ -105,9 +105,10 @@ class Tyche {
 
 			$tyche_required_actions = array(
 				array(
-					'id'    => 'tyche-req-ac-install-additional-plugins',
-					'title' => esc_html__( 'Please install plugins recommended through the notices.', 'tyche' ),
-					'check' => true,
+					'id'          => 'tyche-req-ac-install-additional-plugins',
+					'title'       => esc_html__( 'Recommended Plugins', 'tyche' ),
+					'description' => esc_html__( 'To fully take advantage of the tyche theme, please install the recommended plugins', 'tyche' ),
+					'check'       => Tyche_Notify_System::check_tgmpa_saved_state(),
 				),
 			);
 

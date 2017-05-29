@@ -41,8 +41,7 @@
 
 						if ( ! get_theme_mod( 'custom_logo' ) ) {
 							?>
-							<a class="custom-logo-link"
-							   href="<?php echo esc_url( get_home_url() ) ?>"> <?php echo esc_html( get_option( 'blogname', 'Tyche' ) ) ?></a>
+							<a class="custom-logo-link" href="<?php echo esc_url( get_home_url() ) ?>"> <?php echo esc_html( get_option( 'blogname', 'Tyche' ) ) ?></a>
 							<?php
 						}
 					}
@@ -83,9 +82,8 @@
 						);
 						?>
 						<!-- /// Mobile Menu Trigger //////// -->
-						<a href="#" id="mobile-menu-trigger">
-							<i class="fa fa-bars"></i>
-						</a><!-- end #mobile-menu-trigger -->
+						<a href="#" id="mobile-menu-trigger"> <i class="fa fa-bars"></i> </a>
+						<!-- end #mobile-menu-trigger -->
 					</div>
 				</div>
 			</div>
@@ -97,7 +95,8 @@
 	/**
 	 * Enable / Disable the main slider
 	 */
-	if ( get_theme_mod( 'tyche_enable_main_slider', '1' ) !== '0' && basename( get_page_template() ) === 'frontpage-template.php' ) :
+	$show_on_front = get_option( 'show_on_front' );
+	if ( get_theme_mod( 'tyche_enable_main_slider', '1' ) !== '0' && is_front_page() && 'posts' !== $show_on_front ) :
 		get_template_part( 'template-parts/main-slider' );
 	endif;
 	?>
