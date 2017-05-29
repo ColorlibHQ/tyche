@@ -1,319 +1,338 @@
-/**
-/ Underscores default styling
-*/
-.main-navigation {
-  clear: both;
-  display: block;
-  float: left;
-  width: 100%;
-  background: #25262b;
-  ul {
-    display: none;
-    list-style: none;
-    margin: 0;
-    padding-left: 0;
-    background: #25262b;
-    ul {
-      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-      float: left;
-      position: absolute;
-      left: -999em;
-      z-index: 99999;
 
-      ul {
-        left: -999em;
-        top: 0;
-      }
-
-      li {
-        &:hover > ul,
-        &.focus > ul {
-          left: 100%;
-        }
-      }
-
-      a {
-        width: 150px;
-      }
-
-      :hover > a,
-      .focus > a {
-      }
-
-      a:hover,
-      a.focus {
-      }
-    }
-
-    li:hover > ul,
-    li.focus > ul {
-      left: -20px;
-    }
-  }
-
-  li {
-    float: left;
-    position: relative;
-
-    &:hover > a,
-    &.focus > a {
-    }
-  }
-
-  a {
-    display: block;
-    text-decoration: none;
-  }
-
-  .current_page_item > a,
-  .current-menu-item > a,
-  .current_page_ancestor > a,
-  .current-menu-ancestor > a {
-  }
+.sf-menu {
+  display: inline-block;
 }
 
 /*
-* Small menu.
-*/
-.menu-toggle {
+ * 1. Clearfix hack
+ */
+
+.sf-menu:after { /* 1 */
+  visibility: hidden;
   display: block;
-  width: 35px;
-  height: 35px;
-  color: $font__main;
-  border-color: $font__main;
-  background: transparent;
-  margin: 0 auto;
-  margin-bottom: 10px;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
 }
 
-#site-navigation.toggled ul {
-  display: inline-block;
-  > li {
-    > a {
-      /* Remove after element for small screens */
-      &:after {
-        display: none;
-      }
-    }
-    /* Remove hover effects for small screens */
-    &.menu-item-has-children {
-      > ul {
-        li {
-          a {
-            padding: 0 0 10px 0;
-          }
-          &:hover {
-            > a {
-              color: $color__text-main;
-            }
-          }
-          &.menu-item-has-children {
-            &:after {
-              display: none;
-            }
-          }
-        }
-      }
-    }
-  }
+@media (max-width: 991px) {
 
-  /* List items will be 100% wide, spanning across the whole width of device */
-  li {
-    display: block;
-    width: 100%;
-    padding-right: 0;
-    &.menu-item-has-children {
-      &:after {
-        display: none;
-      }
-      > ul {
-        li {
-          &:after {
-            display: none;
-          }
-          &:hover {
-            background-color: initial;
-          }
-        }
-      }
-    }
-    /* Remove big-screen styling for submenus, we display them little bit to the right */
-    ul {
-      box-shadow: none;
-      left: initial;
-      top: initial;
-      position: relative;
-      padding-left: 20px;
-      ul {
-        left: initial;
-        top: initial;
-        position: relative;
-        padding-left: 20px;
-      }
-    }
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .menu-toggle {
+  .sf-menu {
     display: none;
   }
-  .main-navigation ul {
-    display: block;
-  }
+
 }
 
-.comment-navigation,
-.posts-navigation,
-.post-navigation {
-
-  .site-main & {
-    margin: 0 0 1.5em;
-    overflow: hidden;
-  }
-
-  .nav-previous {
-    float: left;
-    width: 50%;
-  }
-
-  .nav-next {
-    float: right;
-    text-align: right;
-    width: 50%;
-  }
+.sf-menu,
+.sf-menu ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: left;
 }
 
-/* Tyche Menu Customization starts here */
-#site-navigation {
-  margin-top: 15px;
-  a {
-    font-size: 15px;
-    line-height: 25px;
-    position: relative;
-    color: #e5e5e5;
+.sf-menu > li {
+  display: inline-block;
+}
+
+.sf-menu > li > a {
+  position: relative;
+  display: block;
+}
+
+.sf-menu .sf-mega,
+.sf-menu li.dropdown ul {
+  position: absolute;
+  z-index: 1025; /* 1 */
+  top: 100%;
+  left: -20px;
+  display: none;
+}
+
+.sf-menu li.dropdown {
+  position: relative;
+}
+
+.sf-menu li.dropdown ul ul {
+  top: 0;
+  left: 100%;
+}
+
+.sf-menu li:hover > .sf-mega,
+.sf-menu li.sfHover > .sf-mega,
+.sf-menu li.dropdown:hover > ul,
+.sf-menu li.dropdown.sfHover > ul {
+  display: block;
+}
+
+/* =Menu Skin
+   ========================================================================== */
+.sf-menu {
+  width: 100%;
+  border-top: 1px solid #35373e;
+  margin-top:15px;
+}
+
+.sf-menu a {
+  display: block;
+  font-family: 'Karla', sans-serif;
+  font-weight: 700;
+  color: #ffffff;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.sf-menu li.dropdown a,
+.sf-menu li.mega a {
+  padding: 7px 21px;
+  padding: 0.46666666em 1.4em;
+}
+
+.sf-menu li.dropdown li > a:hover {
+  color: $color__brand-primary;
+  background-color:#212226;
+}
+
+.sf-menu > li > a,
+.sf-menu > li.dropdown > a {
+  padding: 15px 30px 15px 0;
+  color: #ffffff;
+}
+
+.sf-menu > li a i {
+  margin-right: 2px;
+  margin-right: 0.13333333em;
+  color: $color__brand-primary;
+}
+
+.sf-menu > li.current > a {
+  color: $color__brand-primary;
+}
+
+.sf-menu > li.sfHover > a:hover,
+.sf-menu > li > a:hover {
+  color: $color__brand-primary;
+}
+
+/* =DropDown
+   ========================================================================== */
+
+/**
+ * 1. allow long menu items to determine submenu width
+ */
+
+.sf-menu li.dropdown ul {
+  min-width: 200px; /* 1 */
+  min-width: 13.33333333em; /* 1 */
+  background-color: #25262b;
+}
+
+/* =Mega Menu Section
+   ========================================================================== */
+
+.sf-mega {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 14px;
+  padding: 0.93333333em;
+  margin-top: 0;
+  background-color: #25262b;
+  color: #ffffff;
+}
+
+.sf-mega-section {
+  float: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 14px;
+  padding: 0 0.93333333em;
+}
+
+/**
+ * 1. set mega menu section size, as a percentage of the mega menu width
+ */
+
+.sf-mega.sf-mega-1-col .sf-mega-section {
+  width: 100%;
+}
+
+/* 1 */
+
+.sf-mega.sf-mega-2-col .sf-mega-section {
+  width: 50%;
+}
+
+.sf-mega.sf-mega-3-col .sf-mega-section {
+  width: 33.3333333333%;
+}
+
+.sf-mega.sf-mega-4-col .sf-mega-section {
+  width: 25%;
+}
+
+.sf-mega-section-title {
+}
+
+/* =Menu Arrows
+   ========================================================================== */
+
+.sf-menu .dropdown > a:after,
+.sf-menu .mega > a:after {
+  content: "\f107";
+  font-family: 'FontAwesome';
+  padding-left: 7px;
+  padding-left: 0.46666666em;
+}
+
+.sf-menu .dropdown .dropdown > a:after {
+  content: "\f105";
+  font-family: 'FontAwesome';
+  padding-left: 7px;
+  padding-left: 0.46666666em;
+  float: right;
+}
+
+/* ==========================================================================
+   =Mobile Menu
+   ========================================================================== */
+
+#mobile-menu {
+  display: none;
+}
+
+/*
+* 1. Clearfix hack
+*/
+
+#mobile-menu:after { /* 1 */
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+#mobile-menu {
+  background-color: #25262b;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  margin-bottom: 0;
+}
+
+#mobile-menu li {
+  display: block;
+  margin: 0;
+}
+
+#mobile-menu > li > ul,
+#mobile-menu > li > ul > li > ul {
+  display: none;
+  margin-left: 0;
+}
+
+#mobile-menu .sf-mega {
+  display: none;
+  padding: 0;
+  border: none;
+  margin: 0;
+}
+
+#mobile-menu .sf-mega-section {
+  float: none;
+  width: 100%;
+  padding: 0;
+  border: none;
+}
+
+#mobile-menu .sf-mega-section ul {
+  margin-left: 0;
+  margin-bottom: 0;
+}
+
+#mobile-menu li a {
+  position: relative;
+  display: block;
+  padding: 14px 21px;
+  padding: 0.93333333em 1.4em;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 15px;
+  font-size: 1.5rem;
+  text-align: left;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+#mobile-menu ul a {
+  padding-left: 42px;
+  padding-left: 3.73333333em;
+}
+
+#mobile-menu ul li ul a {
+  padding-left: 56px;
+  padding-left: 3.73333333em;
+}
+
+#mobile-menu li.dropdown > a {
+  padding-right: 84px;
+  padding-right: 5.6em;
+}
+
+#mobile-menu .mobile-menu-submenu-arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 56px;
+  width: 3.73333333em;
+  height: 100%;
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  font-size: 15px;
+  font-size: 1.5rem;
+  line-height: 56px;
+  line-height: 3.73333333;
+  text-align: center;
+  cursor: pointer;
+}
+
+#mobile-menu .mobile-menu-submenu-arrow:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+#mobile-menu li a:hover {
+}
+
+/* ==========================================================================
+   =Mobile menu trigger
+   ========================================================================== */
+
+#mobile-menu-trigger {
+  display: none;
+  padding: 28px 0;
+  padding: 1.86666666em 0;
+}
+
+@media (max-width: 991px) {
+
+  #mobile-menu-trigger {
     display: inline-block;
-    font-weight: 700;
-    text-transform: uppercase;
   }
 
-  .menu {
-    border-top: 1px solid #35373e;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    position: relative;
-    background: transparent;
-    width: 100%;
-    @media(min-width: 768px) {
-      display: inline-block;
-    }
-    > li {
-      display: inline-block;
-      padding-right: 40px;
-      position: relative;
-      &.active,
-      &:hover {
-        color: #FFF;
-        > a, &:after {
-          color: $color__brand-primary;
-        }
-      }
-      > a {
-        position: relative;
-      }
-      &:last-of-type {
-        padding-right: 0;
-      }
-      &.menu-item-has-children {
-        &:after {
-          content: "\f107";
-          font-family: "FontAwesome";
-          font-size: 16px;
-          display: inline-block;
-          padding-left: 5px;
-          color: #e5e5e5;
-        }
-        &.active,
-        &:hover {
-          &:after {
-            color: $color__brand-primary;
-          }
-        }
-        > ul {
-          li {
-            &.menu-item-has-children {
-              position: relative;
-              &:after {
-                content: "\f105";
-                font-family: "FontAwesome";
-                font-size: 16px;
-                display: inline-block;
-                position: absolute;
-                right: 20px;
-                bottom: 5px;
-                color: #e5e5e5;
-              }
-              &:hover {
-                &:after {
-                  color: $color__brand-primary;
-                }
-              }
-              @media(min-width: 991px) {
-                &:hover {
-                  color: #FFF;
-                  background-color: #212226;
-                  > a, &:after {
-                    color: $color__brand-primary;
-                  }
-                }
-              }
-            }
-            a {
-              padding: 5px 20px;
-              font-size: 15px;
-            }
-          }
-        }
-      }
-      > ul {
-        &.sub-menu {
-          @media(min-width: 991px) {
-            &:before, &:after {
-              content: '';
-              height: 1px;
-              padding: 7px;
-              display: inline-block;
-              position: relative;
-              width: 100%;
-              background: #25262b;
-            }
-          }
-        }
-      }
-    }
-
-    li {
-      &.active,
-      &:hover {
-        color: #FFF;
-        > a, &:after {
-          color: $color__brand-primary;
-        }
-      }
-    }
-
-  }
-
-  @media(min-width: 991px) {
-    .sub-menu {
-      > li {
-        &:hover {
-          background-color: #212226;
-        }
-      }
-    }
-  }
 }
+
+#mobile-menu-trigger i {
+  font-size: 17px;
+  font-size: 1.7rem;
+  color: $color__brand-primary;
+}
+
+/* ==========================================================================
+   =Breadcrumbs navigation
+   ========================================================================== */
 
 .tyche-breadcrumbs {
   margin: 0;
@@ -321,6 +340,7 @@
   padding-bottom: 30px;
   color: #a7a7a7;
   font-size: 13px;
+  line-height:12px;
   span {
     font-size: 13px;
   }
@@ -332,7 +352,7 @@
     font-size: 13px;
     color: #777;
     &:hover,
-    &:focus{
+    &:focus {
       color: $color__brand-primary-hover;
     }
   }

@@ -9,7 +9,7 @@ ul {
   margin: 0;
 }
 
-ul:not(.nav):not(.nav-menu):not(.top-header-bar):not(.cart_list):not(.main-slider-info):not(.multilang-flags):not(.page-numbers):not(.tyche-pager):not(.client-logos):not(.primary-menu):not(.menu):not(.main-navigation):not(.sub-menu):not(.menu-items):not(.language-chooser):not(.tabs):not(.products):not(.meta-list):not(.product_list_widget) {
+.entry-content ul, .widget ul {
   li {
     &:before {
       content: "\f105";

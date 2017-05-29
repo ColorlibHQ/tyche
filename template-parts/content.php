@@ -10,43 +10,43 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'tyche-blog-post' ); ?>>
-    <header class="entry-header">
-        <div class="tyche-blog-image">
+	<header class="entry-header">
+		<div class="tyche-blog-image">
 			<?php
 			if ( has_post_thumbnail() ) {
 				echo ! is_single() ? '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' : '';
 				the_post_thumbnail( 'tyche-blog-post-image' );
 				echo ! is_single() ? '</a>' : '';
 			} else {
-				echo ! is_single() ? '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark"><img src="' . get_template_directory_uri() . '/assets/images/image-placeholder.jpg" /></a>' : '<img src="' . get_template_directory_uri() . '/assets/images/image-placeholder.jpg" />';
+				echo ! is_single() ? '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/image-placeholder.jpg" /></a>' : '<img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/image-placeholder.jpg" />';
 			}
 			?>
-        </div>
+		</div>
 
-        <div class="tyche-blog-meta">
-			<?php tyche_post_meta(); ?>
-        </div>
-    </header><!-- .entry-header -->
+		<div class="tyche-blog-meta">
+			<?php Tyche_Helper::post_meta(); ?>
+		</div>
+	</header><!-- .entry-header -->
 
-    <div class="entry - content">
+	<div class="entry-content">
 		<?php
 		the_content( esc_html__( 'Read More', 'tyche' ) );
 
 		wp_link_pages( array(
-			               'before' => '<div class="page - links">' . esc_html__( 'Pages:', 'tyche' ),
-			               'after'  => '</div>',
-		               ) );
+			'before' => '<div class="page - links">' . esc_html__( 'Pages:', 'tyche' ),
+			'after'  => '</div>',
+		) );
 		?>
-    </div><!-- .entry-content -->
+	</div><!-- .entry-content -->
 
-	<?php if ( is_single() ): ?>
-        <footer class="entry - footer">
-			<?php tyche_entry_footer(); ?>
-        </footer><!-- .entry-footer -->
+	<?php if ( is_single() ) : ?>
+		<footer class="entry-footer">
+			<?php Tyche_Helper::entry_footer(); ?>
+		</footer><!-- .entry-footer -->
 	<?php endif; ?>
 
 	<?php
-	if ( is_single() ):
+	if ( is_single() ) :
 		get_template_part( 'template-parts/author-info' );
 	endif;
 	?>

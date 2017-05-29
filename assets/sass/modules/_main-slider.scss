@@ -1,6 +1,5 @@
 .main-slider {
   position: relative;
-
   .owl-theme .owl-nav {
     margin-top: 0;
   }
@@ -13,14 +12,14 @@
       color: #FFF;
     }
     &.left {
-      left: 25%;
+      left: 20%;
     }
     &.center {
       left: 50%;
       @include transform(translateX(-50%));
     }
     &.right {
-      right: 25%;
+      right: 20%;
     }
     .year {
       font-size: 78px;
@@ -72,10 +71,10 @@
     }
   }
   .main-slider-previous {
-    left: 20%;
+    left: 10%;
   }
   .main-slider-next {
-    right: 20%;
+    right: 10%;
   }
 
   .main-slider-bar {
@@ -86,7 +85,7 @@
     }
     .main-slider-info {
       display: inline-block;
-      padding: 10px 0 10px;
+      padding: 14px 0 14px;
       margin-top: 5px;
       width: 100%;
       li {
@@ -104,6 +103,7 @@
           display: inline-block;
           position: relative;
           left: 10%;
+          line-height: 40px;
           @media(min-width: 768px) {
             left: 17%;
           }

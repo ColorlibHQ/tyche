@@ -19,30 +19,38 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+$layout = get_theme_mod( 'tyche_shop_layout', 'fullwidth' );
 
 get_header( 'shop' ); ?>
 <div class="container">
-    <div class="row">
-		<?php
-		/**
-		 * woocommerce_before_main_content hook.
-		 *
-		 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
-		 * @hooked woocommerce_breadcrumb - 20
-		 * @hooked WC_Structured_Data::generate_website_data() - 30
-		 */
-		do_action( 'woocommerce_before_main_content' );
-		?>
-    </div>
-    <div class="row">
-        <div class="<?php echo is_active_sidebar( 'shop-sidebar' ) ? 'col-md-8' : '' ?>">
-
-			<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-
-                <h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
-
-			<?php endif; ?>
-
+	<div class="row">
+		<div class="col-md-12">
+			<?php
+			/**
+			 * woocommerce_before_main_content hook.
+			 *
+			 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
+			 * @hooked woocommerce_breadcrumb - 20
+			 * @hooked WC_Structured_Data::generate_website_data() - 30
+			 */
+			do_action( 'woocommerce_before_main_content' );
+			?>
+		</div>
+	</div>
+	<div class="row">
+		<?php if ( is_active_sidebar( 'shop-sidebar' ) && 'left' === $layout ) : ?>
+			<div class="col-md-4 hidden-xs">
+				<?php
+				/**
+				 * woocommerce_sidebar hook.
+				 *
+				 * @hooked woocommerce_get_sidebar - 10
+				 */
+				do_action( 'woocommerce_sidebar' );
+				?>
+			</div>
+		<?php endif; ?>
+		<div class="<?php echo ( is_active_sidebar( 'shop-sidebar' ) && 'fullwidth' !== $layout ) ? 'col-md-8 tyche-has-sidebar' : 'col-md-12' ?>">
 			<?php
 			/**
 			 * woocommerce_archive_description hook.
@@ -52,6 +60,12 @@ get_header( 'shop' ); ?>
 			 */
 			do_action( 'woocommerce_archive_description' );
 			?>
+
+			<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
+
+				<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
+
+			<?php endif; ?>
 
 			<?php if ( have_posts() ) : ?>
 
@@ -96,10 +110,12 @@ get_header( 'shop' ); ?>
 				do_action( 'woocommerce_after_shop_loop' );
 				?>
 
-			<?php elseif ( ! woocommerce_product_subcategories( array(
-				                                                    'before' => woocommerce_product_loop_start( false ),
-				                                                    'after'  => woocommerce_product_loop_end( false )
-			                                                    ) )
+			<?php elseif ( ! woocommerce_product_subcategories(
+				array(
+					'before' => woocommerce_product_loop_start( false ),
+					'after'  => woocommerce_product_loop_end( false ),
+				)
+			)
 			) : ?>
 
 				<?php
@@ -112,9 +128,9 @@ get_header( 'shop' ); ?>
 				?>
 
 			<?php endif; ?>
-        </div>
-		<?php if ( is_active_sidebar( 'shop-sidebar' ) ): ?>
-            <div class="col-md-4 hidden-xs">
+		</div>
+		<?php if ( is_active_sidebar( 'shop-sidebar' ) && 'right' === $layout ) : ?>
+			<div class="col-md-4 hidden-xs">
 				<?php
 				/**
 				 * woocommerce_sidebar hook.
@@ -123,7 +139,7 @@ get_header( 'shop' ); ?>
 				 */
 				do_action( 'woocommerce_sidebar' );
 				?>
-            </div>
+			</div>
 		<?php endif; ?>
 		<?php
 		/**
@@ -133,6 +149,6 @@ get_header( 'shop' ); ?>
 		 */
 		do_action( 'woocommerce_after_main_content' );
 		?>
-    </div>
+	</div>
 </div>
 <?php get_footer( 'shop' ); ?>

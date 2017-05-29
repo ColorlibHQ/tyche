@@ -8,27 +8,21 @@
  *
  * @package Tyche
  */
-
 ?>
-
 </div><!-- #content -->
-</div>
 
-<!-- Footer -->
-<footer id="colophon" class="site-footer" role="contentinfo">
-	<?php get_sidebar( 'footer' ) ?>
-</footer>
-<!-- / Footer -->
+<?php get_sidebar( 'footer' ) ?>
+
 <?php
 $enable_copyright = get_theme_mod( 'tyche_enable_copyright', '1' )
 ?>
-<?php if ( $enable_copyright !== '0' ): ?>
-    <!-- Copyright -->
-    <footer class="site-copyright">
-        <div class="site-info ">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
+<?php if ( '1' === $enable_copyright ) : ?>
+	<!-- Copyright -->
+	<footer class="site-copyright">
+		<div class="site-info ">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
 						<?php
 						if ( has_nav_menu( 'social' ) ) {
 
@@ -49,17 +43,15 @@ $enable_copyright = get_theme_mod( 'tyche_enable_copyright', '1' )
 						}
 						?>
 
-						<?php if ( $enable_copyright !== '0' ): ?>
-                            <div class="copyright-text pull-right">
-								<?php echo wp_kses_post( get_theme_mod( 'tyche_copyright_contents', sprintf( 'Copyright &copy; ' . date( "Y" ) . ' <span class="sep">|</span> <a href="%s">Theme: Tyche</a> <span class="sep">|</span> Powered by WordPress.', 'https://colorlib.com/wp/themes/tyche/' ) ) ); ?>
-                            </div>
-						<?php endif; ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- / Copyright -->
+						<div class="copyright-text pull-right">
+							<?php echo wp_kses_post( get_theme_mod( 'tyche_copyright_contents', sprintf( 'Copyright &copy; ' . date( 'Y' ) . ' <span class="sep">|</span> <a href="%s">Theme: Tyche</a> <span class="sep">|</span> Powered by WordPress.', 'https://colorlib.com/tyche/' ) ) ); ?>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- / Copyright -->
 <?php endif; ?>
 </div><!-- #page -->
 

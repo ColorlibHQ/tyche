@@ -14,19 +14,22 @@
 
 get_header();
 $breadcrumbs_enabled = get_theme_mod( 'tyche_enable_post_breadcrumbs', '1' );
-if ( $breadcrumbs_enabled == '1' ) { ?>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-				<?php tyche_breadcrumbs(); ?>
-            </div>
-        </div>
-    </div>
-<?php } ?>
-    <div class="container">
-        <div class="row">
-            <div id="primary" class="content-area <?php echo ! tyche_has_sidebar() ? 'col-md-8' : 'col-md-12' ?>">
-                <main id="main" class="site-main" role="main">
+if ( '1' === $breadcrumbs_enabled ) { ?>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<?php Tyche_Helper::add_breadcrumbs(); ?>
+			</div>
+		</div>
+	</div>
+<?php } ?><?php
+$shop_page    = Tyche_Helper::has_sidebar();
+$account_page = is_account_page();
+?>
+	<div class="container">
+		<div class="row">
+			<div id="primary" class="content-area <?php echo $account_page ? 'col-md-12' : 'col-md-8 tyche-has-sidebar' ?>">
+				<main id="main" class="site-main" role="main">
 
 					<?php
 					while ( have_posts() ) : the_post();
@@ -41,15 +44,19 @@ if ( $breadcrumbs_enabled == '1' ) { ?>
 					endwhile; // End of the loop.
 					?>
 
-                </main><!-- #main -->
-            </div><!-- #primary -->
+				</main><!-- #main -->
+			</div><!-- #primary -->
 
 			<?php
-			if ( ! tyche_has_sidebar() ) {
+			if ( $shop_page ) {
+				if ( ! $account_page ) {
+					get_sidebar( 'shop' );
+				}
+			} else {
 				get_sidebar();
 			}
 			?>
-        </div>
-    </div>
+		</div>
+	</div>
 <?php
 get_footer();

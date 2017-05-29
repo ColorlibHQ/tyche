@@ -9,11 +9,11 @@
 
 get_header();
 $breadcrumbs_enabled = get_theme_mod( 'tyche_enable_post_breadcrumbs', '1' );
-if ( $breadcrumbs_enabled == '1' ) { ?>
+if ( '1' === $breadcrumbs_enabled ) { ?>
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
-				<?php tyche_breadcrumbs(); ?>
+				<?php Tyche_Helper::add_breadcrumbs(); ?>
 			</div>
 		</div>
 	</div>

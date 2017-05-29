@@ -14,7 +14,7 @@ $mysidebars = array(
 	'footer-sidebar-1',
 	'footer-sidebar-2',
 	'footer-sidebar-3',
-	'footer-sidebar-4'
+	'footer-sidebar-4',
 );
 
 /**
@@ -26,13 +26,6 @@ foreach ( $mysidebars as $column ) {
 		$sidebars[] = $column;
 	}
 };
-
-/**
- * If the array is empty, terminate here
- */
-if ( empty( $sidebars ) ) {
-	return false;
-}
 
 /**
  * Handle the sizing of the footer columns based on the user selection
@@ -49,24 +42,27 @@ $size = 12 / $count;
 if ( empty( $sidebars ) ) {
 	$args = array(
 		'before_title' => '<h3 class="widget-title">',
-		'after_title'  => '</h3>'
+		'after_title'  => '</h3>',
 	);
 
-	$widgets = array( 'WP_Widget_Meta', 'WP_Widget_Recent_Posts', 'WP_Widget_Tag_Cloud', 'WP_Widget_Categories' );
+	$widgets = array( 'WP_Widget_Meta', 'WP_Widget_Recent_Posts', 'WP_Widget_Calendar', 'WP_Widget_Categories' );
 	$widgets = array_slice( $widgets, 0, $count );
 	?>
-    <div class="widgets-area">
-        <div class="container">
-            <div class="row">
-				<?php foreach ( $widgets as $widget ) { ?>
-                    <div class="col-md-<?php echo esc_attr( $size ) ?> col-sm-6">
-						<?php the_widget( $widget, array(), $args ); ?>
-                    </div>
-				<?php } ?>
-            </div>
-        </div>
-    </div>
-
+	<!-- Footer -->
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="widgets-area">
+			<div class="container">
+				<div class="row">
+					<?php foreach ( $widgets as $widget ) { ?>
+						<div class="col-md-<?php echo esc_attr( $size ) ?> col-sm-6">
+							<?php the_widget( $widget, array(), $args ); ?>
+						</div>
+					<?php } ?>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- / Footer -->
 	<?php return false;
 }
 
@@ -76,14 +72,18 @@ if ( empty( $sidebars ) ) {
  */
 $sidebars = array_slice( $sidebars, 0, $count );
 ?>
-<div class="widgets-area">
-    <div class="container">
-        <div class="row">
-			<?php foreach ( $sidebars as $sidebar ): ?>
-                <div class="col-md-<?php echo $size ?> col-sm-6">
-					<?php dynamic_sidebar( $sidebar ); ?>
-                </div>
-			<?php endforeach; ?>
-        </div><!--.row-->
-    </div>
-</div>
+<!-- Footer -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+	<div class="widgets-area">
+		<div class="container">
+			<div class="row">
+				<?php foreach ( $sidebars as $sidebar ) : ?>
+					<div class="col-md-<?php echo $size ?> col-sm-6">
+						<?php dynamic_sidebar( $sidebar ); ?>
+					</div>
+				<?php endforeach; ?>
+			</div><!--.row-->
+		</div>
+	</div>
+</footer>
+<!-- / Footer -->

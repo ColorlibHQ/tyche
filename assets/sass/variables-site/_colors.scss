@@ -5,17 +5,18 @@ $color__background-button: #e6e6e6;
 $color__background-pre: #eee;
 $color__background-ins: #fff9c0;
 
+$color__brand-primary: #F66249 !default;
+$color__brand-primary-hover: darken($color__brand-primary, 10%);
+
 $color__text-screen: #21759b;
 $color__text-input: #666;
 $color__text-input-focus: #111;
-$color__link: royalblue;
-$color__link-visited: purple;
-$color__link-hover: midnightblue;
+$color__link: $color__brand-primary;
+$color__link-visited: lighten($color__brand-primary, 10%);
+$color__link-hover: $color__brand-primary-hover;
 $color__text-main: #717171;
 $color__title: #2a313e;
 
-$color__brand-primary: #F66249;
-$color__brand-primary-hover: darken($color__brand-primary, 10%);
 
 $color__header_bg: #2b2e34;
 
