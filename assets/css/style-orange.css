@@ -314,6 +314,10 @@ img {
   height: auto;
 }
 
+.img-centered {
+  margin: 0 auto;
+}
+
 .img-rounded {
   border-radius: 6px;
 }
@@ -2654,8 +2658,8 @@ a:hover, a:active {
   color: #ffffff;
   font-size: 15px;
   font-size: 1.5rem;
-  line-height: 56px;
-  line-height: 3.73333333;
+  line-height: 53px;
+  line-height: 3.253333;
   text-align: center;
   cursor: pointer;
 }

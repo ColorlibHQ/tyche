@@ -249,7 +249,7 @@ class Tyche {
 				array(
 					'default-image'      => '',
 					'default-text-color' => '000000',
-					'width'              => 1000,
+					'width'              => 1920,
 					'height'             => 250,
 					'flex-height'        => true,
 				)

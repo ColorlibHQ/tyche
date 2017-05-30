@@ -26,11 +26,25 @@ class Tyche_WooCommerce_Hooks {
 		add_action( 'woocommerce_after_shop_loop', array( $this, 'pagination' ), 10 );
 		add_action( 'after_setup_theme', array( $this, 'wpcom_setup' ) );
 		add_action( 'after_switch_theme', array( $this, 'change_image_dimensions' ), 1 );
+		add_action( 'after_switch_theme', array( $this, 'add_registration_on_login' ), 1 );
 
 		/**
 		 * Add Filters
 		 */
 		add_filter( 'loop_shop_columns', array( $this, 'loop_columns' ) );
+	}
+
+	/**
+	 * Add registration by default
+	 */
+	public function add_registration_on_login() {
+		global $pagenow;
+
+		if ( ! isset( $_GET['activated'] ) || 'themes.php' !== $pagenow ) {
+			return;
+		}
+
+		update_option( 'woocommerce_enable_myaccount_registration', 'yes' );
 	}
 
 	/**

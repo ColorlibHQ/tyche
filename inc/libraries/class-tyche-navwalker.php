@@ -63,7 +63,7 @@ class Tyche_Navwalker extends Walker_Nav_Menu {
 			$output .= $indent . '<li role="presentation" class="disabled"><a href="#">' . esc_attr( $item->title ) . '</a>';
 		} else {
 			$class_names = '';
-			$value = '';
+			$value       = '';
 			$classes     = empty( $item->classes ) ? array() : (array) $item->classes;
 			$classes[]   = 'menu-item-' . $item->ID;
 			$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
@@ -87,7 +87,7 @@ class Tyche_Navwalker extends Walker_Nav_Menu {
 			$atts['rel']    = ! empty( $item->xfn ) ? $item->xfn : '';
 			// If item has_children add atts to a.
 			if ( $args->has_children && 0 === $depth ) {
-				$atts['href']          = '#';
+				$atts['href']          = ! empty( $item->url ) ? $item->url : '';
 				$atts['data-toggle']   = 'dropdown';
 				$atts['class']         = 'dropdown-toggle';
 				$atts['aria-haspopup'] = 'true';
