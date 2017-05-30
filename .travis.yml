@@ -47,6 +47,7 @@ cache:
   directories:
   - node_modules
 after_success:
+  - grunt build-archive
   - sh set_tags.sh
 deploy:
   provider: releases
