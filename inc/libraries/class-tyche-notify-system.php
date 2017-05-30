@@ -6,6 +6,8 @@ if ( ! defined( 'WPINC' ) ) {
 class Tyche_Notify_System extends Epsilon_Notify_System {
 	/**
 	 * Are the required plugins installed ?
+	 *
+	 * @return bool
 	 */
 	public static function check_plugins() {
 		$plugins = array(
@@ -27,6 +29,13 @@ class Tyche_Notify_System extends Epsilon_Notify_System {
 
 			$arr[ $k ] = $activated;
 		}
-		return ! empty( array_filter( $arr ) ) ? true : false;
+
+		$filtered = array_filter( $arr );
+
+		if ( 5 === count( $filtered ) ) {
+			return true;
+		}
+
+		return false;
 	}
 }
