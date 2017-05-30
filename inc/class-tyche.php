@@ -160,11 +160,15 @@ class Tyche {
 		wp_enqueue_script( 'jquery-zoom', get_template_directory_uri() . '/assets/vendors/jquery-zoom/jquery.zoom.min.js', array( 'jquery' ), '1.3.3', true );
 		wp_register_script( 'adsenseloader', get_template_directory_uri() . '/assets/vendors/adsenseloader/jquery.adsenseloader.min.js', array( 'jquery' ), '1.0.0', true );
 		wp_register_script(
-			'tyche-scripts', get_template_directory_uri() . '/assets/js/functions.js', array(
-			'jquery',
-			'jquery-zoom',
-			'owlCarousel',
-		), '', false
+			'tyche-scripts',
+			get_template_directory_uri() . '/assets/js/functions.js',
+			array(
+				'jquery',
+				'jquery-zoom',
+				'owlCarousel',
+			),
+			'',
+			false
 		);
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
@@ -221,31 +225,35 @@ class Tyche {
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support(
-			'html5', array(
-				       'search-form',
-				       'comment-form',
-				       'comment-list',
-				       'gallery',
-				       'caption',
-			       )
+			'html5',
+			array(
+				'search-form',
+				'comment-form',
+				'comment-list',
+				'gallery',
+				'caption',
+			)
 		);
 		add_theme_support(
-			'custom-logo', array(
-				             'height'     => 70,
-				             'width'      => 165,
-				             'flex-width' => true,
-			             )
+			'custom-logo',
+			array(
+				'height'     => 70,
+				'width'      => 165,
+				'flex-width' => true,
+			)
 		);
 		add_theme_support(
-			'custom-header', apply_filters(
-				               'tyche_custom_header_args', array(
-					                                         'default-image'      => '',
-					                                         'default-text-color' => '000000',
-					                                         'width'              => 1000,
-					                                         'height'             => 250,
-					                                         'flex-height'        => true,
-				                                         )
-			               )
+			'custom-header',
+			apply_filters(
+				'tyche_custom_header_args',
+				array(
+					'default-image'      => '',
+					'default-text-color' => '000000',
+					'width'              => 1000,
+					'height'             => 250,
+					'flex-height'        => true,
+				)
+			)
 		);
 
 		add_theme_support( 'woocommerce' );
@@ -257,11 +265,12 @@ class Tyche {
 
 		// Add theme support for Infinite Scroll.
 		add_theme_support(
-			'infinite-scroll', array(
-				                 'container' => 'main',
-				                 'render'    => array( 'Tyche_Helper', 'infinite_scroll_render' ),
-				                 'footer'    => 'page',
-			                 )
+			'infinite-scroll',
+			array(
+				'container' => 'main',
+				'render'    => array( 'Tyche_Helper', 'infinite_scroll_render' ),
+				'footer'    => 'page',
+			)
 		);
 	}
 

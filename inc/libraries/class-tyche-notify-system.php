@@ -27,7 +27,6 @@ class Tyche_Notify_System extends Epsilon_Notify_System {
 
 			$arr[ $k ] = $activated;
 		}
-		
 		return ! empty( array_filter( $arr ) ) ? true : false;
 	}
 }
