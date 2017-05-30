@@ -3335,22 +3335,22 @@ a:hover, a:active {
   background: transparent;
 }
 @media (min-width: 990px) {
-  .widget.widget_tyche_companion_recent.no-title {
+  .widget.widget_tyche_recent.no-title {
     margin-top: 100px;
   }
 }
-.widget.widget_tyche_companion_recent .tyche-recent-post-alternate-widget {
+.widget.widget_tyche_recent .tyche-recent-post-alternate-widget {
   display: inline-block;
   width: 100%;
   border-bottom: 1px solid #e3e3e3;
   padding-bottom: 30px;
   margin-bottom: 30px;
 }
-.widget.widget_tyche_companion_recent .tyche-recent-post-alternate-widget:last-of-type {
+.widget.widget_tyche_recent .tyche-recent-post-alternate-widget:last-of-type {
   border-bottom: none;
   padding-bottom: 0;
 }
-.widget.widget_tyche_companion_recent .tyche-recent-post-alternate-widget .tyche-date {
+.widget.widget_tyche_recent .tyche-recent-post-alternate-widget .tyche-date {
   display: inline-block;
   width: 90px;
   height: 90px;
@@ -3359,23 +3359,23 @@ a:hover, a:active {
   padding: 17px;
   background: #FFF;
 }
-.widget.widget_tyche_companion_recent .tyche-recent-post-alternate-widget .tyche-date .day {
+.widget.widget_tyche_recent .tyche-recent-post-alternate-widget .tyche-date .day {
   font-size: 29px;
   font-weight: 700;
   display: block;
   line-height: 28px;
 }
-.widget.widget_tyche_companion_recent .tyche-recent-post-alternate-widget .tyche-date .month {
+.widget.widget_tyche_recent .tyche-recent-post-alternate-widget .tyche-date .month {
   font-size: 20px;
   display: block;
 }
-.widget.widget_tyche_companion_recent .tyche-recent-post-alternate-widget .tyche-image {
+.widget.widget_tyche_recent .tyche-recent-post-alternate-widget .tyche-image {
   float: left;
   display: inline-block;
   height: 90px;
   overflow: hidden;
 }
-.widget.widget_tyche_companion_recent .tyche-recent-post-alternate-widget .tyche-post-content {
+.widget.widget_tyche_recent .tyche-recent-post-alternate-widget .tyche-post-content {
   float: left;
   display: inline-block;
   overflow: hidden;
@@ -3383,7 +3383,7 @@ a:hover, a:active {
   margin-top: 15px;
 }
 @media (min-width: 582px) {
-  .widget.widget_tyche_companion_recent .tyche-recent-post-alternate-widget .tyche-post-content {
+  .widget.widget_tyche_recent .tyche-recent-post-alternate-widget .tyche-post-content {
     width: 49%;
     margin-top: 0;
     max-height: 90px;
@@ -3391,59 +3391,59 @@ a:hover, a:active {
   }
 }
 @media (min-width: 992px) and (max-width: 1200px) {
-  .widget.widget_tyche_companion_recent .tyche-recent-post-alternate-widget .tyche-post-content {
+  .widget.widget_tyche_recent .tyche-recent-post-alternate-widget .tyche-post-content {
     width: 38%;
   }
 }
-.widget.widget_tyche_companion_recent .tyche-recent-post-alternate-widget .tyche-post-content p {
+.widget.widget_tyche_recent .tyche-recent-post-alternate-widget .tyche-post-content p {
   margin-bottom: 10px;
 }
-.widget.widget_tyche_companion_recent .tyche-recent-post-alternate-widget .tyche-post-content p a {
+.widget.widget_tyche_recent .tyche-recent-post-alternate-widget .tyche-post-content p a {
   font-size: 20px;
   color: #2a313e;
   font-weight: bold;
 }
-.widget.widget_tyche_companion_recent .tyche-recent-post-alternate-widget .tyche-post-content p a:hover {
+.widget.widget_tyche_recent .tyche-recent-post-alternate-widget .tyche-post-content p a:hover {
   color: #1b60a7;
 }
-.widget.widget_tyche_companion_recent .tyche-recent-post-alternate-widget .tyche-post-content ul {
+.widget.widget_tyche_recent .tyche-recent-post-alternate-widget .tyche-post-content ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
-.widget.widget_tyche_companion_recent .tyche-recent-post-alternate-widget .tyche-post-content ul li {
+.widget.widget_tyche_recent .tyche-recent-post-alternate-widget .tyche-post-content ul li {
   display: inline-block;
   float: left;
   margin-right: 5px;
   color: #2a313e;
 }
-.widget.widget_tyche_companion_recent .tyche-recent-post-alternate-widget .tyche-post-content ul li a {
+.widget.widget_tyche_recent .tyche-recent-post-alternate-widget .tyche-post-content ul li a {
   color: #2a313e;
 }
-.widget.widget_tyche_companion_recent .tyche-recent-post-alternate-widget .tyche-post-content ul li:before {
+.widget.widget_tyche_recent .tyche-recent-post-alternate-widget .tyche-post-content ul li:before {
   content: '';
   display: none;
 }
-.widget.widget_tyche_companion_recent .tyche-recent-post-widget {
+.widget.widget_tyche_recent .tyche-recent-post-widget {
   display: inline-block;
   margin-bottom: 15px;
   width: 100%;
 }
-.widget.widget_tyche_companion_recent .tyche-recent-post-widget .tyche-title p {
+.widget.widget_tyche_recent .tyche-recent-post-widget .tyche-title p {
   font-weight: bold;
 }
-.widget.widget_tyche_companion_recent .tyche-recent-post-widget .tyche-image {
+.widget.widget_tyche_recent .tyche-recent-post-widget .tyche-image {
   display: inline-block;
   margin-right: 15px;
   float: left;
 }
-.widget.widget_tyche_companion_recent .tyche-recent-post-widget .tyche-post-content {
+.widget.widget_tyche_recent .tyche-recent-post-widget .tyche-post-content {
   padding-left: 85px;
 }
-.widget.widget_tyche_companion_recent .tyche-recent-post-widget .tyche-post-content p a {
+.widget.widget_tyche_recent .tyche-recent-post-widget .tyche-post-content p a {
   color: #717171;
 }
-.widget.widget_tyche_companion_recent .tyche-recent-post-widget .tyche-post-content p a:hover {
+.widget.widget_tyche_recent .tyche-recent-post-widget .tyche-post-content p a:hover {
   color: #1b60a7;
 }
 
@@ -3459,12 +3459,12 @@ a:hover, a:active {
   border-radius: 0;
   padding: 5px;
 }
-#secondary .widget_tyche_companion_products .widget-title, #secondary .widget_tyche_companion_recent .widget-title, .page-template-frontpage-template .widget_tyche_companion_products .widget-title, .page-template-frontpage-template .widget_tyche_companion_recent .widget-title {
+#secondary .widget_tyche_products .widget-title, #secondary .widget_tyche_recent .widget-title, .page-template-frontpage-template .widget_tyche_products .widget-title, .page-template-frontpage-template .widget_tyche_recent .widget-title {
   margin-bottom: 40px;
   margin-top: 30px;
   font-size: 30px;
 }
-#secondary .widget_tyche_companion_products .widget-title > span, #secondary .widget_tyche_companion_recent .widget-title > span, .page-template-frontpage-template .widget_tyche_companion_products .widget-title > span, .page-template-frontpage-template .widget_tyche_companion_recent .widget-title > span {
+#secondary .widget_tyche_products .widget-title > span, #secondary .widget_tyche_recent .widget-title > span, .page-template-frontpage-template .widget_tyche_products .widget-title > span, .page-template-frontpage-template .widget_tyche_recent .widget-title > span {
   font-size: 30px;
 }
 
@@ -3472,6 +3472,14 @@ a:hover, a:active {
   margin-top: 0;
 }
 
+.content-area-1 .widget .widget-title,
+.content-area-2 .widget .widget-title,
+.content-area-3 .widget .widget-title,
+.content-area-4 .widget .widget-title,
+.content-area-5 .widget .widget-title {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
 .content-area-1 h1, .content-area-1 h2, .content-area-1 h3, .content-area-1 h4, .content-area-1 h5, .content-area-1 h6,
 .content-area-2 h1,
 .content-area-2 h2,
@@ -3789,76 +3797,270 @@ a:hover, a:active {
   display: block;
 }
 
-.comments-area li > ul, .comments-area li > ol {
-  margin: 0;
-  padding: 0;
-  margin-top: 20px;
-  padding-left: 20px;
-  border-left: 1px solid #2279d3;
+/* ==========================================================================
+   =Comments, Pingbacks and Trackbacks
+   ========================================================================== */
+.comments-wrap {
+  background-color: #f9f9fa;
+  padding: 56px 0;
+  padding: 3.73333333em 0;
+  margin: 28px 0 -70px;
+  margin: 1.86666666em 0 -4.66666666em;
+}
+
+/*
+	 * 1. Clearfix hack
+	 */
+.comments-area:after,
+.comment-list:after
+.comment:after {
+  /* 1 */
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+.comments-area {
+  margin-bottom: 56px;
+  margin-bottom: 3.73333333em;
+}
+
+.comment-list,
+.comment-list .children {
+  list-style: none;
 }
 
 .comment-list {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
+  margin: 28px 0;
+  margin: 1.86666666em 0;
 }
-.comment-list .comment-body {
-  padding: 15px;
-  border: 1px solid #e1e1e1;
+
+@media (max-width: 480px) {
+  .comment-list .children {
+    margin-left: 7px;
+    margin-left: 0.46666666em;
+  }
+}
+.no-comments,
+.comment-awaiting-moderation {
+  color: #1a171c;
+}
+
+/* =Comment Meta
+   ========================================================================== */
+.comment-meta {
+  margin: 14px 0;
+  margin: 0.93333333em 0;
+}
+
+.comment-author {
   position: relative;
+  z-index: 2;
 }
-.comment-list .says {
-  display: none;
-}
-.comment-list .fn {
-  font-size: 17px;
-  color: #2a313e;
-  margin-left: 12px;
-}
-.comment-list .comment-author > img {
-  width: 50px;
-  height: 50px;
-}
-.comment-list .comment-metadata {
-  padding-left: 66px;
-  position: relative;
-  bottom: 10px;
-}
-.comment-list .comment-metadata > a {
-  color: #2279d3;
-  font-size: 15px;
-}
-.comment-list .comment-content {
-  padding-left: 66px;
-}
-.comment-list .reply {
+
+.comment-author .avatar {
   position: absolute;
-  top: 20px;
-  right: 20px;
-}
-.comment-list .reply > a {
-  color: #2279d3;
-  font-size: 15px;
-  font-weight: 700;
-}
-
-#reply-title {
-  color: #2279d3;
-  font-size: 20px;
-  text-transform: uppercase;
+  left: -84px;
+  left: -5.6em;
+  top: -14px;
+  top: -0.93333333em;
+  height: 64px;
+  height: 4.26666666em;
+  width: 64px;
+  width: 4.26666666em;
 }
 
-.comment-notes {
+@media (max-width: 480px) {
+  .comment-author .avatar {
+    position: relative;
+    left: auto;
+    top: auto;
+    display: block;
+    height: 48px;
+    height: 3.2em;
+    width: 48px;
+    width: 3.2em;
+    margin-bottom: 28px;
+    margin-bottom: 1.86666666em;
+  }
+}
+.comment-author .says {
   display: none;
 }
 
-.comment-form [class^="comment-form-"] > label {
-  display: none;
+.comment-metadata > a {
+  color: #777777;
 }
-.comment-form [class^="comment-form-"] > input {
+
+/* =Comment Body
+   ========================================================================== */
+.comment .comment-body {
+  position: relative;
+  padding: 28px 0 28px 84px;
+  padding: 1.86666666em 0 1.86666666em 5.6em;
+  border-top: 1px solid #e1e1e1;
+}
+
+.comment-list > li:first-child > .comment-body {
+  padding-top: 7px;
+  padding-top: 0.46666666em;
+  border-top: 0;
+}
+
+@media (max-width: 480px) {
+  .comment .comment-body {
+    padding-left: 0;
+  }
+}
+.comment .comment-body *:last-child {
+  margin-bottom: 0;
+}
+
+/* =Comment Reply
+   ========================================================================== */
+.reply {
+  margin: 14px 0 28px;
+  margin: 0.93333333em 0 1.86666666em;
+}
+
+.comment-reply-link {
+  position: relative;
+}
+
+/* ==========================================================================
+   =Comments Navigation
+   ========================================================================== */
+.comment-navigation {
+  padding-top: 28px;
+  padding-top: 1.86666666em;
+  margin-bottom: 28px;
+  margin-bottom: 1.86666666em;
+}
+
+/*
+	 * 1. Clearfix hack
+	 */
+.comment-navigation:after {
+  /* 1 */
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+#comment-nav-above {
+  padding-bottom: 28px;
+  padding-bottom: 1.86666666em;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+#comment-nav-below {
+  border-top: 1px solid #e1e1e1;
+}
+
+.comment-navigation .nav-next a:after {
+  font-family: 'FontAwesome';
+  content: "\f105";
+  padding-left: 4px;
+  padding-left: 0.26666666em;
+}
+
+.comment-navigation .nav-previous a:before {
+  font-family: 'FontAwesome';
+  content: "\f104";
+  padding-right: 4px;
+  padding-right: 0.26666666em;
+}
+
+.comment-navigation .nav-next {
+  float: right;
+  text-align: right;
+  width: 50%;
+}
+
+.comment-navigation .nav-previous {
+  float: left;
+  width: 50%;
+}
+
+/* ==========================================================================
+   =Comments Form
+   ========================================================================== */
+/*
+ * 1. Clearfix hack
+ */
+.comment-respond:after {
+  /* 1 */
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+.comment-reply-title {
+  margin-bottom: 0;
+}
+
+.comment-form {
+  margin: 0 -15px 15px;
+}
+
+/*
+ * 1. Clearfix hack
+ */
+.comment-form:after {
+  /* 1 */
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+.comment-form p:not(.comment-notes):not(.logged-in-as) {
+  margin-bottom: 0;
+}
+
+.comment-form .logged-in-as,
+.comment-form .comment-notes,
+.comment-form .comment-form-comment,
+.comment-form .comment-form-author,
+.comment-form .comment-form-email,
+.comment-form .comment-form-url,
+.comment-form .form-submit {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.comment-form-author input,
+.comment-form-email input,
+.comment-form-url input {
   width: 100%;
 }
 
+.comment-form #submit {
+  margin-top: 15px;
+}
+
+@media (min-width: 768px) {
+  .comment-form-author,
+  .comment-form-email,
+  .comment-form-url {
+    width: 33.33333333%;
+    float: left;
+  }
+}
 /*--------------------------------------------------------------
 # Modules ## Header Bar
 --------------------------------------------------------------*/
@@ -4277,7 +4479,6 @@ a:hover, a:active {
 # Modules ## Footer
 --------------------------------------------------------------*/
 .site-footer {
-  margin-top: 30px;
   padding-top: 30px;
   padding-bottom: 30px;
   background: #25262b;
@@ -4551,9 +4752,11 @@ a:hover, a:active {
 .tyche-product-slider-container .tyche-companion-banner .woocommerce form.register a:hover {
   background: #3186de;
 }
-.woocommerce form.login {
+.woocommerce .u-columns form.login {
   border-radius: 0;
   border-right: 1px solid #e3e3e3;
+}
+.woocommerce form.login {
   padding-right: 50px;
 }
 .woocommerce form.login a.pull-right {
@@ -4564,10 +4767,6 @@ a:hover, a:active {
   font-style: italic;
   text-decoration: underline;
   margin-right: 15px;
-}
-.woocommerce form.login .woocommerce-LostPassword.lost_password {
-  float: right;
-  margin-right: 20px;
 }
 .woocommerce form.login input {
   max-width: 350px;
@@ -5290,7 +5489,7 @@ a:hover, a:active {
 }
 .tyche-product-slider-container .tyche-product-slider-navigation {
   position: absolute;
-  top: -65px;
+  top: -55px;
   right: 15px;
   display: inline-block;
 }
@@ -5516,6 +5715,7 @@ a:hover, a:active {
   border: none;
   font-weight: bold;
   width: 25px;
+  -moz-appearance: textfield;
 }
 .cart .quantity input[type="number"]::-webkit-outer-spin-button, .cart .quantity input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;

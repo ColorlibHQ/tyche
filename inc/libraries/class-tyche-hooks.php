@@ -42,19 +42,6 @@ class Tyche_Hooks {
 		 * Register TGMPA
 		 */
 		add_action( 'tgmpa_register', array( $this, 'register_required_plugins' ) );
-		add_action( 'admin_init', array( $this, 'save_tgmpa_state' ) );
-	}
-
-	/**
-	 * Save the tgmpa state to the database
-	 */
-	public function save_tgmpa_state() {
-		$instance = TGM_Plugin_Activation::get_instance();
-		$option   = get_option( 'tyche_tgmpa_saved_state' );
-
-		if ( 'plugins-installed' !== $option && $instance->is_tgmpa_complete() ) {
-			update_option( 'tyche_tgmpa_saved_state', 'plugins-installed' );
-		}
 	}
 
 	/**

@@ -28,8 +28,8 @@ class Widget_Tyche_Recent_Posts extends WP_Widget {
 		 *                                information on accepted arguments. Default empty array.
 		 */
 		parent::__construct(
-			'Tyche_Companion_Recent',
-			__( 'Tyche Companion Recent Posts', 'tyche' ),
+			'Tyche_Recent',
+			__( 'Tyche Recent Posts', 'tyche' ),
 			array(
 				'description'                 => esc_html__( 'Recent Posts!', 'tyche' ),
 				'customize_selective_refresh' => true,

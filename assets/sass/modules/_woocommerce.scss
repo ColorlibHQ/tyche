@@ -89,9 +89,14 @@
       }
     }
   }
+  .u-columns {
+    form.login {
+      border-radius: 0;
+      border-right: 1px solid #e3e3e3;
+    }
+  }
   form.login {
-    border-radius: 0;
-    border-right: 1px solid #e3e3e3;
+
     padding-right: 50px;
     a.pull-right {
       position: relative;
@@ -102,10 +107,7 @@
       text-decoration: underline;
       margin-right: 15px;
     }
-    .woocommerce-LostPassword.lost_password {
-      float: right;
-      margin-right: 20px;
-    }
+
     input {
       max-width: 350px;
     }
@@ -431,7 +433,7 @@
     }
     td {
       padding: 12px;
-      text-align:center;
+      text-align: center;
     }
     .product-name,
     .product-quantity,
@@ -905,7 +907,7 @@
   position: relative;
   .tyche-product-slider-navigation {
     position: absolute;
-    top: -65px;
+    top: -55px;
     right: 15px;
     display: inline-block;
     a {
@@ -1166,6 +1168,7 @@
       border: none;
       font-weight: bold;
       width: 25px;
+      -moz-appearance: textfield;
       &::-webkit-outer-spin-button,
       &::-webkit-inner-spin-button {
         -webkit-appearance: none;

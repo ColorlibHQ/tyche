@@ -79,7 +79,7 @@ $wp_customize->add_section(
 		$wp_customize,
 		'epsilon-section-pro',
 		array(
-			'title'       => esc_html__( 'Tyche - WooCommerce', 'tyche' ),
+			'title'       => esc_html__( 'Tyche', 'tyche' ),
 			'button_text' => esc_html__( 'Documentation', 'tyche' ),
 			'button_url'  => esc_url_raw( 'https://colorlib.com/wp/support/tyche/' ),
 			'priority'    => 1,

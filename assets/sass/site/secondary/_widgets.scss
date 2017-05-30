@@ -206,7 +206,7 @@
           position: absolute;
           color: transparent;
           background: transparent;
-          line-height:initial;
+          line-height: initial;
         }
       }
       #next {
@@ -229,7 +229,7 @@
           font-family: 'FontAwesome';
         }
         > a {
-          line-height:initial;
+          line-height: initial;
           font-size: 15px;
           top: 6px;
           position: absolute;
@@ -240,7 +240,7 @@
     }
   }
 
-  &.widget_tyche_companion_recent {
+  &.widget_tyche_recent {
     @media(min-width: 990px) {
       &.no-title {
         margin-top: 100px;
@@ -370,7 +370,7 @@
     padding: 5px;
   }
 
-  .widget_tyche_companion_products, .widget_tyche_companion_recent {
+  .widget_tyche_products, .widget_tyche_recent {
     .widget-title {
       margin-bottom: 40px;
       margin-top: 30px;
@@ -393,6 +393,10 @@
 .content-area-3,
 .content-area-4,
 .content-area-5 {
+  .widget .widget-title{
+    margin-top:30px;
+    margin-bottom:30px;
+  }
   h1, h2, h3, h4, h5, h6 {
     margin-top: 30px;
     margin-bottom: 30px;
