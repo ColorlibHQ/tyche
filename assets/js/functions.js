@@ -31,13 +31,18 @@
 
     initStyleSelects: function() {
       var selects = $( 'select' );
+
       $.each( selects, function() {
+        if ( 'rating' === $( this ).attr( 'id' ) ) {
+          return;
+        }
+
         if ( $( this ).parent().hasClass( 'styled-select' ) ) {
-          return false;
+          return;
         }
 
         if ( $( this ).parent().hasClass( 'value' ) ) {
-          return false;
+          return;
         }
 
         $( this ).wrap( '<div class="styled-select"></div>' );

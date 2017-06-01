@@ -26,15 +26,15 @@
 
   .button {
     &.wc-forward {
-      background: #252525;
-      border-color: #252525;
+      background: $color__brand-primary;
+      border-color: $color__brand-primary;
       color: #FFF;
 
       &:hover,
       &:active,
       &:focus {
-        border-color: darken(#252525, 10%);
-        background: darken(#252525, 10%);
+        background: $color__brand-primary-hover;
+        border-color: $color__brand-primary-hover;
         color: #FFF;
       }
     }
@@ -68,9 +68,10 @@
     .button {
       background: $color__brand-primary;
       color: #FFF;
-      padding: 10px 30px;
+      padding: 7px 30px;
       &:hover {
-        background: lighten($color__brand-primary, 5%);
+        background: $color__brand-primary-hover;
+        border-color: $color__brand-primary-hover;
       }
     }
   }
@@ -339,7 +340,7 @@
   div.product span.price {
     font-weight: 700;
     font-size: 25px;
-    color: $color__brand-primary;
+    color: $color__title;
   }
   .woocommerce-Price-currencySymbol {
     font-size: 12px;
@@ -514,15 +515,10 @@
     .actions {
       .button {
         padding: 7px;
-        background: #dcdcdc;
-        color: #FFF;
         font-size: 14px;
         text-transform: uppercase;
         font-weight: 400;
         margin-right: 40px;
-        &:hover {
-          color: #FFF;
-        }
         &:disabled {
           background: #dcdcdc;
         }
@@ -716,9 +712,10 @@
 .added_to_cart.wc-forward {
   background-color: $color__brand-primary;
   font-size: 14px;
-  padding: 12px 8px;
+  padding: 11px 8px;
   border-radius: 4px;
   color: #fff;
+  display: inline-block;
   &:hover,
   &:focus {
     background-color: $color__brand-primary-hover;
@@ -794,6 +791,9 @@
         background: #ffab1a;
       }
     }
+    .added_to_cart.wc-forward {
+      background: #ffab1a;
+    }
     .price {
       ins {
         color: #ffab1a;
@@ -805,6 +805,9 @@
       span.onsale {
         background: #eaab76;
       }
+    }
+    .added_to_cart.wc-forward {
+      background: #eaab76;
     }
     .price {
       ins {
@@ -818,6 +821,9 @@
         background: #252525;
       }
     }
+    .added_to_cart.wc-forward {
+      background: #252525;
+    }
     .price {
       ins {
         color: #252525;
@@ -829,6 +835,9 @@
       span.onsale {
         background: #263585;
       }
+    }
+    .added_to_cart.wc-forward {
+      background: #263585;
     }
     .price {
       ins {
@@ -842,6 +851,9 @@
         background: #2279d3;
       }
     }
+    .added_to_cart.wc-forward {
+      background: #2279d3;
+    }
     .price {
       ins {
         color: #2279d3;
@@ -854,51 +866,13 @@
         background: #99ca45;
       }
     }
+    .added_to_cart.wc-forward {
+      background: #99ca45;
+    }
     .price {
       ins {
         color: #99ca45;
       }
-    }
-  }
-  /**
- * Star ratings
- */
-  .star-rating {
-    overflow: hidden;
-    position: relative;
-    height: 1em;
-    line-height: 1;
-    font-size: 1em;
-    width: 5.4em;
-    font-family: 'star';
-    display: block;
-    margin: 15px auto;
-    float: none;
-    font-size: 13px;
-    &:before {
-      content: "\73\73\73\73\73";
-      color: darken($color__text-main, 10%);
-      float: left;
-      top: 0;
-      left: 0;
-      position: absolute;
-    }
-
-    span {
-      overflow: hidden;
-      float: left;
-      top: 0;
-      left: 0;
-      position: absolute;
-      padding-top: 1.5em;
-    }
-
-    span:before {
-      content: "\53\53\53\53\53";
-      top: 0;
-      position: absolute;
-      left: 0;
-      color: #ffab1a;
     }
   }
 }
@@ -928,7 +902,7 @@
       }
     }
   }
-  .tyche-companion-banner {
+  .tyche-banner {
     min-height: 475px;
     background-size: cover;
     background-position: center;
@@ -944,7 +918,7 @@
       content: '';
       display: block;
     }
-    .tyche-companion-banner-caption {
+    .tyche-banner-caption {
       z-index: 1;
       padding: 10px;
       position: absolute;
@@ -983,9 +957,6 @@
       border-bottom: none;
       padding-bottom: 0;
     }
-    .tyche-product-image {
-
-    }
     .tyche-product-body {
       h3 {
         margin-top: 0;
@@ -998,6 +969,9 @@
       .button {
         padding: 10px;
         margin-top: 10px;
+      }
+      .added_to_cart.wc-forward {
+        margin-top: 5px;
       }
     }
   }
@@ -1055,7 +1029,7 @@
     a {
       color: $color__brand-primary;
       &:hover, &:focus, &:visited {
-        color: $color__title;
+        color: #fff;
       }
     }
   }
@@ -1158,8 +1132,7 @@
         font-size: 15px;
         line-height: 29px;
       }
-      &:hover,
-      &:focus {
+      &:hover {
         outline: none;
         color: $color__brand-primary;
       }
@@ -1176,4 +1149,78 @@
       }
     }
   }
+}
+
+/**
+* Star ratings
+*/
+.star-rating {
+  overflow: hidden;
+  position: relative;
+  height: 1em;
+  line-height: 1;
+  font-size: 1em;
+  width: 5.4em;
+  font-family: 'star';
+  display: block;
+  margin: 15px auto;
+  float: none;
+  font-size: 13px;
+  &:before {
+    content: "\73\73\73\73\73";
+    color: darken($color__text-main, 10%);
+    float: left;
+    top: 0;
+    left: 0;
+    position: absolute;
+  }
+
+  span {
+    overflow: hidden;
+    float: left;
+    top: 0;
+    left: 0;
+    position: absolute;
+    padding-top: 1.5em;
+  }
+
+  span:before {
+    content: "\53\53\53\53\53";
+    top: 0;
+    position: absolute;
+    left: 0;
+    color: #ffab1a;
+  }
+}
+
+.comment-form-rating {
+  padding: 0 15px;
+}
+
+.woocommerce p.stars a {
+  color: #ffab1a;
+  font-size: 17px;
+}
+
+.woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button {
+  border: 2px solid;
+  border-color: $color__brand-primary;
+  border-radius: 3px;
+  background: $color__brand-primary;
+  color: #FFF;
+  font-size: 15px;
+  padding: 8px 20px;
+
+  &:hover,
+  &:active,
+  &:focus {
+    border-color: $color__brand-primary-hover;
+    background: $color__brand-primary-hover;
+    color: #fff;
+  }
+}
+
+.woocommerce #review_form #respond .form-submit input {
+  margin-top: 22px;
+  padding: 7px;
 }

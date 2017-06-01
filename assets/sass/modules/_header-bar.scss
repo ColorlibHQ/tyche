@@ -31,6 +31,11 @@
           padding-left: 10px;
           padding-right: 15px;
           height: 30px;
+          transition: background 250ms cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+          &:focus {
+            transition: background 250ms cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+            background: lighten(#25262b, 5%);
+          }
         }
         #search-top-bar-submit {
           border: none;
@@ -48,6 +53,9 @@
         padding-left: 40px;
         padding-right: 40px;
         background: $color__brand-primary;
+        &:hover {
+          background: $color__brand-primary-hover;
+        }
         a {
           &:hover {
             i {

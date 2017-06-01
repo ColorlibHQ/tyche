@@ -10,7 +10,7 @@ ul {
 }
 
 .entry-content ul, .widget ul {
-  li {
+  > li {
     &:before {
       content: "\f105";
       font-family: 'FontAwesome';

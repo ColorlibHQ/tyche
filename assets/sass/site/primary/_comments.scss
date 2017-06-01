@@ -69,8 +69,7 @@
    ========================================================================== */
 
 .comment-meta {
-  margin: 14px 0;
-  margin: 0.93333333em 0;
+  margin: 0;
 }
 
 .comment-author {
@@ -82,8 +81,8 @@
   position: absolute;
   left: -84px;
   left: -5.6em;
-  top: -14px;
-  top: -0.93333333em;
+  top: 1px;
+  top: 0.290em;
   height: 64px;
   height: 4.26666666em;
   width: 64px;
@@ -243,7 +242,7 @@
 }
 
 .comment-form {
-  margin: 0 -15px 15px;
+  margin: 0 -15px 30px;
 }
 
 /*

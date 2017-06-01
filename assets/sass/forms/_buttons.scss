@@ -1,9 +1,9 @@
 .button {
-  border: 1px solid;
+  border: 2px solid;
   border-color: $color__brand-primary;
   border-radius: 3px;
-  background: transparent;
-  color: $color__brand-primary;
+  background: $color__brand-primary;
+  color: #FFF;
   font-size: 15px;
   padding: 8px 20px;
 
@@ -11,12 +11,12 @@
   &:active,
   &:focus {
     border-color: $color__brand-primary-hover;
-    color: $color__brand-primary-hover;
+    background: $color__brand-primary-hover;
   }
 }
 
 .button,
-button,
+button:not(.pswp__button):not(.customize-partial-edit-shortcut-button),
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {

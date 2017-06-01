@@ -188,6 +188,7 @@ module.exports = function( grunt ) {
   // Build task
   grunt.registerTask( 'build-archive', [
     'clean:init',
+    'sass',
     'copy',
     'compress:build',
     'clean:build'

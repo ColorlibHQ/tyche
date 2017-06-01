@@ -39,16 +39,26 @@
         @extend .button;
         color: #FFF;
         border-width: 2px;
-        border-color: #FFF;
+        border-color: $color__brand-primary;
         font-weight: 700;
-        &:first-of-type {
-          border-color: $color__brand-primary;
-          background: $color__brand-primary;
-          margin-right: 15px;
+        -webkit-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+        &:hover {
+          background: $color__brand-primary-hover;
+          border-color: $color__brand-primary-hover;
+          -webkit-transition: all 0.2s ease-in-out;
+          -o-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+        }
+        &:last-of-type {
+          border-color: #fff;
+          background: transparent;
+          margin-left: 15px;
           &:hover {
             color: #FFF;
-            background: $color__brand-primary-hover;
-            border-color: $color__brand-primary-hover;
+            background: $color__brand-primary;
+            border-color: $color__brand-primary;
           }
         }
       }

@@ -1,11 +1,6 @@
 .widget {
   margin: 0 0 50px;
 
-  .widget-title {
-    margin-top: 0;
-    margin-bottom: 25px;
-  }
-
   &.widget_search {
     form {
       position: relative;
@@ -75,6 +70,9 @@
         background-color: $color__brand-primary;
         color: #ffffff;
         border-color: $color__brand-primary;
+      }
+      &:visited {
+        color: #fff;
       }
     }
   }
@@ -243,7 +241,7 @@
   &.widget_tyche_recent {
     @media(min-width: 990px) {
       &.no-title {
-        margin-top: 100px;
+        margin-top: 92px;
       }
     }
     .tyche-recent-post-alternate-widget {
@@ -354,12 +352,128 @@
       }
     }
   }
+  /**
+  * Color schemes
+   */
+  &.orange {
+    .widget-title {
+      > span {
+        &:before {
+          background: #ffab1a;
+        }
+      }
+    }
+    .tyche-banner-caption {
+      a {
+        background: #ffab1a;
+        border-color: #ffab1a;
+        color: #fff;
+        &:hover {
+          background: darken(#ffab1a, 5%);
+          border-color: darken(#ffab1a, 5%);
+          color: #fff;
+        }
+      }
+    }
+  }
+  &.black {
+    .widget-title {
+      > span {
+        &:before {
+          background: #252525;
+        }
+      }
+    }
+    .tyche-banner-caption {
+      a {
+        background: #252525;
+        border-color: #252525;
+        color: #fff;
+        &:hover {
+          background: darken(#252525, 5%);
+          border-color: darken(#252525, 5%);
+          color: #fff;
+        }
+      }
+    }
+  }
+  &.blue {
+    .widget-title {
+      > span {
+        &:before {
+          background: #263585;
+        }
+      }
+    }
+    .tyche-banner-caption {
+      a {
+        background: #263585;
+        border-color: #263585;
+        color: #fff;
+        &:hover {
+          background: darken(#263585, 5%);
+          border-color: darken(#263585, 5%);
+          color: #fff;
+        }
+      }
+    }
+  }
+  &.light_blue {
+    .widget-title {
+      > span {
+        &:before {
+          background: #2279d3;
+        }
+      }
+    }
+    .tyche-banner-caption {
+      a {
+        background: #2279d3;
+        border-color: #2279d3;
+        color: #fff;
+        &:hover {
+          background: darken(#2279d3, 5%);
+          border-color: darken(#2279d3, 5%);
+          color: #fff;
+        }
+      }
+    }
+  }
+  &.green {
+    .widget-title {
+      > span {
+        &:before {
+          background: #99ca45;
+        }
+      }
+    }
+    .tyche-banner-caption {
+      a {
+        background: #99ca45;
+        border-color: #99ca45;
+        color: #fff;
+        &:hover {
+          background: darken(#99ca45, 5%);
+          border-color: darken(#99ca45, 5%);
+          color: #fff;
+        }
+      }
+    }
+  }
 }
 
 #secondary, .page-template-frontpage-template {
   .widget_categories, .widget_archive {
     overflow: hidden;
   }
+
+  widget {
+    .widget-title {
+      margin-top: 0;
+      margin-bottom: 25px;
+    }
+  }
+
   select {
     max-width: initial;
     width: 100%;
@@ -393,9 +507,9 @@
 .content-area-3,
 .content-area-4,
 .content-area-5 {
-  .widget .widget-title{
-    margin-top:30px;
-    margin-bottom:30px;
+  .widget .widget-title {
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
   h1, h2, h3, h4, h5, h6 {
     margin-top: 30px;
@@ -430,4 +544,42 @@
 .content-area-1, .content-area-4 {
   background: #f7f7f9;
   margin-bottom: 0;
+}
+
+.site-footer {
+  a {
+    color: #fff;
+    &:hover,
+    &:focus {
+      color: $color__brand-primary;
+    }
+  }
+
+  .widget {
+    &.widget_tag_cloud {
+      a {
+        color: #fff;
+        &:hover,
+        &:focus {
+          color: #fff;
+        }
+      }
+    }
+
+    &.widget_tyche_recent {
+      .tyche-recent-post-widget {
+        .tyche-post-content {
+          p {
+            a {
+              color: #fff;
+              &:hover,
+              &:focus {
+                color: $color__brand-primary;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
