@@ -3124,6 +3124,9 @@ a:hover, a:active {
   * Color schemes
    */
 }
+.widget.widget_tyche_products.no-title {
+  margin-top: 75px;
+}
 .widget.widget_search form {
   position: relative;
 }
@@ -5898,6 +5901,14 @@ a:hover, a:active {
 .woocommerce #review_form #respond .form-submit input {
   margin-top: 22px;
   padding: 7px;
+}
+
+.woocommerce table.shop_attributes {
+  border: 1px solid #e1e1e1;
+}
+.woocommerce table.shop_attributes td p {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 /*--------------------------------------------------------------

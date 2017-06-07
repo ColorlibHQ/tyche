@@ -59,7 +59,7 @@ class Widget_Tyche_Products extends WP_Widget {
 			'first_line'   => 'SAVE UP TO',
 			'second_line'  => '50%',
 			'third_line'   => 'ON OUR GALLA DRESSES',
-			'button_link'  => 'http://colorlib.com',
+			'button_link'  => 'https://colorlib.com',
 			'button_label' => 'BUY NOW',
 			'image'        => '',
 		);
@@ -75,6 +75,10 @@ class Widget_Tyche_Products extends WP_Widget {
 		$filepath = dirname( __FILE__ ) . '/view/' . $params['layout'] . '.php';
 
 		$args['before_widget'] = str_replace( 'class="', 'class="tyche-products ' . $instance['color'] . ' ', $args['before_widget'] );
+
+		if ( 'no' === $instance['show_title'] || '' === $instance['title'] ) {
+			$args['before_widget'] = str_replace( 'class="tyche-products', 'class="tyche-products no-title', $args['before_widget'] );
+		}
 
 		echo $args['before_widget'];
 
@@ -116,9 +120,9 @@ class Widget_Tyche_Products extends WP_Widget {
 			'show_rating'  => 'no',
 			'layout'       => 'layout-a',
 			'first_line'   => 'SAVE UP TO',
-			'second_line'  => '50 % ',
+			'second_line'  => '50% ',
 			'third_line'   => 'ON OUR GALLA DRESSES',
-			'button_link'  => 'http://colorlib.com',
+			'button_link'  => 'https://colorlib.com',
 			'button_label' => 'BUY NOW',
 			'image'        => '',
 		);
@@ -196,7 +200,9 @@ class Widget_Tyche_Products extends WP_Widget {
 					<?php echo esc_html__( 'No', 'tyche' ) ?>
 				</option>
 			</select>
-		</p>        <p>
+		</p>
+
+		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'layout' ) ); ?>"><?php esc_html_e( 'Layout (banner position left/right/no banner/list)', 'tyche' ); ?>
 				:</label>
 		<div class="widget-layouts">

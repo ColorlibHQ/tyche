@@ -5,7 +5,7 @@
  *
  * @author           Cristian Raiber
  * @copyright    (c) Copyright by Macho Themes
- * @link             http://www.machothemes.com
+ * @link             https://www.machothemes.com
  * @package          Muscle Core
  * @since            Version 1.4
  */

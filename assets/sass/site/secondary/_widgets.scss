@@ -1,6 +1,12 @@
 .widget {
   margin: 0 0 50px;
 
+  &.widget_tyche_products {
+    &.no-title {
+      margin-top: 75px;
+    }
+  }
+
   &.widget_search {
     form {
       position: relative;

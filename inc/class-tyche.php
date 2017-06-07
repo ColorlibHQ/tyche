@@ -105,7 +105,7 @@ class Tyche {
 					'recommended' => false,
 				),
 				'simple-custom-post-order' => array(
-					'recommendewd' => false,
+					'recommended' => false,
 				),
 			);
 			/*

@@ -1224,3 +1224,19 @@
   margin-top: 22px;
   padding: 7px;
 }
+
+.woocommerce table.shop_attributes {
+  border: 1px solid #e1e1e1;
+
+  td {
+    p {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+}
+
+.woocommerce div.product form.cart .variations select {
+  padding: 0 5px;
+  border-radius: 4px;
+}
