@@ -16,6 +16,26 @@ class Tyche_Helper {
 	}
 
 	/**
+	 * Render the site title for the selective refresh partial.
+	 *
+	 * @return void
+	 */
+	public static function customize_partial_blogname() {
+		echo esc_html( get_option( 'blogname', 'Tyche' ) );
+	}
+
+	/**
+	 * Render the site tagline for the selective refresh partial.
+	 *
+	 * @return void
+	 */
+	public static function customize_partial_blogdescription() {
+		$description = get_bloginfo( 'description', 'display' );
+
+		echo esc_html( $description );
+	}
+
+	/**
 	 * Proxy function to return posts
 	 *
 	 * @param $args

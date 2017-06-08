@@ -11,16 +11,22 @@
           var elements = jQuery( '.tyche-product-slider' );
 
           $.each( selects, function() {
+            if ( 'rating' === $( this ).attr( 'id' ) ) {
+              return;
+            }
+
             if ( $( this ).parent().hasClass( 'styled-select' ) ) {
-              return false;
+              return;
             }
 
             if ( $( this ).parent().hasClass( 'value' ) ) {
-              return false;
+              return;
             }
 
             $( this ).wrap( '<div class="styled-select"></div>' );
           } );
+
+          console.log(elements);
           elements.each( function() {
             var selector = jQuery( this );
             jQuery( this ).owlCarousel( {

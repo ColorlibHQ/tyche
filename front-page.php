@@ -20,7 +20,7 @@ $show_on_front = get_option( 'show_on_front' );
 if ( 'posts' == $show_on_front ) :
 	$header = get_custom_header();
 	if ( ! empty( $header->url ) ) {
-		echo '<img style="width:100%" src="' . esc_url( $header->url ) . '" class="img-responsive" />';
+		echo '<img src="' . esc_url( $header->url ) . '" class="img-centered img-responsive" />';
 	}
 	?>
 	<div class="container">

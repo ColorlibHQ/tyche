@@ -20,9 +20,9 @@ class Tyche_Customizer {
 	 * @param $wp_customize
 	 */
 	public function customize_register( $wp_customize ) {
-		$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
-		$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
-		$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
+		$wp_customize->get_setting( 'blogname' )->transport        = 'postMessage';
+		$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
+		$wp_customize->get_setting( 'custom_logo' )->transport     = 'refresh';
 
 		$wp_customize->get_section( 'title_tagline' )->panel    = 'theme_options';
 		$wp_customize->get_section( 'title_tagline' )->priority = 1;
@@ -47,13 +47,26 @@ class Tyche_Customizer {
 		require_once get_template_directory() . '/inc/customizer/theme-options/panels.php';
 		require_once get_template_directory() . '/inc/customizer/theme-options/sections.php';
 		require_once get_template_directory() . '/inc/customizer/theme-options/options.php';
+
+		if ( ! isset( $wp_customize->selective_refresh ) ) {
+			return;
+		}
+
+		$wp_customize->selective_refresh->add_partial( 'blogname', array(
+			'selector'        => '.site-title',
+			'render_callback' => array( 'Tyche_Helper', 'customize_partial_blogname' ),
+		) );
+		$wp_customize->selective_refresh->add_partial( 'blogdescription', array(
+			'selector'        => '.site-description',
+			'render_callback' => array( 'Tyche_Helper', 'customize_partial_blogdescription' ),
+		) );
 	}
 
 	/**
 	 *
 	 */
 	public function customize_preview_js() {
-		wp_enqueue_script( 'tyche_customizer', get_template_directory_uri() . '/inc/customizer/assets/js/previewer.js', array( 'customize-preview' ), '2011232', true );
+		wp_enqueue_script( 'tyche_customizer', get_template_directory_uri() . '/inc/customizer/assets/js/previewer.js', array( 'customize-preview' ), '20132', true );
 		wp_localize_script( 'tyche_customizer', 'WPUrls', array(
 			'siteurl' => get_option( 'siteurl' ),
 			'theme'   => get_template_directory_uri(),
@@ -72,7 +85,7 @@ class Tyche_Customizer {
 			get_template_directory_uri() . '/inc/customizer/assets/js/upload-media.js',
 			array(
 				'jquery',
-				'customize-controls',
+				'customize - controls',
 			)
 		);
 		wp_localize_script( 'tyche_media_upload_js', 'WPUrls', array(

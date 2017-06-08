@@ -87,13 +87,12 @@
     font-size: 9px;
     line-height: 17px;
     font-weight: bold;
-    margin: 1px 0 0 2px;
+    margin: 1px 0 0 8px;
     vertical-align: top;
     -webkit-border-radius: 10px;
     border-radius: 10px;
     z-index: 26;
     margin-top: 5px;
-    margin-left: -3px;
 }
 
 .wp-submenu .badge-action-count {
@@ -103,6 +102,7 @@
 .plugin_box {
     height: 330px;
     margin-top: 15px;
+    margin-right: 15px;
     text-align: center;
     background: #FFF;
     position: relative;

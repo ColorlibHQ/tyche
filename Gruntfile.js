@@ -109,10 +109,12 @@ module.exports = function( grunt ) {
           '!node_modules/**',
           '!build/**',
           '!readme.md',
-          '!readme.md',
+          '!README.md',
           '!phpcs.ruleset.xml',
           '!Gruntfile.js',
           '!package.json',
+          '!set_tags.sh',
+          '!tyche.zip',
           '!nbproject/**' ],
         dest: 'build/'
       }
@@ -188,8 +190,9 @@ module.exports = function( grunt ) {
   // Build task
   grunt.registerTask( 'build-archive', [
     'clean:init',
+    'sass',
     'copy',
     'compress:build',
-    'clean:build'
+    'clean:init'
   ] );
 };

@@ -1,5 +1,4 @@
 .site-footer {
-  margin-top: 30px;
   padding-top: 30px;
   padding-bottom: 30px;
   background: #25262b;
@@ -74,7 +73,7 @@
       }
     }
 
-    &.widget_tyche_companion_recent {
+    &.widget_tyche_recent {
       .tyche-recent-post-widget {
         .tyche-post-content {
           p {
@@ -110,7 +109,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     color: #FFF;
-    margin-top: 30px;
+    margin-top: 0;
     margin-bottom: 45px;
     span {
       font-size: 20px;

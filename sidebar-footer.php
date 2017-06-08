@@ -45,7 +45,7 @@ if ( empty( $sidebars ) ) {
 		'after_title'  => '</h3>',
 	);
 
-	$widgets = array( 'WP_Widget_Meta', 'WP_Widget_Recent_Posts', 'WP_Widget_Calendar', 'WP_Widget_Categories' );
+	$widgets = array( 'WP_Widget_Meta', 'WP_Widget_Recent_Posts', 'WP_Widget_Categories' );
 	$widgets = array_slice( $widgets, 0, $count );
 	?>
 	<!-- Footer -->

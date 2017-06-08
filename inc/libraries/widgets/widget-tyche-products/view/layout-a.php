@@ -13,9 +13,9 @@ $posts = Tyche_Helper::get_products( $params ); ?>
 	</div>
 	<?php $image = wp_get_attachment_image_src( $params['image'], 'full' ) ?>
 	<div class="col-sm-3 hidden-xs">
-		<div class="tyche-companion-banner"
+		<div class="tyche-banner"
 			<?php echo ! empty( $image[0] ) ? 'style="background-image:url(' . esc_url( $image[0] ) . ')"' : '' ?>>
-			<div class="tyche-companion-banner-caption">
+			<div class="tyche-banner-caption">
 				<?php if ( ! empty( $params['first_line'] ) ) : ?>
 					<span class="first_line"> <?php echo esc_html( $params['first_line'] ) ?> </span>
 				<?php endif; ?>

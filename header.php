@@ -30,26 +30,33 @@
 		get_template_part( 'template-parts/top-header' );
 	endif;
 	?>
-
 	<header id="masthead" class="site-header" role="banner">
 		<div class="site-branding container">
 			<div class="row">
 				<div class="col-sm-4 header-logo">
 					<?php
-					if ( function_exists( 'the_custom_logo' ) ) {
+					if ( has_custom_logo() ) :
 						the_custom_logo();
-
-						if ( ! get_theme_mod( 'custom_logo' ) ) {
-							?>
-							<a class="custom-logo-link" href="<?php echo esc_url( get_home_url() ) ?>"> <?php echo esc_html( get_option( 'blogname', 'Tyche' ) ) ?></a>
+					else :
+						?>
+						<div class="site-title-description">
 							<?php
-						}
-					}
-					$description = get_bloginfo( 'description', 'display' );
-					if ( $description || is_customize_preview() ) : ?>
-						<p class="site-description"><?php echo esc_html( $description ); /* WPCS: xss ok. */ ?></p>
+							$header_textcolor = get_theme_mod( 'header_textcolor' );
+							if ( 'blank' !== $header_textcolor ) : ?>
+								<a class="site-title" href="<?php echo esc_url( get_home_url() ) ?>">
+									<?php Tyche_Helper::customize_partial_blogname() ?>
+								</a>
+								<?php
+								$description = get_bloginfo( 'description', 'display' );
+								if ( $description || is_customize_preview() ) : ?>
+									<p class="site-description"> <?php Tyche_Helper::customize_partial_blogdescription() ?> </p>
+								<?php endif; ?>
+
+							<?php endif; ?>
+						</div>
 						<?php
-					endif; ?>
+					endif;
+					?>
 				</div>
 
 				<?php if ( get_theme_mod( 'tyche_show_banner', '1' ) !== '0' ) : ?>

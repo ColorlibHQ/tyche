@@ -2,8 +2,10 @@
 
 Contributors: colorlib
 Tags: e-commerce, two-columns, left-sidebar, right-sidebar, custom-colors, custom-header, custom-menu, featured-images, threaded-comments, footer-widgets, sticky-post, theme-options
+
 Requires at least:	4.0
-Tested up to:		4.7
+
+Tested up to:		4.7.5
 
 == Description ==
 

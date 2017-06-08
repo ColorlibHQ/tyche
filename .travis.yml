@@ -5,6 +5,7 @@ matrix:
   include:
   - php: '5.3'
   - php: '5.4'
+  - php: '5.5'
   - php: '5.6'
   - php: '7.0'
   - php: '7.1'
@@ -40,16 +41,20 @@ script:
   --extensions=php --ignore=./node_modules/**/**/**/*.php"
 - "$PHPCS_DIR/scripts/phpcs -p -s -v -n ./**/**/**/**/**/*.php --standard=./phpcs.ruleset.xml
   --extensions=php --ignore=./node_modules/**/**/**/**/*.php"
-- grunt build-archive
 notifications:
   email: false
 cache:
   directories:
   - node_modules
-#deploy:
-#  provider: releases
-#  api_key:
-#    secure: H+RGXq9P0XU8pvkylJe3eO9NM0pmlNIIKp2/Prx1MVMalZnMTgt3uzdlbsLoPfaSGSJvYr0LlwXrEGC2y2e1hYqNxzmNsbztnfYkZGuri7TkF/2QD4R5+0fpZOnMTjXyt3rkrCISWT6gu9DmRyiPL7ks89L/DoD61xElRFdOGI/mi+RILQqmLCI5mH3PRcSELQ78tHXx3VPteQajRLGD5tXNsktDGtSf40oXT8r8jbwjIdrom4D/ZR3nHG6JfJ4ArA2Rrxc773nl/yEja5TPbz/D8KT4QE/YenRTWqzlxoG2btcjfSCepZfvQbqZTj/PfXvmiGcMVlW0ag0vPWRU7H5hAu8WDAcRKek8Js9cHR+XWmnx6p+DO2uP45h2LkEbV95tjCseyACKWE0xPAqfDYBGmfixDPIclMs/KX7Kba+l6OaGqBKP/bDBynNENBKNEEb1StJzdPgMuKZN++U4NRjn+OKN30CgzJTRHw8liBIlPnnyoHQXUB9OXH2KPqxnJbZsvMAhdgO4o1IGMTg1og8qROPjtMzayueS//UFo671NplJJ6JYe5H+MqHQI2fuaYTFiC/gQ1lGVxpaDM10L40KPoS6iIq+UNF7TolfiNiIDlChCnfKlawJBhX/klU3jEJQ4Z0ZV27tF6tEGDhvnzPvCp3LhLBIMJoVAN/BjtM=
-#  file: tyche.zip
-#  on:
-#    repo: MachoThemes/tyche
+after_success:
+  - grunt build-archive
+  - sh set_tags.sh
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: H+RGXq9P0XU8pvkylJe3eO9NM0pmlNIIKp2/Prx1MVMalZnMTgt3uzdlbsLoPfaSGSJvYr0LlwXrEGC2y2e1hYqNxzmNsbztnfYkZGuri7TkF/2QD4R5+0fpZOnMTjXyt3rkrCISWT6gu9DmRyiPL7ks89L/DoD61xElRFdOGI/mi+RILQqmLCI5mH3PRcSELQ78tHXx3VPteQajRLGD5tXNsktDGtSf40oXT8r8jbwjIdrom4D/ZR3nHG6JfJ4ArA2Rrxc773nl/yEja5TPbz/D8KT4QE/YenRTWqzlxoG2btcjfSCepZfvQbqZTj/PfXvmiGcMVlW0ag0vPWRU7H5hAu8WDAcRKek8Js9cHR+XWmnx6p+DO2uP45h2LkEbV95tjCseyACKWE0xPAqfDYBGmfixDPIclMs/KX7Kba+l6OaGqBKP/bDBynNENBKNEEb1StJzdPgMuKZN++U4NRjn+OKN30CgzJTRHw8liBIlPnnyoHQXUB9OXH2KPqxnJbZsvMAhdgO4o1IGMTg1og8qROPjtMzayueS//UFo671NplJJ6JYe5H+MqHQI2fuaYTFiC/gQ1lGVxpaDM10L40KPoS6iIq+UNF7TolfiNiIDlChCnfKlawJBhX/klU3jEJQ4Z0ZV27tF6tEGDhvnzPvCp3LhLBIMJoVAN/BjtM=
+  file: tyche.zip
+  on:
+    branch: master
+    repo: puikinsh/tyche

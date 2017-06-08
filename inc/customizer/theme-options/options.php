@@ -194,7 +194,7 @@ Tyche_Kirki::add_field( 'tyche_theme', array(
 	'settings'          => 'tyche_banner_link',
 	'label'             => esc_html__( 'Banner URL', 'tyche' ),
 	'section'           => 'theme_options_general',
-	'default'           => 'http://colorlib.com',
+	'default'           => 'https://colorlib.com',
 	'priority'          => 16,
 	'sanitize_callback' => 'esc_url_raw',
 	'required'          => array(
