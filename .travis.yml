@@ -23,6 +23,7 @@ before_script:
 - wget https://develop.svn.wordpress.org/trunk/.jshintrc
 - npm install -g grunt-cli
 - npm install
+- npm install -g grunt-contrib-sass
 - npm install -g grunt-checktextdomain
 script:
 - mkdir -p build/logs
@@ -47,8 +48,6 @@ cache:
   directories:
   - node_modules
 after_success:
-  - npm uninstall --save grunt-contrib-sass
-  - npm install --save node-sass grunt-sass
   - grunt build-archive
   - sh set_tags.sh
 deploy:
