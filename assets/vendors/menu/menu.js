@@ -34,7 +34,7 @@
       targetOffset = $target.offset();
 
       position = {
-        top: targetOffset.top + ( $target.outerHeight() / 2 ) + 25
+        top: targetOffset.top
       };
 
       if ( windowWidth <= 768 ) {

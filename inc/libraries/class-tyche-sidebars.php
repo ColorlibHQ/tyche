@@ -162,7 +162,7 @@ class Tyche_Sidebars {
 			),
 			array(
 				'id'            => 'footer-sidebar-4',
-				'name'          => esc_html__( '[Footer] Sidebar 4', 'tyche' ),
+				'name'          => esc_html__( '[Footer] Sidebar #4', 'tyche' ),
 				'before_title'  => '<h5 class="widget-title"><span>',
 				'after_title'   => '</span></h5>',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',

@@ -5911,6 +5911,11 @@ a:hover, a:active {
   padding-right: 10px;
 }
 
+.woocommerce div.product form.cart .variations select {
+  padding: 0 5px;
+  border-radius: 4px;
+}
+
 /*--------------------------------------------------------------
 # Infinite scroll
 --------------------------------------------------------------*/
