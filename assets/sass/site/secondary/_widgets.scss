@@ -361,6 +361,27 @@
   /**
   * Color schemes
    */
+  &.beige, &.secondary {
+    .widget-title {
+      > span {
+        &:before {
+          background: #eaab76;
+        }
+      }
+    }
+    .tyche-banner-caption {
+      a {
+        background: #eaab76;
+        border-color: #eaab76;
+        color: #fff;
+        &:hover {
+          background: darken(#eaab76, 5%);
+          border-color: darken(#eaab76, 5%);
+          color: #fff;
+        }
+      }
+    }
+  }
   &.orange {
     .widget-title {
       > span {

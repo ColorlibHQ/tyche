@@ -48,6 +48,8 @@ cache:
   directories:
   - node_modules
 after_success:
+  - npm uninstall --save grunt-contrib-sass
+  - npm install --save node-sass grunt-sass
   - grunt build-archive
   - sh set_tags.sh
 deploy:

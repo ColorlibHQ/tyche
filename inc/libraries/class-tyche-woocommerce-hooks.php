@@ -20,6 +20,14 @@ class Tyche_WooCommerce_Hooks {
 		remove_action( 'woocommerce_after_shop_loop', 'woocommerce_pagination' );
 
 		/**
+		 * Change order of these hooks
+		 */
+		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
+		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+		add_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 30 );
+		add_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 20 );
+
+		/**
 		 * Add actions
 		 */
 		add_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 25 );

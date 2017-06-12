@@ -158,7 +158,8 @@ module.exports = function( grunt ) {
     sass: {
       dist: {
         options: {
-          style: 'expanded'
+          style: 'expanded',
+          sourcemap: 'none',
         },
         files: [
           {
