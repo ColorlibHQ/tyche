@@ -2268,6 +2268,7 @@ textarea {
   border-radius: 3px;
   padding: 3px;
   font-size: 16px;
+  -webkit-appearance: textfield;
 }
 input[type="text"]:focus,
 input[type="email"]:focus,
@@ -3454,6 +3455,19 @@ a:hover, a:active {
 }
 .widget.widget_tyche_recent .tyche-recent-post-widget .tyche-post-content p a:hover {
   color: #1b60a7;
+}
+.widget.beige .widget-title > span:before, .widget.secondary .widget-title > span:before {
+  background: #eaab76;
+}
+.widget.beige .tyche-banner-caption a, .widget.secondary .tyche-banner-caption a {
+  background: #eaab76;
+  border-color: #eaab76;
+  color: #fff;
+}
+.widget.beige .tyche-banner-caption a:hover, .widget.secondary .tyche-banner-caption a:hover {
+  background: #e79d60;
+  border-color: #e79d60;
+  color: #fff;
 }
 .widget.orange .widget-title > span:before {
   background: #ffab1a;
@@ -4928,10 +4942,12 @@ a:hover, a:active {
   width: 80%;
 }
 .woocommerce .tyche-has-sidebar .woocommerce-result-count {
-  width: 68%;
+  width: 30%;
 }
-.woocommerce .tyche-has-sidebar ul.products li.product, .woocommerce .tyche-has-sidebar ul.products li.product {
-  width: 30.80%;
+@media (min-width: 768px) {
+  .woocommerce .tyche-has-sidebar ul.products li.product, .woocommerce .tyche-has-sidebar ul.products li.product {
+    width: 30.80%;
+  }
 }
 .woocommerce .woocommerce-ordering select.orderby {
   border-radius: 4px;
@@ -5045,26 +5061,26 @@ a:hover, a:active {
   color: #2279d3;
 }
 .woocommerce .woocommerce-products-header__title.page-title {
-  width: 63%;
   display: inline-block;
   float: left;
 }
 .woocommerce .woocommerce-result-count {
   width: 20%;
   display: inline-block;
-  float: left;
+  float: right;
   padding-right: 25px;
 }
 .woocommerce .woocommerce-ordering {
-  width: 17%;
   display: inline-block;
-  float: left;
 }
-@media (max-width: 991px) {
+@media (max-width: 768px) {
   .woocommerce .woocommerce-products-header__title.page-title {
     width: 100%;
   }
   .woocommerce .woocommerce-result-count {
+    width: 50%;
+  }
+  .woocommerce .tyche-has-sidebar .woocommerce-result-count {
     width: 50%;
   }
   .woocommerce .woocommerce-ordering {
@@ -5072,9 +5088,6 @@ a:hover, a:active {
   }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
-  .woocommerce .woocommerce-products-header__title.page-title {
-    width: 57%;
-  }
   .woocommerce .woocommerce-result-count {
     width: 22%;
   }
@@ -6011,5 +6024,3 @@ object {
 .gallery-caption {
   display: block;
 }
-
-/*# sourceMappingURL=style-lightblue.css.map */

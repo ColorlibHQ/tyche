@@ -158,7 +158,8 @@ module.exports = function( grunt ) {
     sass: {
       dist: {
         options: {
-          style: 'expanded'
+          style: 'expanded',
+          sourcemap: 'none',
         },
         files: [
           {
@@ -190,7 +191,6 @@ module.exports = function( grunt ) {
   // Build task
   grunt.registerTask( 'build-archive', [
     'clean:init',
-    'sass',
     'copy',
     'compress:build',
     'clean:init'

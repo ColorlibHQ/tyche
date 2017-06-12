@@ -8,7 +8,7 @@ wp_enqueue_script( 'adsenseloader' );
 $code = get_theme_mod( 'tyche_banner_adsense_code', '' );
 
 /**
- * In case we don't have an image, we terminate here
+ * In case we don't have a code, we terminate here
  */
 if ( empty( $code ) ) {
 	return false;
