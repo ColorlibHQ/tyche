@@ -173,6 +173,41 @@ module.exports = function( grunt ) {
     }
 
   } );
+  grunt.config( 'watch', {
+    scss: {
+      tasks: [ 'sass:dist' ],
+      files: [
+        'assets/sass/*.scss',
+        'assets/sass/**/*.scss',
+        'assets/sass/**/**/*.scss'
+      ]
+    }
+  } );
+
+  grunt.event.on( 'watch', function( action, filepath ) {
+    // Determine task based on filepath
+    var get_ext = function( path ) {
+      var ret = '';
+      var i = path.lastIndexOf( '.' );
+      if ( - 1 !== i && i <= path.length ) {
+        ret = path.substr( i + 1 );
+      }
+      return ret;
+    };
+    switch ( get_ext( filepath ) ) {
+        // PHP
+      case 'php' :
+        grunt.config( 'paths.php.files', [ filepath ] );
+        break;
+        // JavaScript
+      case 'js' :
+        grunt.config( 'paths.js.files', [ filepath ] );
+        break;
+      case 'scss':
+        grunt.config( 'paths.scss.files', [ filepath ] );
+        break;
+    }
+  } );
 
   // Check Missing Text Domain Strings
   grunt.registerTask( 'textdomain', [

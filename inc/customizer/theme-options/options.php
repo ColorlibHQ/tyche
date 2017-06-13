@@ -207,18 +207,19 @@ Tyche_Kirki::add_field( 'tyche_theme', array(
 ) );
 
 Tyche_Kirki::add_field( 'tyche_theme', array(
-	'type'     => 'code',
-	'settings' => 'tyche_banner_adsense_code',
-	'label'    => esc_html__( 'AdSense Code', 'tyche' ),
-	'section'  => 'theme_options_general',
-	'default'  => '',
-	'priority' => 17,
-	'choices'  => array(
+	'type'        => 'code',
+	'settings'    => 'tyche_banner_adsense_code',
+	'label'       => esc_html__( 'AdSense Code', 'tyche' ),
+	'description' => esc_html__( 'Add the code you retrieved from your AdSense account. Insert only the <ins> tag.', 'tyche' ),
+	'section'     => 'theme_options_general',
+	'default'     => '',
+	'priority'    => 17,
+	'choices'     => array(
 		'language' => 'javascript',
 		'theme'    => 'monokai',
 		'height'   => 250,
 	),
-	'required' => array(
+	'required'    => array(
 		array(
 			'setting'  => 'tyche_banner_type',
 			'value'    => 'adsense',
