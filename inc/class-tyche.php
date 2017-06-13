@@ -148,7 +148,7 @@ class Tyche {
 					'check'       => Tyche_Notify_System::has_content(),
 				),
 				array(
-					'id'          => 'tyche - req - ac -static- latest - news',
+					'id'          => 'tyche-req-ac-static-latest-news',
 					'title'       => esc_html__( 'Set front page to static', 'tyche' ),
 					'description' => esc_html__( 'If you just installed Tyche, and are not able to see the front - page demo, you need to go to Settings -> Reading , Front page displays and select "Static Page" . ', 'tyche' ),
 					'help'        => 'If you need more help understanding how this works, check out the following < a target = "_blank"  href = "https://codex.wordpress.org/Creating_a_Static_Front_Page#WordPress_Static_Front_Page_Process" > link</a >. <br /><br /> <a class="button button-secondary" target = "_blank"  href = "' . esc_url( self_admin_url( 'options-reading.php' ) ) . '" > ' . __( 'Set manually', 'tyche' ) . ' </a > <a class="button button-primary"  href = "' . wp_nonce_url( self_admin_url( 'themes.php?page=newspaper-x-welcome&tab=recommended_actions&action=set_page_automatic' ), 'set_page_automatic' ) . '" > ' . __( 'Set automatically', 'tyche' ) . ' </a > ',
@@ -167,7 +167,7 @@ class Tyche {
 		/**
 		 * Enqueue styles
 		 */
-		wp_enqueue_style( 'google - fonts', '//fonts.googleapis.com/css?family=Karla:400,700' );
+		wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Karla:400,700' );
 		wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/vendors/fontawesome/font-awesome.min.css' );
 		wp_enqueue_style( 'owlCarousel', get_template_directory_uri() . '/assets/vendors/owl-carousel/owl.carousel.min.css' );
 		wp_enqueue_style( 'owlCarousel-theme', get_template_directory_uri() . '/assets/vendors/owl-carousel/owl.theme.default.css' );
@@ -209,8 +209,7 @@ class Tyche {
 	/**
 	 * Admin enqueues
 	 */
-	public
-	function admin_enqueues() {
+	public function admin_enqueues() {
 		global $pagenow;
 		if ( 'widgets.php' === $pagenow ) {
 			wp_enqueue_script( 'media-upload' );
@@ -225,8 +224,7 @@ class Tyche {
 	/**
 	 * Theme setup
 	 */
-	public
-	function theme_setup() {
+	public function theme_setup() {
 		/**
 		 * Load text domain
 		 */
@@ -309,8 +307,7 @@ class Tyche {
 	/**
 	 * Content width
 	 */
-	public
-	function content_width() {
+	public function content_width() {
 		if ( ! isset( $GLOBALS['content_width'] ) ) {
 			$GLOBALS['content_width'] = 600;
 		}
