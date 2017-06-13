@@ -42,6 +42,18 @@ class Tyche_Hooks {
 		 * Register TGMPA
 		 */
 		add_action( 'tgmpa_register', array( $this, 'register_required_plugins' ) );
+
+		/**
+		 * Add action that the import has finished
+		 */
+		add_action( 'import_end', array( $this, 'import_finished' ) );
+	}
+
+	/**
+	 * Add a reference in the database that the theme import has finished
+	 */
+	public function import_finished() {
+		update_option( 'tyche_importer_finished', '1' );
 	}
 
 	/**

@@ -4581,14 +4581,8 @@ a:hover, a:active {
   font-size: 37px;
   display: inline-block;
   position: relative;
-  left: 10%;
   line-height: 40px;
   float: left;
-}
-@media (min-width: 768px) {
-  .main-slider .main-slider-bar .main-slider-info li .cell-icon {
-    left: 17%;
-  }
 }
 .main-slider .main-slider-bar .main-slider-info li .cell-icon .dashicons {
   width: initial;
@@ -4596,18 +4590,30 @@ a:hover, a:active {
   font-size: 30px;
   vertical-align: middle;
 }
+.main-slider .main-slider-bar .main-slider-info li .cell-content {
+  float: left;
+  margin-left: 15px;
+}
 .main-slider .main-slider-bar .main-slider-info li .cell-caption {
   font-size: 18px;
+  line-height: 18px;
   font-weight: 700;
   display: block;
   position: relative;
-  left: 22%;
 }
 .main-slider .main-slider-bar .main-slider-info li .cell-subcaption {
   font-size: 14px;
   display: block;
   position: relative;
-  left: 22%;
+}
+@media (max-width: 991px) {
+  .main-slider .main-slider-bar .main-slider-info li .cell-caption {
+    font-size: 16px;
+    line-height: 16px;
+  }
+  .main-slider .main-slider-bar .main-slider-info li .cell-subcaption {
+    font-size: 13px;
+  }
 }
 
 /*--------------------------------------------------------------

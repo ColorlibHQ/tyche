@@ -121,8 +121,38 @@ class Tyche {
 				array(
 					'id'          => 'tyche-req-ac-install-additional-plugins',
 					'title'       => esc_html__( 'Recommended Plugins', 'tyche' ),
-					'description' => esc_html__( 'To fully take advantage of the tyche theme, please install the recommended plugins', 'tyche' ),
+					'description' => esc_html__( 'To fully take advantage of the Tyche theme, please install the recommended plugins', 'tyche' ),
+					'help'        => 'Plugins are recommended/installed through the <a href="' . esc_url( self_admin_url( 'themes.php?page=tgmpa-install-plugins' ) ) . '">TGMPA Plugin</a>',
 					'check'       => Tyche_Notify_System::check_plugins(),
+				),
+				array(
+					'id'          => 'tyche-req-ac-install-wp-import-plugin',
+					'title'       => Tyche_Notify_System::wordpress_importer_title(),
+					'description' => Tyche_Notify_System::wordpress_importer_description(),
+					'check'       => Tyche_Notify_System::has_import_plugin( 'wordpress-importer' ),
+					'plugin_slug' => 'wordpress-importer',
+				),
+				array(
+					'id'          => 'tyche-req-ac-install-wp-import-widget-plugin',
+					'title'       => Tyche_Notify_System::widget_importer_exporter_title(),
+					'description' => Tyche_Notify_System::widget_importer_exporter_description(),
+					'check'       => Tyche_Notify_System::has_import_plugin( 'widget-importer-exporter' ),
+					'plugin_slug' => 'widget-importer-exporter',
+				),
+				array(
+					'id'          => 'tyche-req-ac-download-data',
+					'title'       => esc_html__( 'Download theme sample data', 'tyche' ),
+					'description' => esc_html__( 'Head over to our website and download the sample content data.', 'tyche' ),
+					'help'        => '<a target="_blank"  href="https://colorlibvault-divilabltd.netdna-ssl.com/newspaper-x-content.xml">' . __( 'Posts', 'tyche' ) . '</a>, 
+								   <a target = "_blank"  href = "https://colorlibvault-divilabltd.netdna-ssl.com/newspaper-x-widgets.wie" > ' . __( 'Widgets', 'tyche' ) . ' </a > ',
+					'check'       => Tyche_Notify_System::has_content(),
+				),
+				array(
+					'id'          => 'tyche-req-ac-static-latest-news',
+					'title'       => esc_html__( 'Set front page to static', 'tyche' ),
+					'description' => esc_html__( 'If you just installed Tyche, and are not able to see the front - page demo, you need to go to Settings -> Reading , Front page displays and select "Static Page" . ', 'tyche' ),
+					'help'        => 'If you need more help understanding how this works, check out the following < a target = "_blank"  href = "https://codex.wordpress.org/Creating_a_Static_Front_Page#WordPress_Static_Front_Page_Process" > link</a >. <br /><br /> <a class="button button-secondary" target = "_blank"  href = "' . esc_url( self_admin_url( 'options-reading.php' ) ) . '" > ' . __( 'Set manually', 'tyche' ) . ' </a > <a class="button button-primary"  href = "' . wp_nonce_url( self_admin_url( 'themes.php?page=newspaper-x-welcome&tab=recommended_actions&action=set_page_automatic' ), 'set_page_automatic' ) . '" > ' . __( 'Set automatically', 'tyche' ) . ' </a > ',
+					'check'       => Tyche_Notify_System::is_not_static_page(),
 				),
 			);
 

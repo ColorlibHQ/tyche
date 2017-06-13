@@ -112,11 +112,7 @@
           font-size: 37px;
           display: inline-block;
           position: relative;
-          left: 10%;
           line-height: 40px;
-          @media(min-width: 768px) {
-            left: 17%;
-          }
           float: left;
           .dashicons {
             width: initial;
@@ -125,18 +121,31 @@
             vertical-align: middle;
           }
         }
+        .cell-content {
+          float: left;
+          margin-left: 15px;
+        }
         .cell-caption {
           font-size: 18px;
+          line-height: 18px;
           font-weight: 700;
           display: block;
           position: relative;
-          left: 22%;
         }
         .cell-subcaption {
           font-size: 14px;
           display: block;
           position: relative;
-          left: 22%;
+        }
+
+        @media(max-width: 991px) {
+          .cell-caption {
+            font-size: 16px;
+            line-height: 16px;
+          }
+          .cell-subcaption {
+            font-size: 13px;
+          }
         }
       }
     }
