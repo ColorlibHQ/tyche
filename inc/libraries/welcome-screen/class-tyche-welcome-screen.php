@@ -43,7 +43,7 @@ class Tyche_Welcome_Screen {
 			 */
 			if ( ! empty( $_GET['action'] ) && 'set_page_automatic' === $_GET['action'] ) {
 				$active_tab = $_GET['tab'];
-				$about      = get_page_by_title( 'Homepage' );
+				$about      = get_page_by_title( 'Home' );
 				update_option( 'page_on_front', $about->ID );
 				update_option( 'show_on_front', 'page' );
 
