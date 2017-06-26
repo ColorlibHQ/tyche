@@ -26,7 +26,7 @@
 	/**
 	 * Enable / Disable the top bar
 	 */
-	if ( get_theme_mod( 'tyche_enable_top_bar', '1' ) !== '0' ) :
+	if ( get_theme_mod( 'tyche_enable_top_bar', true ) ) :
 		get_template_part( 'template-parts/top-header' );
 	endif;
 	?>
@@ -59,7 +59,7 @@
 					?>
 				</div>
 
-				<?php if ( get_theme_mod( 'tyche_show_banner', '1' ) !== '0' ) : ?>
+				<?php if ( get_theme_mod( 'tyche_show_banner', true ) ) : ?>
 					<div class="col-sm-8 header-banner">
 						<?php
 						$banner = get_theme_mod( 'tyche_banner_type', 'image' );
@@ -103,7 +103,7 @@
 	 * Enable / Disable the main slider
 	 */
 	$show_on_front = get_option( 'show_on_front' );
-	if ( get_theme_mod( 'tyche_enable_main_slider', '1' ) !== '0' && is_front_page() && 'posts' !== $show_on_front ) :
+	if ( get_theme_mod( 'tyche_enable_main_slider', true ) && is_front_page() && 'posts' !== $show_on_front ) :
 		get_template_part( 'template-parts/main-slider' );
 	endif;
 	?>

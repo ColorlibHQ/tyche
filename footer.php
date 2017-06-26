@@ -14,9 +14,9 @@
 <?php get_sidebar( 'footer' ) ?>
 
 <?php
-$enable_copyright = get_theme_mod( 'tyche_enable_copyright', '1' )
+$enable_copyright = get_theme_mod( 'tyche_enable_copyright', true )
 ?>
-<?php if ( '1' === $enable_copyright ) : ?>
+<?php if ( $enable_copyright ) : ?>
 	<!-- Copyright -->
 	<footer class="site-copyright">
 		<div class="site-info ">
