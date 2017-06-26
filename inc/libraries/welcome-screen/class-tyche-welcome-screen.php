@@ -43,7 +43,7 @@ class Tyche_Welcome_Screen {
 			 */
 			if ( ! empty( $_GET['action'] ) && 'set_page_automatic' === $_GET['action'] ) {
 				$active_tab = $_GET['tab'];
-				$about      = get_page_by_title( 'Homepage' );
+				$about      = get_page_by_title( 'Home' );
 				update_option( 'page_on_front', $about->ID );
 				update_option( 'show_on_front', 'page' );
 
@@ -146,7 +146,7 @@ class Tyche_Welcome_Screen {
 		wp_enqueue_style( 'tyche-welcome-screen-css', get_template_directory_uri() . '/inc/libraries/welcome-screen/css/welcome.css' );
 		wp_enqueue_script( 'tyche-welcome-screen-js', get_template_directory_uri() . '/inc/libraries/welcome-screen/js/welcome.js', array( 'jquery' ) );
 
-		wp_localize_script( 'tyche-welcome-screen-js', 'newspaperXWelcomeScreenObject', array(
+		wp_localize_script( 'tyche-welcome-screen-js', 'tycheWelcomeScreenObject', array(
 			'nr_actions_required'      => absint( $this->count_actions() ),
 			'ajaxurl'                  => esc_url( admin_url( 'admin-ajax.php' ) ),
 			'template_directory'       => esc_url( get_template_directory_uri() ),

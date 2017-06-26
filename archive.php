@@ -8,8 +8,8 @@
  */
 
 get_header();
-$breadcrumbs_enabled = get_theme_mod( 'tyche_enable_post_breadcrumbs', '1' );
-if ( '1' == $breadcrumbs_enabled ) { ?>
+$breadcrumbs_enabled = get_theme_mod( 'tyche_enable_post_breadcrumbs', true );
+if ( $breadcrumbs_enabled ) { ?>
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
