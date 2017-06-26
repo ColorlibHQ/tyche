@@ -1,6 +1,6 @@
 jQuery(document).ready(function () {
 
-	var tyche_nr_actions_required = newspaperXWelcomeScreenObject.nr_actions_required;
+	var tyche_nr_actions_required = tycheWelcomeScreenObject.nr_actions_required;
 
 	if ( (typeof tyche_nr_actions_required !== 'undefined') && (tyche_nr_actions_required != '0') ) {
 		jQuery('li.tyche-w-red-tab a').append('<span class="tyche-actions-count">' + tyche_nr_actions_required + '</span>');
@@ -15,9 +15,9 @@ jQuery(document).ready(function () {
 			type      : "GET",
 			data      : { action: 'tyche_dismiss_required_action', id: id, todo: action },
 			dataType  : "html",
-			url       : newspaperXWelcomeScreenObject.ajaxurl,
+			url       : tycheWelcomeScreenObject.ajaxurl,
 			beforeSend: function (data, settings) {
-				jQuery('.tyche-tab-pane#actions_required h1').append('<div id="temp_load" style="text-align:center"><img src=' + newspaperXWelcomeScreenObject.template_directory + '"/inc/libraries/welcome-screenreen/img/ajax-loader.gif" /></div>');
+				jQuery('.tyche-tab-pane#actions_required h1').append('<div id="temp_load" style="text-align:center"><img src=' + tycheWelcomeScreenObject.template_directory + '"/inc/libraries/welcome-screenreen/img/ajax-loader.gif" /></div>');
 			},
 			success   : function (data) {
 				location.reload();

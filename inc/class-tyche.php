@@ -143,8 +143,8 @@ class Tyche {
 					'id'          => 'tyche-req-ac-download-data',
 					'title'       => esc_html__( 'Download theme sample data', 'tyche' ),
 					'description' => esc_html__( 'Head over to our website and download the sample content data.', 'tyche' ),
-					'help'        => '<a target="_blank"  href="https://colorlibvault-divilabltd.netdna-ssl.com/newspaper-x-content.xml">' . __( 'Posts', 'tyche' ) . '</a>, 
-								   <a target = "_blank"  href = "https://colorlibvault-divilabltd.netdna-ssl.com/newspaper-x-widgets.wie" > ' . __( 'Widgets', 'tyche' ) . ' </a > ',
+					'help'        => '<a target="_blank"  href="https://colorlibvault-divilabltd.netdna-ssl.com/tychedemo.wordpress.xml">' . __( 'Posts', 'tyche' ) . '</a>, 
+								   <a target = "_blank"  href = "https://colorlibvault-divilabltd.netdna-ssl.com/tyche-widgets.wie" > ' . __( 'Widgets', 'tyche' ) . ' </a > ',
 					'check'       => Tyche_Notify_System::has_content(),
 				),
 				array(
