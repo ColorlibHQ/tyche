@@ -2480,6 +2480,7 @@ a:hover, a:active {
   color: #2279d3;
 }
 
+.sf-menu > li.current-menu-item > a,
 .sf-menu > li.current > a {
   color: #2279d3;
 }

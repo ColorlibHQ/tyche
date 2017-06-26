@@ -189,7 +189,7 @@ module.exports = function( grunt ) {
     var get_ext = function( path ) {
       var ret = '';
       var i = path.lastIndexOf( '.' );
-      if ( - 1 !== i && i <= path.length ) {
+      if ( -1 !== i && i <= path.length ) {
         ret = path.substr( i + 1 );
       }
       return ret;
