@@ -83,6 +83,30 @@
     }
   }
 
+  /* Review widgets */
+  ul {
+    &.product_list_widget {
+      li {
+        a {
+          &:hover,
+          &:active,
+          &:focus {
+            color: $color__brand-primary;
+          }
+        }
+        .star-rating {
+          display: block;
+          margin: 5px 0 5px 0;
+        }
+        .woocommerce-Price-amount.amount {
+          font-weight: bold;
+          margin-bottom: 10px;
+          color: $color__title;
+        }
+      }
+    }
+  }
+
   &.widget_product_search {
     position: relative;
     .search-field {
