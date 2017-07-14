@@ -6,7 +6,6 @@
  *
  * @package Tyche
  */
-
 ?>
 
 <!-- Top Header Bar -->
@@ -17,7 +16,7 @@
 				<ul class="top-header-bar">
 					<!-- Email -->
 					<li class="top-email">
-						<i class="fa fa-envelope-o"></i> <?php echo esc_html( get_theme_mod( 'tyche_top_bar_email', 'tyche@gmail.com' ) ) ?>
+						<i class="fa fa-envelope-o"></i> <?php echo esc_html( get_theme_mod( 'tyche_top_bar_email', get_option( 'admin_email' ) ) ) ?>
 					</li>
 					<!-- / Email -->
 					<?php if ( class_exists( 'WooCommerce' ) ) : ?>
@@ -67,7 +66,7 @@
 							<form role="search" method="get" class="pull-right" id="searchform_topbar" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 								<label>
 									<span class="screen-reader-text"><?php esc_html__( 'Search for:', 'tyche' ) ?></span>
-									<input class="search-field-top-bar" id="search-field-top-bar" placeholder="Search ..." value="" name="s" type="search">
+									<input class="search-field-top-bar" id="search-field-top-bar" placeholder="<?php echo esc_attr__( 'Search ...', 'tyche' ) ?>" value="" name="s" type="search">
 								</label>
 								<button id="search-top-bar-submit" type="submit" class="search-top-bar-submit">
 									<span class="fa fa-search"></span>

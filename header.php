@@ -59,7 +59,7 @@
 					?>
 				</div>
 
-				<?php if ( get_theme_mod( 'tyche_show_banner', true ) ) : ?>
+				<?php if ( get_theme_mod( 'tyche_show_banner', false ) ) : ?>
 					<div class="col-sm-8 header-banner">
 						<?php
 						$banner = get_theme_mod( 'tyche_banner_type', 'image' );

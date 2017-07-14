@@ -9,6 +9,10 @@
 
 $images = get_theme_mod( 'tyche_slider_bg', array() );
 
+if ( ! class_exists( 'Kirki' ) ) {
+	return;
+}
+
 ?>
 <!-- Main Slider -->
 <section class="main-slider">

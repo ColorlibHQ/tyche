@@ -20,7 +20,13 @@ if ( $breadcrumbs_enabled ) { ?>
 <?php } ?>
 	<div class="container">
 		<div class="row">
-			<div id="primary" class="content-area col-md-8">
+			<?php
+			$class = 'col-md-12';
+			if ( is_active_sidebar( 'sidebar' ) ) {
+				$class = 'col-md-8';
+			}
+			?>
+			<div id="primary" class="content-area <?php echo $class ?>">
 				<main id="main" class="site-main" role="main">
 
 					<?php
