@@ -1,3 +1,7 @@
+Tyche v1.0.4
+- Bug fixes
+- https://themes.trac.wordpress.org/ticket/43404#comment:3
+
 Tyche v1.0.2
 - Bug fixes ( https://github.com/puikinsh/tyche/pull/7 )
 - Update theme screenshot

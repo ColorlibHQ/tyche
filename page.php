@@ -24,7 +24,10 @@ if ( $breadcrumbs_enabled ) { ?>
 	</div>
 <?php } ?><?php
 $shop_page    = Tyche_Helper::has_sidebar();
-$account_page = is_account_page();
+$account_page = false;
+if ( class_exists( 'WooCommerce' ) ) {
+	$account_page = is_account_page();
+}
 ?>
 	<div class="container">
 		<div class="row">

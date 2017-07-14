@@ -1,7 +1,7 @@
 {
   "name": "tyche",
   "main": "Gruntfile.js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "homepage": "https://www.colorlib.com",
   "author": "Colorlib",
   "license": "GPL v3",

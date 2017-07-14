@@ -8,7 +8,6 @@
  */
 
 ?>
-
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'tyche-blog-post' ); ?>>
 	<header class="entry-header">
 		<div class="tyche-blog-image">
@@ -17,8 +16,6 @@
 				echo ! is_single() ? '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' : '';
 				the_post_thumbnail( 'tyche-blog-post-image' );
 				echo ! is_single() ? '</a>' : '';
-			} else {
-				echo ! is_single() ? '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark"><img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/image-placeholder.jpg" /></a>' : '<img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/image-placeholder.jpg" />';
 			}
 			?>
 		</div>
@@ -33,7 +30,7 @@
 		the_content( esc_html__( 'Read More', 'tyche' ) );
 
 		wp_link_pages( array(
-			'before' => '<div class="page - links">' . esc_html__( 'Pages:', 'tyche' ),
+			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'tyche' ),
 			'after'  => '</div>',
 		) );
 		?>

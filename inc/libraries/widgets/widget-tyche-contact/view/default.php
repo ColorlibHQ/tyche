@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Recent Post Widget default template
+ * Tyche Contact Widget
  *
  * @package Tyche
  */
