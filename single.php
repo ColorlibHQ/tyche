@@ -8,6 +8,12 @@
  */
 
 get_header();
+if ( is_single() ) {
+	$header = get_custom_header();
+	if ( ! empty( $header->url ) ) {
+		echo '<img src="' . esc_url( $header->url ) . '" class="img-centered img-responsive" />';
+	}
+}
 $breadcrumbs_enabled = get_theme_mod( 'tyche_enable_post_breadcrumbs', true );
 if ( $breadcrumbs_enabled ) { ?>
 	<div class="container">
