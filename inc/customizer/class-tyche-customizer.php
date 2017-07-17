@@ -24,13 +24,14 @@ class Tyche_Customizer {
 		$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
 		$wp_customize->get_setting( 'custom_logo' )->transport     = 'refresh';
 
-		$wp_customize->get_section( 'title_tagline' )->panel    = 'theme_options';
-		$wp_customize->get_section( 'title_tagline' )->priority = 1;
-		$wp_customize->get_section( 'colors' )->priority        = 2;
-		$wp_customize->get_section( 'colors' )->panel           = 'theme_options';
-
 		if ( ! class_exists( 'Kirki' ) ) {
 			require_once get_template_directory() . '/inc/libraries/class-kirki-installer-section.php';
+		} else {
+			$wp_customize->get_section( 'title_tagline' )->panel    = 'theme_options';
+			$wp_customize->get_section( 'title_tagline' )->priority = 1;
+
+			$wp_customize->get_section( 'colors' )->priority        = 2;
+			$wp_customize->get_section( 'colors' )->panel           = 'theme_options';
 		}
 
 		/**
