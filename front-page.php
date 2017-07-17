@@ -27,7 +27,13 @@ if ( 'posts' == $show_on_front ) :
 		<div class="row">
 			<div class="col-md-12">
 				<header>
-					<h1 class="page-title margin-top"><?php echo esc_html( get_the_title( (int) get_option( 'page_for_posts' ) ) ); ?></h1>
+					<?php
+					$blog_name = get_option( 'blogname', 'Tyche' );
+					if ( 0 !== (int) get_option( 'page_for_posts' ) ) {
+						$blog_name = get_the_title( get_option( 'page_for_posts' ) );
+					}
+					?>
+					<h1 class="page-title margin-top"><?php echo esc_html( $blog_name ); ?></h1>
 				</header>
 			</div>
 		</div>

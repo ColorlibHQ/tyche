@@ -24,7 +24,7 @@ if ( is_main_site() ) {
 		<div class="row">
 			<div class="col-md-12">
 				<header>
-					<h1 class="page-title margin-top"><?php echo esc_html( get_the_title( (int) get_option( 'page_for_posts' ) ) ); ?></h1>
+					<h1 class="page-title margin-top"><?php echo esc_html( get_option( 'blogname', 'Tyche' ) ); ?></h1>
 				</header>
 			</div>
 		</div>

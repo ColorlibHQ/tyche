@@ -1,3 +1,7 @@
+Tyche v1.0.5
+- Bug Fixes
+- https://themes.trac.wordpress.org/ticket/43404#comment:6
+
 Tyche v1.0.4
 - Bug fixes
 - https://themes.trac.wordpress.org/ticket/43404#comment:3
