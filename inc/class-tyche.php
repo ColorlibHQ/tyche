@@ -93,6 +93,15 @@ class Tyche {
 	public function init_welcome_screen() {
 		if ( is_admin() ) {
 			global $tyche_required_actions, $tyche_recommended_plugins;
+			global $wp_customize;
+
+			/**
+			 * Link was broken if theme wasn't "activated"
+			 * https://themes.trac.wordpress.org/ticket/43404#comment:14
+			 */
+			if ( null !== $wp_customize && ! $wp_customize->is_theme_active() ) {
+				return;
+			}
 
 			$tyche_recommended_plugins = array(
 				'kiwi-social-share'        => array(
@@ -179,6 +188,15 @@ class Tyche {
 			wp_enqueue_style( 'tyche-style', get_stylesheet_directory_uri() . '/assets/css/style-' . $scheme . '.css' );
 		} else {
 			wp_enqueue_style( 'tyche-style', get_stylesheet_directory_uri() . '/assets/css/style.css' );
+		}
+
+		$color = get_theme_mod( 'header_textcolor', '#ffffff' );
+		if ( $color !== '#ffffff' ) {
+			$custom_css = "
+                .site-header .site-title{
+                    color: #" . esc_html( $color ) . ";
+                }";
+			wp_add_inline_style( 'tyche-style', $custom_css );
 		}
 
 		/**

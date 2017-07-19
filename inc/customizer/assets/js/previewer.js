@@ -26,7 +26,6 @@
             $( this ).wrap( '<div class="styled-select"></div>' );
           } );
 
-          console.log(elements);
           elements.each( function() {
             var selector = jQuery( this );
             jQuery( this ).owlCarousel( {
