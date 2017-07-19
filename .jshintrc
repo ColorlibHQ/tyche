@@ -15,6 +15,7 @@
   "unused": false,
   "browser": true,
   "globals": {
+    "$": false,
     "jQuery": false,
     "wp": false,
     "tycheVariables": false,
