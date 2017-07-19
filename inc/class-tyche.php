@@ -93,6 +93,15 @@ class Tyche {
 	public function init_welcome_screen() {
 		if ( is_admin() ) {
 			global $tyche_required_actions, $tyche_recommended_plugins;
+			global $wp_customize;
+
+			/**
+			 * Link was broken if theme wasn't "activated"
+			 * https://themes.trac.wordpress.org/ticket/43404#comment:14
+			 */
+			if ( ! $wp_customize->is_theme_active() ) {
+				return;
+			}
 
 			$tyche_recommended_plugins = array(
 				'kiwi-social-share'        => array(
