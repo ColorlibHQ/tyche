@@ -190,6 +190,15 @@ class Tyche {
 			wp_enqueue_style( 'tyche-style', get_stylesheet_directory_uri() . '/assets/css/style.css' );
 		}
 
+		$color = get_theme_mod( 'header_textcolor', '#ffffff' );
+		if ( $color !== '#ffffff' ) {
+			$custom_css = "
+                .site-header .site-title{
+                    color: #" . esc_html( $color ) . ";
+                }";
+			wp_add_inline_style( 'tyche-style', $custom_css );
+		}
+
 		/**
 		 * Enqueue scripts
 		 */
