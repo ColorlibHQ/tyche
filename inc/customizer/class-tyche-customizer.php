@@ -24,7 +24,7 @@ class Tyche_Customizer {
 		$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
 		$wp_customize->get_setting( 'custom_logo' )->transport     = 'refresh';
 		$wp_customize->get_setting( 'header_textcolor' )->default  = 'ffffff';
-		
+
 		if ( ! class_exists( 'Kirki' ) ) {
 			require_once get_template_directory() . '/inc/libraries/class-kirki-installer-section.php';
 		} else {
