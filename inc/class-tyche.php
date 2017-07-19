@@ -99,7 +99,7 @@ class Tyche {
 			 * Link was broken if theme wasn't "activated"
 			 * https://themes.trac.wordpress.org/ticket/43404#comment:14
 			 */
-			if ( ! $wp_customize->is_theme_active() ) {
+			if ( null !== $wp_customize && ! $wp_customize->is_theme_active() ) {
 				return;
 			}
 
