@@ -26,20 +26,20 @@ if ( $breadcrumbs_enabled ) { ?>
 				$class = 'col-md-8';
 			}
 			?>
-			<div id="primary" class="content-area <?php echo $class ?>">
+			<div id="primary" class="content-area <?php echo $class; ?>">
 				<main id="main" class="site-main" role="main">
 
 					<?php
 					if ( have_posts() ) : ?>
 
 						<header class="page-header">
-							<?php /* translators: placeholder is search query  */?>
 							<h1 class="page-title"><?php printf( esc_html__( 'Search Results for: %s', 'tyche' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 						</header><!-- .page-header -->
 
 						<?php
 						/* Start the Loop */
-						while ( have_posts() ) : the_post();
+						while ( have_posts() ) :
+							the_post();
 
 							/**
 							 * Run the loop for the search to output the results.
@@ -56,7 +56,8 @@ if ( $breadcrumbs_enabled ) { ?>
 
 						get_template_part( 'template-parts/content', 'none' );
 
-					endif; ?>
+					endif;
+					?>
 
 				</main><!-- #main -->
 			</div><!-- #primary -->

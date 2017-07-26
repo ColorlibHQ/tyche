@@ -22,7 +22,9 @@ if ( $breadcrumbs_enabled ) { ?>
 			</div>
 		</div>
 	</div>
-<?php } ?><?php
+<?php } ?>
+
+<?php
 $shop_page    = Tyche_Helper::has_sidebar();
 $account_page = false;
 if ( class_exists( 'WooCommerce' ) ) {
@@ -31,7 +33,7 @@ if ( class_exists( 'WooCommerce' ) ) {
 ?>
 	<div class="container">
 		<div class="row">
-			<div id="primary" class="content-area <?php echo $account_page ? 'col-md-12' : 'col-md-8 tyche-has-sidebar' ?>">
+			<div id="primary" class="content-area <?php echo $account_page ? 'col-md-12' : 'col-md-8 tyche-has-sidebar'; ?>">
 				<main id="main" class="site-main" role="main">
 
 					<?php

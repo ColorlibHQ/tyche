@@ -6,10 +6,12 @@
  */
 ?>
 
-<?php get_header();
+<?php
+get_header();
 
 $breadcrumbs_enabled = get_theme_mod( 'tyche_enable_post_breadcrumbs', true );
-if ( $breadcrumbs_enabled ) { ?>
+if ( $breadcrumbs_enabled ) {
+	?>
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
@@ -22,7 +24,7 @@ if ( $breadcrumbs_enabled ) { ?>
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			<?php the_title( '<h2 class="custom-page-title">', '</h2>' ) ?>
+			<?php the_title( '<h2 class="custom-page-title">', '</h2>' ); ?>
 		</div>
 	</div>
 
@@ -30,7 +32,8 @@ if ( $breadcrumbs_enabled ) { ?>
 		<div class="col-sm-6">
 			<?php
 			if ( have_posts() ) :
-				while ( have_posts() ) : the_post();
+				while ( have_posts() ) :
+					the_post();
 					the_content();
 				endwhile;
 			endif;
@@ -44,8 +47,8 @@ if ( $breadcrumbs_enabled ) { ?>
 							<span class="fa fa-mobile"></span>
 						</div>
 						<div class="text">
-							<?php echo esc_html__( 'GIVE US A CALL', 'tyche' ) ?>
-							<span><?php echo esc_html( get_theme_mod( 'tyche_contact_phone', '732-757-2923' ) ) ?></span>
+							<?php echo esc_html__( 'GIVE US A CALL', 'tyche' ); ?>
+							<span><?php echo esc_html( get_theme_mod( 'tyche_contact_phone', '732-757-2923' ) ); ?></span>
 						</div>
 					</div>
 				</div>
@@ -55,8 +58,8 @@ if ( $breadcrumbs_enabled ) { ?>
 							<span class="fa fa-map-marker"></span>
 						</div>
 						<div class="text">
-							<?php echo esc_html__( 'OUR LOCATION', 'tyche' ) ?>
-							<span><?php echo esc_html( get_theme_mod( 'tyche_contact_address', '557-6308 Lacinia Road. NYC' ) ) ?></span>
+							<?php echo esc_html__( 'OUR LOCATION', 'tyche' ); ?>
+							<span><?php echo esc_html( get_theme_mod( 'tyche_contact_address', '557-6308 Lacinia Road. NYC' ) ); ?></span>
 						</div>
 					</div>
 				</div>
@@ -66,7 +69,7 @@ if ( $breadcrumbs_enabled ) { ?>
 
 	<div class="row">
 		<div class="col-sm-4">
-			<?php echo do_shortcode( get_theme_mod( 'tyche_contact_page_shortcode_form', '' ) ) ?>
+			<?php echo do_shortcode( get_theme_mod( 'tyche_contact_page_shortcode_form', '' ) ); ?>
 		</div>
 		<div class="col-sm-8">
 			<div id="tyche-map">

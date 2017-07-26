@@ -42,14 +42,15 @@
 						<div class="site-title-description">
 							<?php
 							$header_textcolor = get_theme_mod( 'header_textcolor' );
-							if ( 'blank' !== $header_textcolor ) : ?>
-								<a class="site-title" href="<?php echo esc_url( get_home_url() ) ?>">
-									<?php Tyche_Helper::customize_partial_blogname() ?>
+							if ( 'blank' !== $header_textcolor ) :
+								?>
+								<a class="site-title" href="<?php echo esc_url( get_home_url() ); ?>">
+									<?php Tyche_Helper::customize_partial_blogname(); ?>
 								</a>
 								<?php
 								$description = get_bloginfo( 'description', 'display' );
 								if ( $description || is_customize_preview() ) : ?>
-									<p class="site-description"> <?php Tyche_Helper::customize_partial_blogdescription() ?> </p>
+									<p class="site-description"> <?php Tyche_Helper::customize_partial_blogdescription(); ?> </p>
 								<?php endif; ?>
 
 							<?php endif; ?>

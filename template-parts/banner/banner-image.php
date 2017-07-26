@@ -17,13 +17,14 @@ $link = get_theme_mod( 'tyche_banner_link', 'https://colorlib.com/themes/tyche/'
  */
 if ( get_template_directory_uri() . '/assets/images/banner.jpg' !== $banner_image ) {
 	$attachment_id = attachment_url_to_postid( get_theme_mod( 'tyche_banner_image' ) ); ?>
-	<a href="<?php echo esc_url( $link ) ?>">
+	<a href="<?php echo esc_url( $link ); ?>">
 		<?php echo wp_kses_post( wp_get_attachment_image( $attachment_id, 'tyche-wide-banner' ) ); ?>
 	</a>
 <?php } else { ?>
-	<a href="<?php echo esc_url( $link ) ?>">
+	<a href="<?php echo esc_url( $link ); ?>">
 		<?php
 		echo '<img src="' . esc_url( get_template_directory_uri() ) . '/assets/images/banner.jpg" class="banner-wide" />';
 		?>
 	</a>
-<?php }
+	<?php
+}
