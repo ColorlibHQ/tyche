@@ -165,7 +165,14 @@ class Tyche {
 				),
 			);
 
-			new Tyche_Welcome_Screen();
+			Epsilon_Welcome_Screen::get_instance(
+				$config = array(
+					'theme-name' => 'Tyche',
+					'theme-slug' => 'tyche',
+					'actions'    => $tyche_required_actions,
+					'plugins'    => $tyche_recommended_plugins,
+				)
+			);
 		}// End if().
 	}
 

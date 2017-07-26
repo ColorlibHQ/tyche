@@ -1,3 +1,9 @@
+Tyche v1.0.7
+- Updated welcome screen
+- Added a notice in the frontend if user does not have widgets in the content area
+- Removed documentation section
+- Bug fixes
+
 Tyche v1.0.6
 - Bug Fixes
 

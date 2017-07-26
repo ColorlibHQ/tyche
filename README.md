@@ -9,7 +9,7 @@ Tested up to:		4.8
 
 == Description ==
 
-Tyche is a WooCommerce driven theme
+Tyche is a WooCommerce driven theme. 
 
 = License =
 
