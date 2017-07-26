@@ -49,7 +49,8 @@
 								</a>
 								<?php
 								$description = get_bloginfo( 'description', 'display' );
-								if ( $description || is_customize_preview() ) : ?>
+								if ( $description || is_customize_preview() ) :
+									?>
 									<p class="site-description"> <?php Tyche_Helper::customize_partial_blogdescription(); ?> </p>
 								<?php endif; ?>
 

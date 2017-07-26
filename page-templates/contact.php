@@ -73,7 +73,7 @@ if ( $breadcrumbs_enabled ) {
 		</div>
 		<div class="col-sm-8">
 			<div id="tyche-map">
-				<?php echo do_shortcode( get_theme_mod( 'tyche_contact_page_shortcode_map', '' ) ) ?>
+				<?php echo do_shortcode( get_theme_mod( 'tyche_contact_page_shortcode_map', '' ) ); ?>
 			</div>
 		</div>
 	</div>

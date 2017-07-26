@@ -22,10 +22,9 @@ if ( is_single() && ! empty( $curauth->description ) && 'enabled' === $author_en
 		<!-- Short Description -->
 		<div class="col-md-10" itemscope="" itemtype="http://schema.org/Person">
 			<h4 class="post-author"><?php echo wp_kses_post( get_the_author_posts_link() ); ?></h4>
-			<a class="post-author-website" href="<?php echo esc_url( get_the_author_meta( 'url' ) ); ?>"><?php echo
-				get_the_author_meta( 'url' ); ?></a>
+			<a class="post-author-website" href="<?php echo esc_url( get_the_author_meta( 'url' ) ); ?>"><?php echo get_the_author_meta( 'url' ); ?></a>
 			<p><?php the_author_meta( 'description' ); ?></p>
 		</div>
 		<!-- .Short Description -->
-	</div>	<!-- .Author description -->
+	</div>    <!-- .Author description -->
 <?php } ?>
