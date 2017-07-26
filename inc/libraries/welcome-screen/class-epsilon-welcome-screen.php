@@ -468,6 +468,10 @@ class Epsilon_Welcome_Screen {
 			$arr['recommended-actions']['label'] .= '<span class="badge-action-count">' . $this->actions_count . '</span>';
 		}
 
+		if ( 0 === count( $this->plugins ) ) {
+			unset( $arr['recommended-plugins'] );
+		}
+
 		if ( isset( $config['sections_exclude'] ) && ! empty( $config['sections_exclude'] ) ) {
 			foreach ( $config['sections_exclude'] as $id ) {
 				unset( $arr[ $id ] );

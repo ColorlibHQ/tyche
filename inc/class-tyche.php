@@ -103,20 +103,12 @@ class Tyche {
 				return;
 			}
 
-			$tyche_recommended_plugins = array(
-				'kiwi-social-share'        => array(
-					'recommended' => false,
-				),
-				'modula-best-grid-gallery' => array(
-					'recommended' => true,
-				),
-				'fancybox-for-wordpress'   => array(
-					'recommended' => false,
-				),
-				'simple-custom-post-order' => array(
-					'recommended' => false,
-				),
-			);
+			/**
+			 * Removed recommended plugins for now (until we integrate them nicely)
+			 * https://themes.trac.wordpress.org/ticket/43404#comment:24
+			 */
+			$tyche_recommended_plugins = array();
+
 			/*
 			 * id - unique id; required
 			 * title
@@ -169,7 +161,6 @@ class Tyche {
 					'theme-name' => 'Tyche',
 					'theme-slug' => 'tyche',
 					'actions'    => $tyche_required_actions,
-					'plugins'    => $tyche_recommended_plugins,
 				)
 			);
 		}// End if().
