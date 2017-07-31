@@ -44,13 +44,14 @@ if ( 'posts' == $show_on_front ) :
 				$class = 'col-md-8';
 			}
 			?>
-			<div id="primary" class="content-area <?php echo $class ?>">
+			<div id="primary" class="content-area <?php echo $class; ?>">
 				<main id="main" class="site-main" role="main">
 					<?php
 					if ( have_posts() ) :
 
 						/* Start the Loop */
-						while ( have_posts() ) : the_post();
+						while ( have_posts() ) :
+							the_post();
 
 							/*
 							 * Include the Post-Format-specific template for the content.
@@ -72,7 +73,8 @@ if ( 'posts' == $show_on_front ) :
 
 						get_template_part( 'template-parts/content', 'none' );
 
-					endif; ?>
+					endif;
+					?>
 
 				</main><!-- #main -->
 			</div><!-- #primary -->

@@ -11,10 +11,10 @@
 ?>
 </div><!-- #content -->
 
-<?php get_sidebar( 'footer' ) ?>
+<?php get_sidebar( 'footer' ); ?>
 
 <?php
-$enable_copyright = get_theme_mod( 'tyche_enable_copyright', true )
+$enable_copyright = get_theme_mod( 'tyche_enable_copyright', true );
 ?>
 <?php if ( $enable_copyright ) : ?>
 	<!-- Copyright -->

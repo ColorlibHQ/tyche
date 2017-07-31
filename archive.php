@@ -26,10 +26,11 @@ if ( $breadcrumbs_enabled ) { ?>
 				$class = 'col-md-8';
 			}
 			?>
-			<div id="primary" class="content-area <?php echo $class ?>">
+			<div id="primary" class="content-area <?php echo $class; ?>">
 				<main id="main" class="site-main" role="main">
 					<?php
-					if ( have_posts() ) : ?>
+					if ( have_posts() ) :
+						?>
 
 						<header class="page-header">
 							<?php
@@ -39,8 +40,9 @@ if ( $breadcrumbs_enabled ) { ?>
 						</header><!-- .page-header -->
 
 						<?php
-						/* Start the Loop */
-						while ( have_posts() ) : the_post();
+						/* Start the Loop. */
+						while ( have_posts() ) :
+							the_post();
 
 							/*
 							 * Include the Post-Format-specific template for the content.
@@ -62,7 +64,8 @@ if ( $breadcrumbs_enabled ) { ?>
 
 						get_template_part( 'template-parts/content', 'none' );
 
-					endif; ?>
+					endif;
+					?>
 
 				</main><!-- #main -->
 			</div><!-- #primary -->

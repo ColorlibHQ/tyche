@@ -103,20 +103,12 @@ class Tyche {
 				return;
 			}
 
-			$tyche_recommended_plugins = array(
-				'kiwi-social-share'        => array(
-					'recommended' => false,
-				),
-				'modula-best-grid-gallery' => array(
-					'recommended' => true,
-				),
-				'fancybox-for-wordpress'   => array(
-					'recommended' => false,
-				),
-				'simple-custom-post-order' => array(
-					'recommended' => false,
-				),
-			);
+			/**
+			 * Removed recommended plugins for now (until we integrate them nicely)
+			 * https://themes.trac.wordpress.org/ticket/43404#comment:24
+			 */
+			$tyche_recommended_plugins = array();
+
 			/*
 			 * id - unique id; required
 			 * title
@@ -152,8 +144,7 @@ class Tyche {
 					'id'          => 'tyche-req-ac-download-data',
 					'title'       => esc_html__( 'Download theme sample data', 'tyche' ),
 					'description' => esc_html__( 'Head over to our website and download the sample content data.', 'tyche' ),
-					'help'        => '<a target="_blank"  href="https://colorlibvault-divilabltd.netdna-ssl.com/tychedemo.wordpress.xml">' . __( 'Posts', 'tyche' ) . '</a>, 
-								   <a target = "_blank"  href = "https://colorlibvault-divilabltd.netdna-ssl.com/tyche-widgets.wie" > ' . __( 'Widgets', 'tyche' ) . ' </a > ',
+					'help'        => '<a target="_blank"  href="https://colorlibvault-divilabltd.netdna-ssl.com/tychedemo.wordpress.xml">' . __( 'Posts', 'tyche' ) . '</a>, <a target = "_blank"  href = "https://colorlibvault-divilabltd.netdna-ssl.com/tyche-widgets.wie" > ' . __( 'Widgets', 'tyche' ) . ' </a > ',
 					'check'       => Tyche_Notify_System::has_content(),
 				),
 				array(
@@ -165,7 +156,13 @@ class Tyche {
 				),
 			);
 
-			new Tyche_Welcome_Screen();
+			Epsilon_Welcome_Screen::get_instance(
+				$config = array(
+					'theme-name' => 'Tyche',
+					'theme-slug' => 'tyche',
+					'actions'    => $tyche_required_actions,
+				)
+			);
 		}// End if().
 	}
 
@@ -191,11 +188,11 @@ class Tyche {
 		}
 
 		$color = get_theme_mod( 'header_textcolor', '#ffffff' );
-		if ( $color !== '#ffffff' ) {
-			$custom_css = "
+		if ( '#ffffff' === $color ) {
+			$custom_css = '
                 .site-header .site-title{
                     color: #" . esc_html( $color ) . ";
-                }";
+                }';
 			wp_add_inline_style( 'tyche-style', $custom_css );
 		}
 

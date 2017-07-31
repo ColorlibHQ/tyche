@@ -11,6 +11,8 @@
 	</rule>
 	<exclude-pattern>*/node_modules/*</exclude-pattern>
 	<exclude-pattern>*/woocommerce/*</exclude-pattern>
+	<exclude-pattern>*/epsilon-framework/*</exclude-pattern>
+	<exclude-pattern>*/widgets/*</exclude-pattern>
 	<!-- Include sniffs for PHP cross-version compatibility. -->
 	<rule ref="PHPCompatibility"/>
 </ruleset>

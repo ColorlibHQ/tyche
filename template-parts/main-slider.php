@@ -19,13 +19,13 @@ if ( ! class_exists( 'Kirki' ) ) {
 	<?php if ( empty( $images ) ) : ?>
 		<div class="owl-carousel owl-theme" id="main-slider">
 			<div class="item">
-				<img src="<?php echo get_template_directory_uri() ?>/assets/images/hero.jpg"/>
+				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero.jpg"/>
 				<div class="hero-caption left hidden-xs hidden-sm">
-					<span class="year"><?php echo esc_html( date( 'Y' ) ) ?></span>
-					<span class="caption"><?php echo esc_html__( 'Autumn Collection', 'tyche' ) ?></span>
+					<span class="year"><?php echo esc_html( date( 'Y' ) ); ?></span>
+					<span class="caption"><?php echo esc_html__( 'Autumn Collection', 'tyche' ); ?></span>
 					<div class="btn-group">
-						<a href="#"><?php echo esc_html__( 'Shop Now', 'tyche' ) ?></a>
-						<a href="#"><?php echo esc_html__( 'Learn More', 'tyche' ) ?></a>
+						<a href="#"><?php echo esc_html__( 'Shop Now', 'tyche' ); ?></a>
+						<a href="#"><?php echo esc_html__( 'Learn More', 'tyche' ); ?></a>
 					</div>
 				</div>
 			</div>
@@ -34,20 +34,20 @@ if ( ! class_exists( 'Kirki' ) ) {
 		<div class="owl-carousel owl-theme" id="main-slider">
 			<?php foreach ( $images as $image ) : ?>
 				<div class="item">
-					<?php echo wp_get_attachment_image( $image['image_bg'], 'tyche-slider-image' ) ?>
-					<div class="hero-caption <?php echo esc_attr( get_theme_mod( 'tyche_slider_layout', 'left' ) ) ?> hidden-xs hidden-sm">
+					<?php echo wp_get_attachment_image( $image['image_bg'], 'tyche-slider-image' ); ?>
+					<div class="hero-caption <?php echo esc_attr( get_theme_mod( 'tyche_slider_layout', 'left' ) ); ?> hidden-xs hidden-sm">
 						<?php if ( ! empty( $image['cta_text'] ) ) : ?>
-							<span class="year"><?php echo esc_html( $image['cta_text'] ) ?></span>
+							<span class="year"><?php echo esc_html( $image['cta_text'] ); ?></span>
 						<?php endif; ?>
 						<?php if ( ! empty( $image['cta_subtext'] ) ) : ?>
-							<span class="caption"><?php echo esc_html( $image['cta_subtext'] ) ?></span>
+							<span class="caption"><?php echo esc_html( $image['cta_subtext'] ); ?></span>
 						<?php endif; ?>
 						<div class="btn-group">
 							<?php if ( ! empty( $image['button_one_text'] ) && ! empty( $image['button_one_url'] ) ) : ?>
-								<a href="<?php echo esc_html( $image['button_one_url'] ) ?>"><?php echo esc_html( $image['button_one_text'] ) ?></a>
+								<a href="<?php echo esc_html( $image['button_one_url'] ); ?>"><?php echo esc_html( $image['button_one_text'] ); ?></a>
 							<?php endif; ?>
 							<?php if ( ! empty( $image['button_two_text'] ) && ! empty( $image['button_two_url'] ) ) : ?>
-								<a href="<?php echo esc_html( $image['button_two_url'] ) ?>"><?php echo esc_html( $image['button_two_text'] ) ?></a>
+								<a href="<?php echo esc_html( $image['button_two_url'] ); ?>"><?php echo esc_html( $image['button_two_text'] ); ?></a>
 							<?php endif; ?>
 						</div>
 					</div>
@@ -67,13 +67,13 @@ if ( ! class_exists( 'Kirki' ) ) {
 								$icon = 'dashicons dashicons-' . get_theme_mod( 'info_section_one_icon' );
 							}
 							?>
-							<i class="<?php echo esc_attr( $icon ) ?>"></i>
+							<i class="<?php echo esc_attr( $icon ); ?>"></i>
 						</div>
 						<div class="cell-content">
 							<span class="cell-caption">
-								<?php echo wp_kses_post( get_theme_mod( 'info_section_one_text', 'FREE SHIPPING' ) ) ?>
+								<?php echo wp_kses_post( get_theme_mod( 'info_section_one_text', 'FREE SHIPPING' ) ); ?>
 							</span> <span class="cell-subcaption">
-								<?php echo wp_kses_post( get_theme_mod( 'info_section_one_subtext', 'On all orders over 90$' ) ) ?>
+								<?php echo wp_kses_post( get_theme_mod( 'info_section_one_subtext', 'On all orders over 90$' ) ); ?>
 							</span>
 						</div>
 					</div>
@@ -87,13 +87,13 @@ if ( ! class_exists( 'Kirki' ) ) {
 								$icon = 'dashicons dashicons-' . get_theme_mod( 'info_section_two_icon' );
 							}
 							?>
-							<i class="<?php echo esc_attr( $icon ) ?>"></i>
+							<i class="<?php echo esc_attr( $icon ); ?>"></i>
 						</div>
 						<div class="cell-content">
 							<span class="cell-caption">
-								<?php echo wp_kses_post( get_theme_mod( 'info_section_two_text', 'CALL US ANYTIME' ) ) ?>
+								<?php echo wp_kses_post( get_theme_mod( 'info_section_two_text', 'CALL US ANYTIME' ) ); ?>
 							</span> <span class="cell-subcaption">
-								<?php echo wp_kses_post( get_theme_mod( 'info_section_two_subtext', '+04786445953' ) ) ?>
+								<?php echo wp_kses_post( get_theme_mod( 'info_section_two_subtext', '+04786445953' ) ); ?>
 							</span>
 						</div>
 
@@ -108,13 +108,13 @@ if ( ! class_exists( 'Kirki' ) ) {
 								$icon = 'dashicons dashicons-' . get_theme_mod( 'info_section_three_icon' );
 							}
 							?>
-							<i class="<?php echo esc_attr( $icon ) ?>"></i>
+							<i class="<?php echo esc_attr( $icon ); ?>"></i>
 						</div>
 						<div class="cell-content">
 						<span class="cell-caption">
-							<?php echo wp_kses_post( get_theme_mod( 'info_section_three_text', 'OUR LOCATION' ) ) ?>
+							<?php echo wp_kses_post( get_theme_mod( 'info_section_three_text', 'OUR LOCATION' ) ); ?>
 						</span> <span class="cell-subcaption">
-							<?php echo wp_kses_post( get_theme_mod( 'info_section_three_subtext', '557-6308 Lacinia Road. NYC' ) ) ?>
+							<?php echo wp_kses_post( get_theme_mod( 'info_section_three_subtext', '557-6308 Lacinia Road. NYC' ) ); ?>
 						</span>
 						</div>
 					</div>
