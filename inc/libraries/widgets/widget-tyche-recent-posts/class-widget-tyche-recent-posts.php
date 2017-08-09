@@ -31,7 +31,7 @@ class Widget_Tyche_Recent_Posts extends WP_Widget {
 			'Tyche_Recent',
 			__( 'Tyche Recent Posts', 'tyche' ),
 			array(
-				'description'                 => esc_html__( 'Recent Posts!', 'tyche' ),
+				'description'                 => esc_html__( 'Displays your most recent posts (thumbnail included for the posts).', 'tyche' ),
 				'customize_selective_refresh' => true,
 			)
 		);

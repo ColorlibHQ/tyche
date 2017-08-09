@@ -35,4 +35,5 @@ if ( ! defined( 'WPINC' ) ) {
 		</div>
 	</section>
 	<!-- / Content Area #4 -->
-<?php }
+	<?php
+}

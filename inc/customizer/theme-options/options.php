@@ -85,7 +85,7 @@ Tyche_Kirki::add_field( 'tyche_theme', array(
 	'settings' => 'tyche_enable_top_bar',
 	'label'    => esc_html__( 'Enable Header Top Bar', 'tyche' ),
 	'section'  => 'theme_options_general',
-	'default'  => '1',
+	'default'  => true,
 	'priority' => 10,
 ) );
 
@@ -94,7 +94,7 @@ Tyche_Kirki::add_field( 'tyche_theme', array(
 	'settings' => 'tyche_enable_post_breadcrumbs',
 	'label'    => esc_html__( 'Enable Breadcrumbs', 'tyche' ),
 	'section'  => 'theme_options_general',
-	'default'  => '1',
+	'default'  => true,
 	'priority' => 12,
 ) );
 
@@ -156,7 +156,7 @@ Tyche_Kirki::add_field( 'tyche_theme', array(
 	'settings' => 'tyche_show_banner',
 	'label'    => esc_html__( 'Enable Banner in Header', 'tyche' ),
 	'section'  => 'theme_options_general',
-	'default'  => '1',
+	'default'  => true,
 	'priority' => 13,
 ) );
 
@@ -249,7 +249,7 @@ Tyche_Kirki::add_field( 'tyche_theme', array(
 	'settings' => 'tyche_enable_copyright',
 	'label'    => esc_html__( 'Enable Copyright', 'tyche' ),
 	'section'  => 'theme_options_footer',
-	'default'  => '1',
+	'default'  => true,
 	'priority' => 11,
 ) );
 
@@ -270,7 +270,7 @@ Tyche_Kirki::add_field( 'tyche_theme', array(
 	'settings' => 'tyche_enable_main_slider',
 	'label'    => esc_html__( 'Enable Front Page Slider', 'tyche' ),
 	'section'  => 'frontpage_sections_general',
-	'default'  => '1',
+	'default'  => true,
 	'priority' => 10,
 ) );
 

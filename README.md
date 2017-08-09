@@ -5,11 +5,11 @@ Tags: e-commerce, two-columns, left-sidebar, right-sidebar, custom-colors, custo
 
 Requires at least:	4.0
 
-Tested up to:		4.7.5
+Tested up to:		4.8
 
 == Description ==
 
-Tyche is a WooCommerce driven theme
+Tyche is a WooCommerce driven theme. 
 
 = License =
 

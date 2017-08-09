@@ -13,8 +13,8 @@
  */
 
 get_header();
-$breadcrumbs_enabled = get_theme_mod( 'tyche_enable_post_breadcrumbs', '1' );
-if ( '1' === $breadcrumbs_enabled ) { ?>
+$breadcrumbs_enabled = get_theme_mod( 'tyche_enable_post_breadcrumbs', true );
+if ( true === $breadcrumbs_enabled ) { ?>
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
@@ -29,7 +29,8 @@ if ( '1' === $breadcrumbs_enabled ) { ?>
 				<main id="main" class="site-main" role="main">
 
 					<?php
-					while ( have_posts() ) : the_post();
+					while ( have_posts() ) :
+						the_post();
 
 						get_template_part( 'template-parts/content', 'page' );
 

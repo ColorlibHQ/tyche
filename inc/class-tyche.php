@@ -93,21 +93,22 @@ class Tyche {
 	public function init_welcome_screen() {
 		if ( is_admin() ) {
 			global $tyche_required_actions, $tyche_recommended_plugins;
+			global $wp_customize;
 
-			$tyche_recommended_plugins = array(
-				'kiwi-social-share'        => array(
-					'recommended' => false,
-				),
-				'modula-best-grid-gallery' => array(
-					'recommended' => true,
-				),
-				'fancybox-for-wordpress'   => array(
-					'recommended' => false,
-				),
-				'simple-custom-post-order' => array(
-					'recommended' => false,
-				),
-			);
+			/**
+			 * Link was broken if theme wasn't "activated"
+			 * https://themes.trac.wordpress.org/ticket/43404#comment:14
+			 */
+			if ( null !== $wp_customize && ! $wp_customize->is_theme_active() ) {
+				return;
+			}
+
+			/**
+			 * Removed recommended plugins for now (until we integrate them nicely)
+			 * https://themes.trac.wordpress.org/ticket/43404#comment:24
+			 */
+			$tyche_recommended_plugins = array();
+
 			/*
 			 * id - unique id; required
 			 * title
@@ -143,20 +144,25 @@ class Tyche {
 					'id'          => 'tyche-req-ac-download-data',
 					'title'       => esc_html__( 'Download theme sample data', 'tyche' ),
 					'description' => esc_html__( 'Head over to our website and download the sample content data.', 'tyche' ),
-					'help'        => '<a target="_blank"  href="https://colorlibvault-divilabltd.netdna-ssl.com/newspaper-x-content.xml">' . __( 'Posts', 'tyche' ) . '</a>, 
-								   <a target = "_blank"  href = "https://colorlibvault-divilabltd.netdna-ssl.com/newspaper-x-widgets.wie" > ' . __( 'Widgets', 'tyche' ) . ' </a > ',
+					'help'        => '<a target="_blank"  href="https://colorlibvault-divilabltd.netdna-ssl.com/tychedemo.wordpress.xml">' . __( 'Posts', 'tyche' ) . '</a>, <a target = "_blank"  href = "https://colorlibvault-divilabltd.netdna-ssl.com/tyche-widgets.wie" > ' . __( 'Widgets', 'tyche' ) . ' </a > ',
 					'check'       => Tyche_Notify_System::has_content(),
 				),
 				array(
 					'id'          => 'tyche-req-ac-static-latest-news',
 					'title'       => esc_html__( 'Set front page to static', 'tyche' ),
 					'description' => esc_html__( 'If you just installed Tyche, and are not able to see the front - page demo, you need to go to Settings -> Reading , Front page displays and select "Static Page" . ', 'tyche' ),
-					'help'        => 'If you need more help understanding how this works, check out the following < a target = "_blank"  href = "https://codex.wordpress.org/Creating_a_Static_Front_Page#WordPress_Static_Front_Page_Process" > link</a >. <br /><br /> <a class="button button-secondary" target = "_blank"  href = "' . esc_url( self_admin_url( 'options-reading.php' ) ) . '" > ' . __( 'Set manually', 'tyche' ) . ' </a > <a class="button button-primary"  href = "' . wp_nonce_url( self_admin_url( 'themes.php?page=newspaper-x-welcome&tab=recommended_actions&action=set_page_automatic' ), 'set_page_automatic' ) . '" > ' . __( 'Set automatically', 'tyche' ) . ' </a > ',
+					'help'        => 'If you need more help understanding how this works, check out the following <a target="_blank"  href="https://codex.wordpress.org/Creating_a_Static_Front_Page#WordPress_Static_Front_Page_Process">link</a > . <br /><br /> <a class="button button-secondary" target="_blank"  href="' . esc_url( self_admin_url( 'options-reading.php' ) ) . '" > ' . __( 'Set manually', 'tyche' ) . ' </a > <a class="button button-primary"  href="' . wp_nonce_url( self_admin_url( 'themes.php?page=tyche-welcome&tab=recommended_actions&action=set_page_automatic' ), 'set_page_automatic' ) . '" > ' . __( 'Set automatically', 'tyche' ) . ' </a > ',
 					'check'       => Tyche_Notify_System::is_not_static_page(),
 				),
 			);
 
-			new Tyche_Welcome_Screen();
+			Epsilon_Welcome_Screen::get_instance(
+				$config = array(
+					'theme-name' => 'Tyche',
+					'theme-slug' => 'tyche',
+					'actions'    => $tyche_required_actions,
+				)
+			);
 		}// End if().
 	}
 
@@ -179,6 +185,15 @@ class Tyche {
 			wp_enqueue_style( 'tyche-style', get_stylesheet_directory_uri() . '/assets/css/style-' . $scheme . '.css' );
 		} else {
 			wp_enqueue_style( 'tyche-style', get_stylesheet_directory_uri() . '/assets/css/style.css' );
+		}
+
+		$color = get_theme_mod( 'header_textcolor', '#ffffff' );
+		if ( '#ffffff' === $color ) {
+			$custom_css = '
+                .site-header .site-title{
+                    color: #" . esc_html( $color ) . ";
+                }';
+			wp_add_inline_style( 'tyche-style', $custom_css );
 		}
 
 		/**

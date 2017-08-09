@@ -54,7 +54,7 @@ if ( empty( $sidebars ) ) {
 			<div class="container">
 				<div class="row">
 					<?php foreach ( $widgets as $widget ) { ?>
-						<div class="col-md-<?php echo esc_attr( $size ) ?> col-sm-6">
+						<div class="col-md-<?php echo esc_attr( $size ); ?> col-sm-6">
 							<?php the_widget( $widget, array(), $args ); ?>
 						</div>
 					<?php } ?>
@@ -63,7 +63,8 @@ if ( empty( $sidebars ) ) {
 		</div>
 	</footer>
 	<!-- / Footer -->
-	<?php return false;
+	<?php
+	return false;
 }
 
 
@@ -78,7 +79,7 @@ $sidebars = array_slice( $sidebars, 0, $count );
 		<div class="container">
 			<div class="row">
 				<?php foreach ( $sidebars as $sidebar ) : ?>
-					<div class="col-md-<?php echo $size ?> col-sm-6">
+					<div class="col-md-<?php echo $size; ?> col-sm-6">
 						<?php dynamic_sidebar( $sidebar ); ?>
 					</div>
 				<?php endforeach; ?>

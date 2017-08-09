@@ -31,7 +31,7 @@ class Widget_Tyche_Products extends WP_Widget {
 			'Tyche_Products',
 			__( 'Tyche Products', 'tyche' ),
 			array(
-				'description'                 => esc_html__( 'Recent Posts!', 'tyche' ),
+				'description'                 => esc_html__( 'Displays your products in the frontend through different layouts!', 'tyche' ),
 				'customize_selective_refresh' => true,
 			)
 		);
@@ -50,17 +50,17 @@ class Widget_Tyche_Products extends WP_Widget {
 		);
 
 		$defaults = array(
-			'title'        => esc_attr__( 'Products', 'tyche' ),
+			'title'        => '',
 			'color'        => 'red',
 			'show_title'   => 'yes',
 			'cats'         => '',
 			'show_rating'  => 'no',
 			'layout'       => 'layout-a',
-			'first_line'   => 'SAVE UP TO',
-			'second_line'  => '50%',
-			'third_line'   => 'ON OUR GALLA DRESSES',
-			'button_link'  => 'https://colorlib.com',
-			'button_label' => 'BUY NOW',
+			'first_line'   => '',
+			'second_line'  => '',
+			'third_line'   => '',
+			'button_link'  => '',
+			'button_label' => '',
 			'image'        => '',
 		);
 
@@ -113,17 +113,17 @@ class Widget_Tyche_Products extends WP_Widget {
 		) );
 
 		$defaults = array(
-			'title'        => esc_attr__( 'Products', 'tyche' ),
+			'title'        => '',
 			'color'        => 'red',
 			'show_title'   => 'yes',
 			'cats'         => '',
 			'show_rating'  => 'no',
 			'layout'       => 'layout-a',
-			'first_line'   => 'SAVE UP TO',
-			'second_line'  => '50% ',
-			'third_line'   => 'ON OUR GALLA DRESSES',
-			'button_link'  => 'https://colorlib.com',
-			'button_label' => 'BUY NOW',
+			'first_line'   => '',
+			'second_line'  => '',
+			'third_line'   => '',
+			'button_link'  => '',
+			'button_label' => '',
 			'image'        => '',
 		);
 
@@ -136,8 +136,7 @@ class Widget_Tyche_Products extends WP_Widget {
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>"/>
 		</p>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'show_title' ) ); ?>"><?php esc_html_e( 'Show Title', 'tyche' );
-				?>:</label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'show_title' ) ); ?>"><?php esc_html_e( 'Show Title', 'tyche' ); ?>:</label>
 			<select name="<?php echo esc_attr( $this->get_field_name( 'show_title' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'show_title' ) ); ?>" class="widefat" style="height: auto;">
 				<option value="yes" <?php echo ( 'yes' === $instance['show_title'] ) ? 'selected' : '' ?>>
 					<?php echo esc_html__( 'Yes', 'tyche' ) ?>

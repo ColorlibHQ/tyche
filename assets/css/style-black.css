@@ -2480,6 +2480,7 @@ a:hover, a:active {
   color: #252525;
 }
 
+.sf-menu > li.current-menu-item > a,
 .sf-menu > li.current > a {
   color: #252525;
 }
@@ -3121,6 +3122,7 @@ a:hover, a:active {
 --------------------------------------------------------------*/
 .widget {
   margin: 0 0 50px;
+  /* Review widgets */
   /**
   * Color schemes
    */
@@ -3190,6 +3192,18 @@ a:hover, a:active {
 }
 .widget.widget_tag_cloud a:visited {
   color: #fff;
+}
+.widget ul.product_list_widget li a:hover, .widget ul.product_list_widget li a:active, .widget ul.product_list_widget li a:focus {
+  color: #252525;
+}
+.widget ul.product_list_widget li .star-rating {
+  display: block;
+  margin: 5px 0 5px 0;
+}
+.widget ul.product_list_widget li .woocommerce-Price-amount.amount {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #2a313e;
 }
 .widget.widget_product_search {
   position: relative;
@@ -3705,6 +3719,8 @@ a:hover, a:active {
 --------------------------------------------------------------*/
 .sticky {
   display: block;
+  border: 1px solid #e1e1e1;
+  padding: 0 15px 15px;
 }
 
 .hentry {

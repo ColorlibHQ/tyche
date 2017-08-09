@@ -24,18 +24,25 @@ if ( is_main_site() ) {
 		<div class="row">
 			<div class="col-md-12">
 				<header>
-					<h1 class="page-title margin-top"><?php echo esc_html( get_the_title( (int) get_option( 'page_for_posts' ) ) ); ?></h1>
+					<h1 class="page-title margin-top"><?php echo esc_html( get_option( 'blogname', 'Tyche' ) ); ?></h1>
 				</header>
 			</div>
 		</div>
 		<div class="row">
-			<div id="primary" class="content-area col-md-8">
+			<?php
+			$class = 'col-md-12';
+			if ( is_active_sidebar( 'sidebar' ) ) {
+				$class = 'col-md-8';
+			}
+			?>
+			<div id="primary" class="content-area <?php echo $class; ?>">
 				<main id="main" class="site-main" role="main">
 					<?php
 					if ( have_posts() ) :
 
 						/* Start the Loop */
-						while ( have_posts() ) : the_post();
+						while ( have_posts() ) :
+							the_post();
 
 							/*
 							 * Include the Post-Format-specific template for the content.
@@ -57,7 +64,8 @@ if ( is_main_site() ) {
 
 						get_template_part( 'template-parts/content', 'none' );
 
-					endif; ?>
+					endif;
+					?>
 
 				</main><!-- #main -->
 			</div><!-- #primary -->

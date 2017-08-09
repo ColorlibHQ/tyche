@@ -26,7 +26,7 @@
 	/**
 	 * Enable / Disable the top bar
 	 */
-	if ( get_theme_mod( 'tyche_enable_top_bar', '1' ) !== '0' ) :
+	if ( get_theme_mod( 'tyche_enable_top_bar', true ) ) :
 		get_template_part( 'template-parts/top-header' );
 	endif;
 	?>
@@ -42,14 +42,16 @@
 						<div class="site-title-description">
 							<?php
 							$header_textcolor = get_theme_mod( 'header_textcolor' );
-							if ( 'blank' !== $header_textcolor ) : ?>
-								<a class="site-title" href="<?php echo esc_url( get_home_url() ) ?>">
-									<?php Tyche_Helper::customize_partial_blogname() ?>
+							if ( 'blank' !== $header_textcolor ) :
+								?>
+								<a class="site-title" href="<?php echo esc_url( get_home_url() ); ?>">
+									<?php Tyche_Helper::customize_partial_blogname(); ?>
 								</a>
 								<?php
 								$description = get_bloginfo( 'description', 'display' );
-								if ( $description || is_customize_preview() ) : ?>
-									<p class="site-description"> <?php Tyche_Helper::customize_partial_blogdescription() ?> </p>
+								if ( $description || is_customize_preview() ) :
+									?>
+									<p class="site-description"> <?php Tyche_Helper::customize_partial_blogdescription(); ?> </p>
 								<?php endif; ?>
 
 							<?php endif; ?>
@@ -59,7 +61,7 @@
 					?>
 				</div>
 
-				<?php if ( get_theme_mod( 'tyche_show_banner', '1' ) !== '0' ) : ?>
+				<?php if ( get_theme_mod( 'tyche_show_banner', false ) ) : ?>
 					<div class="col-sm-8 header-banner">
 						<?php
 						$banner = get_theme_mod( 'tyche_banner_type', 'image' );
@@ -103,7 +105,7 @@
 	 * Enable / Disable the main slider
 	 */
 	$show_on_front = get_option( 'show_on_front' );
-	if ( get_theme_mod( 'tyche_enable_main_slider', '1' ) !== '0' && is_front_page() && 'posts' !== $show_on_front ) :
+	if ( get_theme_mod( 'tyche_enable_main_slider', true ) && is_front_page() && 'posts' !== $show_on_front ) :
 		get_template_part( 'template-parts/main-slider' );
 	endif;
 	?>
