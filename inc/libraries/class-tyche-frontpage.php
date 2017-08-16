@@ -57,20 +57,7 @@ class Tyche_Frontpage {
 	 */
 	public function generate_output() {
 		if ( empty( $this->sidebars ) ) {
-			?>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-md-offset-3">
-						<h2>
-							<?php echo esc_html__( 'Tyche Frontpage', 'tyche' ); ?>
-						</h2>
-						<p>
-							<?php echo esc_html__( 'Front page template is built using the built-in widgets. Navigate to Widgets and start building your layout in the Content Area sidebars!', 'tyche' ); ?>
-						</p>
-					</div>
-				</div>
-			</div>
-			<?php
+			$this->generate_normal_page();
 		}
 
 		foreach ( $this->sidebars as $sidebar ) {
@@ -82,5 +69,40 @@ class Tyche_Frontpage {
 			do_action( 'after_' . $sidebar, $arg );
 
 		}
+	}
+
+	/**
+	 * Generates a normal page if we don't have any sidebars set
+	 */
+	public function generate_normal_page() {
+		$breadcrumbs_enabled = get_theme_mod( 'tyche_enable_post_breadcrumbs', true );
+		if ( $breadcrumbs_enabled ) { ?>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12">
+						<?php Tyche_Helper::add_breadcrumbs(); ?>
+					</div>
+				</div>
+			</div>
+		<?php } ?>
+
+		<div class="container">
+			<div class="row">
+				<div id="primary" class="content-area col-md-8 tyche-has-sidebar">
+					<main id="main" class="site-main" role="main">
+						<?php
+						while ( have_posts() ) :
+							the_post();
+							get_template_part( 'template-parts/content-page' );
+						endwhile;
+						?>
+					</main>
+				</div>
+				<?php
+				get_sidebar();
+				?>
+			</div>
+		</div>
+		<?php
 	}
 }
