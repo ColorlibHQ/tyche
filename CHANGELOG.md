@@ -1,3 +1,7 @@
+Tyche v1.0.8
+- Update theme screenshot
+- Frontpage now displays the static page if no sidebars are used
+
 Tyche v1.0.7
 - Updated welcome screen
 - Added a notice in the frontend if user does not have widgets in the content area
