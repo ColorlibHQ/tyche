@@ -1,3 +1,6 @@
+Tyche v1.0.10
+- Small issues
+
 Tyche v1.0.8
 - Update theme screenshot
 - Frontpage now displays the static page if no sidebars are used
