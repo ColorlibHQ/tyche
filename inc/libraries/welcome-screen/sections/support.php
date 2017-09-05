@@ -17,7 +17,7 @@
 			</p>
 			<p>
 				<a target="_blank"
-				   href="<?php echo esc_url( 'https://colorlib.com/wp/forums/' ); ?>"><?php esc_html_e( 'See our full documentation', 'tyche' ); ?></a>
+				   href="<?php echo esc_url( 'https://colorlib.com/wp/support/tyche/' ); ?>"><?php esc_html_e( 'See our full documentation', 'tyche' ); ?></a>
 			</p>
 		</div><!--/.col-->
 
