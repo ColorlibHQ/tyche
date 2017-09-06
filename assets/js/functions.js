@@ -251,6 +251,7 @@
     Tyche.initStyleSelects();
     Tyche.initNumberFields();
     Tyche.initZoom();
+    Tyche.initAdsenseLoader();
   } );
 
   jQuery( window ).load( function() {
