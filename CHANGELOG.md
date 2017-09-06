@@ -1,3 +1,6 @@
+Tyche v1.0.11
+- Adsense was not initiated
+
 Tyche v1.0.10
 - Small issues
 
