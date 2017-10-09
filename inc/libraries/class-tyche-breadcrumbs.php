@@ -425,7 +425,7 @@ class Tyche_Breadcrumbs {
 		// Loop through the ids to get the full tree
 		foreach ( $post_ancestor_ids as $post_ancestor_id ) {
 			$post_ancestor    = get_post( $post_ancestor_id );
-			$ancestors_markup .= $this->get_single_breadcrumb_markup( $post_ancestor->post_title, get_permalink( $post_ancestor->ID ) );
+			$ancestors_markup .= $this->get_single_breadcrumb_markup( $post_ancestor->post_title, esc_url( get_permalink( $post_ancestor->ID ) ) );
 		}
 
 		return $ancestors_markup;

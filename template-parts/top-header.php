@@ -43,7 +43,7 @@
 							$current_lang = pll_current_language( 'name' );
 							$current_flag = pll_current_language( 'flag' );
 							?>
-							<a href="#" class="multilang-toggle" id="multilang-toggle"> <?php echo $current_flag . esc_html( $current_lang ); ?> </a>
+							<a href="#" class="multilang-toggle" id="multilang-toggle"> <?php echo esc_html( $current_flag ) . esc_html( $current_lang ); ?> </a>
 							<ul class="tyche-multilang-menu" data-menu data-menu-toggle="#multilang-toggle">
 								<?php
 								$args = array(
