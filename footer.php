@@ -49,7 +49,7 @@ $enable_copyright = get_theme_mod( 'tyche_enable_copyright', true );
 								get_theme_mod(
 									'tyche_copyright_contents',
 									vsprintf(
-									// Translators: 1 is current year, 2 is separator, 3 is theme link.
+										// Translators: 1 is current year, 2 is separator, 3 is theme link.
 										__( 'Copyright &copy; %1$s %2$s %3$s %2$s Powered by WordPress.', 'tyche' ),
 										array(
 											date_i18n( 'Y' ),
