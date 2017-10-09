@@ -62,10 +62,7 @@ if ( ! class_exists( 'Kirki' ) ) {
 					<div class="main-slider-info-cell">
 						<div class="cell-icon">
 							<?php
-							$icon = get_theme_mod( 'info_section_one_icon', 'fa fa-automobile' );
-							if ( 'fa fa-automobile' !== $icon ) {
-								$icon = 'dashicons dashicons-' . get_theme_mod( 'info_section_one_icon' );
-							}
+							$icon = get_theme_mod( 'info_section_one_icon', 'dashicons dashicons-store' );
 							?>
 							<i class="<?php echo esc_attr( $icon ); ?>"></i>
 						</div>
@@ -82,10 +79,7 @@ if ( ! class_exists( 'Kirki' ) ) {
 					<div class="main-slider-info-cell">
 						<div class="cell-icon">
 							<?php
-							$icon = get_theme_mod( 'info_section_two_icon', 'fa fa-mobile-phone' );
-							if ( 'fa fa-mobile-phone' !== $icon ) {
-								$icon = 'dashicons dashicons-' . get_theme_mod( 'info_section_two_icon' );
-							}
+							$icon = get_theme_mod( 'info_section_two_icon', 'dashicons dashicons-phone' );
 							?>
 							<i class="<?php echo esc_attr( $icon ); ?>"></i>
 						</div>
@@ -103,10 +97,7 @@ if ( ! class_exists( 'Kirki' ) ) {
 					<div class="main-slider-info-cell">
 						<div class="cell-icon">
 							<?php
-							$icon = get_theme_mod( 'info_section_three_icon', 'fa fa-map-marker' );
-							if ( 'fa fa-map-marker' !== $icon ) {
-								$icon = 'dashicons dashicons-' . get_theme_mod( 'info_section_three_icon' );
-							}
+							$icon = get_theme_mod( 'info_section_three_icon', 'dashicons dashicons-location-alt' );
 							?>
 							<i class="<?php echo esc_attr( $icon ); ?>"></i>
 						</div>
