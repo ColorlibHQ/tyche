@@ -81,7 +81,7 @@
 							array(
 								'menu'           => 'primary',
 								'theme_location' => 'primary',
-								'depth'          => 3,
+								'depth'          => 10,
 								'container'      => '',
 								'menu_id'        => 'desktop-menu',
 								'menu_class'     => 'sf-menu',

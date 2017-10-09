@@ -1,3 +1,9 @@
+Tyche v1.0.12
+- Added documentation section in customizer
+- Fixed a few escapes
+- Fixed deprecated Kirki warning (fields should not be added through the customize_register hook)
+- Removed epsilon framework as a submodule dependency, added it as a normal library (stripped of what is not used)
+
 Tyche v1.0.11
 - Adsense was not initiated
 

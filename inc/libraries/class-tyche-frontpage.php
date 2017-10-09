@@ -46,8 +46,48 @@ class Tyche_Frontpage {
 	public function set_sidebars( $sidebars ) {
 		$this->sidebars = $sidebars;
 		foreach ( $this->sidebars as $index => $sidebar ) {
-			if ( ! is_active_sidebar( $sidebar ) ) {
-				unset( $this->sidebars[ $index ] );
+			switch ( $sidebar ) {
+				case 'content-area-2':
+					$collection = array(
+						'content-area-2-a',
+						'content-area-2-b',
+						'content-area-2-c',
+					);
+					$continue   = false;
+					foreach ( $collection as $sub_sidebar ) {
+						if ( is_active_sidebar( $sub_sidebar ) ) {
+							$continue = true;
+						}
+					}
+
+					if ( ! $continue ) {
+						unset( $this->sidebars[ $index ] );
+					}
+
+					break;
+
+				case 'content-area-4':
+					$collection = array(
+						'content-area-4-a',
+						'content-area-4-b',
+					);
+					$continue   = false;
+					foreach ( $collection as $sub_sidebar ) {
+						if ( is_active_sidebar( $sub_sidebar ) ) {
+							$continue = true;
+						}
+					}
+
+					if ( ! $continue ) {
+						unset( $this->sidebars[ $index ] );
+					}
+
+					break;
+				default:
+					if ( ! is_active_sidebar( $sidebar ) ) {
+						unset( $this->sidebars[ $index ] );
+					}
+					break;
 			}
 		}
 	}
