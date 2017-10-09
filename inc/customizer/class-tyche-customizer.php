@@ -78,7 +78,7 @@ class Tyche_Customizer {
 	 */
 	public function customize_preview_js() {
 		wp_enqueue_script( 'tyche_customizer', get_template_directory_uri() . '/inc/customizer/assets/js/previewer.js', array( 'customize-preview' ), '20132', true );
-		wp_localize_script( 'tyche_customizer', 'WPUrls', array(
+		wp_localize_script( 'tyche_customizer', 'EpsilonWPUrls', array(
 			'siteurl' => get_option( 'siteurl' ),
 			'theme'   => get_template_directory_uri(),
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
@@ -99,7 +99,7 @@ class Tyche_Customizer {
 				'customize - controls',
 			)
 		);
-		wp_localize_script( 'tyche_media_upload_js', 'WPUrls', array(
+		wp_localize_script( 'tyche_media_upload_js', 'EpsilonWPUrls', array(
 			'siteurl' => get_option( 'siteurl' ),
 			'theme'   => get_template_directory_uri(),
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),

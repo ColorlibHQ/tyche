@@ -106,7 +106,7 @@ EpsilonFramework.recommendedActions = {
         type: 'POST',
         data: { action: 'epsilon_framework_ajax_action', args: args },
         dataType: 'json',
-        url: WPUrls.ajaxurl,
+        url: EpsilonWPUrls.ajaxurl,
         success: function( data ) {
           /**
            * In case everything is ok, we start changing things
@@ -210,7 +210,7 @@ EpsilonFramework.recommendedActions = {
         type: 'POST',
         data: { action: 'epsilon_framework_ajax_action', args: args },
         dataType: 'json',
-        url: WPUrls.ajaxurl,
+        url: EpsilonWPUrls.ajaxurl,
         success: function( data ) {
           /**
            * In case everything is ok, we start changing things
