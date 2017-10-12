@@ -234,12 +234,12 @@ class Epsilon_Welcome_Screen {
 	public function enqueue() {
 		if ( is_admin() ) {
 			wp_enqueue_style(
-				'welcome-screen',
+				'epsilon-welcome-screen',
 				get_template_directory_uri() . '/inc/libraries/welcome-screen/css/welcome.css'
 			);
 
 			wp_enqueue_script(
-				'welcome-screen',
+				'epsilon-welcome-screen',
 				get_template_directory_uri() . '/inc/libraries/welcome-screen/js/welcome.js',
 				array(
 					'jquery-ui-slider',
@@ -248,8 +248,8 @@ class Epsilon_Welcome_Screen {
 			);
 
 			wp_localize_script(
-				'welcome-screen',
-				'welcomeScreen',
+				'epsilon-welcome-screen',
+				'epsilonWelcomeScreen',
 				array(
 					'nr_actions_required'      => absint( $this->count_actions() ),
 					'template_directory'       => esc_url( get_template_directory_uri() ),
@@ -708,7 +708,7 @@ class Epsilon_Welcome_Screen {
 				$blog = get_page_by_title( 'Blog' );
 				update_option( 'page_for_posts', $blog->ID );
 
-				wp_redirect( self_admin_url( 'themes.php?page=tyche-welcome&tab=' . $active_tab ) );
+				wp_redirect( esc_url( self_admin_url( 'themes.php?page=tyche-welcome&tab=' . $active_tab ) ) );
 			}
 		}
 

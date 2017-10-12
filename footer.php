@@ -52,7 +52,7 @@ $enable_copyright = get_theme_mod( 'tyche_enable_copyright', true );
 										// Translators: 1 is current year, 2 is separator, 3 is theme link.
 										__( 'Copyright &copy; %1$s %2$s %3$s %2$s Powered by WordPress.', 'tyche' ),
 										array(
-											date_i18n( 'Y' ),
+											date_i18n( __( 'Y', 'tyche' ) ),
 											'<span class="sep">|</span>',
 											sprintf( '<a href="https://colorlib.com/tyche">%s</a>', __( 'Theme: Tyche', 'tyche' ) ),
 										)
@@ -65,7 +65,7 @@ $enable_copyright = get_theme_mod( 'tyche_enable_copyright', true );
 				</div>
 			</div>
 		</div>
-	</footer>    <!-- / Copyright -->
+	</footer><!-- / Copyright -->
 <?php endif; ?>
 </div><!-- #page -->
 

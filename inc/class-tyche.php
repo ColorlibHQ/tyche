@@ -183,7 +183,7 @@ class Tyche {
 
 		$scheme = get_theme_mod( 'tyche_color_scheme', 'red' );
 		if ( 'red' !== $scheme ) {
-			wp_enqueue_style( 'tyche-style', get_stylesheet_directory_uri() . '/assets/css/style-' . $scheme . '.css' );
+			wp_enqueue_style( 'tyche-style', get_stylesheet_directory_uri() . '/assets/css/style-' . sanitize_key( $scheme ) . '.css' );
 		} else {
 			wp_enqueue_style( 'tyche-style', get_stylesheet_directory_uri() . '/assets/css/style.css' );
 		}

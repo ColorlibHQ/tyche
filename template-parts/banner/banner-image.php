@@ -10,7 +10,7 @@ if ( empty( $banner_image ) ) {
 	return false;
 }
 
-$link = get_theme_mod( 'tyche_banner_link', 'https://colorlib.com/themes/tyche/' );
+$link = get_theme_mod( 'tyche_banner_link', '#' );
 
 /**
  * In case the user did not select an image ( default ), we fallback to the placeholder banner
