@@ -1,3 +1,6 @@
+Tyche v1.0.13
+- https://themes.trac.wordpress.org/ticket/47201#comment:4
+
 Tyche v1.0.12
 - Added documentation section in customizer
 - Fixed a few escapes
