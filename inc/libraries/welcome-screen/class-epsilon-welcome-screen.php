@@ -124,6 +124,11 @@ class Epsilon_Welcome_Screen {
 		$this->add_default_options();
 
 		/**
+		 * Automatically set pages
+		 */
+		add_action( 'init', array( $this, 'set_pages' ) );
+
+		/**
 		 * Ajax callbacks
 		 */
 		add_action( 'wp_ajax_welcome_screen_ajax_callback', array(
@@ -229,12 +234,12 @@ class Epsilon_Welcome_Screen {
 	public function enqueue() {
 		if ( is_admin() ) {
 			wp_enqueue_style(
-				'welcome-screen',
+				'epsilon-welcome-screen',
 				get_template_directory_uri() . '/inc/libraries/welcome-screen/css/welcome.css'
 			);
 
 			wp_enqueue_script(
-				'welcome-screen',
+				'epsilon-welcome-screen',
 				get_template_directory_uri() . '/inc/libraries/welcome-screen/js/welcome.js',
 				array(
 					'jquery-ui-slider',
@@ -243,8 +248,8 @@ class Epsilon_Welcome_Screen {
 			);
 
 			wp_localize_script(
-				'welcome-screen',
-				'welcomeScreen',
+				'epsilon-welcome-screen',
+				'epsilonWelcomeScreen',
 				array(
 					'nr_actions_required'      => absint( $this->count_actions() ),
 					'template_directory'       => esc_url( get_template_directory_uri() ),
@@ -347,10 +352,6 @@ class Epsilon_Welcome_Screen {
 	 * Render the welcome screen
 	 */
 	public function render_welcome_screen() {
-		require_once( ABSPATH . 'wp-load.php' );
-		require_once( ABSPATH . 'wp-admin/admin.php' );
-		require_once( ABSPATH . 'wp-admin/admin-header.php' );
-
 		$theme = wp_get_theme();
 		$tab   = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : 'getting-started';
 
@@ -690,11 +691,9 @@ class Epsilon_Welcome_Screen {
 	/**
 	 * Set a frontpage to static
 	 *
-	 * @param array $args Argument array.
-	 *
 	 * @return string;
 	 */
-	public function tyche_set_pages() {
+	public function set_pages() {
 		if ( ! empty( $_GET ) ) {
 			/**
 			 * Check action
@@ -709,7 +708,7 @@ class Epsilon_Welcome_Screen {
 				$blog = get_page_by_title( 'Blog' );
 				update_option( 'page_for_posts', $blog->ID );
 
-				wp_redirect( self_admin_url( 'themes.php?page=tyche-welcome&tab=' . $active_tab ) );
+				wp_redirect( esc_url( self_admin_url( 'themes.php?page=tyche-welcome&tab=' . $active_tab ) ) );
 			}
 		}
 

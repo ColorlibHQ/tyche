@@ -1,4 +1,0 @@
-[submodule "inc/libraries/epsilon-framework"]
-	path = inc/libraries/epsilon-framework
-	url = https://github.com/MachoThemes/epsilon-framework
-	branch = 1.1.0

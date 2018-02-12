@@ -151,7 +151,7 @@ class Tyche {
 					'id'          => 'tyche-req-ac-static-latest-news',
 					'title'       => esc_html__( 'Set front page to static', 'tyche' ),
 					'description' => esc_html__( 'If you just installed Tyche, and are not able to see the front - page demo, you need to go to Settings -> Reading , Front page displays and select "Static Page" . ', 'tyche' ),
-					'help'        => 'If you need more help understanding how this works, check out the following <a target="_blank"  href="https://codex.wordpress.org/Creating_a_Static_Front_Page#WordPress_Static_Front_Page_Process">link</a > . <br /><br /> <a class="button button-secondary" target="_blank"  href="' . esc_url( self_admin_url( 'options-reading.php' ) ) . '" > ' . __( 'Set manually', 'tyche' ) . ' </a > <a class="button button-primary"  href="' . wp_nonce_url( self_admin_url( 'themes.php?page=tyche-welcome&tab=recommended_actions&action=set_page_automatic' ), 'set_page_automatic' ) . '" > ' . __( 'Set automatically', 'tyche' ) . ' </a > ',
+					'help'        => 'If you need more help understanding how this works, check out the following <a target="_blank"  href="https://codex.wordpress.org/Creating_a_Static_Front_Page#WordPress_Static_Front_Page_Process">link</a > . <br /><br /> <a class="button button-secondary" target="_blank"  href="' . esc_url( self_admin_url( 'options-reading.php' ) ) . '" > ' . __( 'Set manually', 'tyche' ) . ' </a > <a class="button button-primary"  href="' . wp_nonce_url( self_admin_url( 'themes.php?page=tyche-welcome&tab=recommended-actions&action=set_page_automatic' ), 'set_page_automatic' ) . '" > ' . __( 'Set automatically', 'tyche' ) . ' </a > ',
 					'check'       => Tyche_Notify_System::is_not_static_page(),
 				),
 			);
@@ -161,6 +161,7 @@ class Tyche {
 					'theme-name' => 'Tyche',
 					'theme-slug' => 'tyche',
 					'actions'    => $tyche_required_actions,
+					'plugins'    => $tyche_recommended_plugins,
 				)
 			);
 		}// End if().
@@ -182,7 +183,7 @@ class Tyche {
 
 		$scheme = get_theme_mod( 'tyche_color_scheme', 'red' );
 		if ( 'red' !== $scheme ) {
-			wp_enqueue_style( 'tyche-style', get_stylesheet_directory_uri() . '/assets/css/style-' . $scheme . '.css' );
+			wp_enqueue_style( 'tyche-style', get_stylesheet_directory_uri() . '/assets/css/style-' . sanitize_key( $scheme ) . '.css' );
 		} else {
 			wp_enqueue_style( 'tyche-style', get_stylesheet_directory_uri() . '/assets/css/style.css' );
 		}

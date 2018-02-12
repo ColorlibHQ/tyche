@@ -44,18 +44,31 @@ $enable_copyright = get_theme_mod( 'tyche_enable_copyright', true );
 						?>
 
 						<div class="copyright-text pull-right">
-							<?php echo wp_kses_post( get_theme_mod( 'tyche_copyright_contents', sprintf( 'Copyright &copy; ' . date( 'Y' ) . ' <span class="sep">|</span> <a href="%s">Theme: Tyche</a> <span class="sep">|</span> Powered by WordPress.', 'https://colorlib.com/tyche/' ) ) ); ?>
+							<?php
+							echo wp_kses_post(
+								get_theme_mod(
+									'tyche_copyright_contents',
+									vsprintf(
+										// Translators: 1 is current year, 2 is separator, 3 is theme link.
+										__( 'Copyright &copy; %1$s %2$s %3$s %2$s Powered by WordPress.', 'tyche' ),
+										array(
+											date_i18n( __( 'Y', 'tyche' ) ),
+											'<span class="sep">|</span>',
+											sprintf( '<a href="https://colorlib.com/tyche">%s</a>', __( 'Theme: Tyche', 'tyche' ) ),
+										)
+									)
+								)
+							);
+							?>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</footer>
-	<!-- / Copyright -->
+	</footer><!-- / Copyright -->
 <?php endif; ?>
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
 
-</body>
-</html>
+</body></html>

@@ -14,6 +14,27 @@ class Tyche_Customizer {
 		add_action( 'customize_register', array( $this, 'customize_register' ) );
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'customizer_enqueues' ) );
 		add_action( 'customize_preview_init', array( $this, 'customize_preview_js' ) );
+		add_action( 'init', array( $this, 'add_kirki_options' ) );
+	}
+
+	/**
+	 * Kirki options should be added in the INIT hook @since Kirki 3.0.10.
+	 */
+	public function add_kirki_options() {
+		/**
+		 * Add the theme configuration
+		 */
+		Tyche_Kirki::add_config( 'tyche_theme', array(
+			'option_type' => 'theme_mod',
+			'capability'  => 'edit_theme_options',
+		) );
+
+		/**
+		 * Load panels, sections and options
+		 */
+		require_once get_template_directory() . '/inc/customizer/theme-options/panels.php';
+		require_once get_template_directory() . '/inc/customizer/theme-options/sections.php';
+		require_once get_template_directory() . '/inc/customizer/theme-options/options.php';
 	}
 
 	/**
@@ -35,20 +56,8 @@ class Tyche_Customizer {
 			$wp_customize->get_section( 'colors' )->panel    = 'theme_options';
 		}
 
-		/**
-		 * Add the theme configuration
-		 */
-		Tyche_Kirki::add_config( 'tyche_theme', array(
-			'option_type' => 'theme_mod',
-			'capability'  => 'edit_theme_options',
-		) );
-
-		/**
-		 * Load panels, sections and options
-		 */
-		require_once get_template_directory() . '/inc/customizer/theme-options/panels.php';
-		require_once get_template_directory() . '/inc/customizer/theme-options/sections.php';
-		require_once get_template_directory() . '/inc/customizer/theme-options/options.php';
+		require_once get_template_directory() . '/inc/customizer/theme-options/regular-sections.php';
+		require_once get_template_directory() . '/inc/customizer/theme-options/regular-options.php';
 
 		if ( ! isset( $wp_customize->selective_refresh ) ) {
 			return;
@@ -69,7 +78,7 @@ class Tyche_Customizer {
 	 */
 	public function customize_preview_js() {
 		wp_enqueue_script( 'tyche_customizer', get_template_directory_uri() . '/inc/customizer/assets/js/previewer.js', array( 'customize-preview' ), '20132', true );
-		wp_localize_script( 'tyche_customizer', 'WPUrls', array(
+		wp_localize_script( 'tyche_customizer', 'EpsilonWPUrls', array(
 			'siteurl' => get_option( 'siteurl' ),
 			'theme'   => get_template_directory_uri(),
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
@@ -90,7 +99,7 @@ class Tyche_Customizer {
 				'customize - controls',
 			)
 		);
-		wp_localize_script( 'tyche_media_upload_js', 'WPUrls', array(
+		wp_localize_script( 'tyche_media_upload_js', 'EpsilonWPUrls', array(
 			'siteurl' => get_option( 'siteurl' ),
 			'theme'   => get_template_directory_uri(),
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),

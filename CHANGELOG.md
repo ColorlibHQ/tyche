@@ -1,3 +1,22 @@
+Tyche v1.0.13
+- https://themes.trac.wordpress.org/ticket/47201#comment:4
+
+Tyche v1.0.12
+- Added documentation section in customizer
+- Fixed a few escapes
+- Fixed deprecated Kirki warning (fields should not be added through the customize_register hook)
+- Removed epsilon framework as a submodule dependency, added it as a normal library (stripped of what is not used)
+
+Tyche v1.0.11
+- Adsense was not initiated
+
+Tyche v1.0.10
+- Small issues
+
+Tyche v1.0.8
+- Update theme screenshot
+- Frontpage now displays the static page if no sidebars are used
+
 Tyche v1.0.7
 - Updated welcome screen
 - Added a notice in the frontend if user does not have widgets in the content area
