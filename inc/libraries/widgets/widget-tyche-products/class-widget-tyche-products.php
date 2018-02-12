@@ -106,7 +106,7 @@ class Widget_Tyche_Products extends WP_Widget {
 		wp_enqueue_media();
 		wp_enqueue_style( 'tyche_media_upload_css', get_template_directory_uri() . '/inc/customizer/assets/css/upload-media.css' );
 		wp_enqueue_script( 'tyche_media_upload_js', get_template_directory_uri() . '/inc/customizer/assets/js/upload-media.js', array( 'jquery' ) );
-		wp_localize_script( 'tyche_media_upload_js', 'WPUrls', array(
+		wp_localize_script( 'tyche_media_upload_js', 'EpsilonWPUrls', array(
 			'siteurl' => get_option( 'siteurl' ),
 			'theme'   => get_template_directory_uri(),
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),

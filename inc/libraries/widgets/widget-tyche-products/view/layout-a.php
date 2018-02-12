@@ -83,20 +83,27 @@ $posts = Tyche_Helper::get_products( $params ); ?>
 							<?php endif; ?>
 
 							<?php
+							$class = 'ajax_add_to_cart add_to_cart_button button ';
+
+							if ( $product->has_child() ) {
+								$class = 'add_to_cart_button button ';
+							}
+							?>
+
+							<?php
 							echo apply_filters(
 								'woocommerce_loop_add_to_cart_link',
-								sprintf(
-									'<a rel="nofollow" href="%s" data-quantity="%s" data-product_id="%s" data-product_sku="%s" class="%s"><span class="fa fa-shopping-cart"></span> %s</a>',
-									esc_url( $product->add_to_cart_url() ),
-									esc_attr( isset( $quantity ) ? $quantity : 1 ),
-									esc_attr( $product->get_id() ),
-									esc_attr( $product->get_sku() ),
-									esc_attr( ! empty( $params['color'] ) ? 'ajax_add_to_cart add_to_cart_button button ' . $params['color'] : 'ajax_add_to_cart add_to_cart_button button' ),
-									esc_html( $product->add_to_cart_text() )
+								sprintf( '<a rel="nofollow" href="%s" data-quantity="%s" data-product_id="%s" data-product_sku="%s" class="%s"><span class="fa fa-shopping-cart"></span> %s</a>',
+								         esc_url( $product->add_to_cart_url() ),
+								         esc_attr( isset( $quantity ) ? $quantity : 1 ),
+								         esc_attr( $product->get_id() ),
+								         esc_attr( $product->get_sku() ),
+								         esc_attr( ! empty( $params['color'] ) ? $class . $params['color'] : $class ),
+								         esc_html( $product->add_to_cart_text() )
 								),
-								$product
-							);
+								$product );
 							?>
+
 						</div>
 
 					</div>
