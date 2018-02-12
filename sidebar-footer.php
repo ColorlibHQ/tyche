@@ -61,8 +61,7 @@ if ( empty( $sidebars ) ) {
 				</div>
 			</div>
 		</div>
-	</footer>
-	<!-- / Footer -->
+	</footer>	<!-- / Footer -->
 	<?php
 	return false;
 }
@@ -79,12 +78,11 @@ $sidebars = array_slice( $sidebars, 0, $count );
 		<div class="container">
 			<div class="row">
 				<?php foreach ( $sidebars as $sidebar ) : ?>
-					<div class="col-md-<?php echo $size; ?> col-sm-6">
+					<div class="col-md-<?php echo esc_attr( $size ); ?> col-sm-6">
 						<?php dynamic_sidebar( $sidebar ); ?>
 					</div>
 				<?php endforeach; ?>
 			</div><!--.row-->
 		</div>
 	</div>
-</footer>
-<!-- / Footer -->
+</footer><!-- / Footer -->

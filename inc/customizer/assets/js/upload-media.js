@@ -48,7 +48,7 @@ jQuery( function( $ ) {
         type: 'POST',
         data: { action: 'tyche_ajax_action', args: data },
         dataType: 'json',
-        url: WPUrls.ajaxurl,
+        url: EpsilonWPUrls.ajaxurl,
         success: function( data ) {
           $( mediaControl.container ).find( 'img' ).remove();
           $( mediaControl.container ).find( 'label' ).after( data.img );

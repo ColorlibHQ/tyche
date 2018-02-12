@@ -1,4 +1,4 @@
-var welcomeScreenFunctions = {
+var epsilonWelcomeScreenFunctions = {
   /**
    * Set a frontpage to static
    */
@@ -10,7 +10,7 @@ var welcomeScreenFunctions = {
 
       args = {
         action: [ 'Epsilon_Welcome_Screen', action ],
-        nonce: welcomeScreen.ajax_nonce,
+        nonce: epsilonWelcomeScreen.ajax_nonce,
         args: {
           'do': action
         }
@@ -50,7 +50,7 @@ var welcomeScreenFunctions = {
     jQuery( '.required-action-button' ).click( function() {
       args = {
         action: [ 'Epsilon_Welcome_Screen', 'handle_required_action' ],
-        nonce: welcomeScreen.ajax_nonce,
+        nonce: epsilonWelcomeScreen.ajax_nonce,
         args: {
           'do': jQuery( this ).attr( 'data-action' ),
           'id': jQuery( this ).attr( 'id' )
@@ -137,13 +137,13 @@ var welcomeScreenFunctions = {
 };
 
 jQuery( document ).ready( function() {
-  welcomeScreenFunctions.rangeSliders( jQuery( '#wpbody-content .widget-content' ) );
-  welcomeScreenFunctions.dismissAction();
-  welcomeScreenFunctions.frontPageToStatic();
+  epsilonWelcomeScreenFunctions.rangeSliders( jQuery( '#wpbody-content .widget-content' ) );
+  epsilonWelcomeScreenFunctions.dismissAction();
+  epsilonWelcomeScreenFunctions.frontPageToStatic();
 } );
 
 jQuery( document ).ajaxStop( function() {
-  welcomeScreenFunctions.rangeSliders( jQuery( '#wpbody-content .widget-content' ) );
+  epsilonWelcomeScreenFunctions.rangeSliders( jQuery( '#wpbody-content .widget-content' ) );
 } );
 
 
@@ -158,7 +158,7 @@ EpsilonAdmin.notices = {
         id = jQuery( this ).parent().attr( 'data-unique-id' );
         args = {
           action: [ 'Epsilon_Notifications', 'dismiss_notice' ],
-          nonce: WPUrls.ajax_nonce,
+          nonce: epsilonWelcomeScreen.ajax_nonce,
           args: {
             notice_id: jQuery( this ).parent().attr( 'data-unique-id' ),
             user_id: userSettings.uid,

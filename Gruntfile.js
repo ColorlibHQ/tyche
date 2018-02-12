@@ -98,7 +98,7 @@ module.exports = function( grunt ) {
 
     copy: {
       readme: {
-        src: 'readme.md',
+        src: 'README.md',
         dest: 'build/readme.txt'
       },
       build: {

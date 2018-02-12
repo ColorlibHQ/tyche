@@ -5,21 +5,6 @@
  * @package Tyche
  */
 
-if ( ! class_exists( 'Kirki' ) ) {
-	global $wp_customize;
-
-	$wp_customize->add_setting(
-		'kirki_installer_setting',
-		array(
-			'sanitize_callback' => '__return_true',
-		)
-	);
-	$wp_customize->add_control( 'kirki_installer_control', array(
-		'section'  => 'kirki_installer',
-		'settings' => 'kirki_installer_setting',
-	) );
-}
-
 /**
  *  Section information
  */
@@ -258,7 +243,15 @@ Tyche_Kirki::add_field( 'tyche_theme', array(
 	'settings' => 'tyche_copyright_contents',
 	'label'    => esc_html__( 'Copyright Contents', 'tyche' ),
 	'section'  => 'theme_options_footer',
-	'default'  => 'Copyright &copy; ' . date( 'Y' ) . ' | Powered by WordPress.',
+	'default'  => vsprintf(
+		// Translators: 1 is current year, 2 is separator, 3 is theme link.
+		__( 'Copyright &copy; %1$s %2$s %3$s %2$s Powered by WordPress.', 'tyche' ),
+		array(
+			date_i18n( __( 'Y', 'tyche' ) ),
+			'<span class="sep">|</span>',
+			sprintf( '<a href="https://colorlib.com/tyche">%s</a>', __( 'Theme: Tyche', 'tyche' ) ),
+		)
+	),
 	'priority' => 12,
 ) );
 
