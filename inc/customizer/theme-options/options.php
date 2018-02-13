@@ -84,12 +84,21 @@ Tyche_Kirki::add_field( 'tyche_theme', array(
 ) );
 
 Tyche_Kirki::add_field( 'tyche_theme', array(
+	'type'     => 'toggle',
+	'settings' => 'theme_options_general',
+	'label'    => esc_html__( 'Enable Image Zoom', 'tyche' ),
+	'section'  => 'theme_options_general',
+	'default'  => true,
+	'priority' => 13,
+) );
+
+Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'     => 'radio-buttonset',
 	'settings' => 'tyche_shop_layout',
 	'label'    => esc_html__( 'Shop Layout', 'tyche' ),
 	'section'  => 'theme_options_general',
 	'default'  => 'fullwidth',
-	'priority' => 13,
+	'priority' => 14,
 	'choices'  => array(
 		'left'      => esc_attr__( 'Left Sidebar', 'tyche' ),
 		'fullwidth' => esc_attr__( 'Full Width', 'tyche' ),

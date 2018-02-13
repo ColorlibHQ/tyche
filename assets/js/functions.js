@@ -264,7 +264,9 @@
     Tyche.showHideMobileMenu();
     Tyche.initStyleSelects();
     Tyche.initNumberFields();
-    Tyche.initZoom();
+    if ( '1' === tycheHelper.initZoom ) {
+      Tyche.initZoom();
+    }
     Tyche.initAdsenseLoader();
     Tyche.updateCartTotals();
   } );
