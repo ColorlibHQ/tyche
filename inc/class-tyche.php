@@ -328,4 +328,5 @@ class Tyche {
 			$GLOBALS['content_width'] = 600;
 		}
 	}
+
 }

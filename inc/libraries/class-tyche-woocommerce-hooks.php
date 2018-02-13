@@ -40,6 +40,18 @@ class Tyche_WooCommerce_Hooks {
 		 * Add Filters
 		 */
 		add_filter( 'loop_shop_columns', array( $this, 'loop_columns' ) );
+
+		/**
+		 * Add ajax functionality
+		 */
+		add_action( 'wp_ajax_tyche_update_totals', array(
+			$this,
+			'tyche_update_totals',
+		) );
+		add_action( 'wp_ajax_nopriv_tyche_update_totals', array(
+			$this,
+			'tyche_update_totals',
+		) );
 	}
 
 	/**
@@ -224,4 +236,20 @@ class Tyche_WooCommerce_Hooks {
 		echo '</ul></div>' . "\n";
 
 	}
+
+	/**
+	 * Ajax function to update cart totals
+	 */
+	public function tyche_update_totals() {
+		$totals = Tyche_WooCommerce_Hooks::get_cart_total();
+		wp_die(
+			json_encode(
+				array(
+					'status'  => true,
+					'message' => $totals,
+				)
+			)
+		);
+	}
+
 }
