@@ -71,8 +71,21 @@ class Tyche_Helper {
 			'post_type'      => 'product',
 		);
 
+		$product_visibility_term_ids = wc_get_product_visibility_term_ids();
+
 		if ( '' !== $args['cats'] ) {
 			$atts['product_cat'] = $args['cats'];
+		}
+
+		if ( 'yes' === get_option( 'woocommerce_hide_out_of_stock_items' ) ) {
+			$atts['tax_query'] = array(
+				array(
+					'taxonomy' => 'product_visibility',
+					'field'    => 'term_taxonomy_id',
+					'terms'    => $product_visibility_term_ids['outofstock'],
+					'operator' => 'NOT IN',
+				),
+			);
 		}
 
 		$posts = new WP_Query( $atts );
