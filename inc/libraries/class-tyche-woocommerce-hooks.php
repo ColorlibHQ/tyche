@@ -40,6 +40,7 @@ class Tyche_WooCommerce_Hooks {
 		 * Add Filters
 		 */
 		add_filter( 'loop_shop_columns', array( $this, 'loop_columns' ) );
+		add_filter( 'loop_shop_per_page', array( $this, 'loop_products' ), 20 );
 
 		/**
 		 * Add ajax functionality
@@ -108,10 +109,25 @@ class Tyche_WooCommerce_Hooks {
 		$layout = get_theme_mod( 'tyche_shop_layout', 'fullwidth' );
 
 		if ( is_active_sidebar( 'shop-sidebar' ) && 'fullwidth' !== $layout ) {
-			return 3;
+			return absint( get_theme_mod( 'tyche_shop_sidebar_columns', 3 ) );
 		}
 
-		return 4;
+		return absint( get_theme_mod( 'tyche_shop_full_width_columns', 4 ) );
+	}
+
+	/**
+	 * Select how many products we will show on shop pages
+	 *
+	 * @return int
+	 */
+	public function loop_products() {
+		$layout = get_theme_mod( 'tyche_shop_layout', 'fullwidth' );
+
+		if ( is_active_sidebar( 'shop-sidebar' ) && 'fullwidth' !== $layout ) {
+			return absint( get_theme_mod( 'tyche_shop_sidebar_products', 12 ) );
+		}
+
+		return absint( get_theme_mod( 'tyche_shop_full_width_products', 12 ) );;
 	}
 
 	/**

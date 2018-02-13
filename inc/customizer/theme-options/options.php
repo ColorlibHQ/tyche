@@ -84,15 +84,6 @@ Tyche_Kirki::add_field( 'tyche_theme', array(
 ) );
 
 Tyche_Kirki::add_field( 'tyche_theme', array(
-	'type'     => 'toggle',
-	'settings' => 'theme_options_general',
-	'label'    => esc_html__( 'Enable Image Zoom', 'tyche' ),
-	'section'  => 'theme_options_general',
-	'default'  => true,
-	'priority' => 13,
-) );
-
-Tyche_Kirki::add_field( 'tyche_theme', array(
 	'type'     => 'radio-buttonset',
 	'settings' => 'tyche_shop_layout',
 	'label'    => esc_html__( 'Shop Layout', 'tyche' ),
@@ -103,6 +94,63 @@ Tyche_Kirki::add_field( 'tyche_theme', array(
 		'left'      => esc_attr__( 'Left Sidebar', 'tyche' ),
 		'fullwidth' => esc_attr__( 'Full Width', 'tyche' ),
 		'right'     => esc_attr__( 'Right Sidebar', 'tyche' ),
+	),
+) );
+
+Tyche_Kirki::add_field( 'tyche_theme', array(
+	'type'     => 'toggle',
+	'settings' => 'tyche_enable_zoom_image_product',
+	'label'    => esc_html__( 'Enable Image Zoom', 'tyche' ),
+	'section'  => 'theme_options_woocommerce',
+	'default'  => true,
+	'priority' => 1,
+) );
+Tyche_Kirki::add_field( 'tyche_theme', array(
+	'type'        => 'number',
+	'settings'    => 'tyche_shop_full_width_columns',
+	'label'       => esc_attr__( 'Number the columns on Full Width Shop', 'tyche' ),
+	'section'     => 'theme_options_woocommerce',
+	'default'     => 4,
+	'choices'     => array(
+		'min'  => 0,
+		'max'  => 80,
+		'step' => 1,
+	),
+) );
+Tyche_Kirki::add_field( 'tyche_theme', array(
+	'type'        => 'number',
+	'settings'    => 'tyche_shop_full_width_products',
+	'label'       => esc_attr__( 'Number the products on Full Width Shop', 'tyche' ),
+	'section'     => 'theme_options_woocommerce',
+	'default'     => 12,
+	'choices'     => array(
+		'min'  => 0,
+		'max'  => 80,
+		'step' => 1,
+	),
+) );
+Tyche_Kirki::add_field( 'tyche_theme', array(
+	'type'        => 'number',
+	'settings'    => 'tyche_shop_sidebar_columns',
+	'label'       => esc_attr__( 'Number the columns on Shop with Sidebar', 'tyche' ),
+	'section'     => 'theme_options_woocommerce',
+	'default'     => 3,
+	'choices'     => array(
+		'min'  => 0,
+		'max'  => 80,
+		'step' => 1,
+	),
+) );
+Tyche_Kirki::add_field( 'tyche_theme', array(
+	'type'        => 'number',
+	'settings'    => 'tyche_shop_sidebar_products',
+	'label'       => esc_attr__( 'Number the products on Shop with Sidebar', 'tyche' ),
+	'section'     => 'theme_options_woocommerce',
+	'default'     => 12,
+	'choices'     => array(
+		'min'  => 0,
+		'max'  => 80,
+		'step' => 1,
 	),
 ) );
 

@@ -11,6 +11,12 @@ Tyche_Kirki::add_section( 'theme_options_general', array(
 	'priority'   => 0,
 	'capability' => 'edit_theme_options',
 ) );
+Tyche_Kirki::add_section( 'theme_options_woocommerce', array(
+	'title'      => esc_html__( 'WooCommerce', 'tyche' ),
+	'panel'      => 'theme_options',
+	'priority'   => 1,
+	'capability' => 'edit_theme_options',
+) );
 
 Tyche_Kirki::add_section( 'theme_options_footer', array(
 	'title'      => esc_html__( 'Footer', 'tyche' ),
