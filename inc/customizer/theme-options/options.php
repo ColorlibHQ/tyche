@@ -475,7 +475,7 @@ Tyche_Kirki::add_field( 'tyche_theme', array(
 	'settings' => 'info_section_three_text',
 	'default'  => 'OUR LOCATION',
 	'section'  => 'frontpage_sections_bigtitle_info',
-	'label'    => esc_html__( 'Info Section #1 Text', 'tyche' ),
+	'label'    => esc_html__( 'Info Section #3 Text', 'tyche' ),
 	'priority' => 16,
 ) );
 
