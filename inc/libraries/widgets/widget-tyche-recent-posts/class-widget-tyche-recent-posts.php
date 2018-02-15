@@ -45,9 +45,9 @@ class Widget_Tyche_Recent_Posts extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		$params = array(
-			'order'               => 'DESC',
-			'orderby'             => 'date',
-			'cats'                => '',
+			'order'   => 'DESC',
+			'orderby' => 'date',
+			'cats'    => '',
 		);
 
 		$defaults = array(
@@ -119,26 +119,32 @@ class Widget_Tyche_Recent_Posts extends WP_Widget {
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>"/>
 		</p>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'show_title' ) ); ?>"><?php esc_html_e( 'Show Title', 'tyche' );
-				?>:</label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'show_title' ) ); ?>">
+									<?php
+									esc_html_e( 'Show Title', 'tyche' );
+				?>
+				:</label>
 			<select name="<?php echo esc_attr( $this->get_field_name( 'show_title' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'show_title' ) ); ?>" class="widefat" style="height: auto;">
-				<option value="yes" <?php echo ( 'yes' === $instance['show_title'] ) ? 'selected' : '' ?>>
-					<?php echo esc_html__( 'Yes', 'tyche' ) ?>
+				<option value="yes" <?php echo ( 'yes' === $instance['show_title'] ) ? 'selected' : ''; ?>>
+					<?php echo esc_html__( 'Yes', 'tyche' ); ?>
 				</option>
-				<option value="no" <?php echo ( 'no' === $instance['show_title'] ) ? 'selected' : '' ?>>
-					<?php echo esc_html__( 'No', 'tyche' ) ?>
+				<option value="no" <?php echo ( 'no' === $instance['show_title'] ) ? 'selected' : ''; ?>>
+					<?php echo esc_html__( 'No', 'tyche' ); ?>
 				</option>
 			</select>
 		</p>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>"><?php esc_html_e( 'Show Date', 'tyche' );
-				?>:</label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>">
+									<?php
+									esc_html_e( 'Show Date', 'tyche' );
+				?>
+				:</label>
 			<select name="<?php echo esc_attr( $this->get_field_name( 'show_date' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'show_date' ) ); ?>" class="widefat" style="height: auto;">
-				<option value="yes" <?php echo ( 'yes' === $instance['show_date'] ) ? 'selected' : '' ?>>
-					<?php echo esc_html__( 'Yes', 'tyche' ) ?>
+				<option value="yes" <?php echo ( 'yes' === $instance['show_date'] ) ? 'selected' : ''; ?>>
+					<?php echo esc_html__( 'Yes', 'tyche' ); ?>
 				</option>
-				<option value="no" <?php echo ( 'no' === $instance['show_date'] ) ? 'selected' : '' ?>>
-					<?php echo esc_html__( 'No', 'tyche' ) ?>
+				<option value="no" <?php echo ( 'no' === $instance['show_date'] ) ? 'selected' : ''; ?>>
+					<?php echo esc_html__( 'No', 'tyche' ); ?>
 				</option>
 			</select>
 		</p>

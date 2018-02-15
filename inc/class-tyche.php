@@ -218,6 +218,7 @@ class Tyche {
 		);
 		$tyche_helper = array(
 			'initZoom' => 1,
+			'ajaxURL' => admin_url( 'admin-ajax.php' ),
 		);
 
 		if ( false === get_theme_mod( 'tyche_enable_zoom_image_product', true ) ) {

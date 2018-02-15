@@ -5,8 +5,7 @@
 			<p>
 				<i><?php esc_html_e( 'We offer excellent support through our advanced ticketing system. Make sure to register your purchase before contacting support!', 'tyche' ); ?></i>
 			</p>
-			<p><a target="_blank" class="button button-primary"
-				  href="<?php echo esc_url( 'https://colorlib.com/wp/forums/' ); ?>"><?php esc_html_e( 'Contact Support', 'tyche' ); ?></a>
+			<p><a target="_blank" class="button button-primary" href="<?php echo esc_url( 'https://colorlib.com/wp/forums/' ); ?>"><?php esc_html_e( 'Contact Support', 'tyche' ); ?></a>
 			</p>
 		</div><!--/.col-->
 
@@ -16,8 +15,7 @@
 				<i><?php esc_html_e( 'This is the place to go to reference different aspects of the theme. Our online documentation is an incredible resource for learning the ins and outs of using Tyche.', 'tyche' ); ?></i>
 			</p>
 			<p>
-				<a target="_blank"
-				   href="<?php echo esc_url( 'https://colorlib.com/wp/support/tyche/' ); ?>"><?php esc_html_e( 'See our full documentation', 'tyche' ); ?></a>
+				<a target="_blank" href="<?php echo esc_url( 'https://colorlib.com/wp/support/tyche/' ); ?>"><?php esc_html_e( 'See our full documentation', 'tyche' ); ?></a>
 			</p>
 		</div><!--/.col-->
 

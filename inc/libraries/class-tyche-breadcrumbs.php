@@ -424,7 +424,7 @@ class Tyche_Breadcrumbs {
 
 		// Loop through the ids to get the full tree
 		foreach ( $post_ancestor_ids as $post_ancestor_id ) {
-			$post_ancestor    = get_post( $post_ancestor_id );
+			$post_ancestor     = get_post( $post_ancestor_id );
 			$ancestors_markup .= $this->get_single_breadcrumb_markup( $post_ancestor->post_title, esc_url( get_permalink( $post_ancestor->ID ) ) );
 		}
 
@@ -447,7 +447,7 @@ class Tyche_Breadcrumbs {
 			$term_ancestors = array_reverse( $term_ancestors );
 			// Loop through ancestors to get the full tree
 			foreach ( $term_ancestors as $term_ancestor ) {
-				$term_object  = get_term( $term_ancestor, $term->taxonomy );
+				$term_object   = get_term( $term_ancestor, $term->taxonomy );
 				$terms_markup .= $this->get_single_breadcrumb_markup( $term_object->name, get_term_link( $term_object->term_id, $term->taxonomy ) );
 			}
 		}

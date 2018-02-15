@@ -8,7 +8,10 @@
 $posts = Tyche_Helper::get_posts( $params ); ?>
 
 
-<?php while ( $posts->have_posts() ) : $posts->the_post(); ?>
+<?php
+while ( $posts->have_posts() ) :
+	$posts->the_post();
+?>
 
 	<div class="tyche-recent-post-widget">
 		<div class="tyche-image">
