@@ -106,48 +106,48 @@ Tyche_Kirki::add_field( 'tyche_theme', array(
 	'priority' => 1,
 ) );
 Tyche_Kirki::add_field( 'tyche_theme', array(
-	'type'        => 'number',
-	'settings'    => 'tyche_shop_full_width_columns',
-	'label'       => esc_attr__( 'Number the columns on Full Width Shop', 'tyche' ),
-	'section'     => 'theme_options_woocommerce',
-	'default'     => 4,
-	'choices'     => array(
+	'type'     => 'number',
+	'settings' => 'tyche_shop_full_width_columns',
+	'label'    => esc_attr__( 'Number the columns on Full Width Shop', 'tyche' ),
+	'section'  => 'theme_options_woocommerce',
+	'default'  => 4,
+	'choices'  => array(
 		'min'  => 0,
 		'max'  => 80,
 		'step' => 1,
 	),
 ) );
 Tyche_Kirki::add_field( 'tyche_theme', array(
-	'type'        => 'number',
-	'settings'    => 'tyche_shop_full_width_products',
-	'label'       => esc_attr__( 'Number the products on Full Width Shop', 'tyche' ),
-	'section'     => 'theme_options_woocommerce',
-	'default'     => 12,
-	'choices'     => array(
+	'type'     => 'number',
+	'settings' => 'tyche_shop_full_width_products',
+	'label'    => esc_attr__( 'Number the products on Full Width Shop', 'tyche' ),
+	'section'  => 'theme_options_woocommerce',
+	'default'  => 12,
+	'choices'  => array(
 		'min'  => 0,
 		'max'  => 80,
 		'step' => 1,
 	),
 ) );
 Tyche_Kirki::add_field( 'tyche_theme', array(
-	'type'        => 'number',
-	'settings'    => 'tyche_shop_sidebar_columns',
-	'label'       => esc_attr__( 'Number the columns on Shop with Sidebar', 'tyche' ),
-	'section'     => 'theme_options_woocommerce',
-	'default'     => 3,
-	'choices'     => array(
+	'type'     => 'number',
+	'settings' => 'tyche_shop_sidebar_columns',
+	'label'    => esc_attr__( 'Number the columns on Shop with Sidebar', 'tyche' ),
+	'section'  => 'theme_options_woocommerce',
+	'default'  => 3,
+	'choices'  => array(
 		'min'  => 0,
 		'max'  => 80,
 		'step' => 1,
 	),
 ) );
 Tyche_Kirki::add_field( 'tyche_theme', array(
-	'type'        => 'number',
-	'settings'    => 'tyche_shop_sidebar_products',
-	'label'       => esc_attr__( 'Number the products on Shop with Sidebar', 'tyche' ),
-	'section'     => 'theme_options_woocommerce',
-	'default'     => 12,
-	'choices'     => array(
+	'type'     => 'number',
+	'settings' => 'tyche_shop_sidebar_products',
+	'label'    => esc_attr__( 'Number the products on Shop with Sidebar', 'tyche' ),
+	'section'  => 'theme_options_woocommerce',
+	'default'  => 12,
+	'choices'  => array(
 		'min'  => 0,
 		'max'  => 80,
 		'step' => 1,

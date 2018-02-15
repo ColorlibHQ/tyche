@@ -242,10 +242,10 @@
     },
 
     updateCartTotals: function() {
-      $( document.body ).on( 'added_to_cart', function( evt, fragments, cart_hash ){
-        var url = wc_cart_fragments_params.ajax_url;
-        $.post( url, { 'action' : 'tyche_update_totals' }, function( data ) {
-          var topHeaderPrice = $('.top-cart > a > span.price');
+      $( document.body ).on( 'added_to_cart', function( evt ) {
+        var url = tycheHelper.ajaxURL;
+        $.post( url, { 'action': 'tyche_update_totals' }, function( data ) {
+          var topHeaderPrice = $( '.top-cart > a > span.price' );
           if ( topHeaderPrice.length > 0 && undefined !== data.message ) {
             topHeaderPrice.text( data.message );
           }

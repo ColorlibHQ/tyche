@@ -30,20 +30,22 @@ if ( post_password_required() ) {
 			<?php
 			printf( // WPCS: XSS OK.
 				/* translators: 1: number of comments, 2: post title */
-				esc_html( _nx(
-					'%1$s thought on &ldquo;%2$s&rdquo;',
-					'%1$s thoughts on &ldquo;%2$s&rdquo;',
-					get_comments_number(),
-					'comments title',
-					'tyche'
-				) ),
+				esc_html(
+					_nx(
+						'%1$s thought on &ldquo;%2$s&rdquo;',
+						'%1$s thoughts on &ldquo;%2$s&rdquo;',
+						get_comments_number(),
+						'comments title',
+						'tyche'
+					)
+				),
 				number_format_i18n( get_comments_number() ),
 				'<span>' . get_the_title() . '</span>'
 			);
 			?>
 		</h2>
 
-		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
+		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 			<nav id="comment-nav-above" class="navigation comment-navigation" role="navigation">
 				<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'tyche' ); ?></h2>
 				<div class="nav-links">
@@ -53,18 +55,20 @@ if ( post_password_required() ) {
 
 				</div><!-- .nav-links -->
 			</nav><!-- #comment-nav-above -->
-		<?php endif; // Check for comment navigation. ?>
+		<?php endif; ?>
 
 		<ol class="comment-list">
 			<?php
-			wp_list_comments( array(
-				'style'      => 'ol',
-				'short_ping' => true,
-			) );
+			wp_list_comments(
+				array(
+					'style'      => 'ol',
+					'short_ping' => true,
+				)
+			);
 			?>
 		</ol><!-- .comment-list -->
 
-		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
+		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 			<nav id="comment-nav-below" class="navigation comment-navigation" role="navigation">
 				<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'tyche' ); ?></h2>
 				<div class="nav-links">

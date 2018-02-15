@@ -45,14 +45,18 @@ class Tyche_WooCommerce_Hooks {
 		/**
 		 * Add ajax functionality
 		 */
-		add_action( 'wp_ajax_tyche_update_totals', array(
-			$this,
-			'tyche_update_totals',
-		) );
-		add_action( 'wp_ajax_nopriv_tyche_update_totals', array(
-			$this,
-			'tyche_update_totals',
-		) );
+		add_action(
+			'wp_ajax_tyche_update_totals', array(
+				$this,
+				'tyche_update_totals',
+			)
+		);
+		add_action(
+			'wp_ajax_nopriv_tyche_update_totals', array(
+				$this,
+				'tyche_update_totals',
+			)
+		);
 	}
 
 	/**
@@ -127,7 +131,7 @@ class Tyche_WooCommerce_Hooks {
 			return absint( get_theme_mod( 'tyche_shop_sidebar_products', 12 ) );
 		}
 
-		return absint( get_theme_mod( 'tyche_shop_full_width_products', 12 ) );;
+		return absint( get_theme_mod( 'tyche_shop_full_width_products', 12 ) );
 	}
 
 	/**

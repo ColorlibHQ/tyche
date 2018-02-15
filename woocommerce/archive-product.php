@@ -10,9 +10,9 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
- * @see 	    https://docs.woocommerce.com/document/template-structure/
- * @author 		WooThemes
- * @package 	WooCommerce/Templates
+ * @see         https://docs.woocommerce.com/document/template-structure/
+ * @author      WooThemes
+ * @package     WooCommerce/Templates
  * @version     3.3.0
  */
 
@@ -50,7 +50,7 @@ get_header( 'shop' ); ?>
 				?>
 			</div>
 		<?php endif; ?>
-		<div class="<?php echo ( is_active_sidebar( 'shop-sidebar' ) && 'fullwidth' !== $layout ) ? 'col-md-8 tyche-has-sidebar' : 'col-md-12' ?>">
+		<div class="<?php echo ( is_active_sidebar( 'shop-sidebar' ) && 'fullwidth' !== $layout ) ? 'col-md-8 tyche-has-sidebar' : 'col-md-12'; ?>">
 			<?php
 			/**
 			 * woocommerce_archive_description hook.

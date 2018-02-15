@@ -28,11 +28,13 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 		<?php
 			$quantites_required      = false;
 			$previous_post           = $post;
-			$grouped_product_columns = apply_filters( 'woocommerce_grouped_product_columns', array(
-				'quantity',
-				'label',
-				'price',
-			), $product );
+			$grouped_product_columns = apply_filters(
+				'woocommerce_grouped_product_columns', array(
+					'quantity',
+					'label',
+					'price',
+				), $product
+			);
 
 			foreach ( $grouped_products as $grouped_product ) {
 				$post_object        = get_post( $grouped_product->get_id() );
@@ -57,12 +59,14 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 							} else {
 								do_action( 'woocommerce_before_add_to_cart_quantity' );
 
-								woocommerce_quantity_input( array(
-									'input_name'  => 'quantity[' . $grouped_product->get_id() . ']',
-									'input_value' => isset( $_POST['quantity'][ $grouped_product->get_id() ] ) ? wc_stock_amount( wc_clean( wp_unslash( $_POST['quantity'][ $grouped_product->get_id() ] ) ) ) : 0, // WPCS: CSRF ok, input var okay, sanitization ok.
-									'min_value'   => apply_filters( 'woocommerce_quantity_input_min', 0, $grouped_product ),
-									'max_value'   => apply_filters( 'woocommerce_quantity_input_max', $grouped_product->get_max_purchase_quantity(), $grouped_product ),
-								) );
+								woocommerce_quantity_input(
+									array(
+										'input_name'  => 'quantity[' . $grouped_product->get_id() . ']',
+										'input_value' => isset( $_POST['quantity'][ $grouped_product->get_id() ] ) ? wc_stock_amount( wc_clean( wp_unslash( $_POST['quantity'][ $grouped_product->get_id() ] ) ) ) : 0, // WPCS: CSRF ok, input var okay, sanitization ok.
+										'min_value'   => apply_filters( 'woocommerce_quantity_input_min', 0, $grouped_product ),
+										'max_value'   => apply_filters( 'woocommerce_quantity_input_max', $grouped_product->get_max_purchase_quantity(), $grouped_product ),
+									)
+								);
 
 								do_action( 'woocommerce_after_add_to_cart_quantity' );
 							}

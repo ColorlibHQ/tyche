@@ -23,7 +23,7 @@ class Tyche_Navwalker extends Walker_Nav_Menu {
 	 * @return void
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
-		$indent = str_repeat( "\t", $depth );
+		$indent  = str_repeat( "\t", $depth );
 		$output .= "\n$indent<ul role=\"menu\" class=\" dropdown-menu\" >\n";
 	}
 
@@ -76,7 +76,7 @@ class Tyche_Navwalker extends Walker_Nav_Menu {
 			$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 			$id          = apply_filters( 'nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args );
 			$id          = $id ? ' id="' . esc_attr( $id ) . '"' : '';
-			$output      .= $indent . '<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"' . $id . $value . $class_names . '>';
+			$output     .= $indent . '<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement"' . $id . $value . $class_names . '>';
 			$atts        = array();
 			if ( empty( $item->attr_title ) ) {
 				$atts['title'] = ! empty( $item->title ) ? strip_tags( $item->title ) : '';
@@ -98,7 +98,7 @@ class Tyche_Navwalker extends Walker_Nav_Menu {
 			$attributes = '';
 			foreach ( $atts as $attr => $value ) {
 				if ( ! empty( $value ) ) {
-					$value      = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
+					$value       = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
 					$attributes .= ' ' . $attr . '="' . $value . '"';
 				}
 			}
