@@ -108,8 +108,8 @@ class Tyche_Hooks {
 				'required' => false,
 			),
 			array(
-				'name'     => 'Google Maps',
-				'slug'     => 'google-maps',
+				'name'     => 'WP Google Maps',
+				'slug'     => 'wp-google-maps',
 				'required' => false,
 			),
 			array(
