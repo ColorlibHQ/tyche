@@ -83,7 +83,7 @@ get_header( 'shop' ); ?>
 				<?php woocommerce_product_loop_start(); ?>
 
 				<?php
-				if ( wc_get_loop_prop( 'total' ) ) {
+				if ( tyche_get_loop_prop( 'total' ) ) {
 					while ( have_posts() ) {
 						the_post();
 

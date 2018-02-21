@@ -38,6 +38,9 @@ class Tyche {
 				$this->$method();
 			}
 		}
+
+		// Added backwards compatibility with WooCommerce lower than 3.3.0
+		require_once 'tyche-functions.php';
 	}
 
 	/**
