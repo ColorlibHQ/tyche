@@ -239,7 +239,21 @@
           }
         } );
       }
+    },
+
+    updateCartTotals: function() {
+      $( document.body ).on( 'added_to_cart', function( evt ) {
+        var url = tycheHelper.ajaxURL;
+        $.post( url, { 'action': 'tyche_update_totals' }, function( data ) {
+          var topHeaderPrice = $( '.top-cart > a > span.price' );
+          if ( topHeaderPrice.length > 0 && undefined !== data.message ) {
+            topHeaderPrice.text( data.message );
+          }
+        }, 'json' );
+
+      });
     }
+
   };
 
   jQuery( document ).ready( function( $ ) {
@@ -250,8 +264,11 @@
     Tyche.showHideMobileMenu();
     Tyche.initStyleSelects();
     Tyche.initNumberFields();
-    Tyche.initZoom();
+    if ( '1' === tycheHelper.initZoom ) {
+      Tyche.initZoom();
+    }
     Tyche.initAdsenseLoader();
+    Tyche.updateCartTotals();
   } );
 
   jQuery( window ).load( function() {

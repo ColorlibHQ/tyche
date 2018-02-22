@@ -89,11 +89,68 @@ Tyche_Kirki::add_field( 'tyche_theme', array(
 	'label'    => esc_html__( 'Shop Layout', 'tyche' ),
 	'section'  => 'theme_options_general',
 	'default'  => 'fullwidth',
-	'priority' => 13,
+	'priority' => 14,
 	'choices'  => array(
 		'left'      => esc_attr__( 'Left Sidebar', 'tyche' ),
 		'fullwidth' => esc_attr__( 'Full Width', 'tyche' ),
 		'right'     => esc_attr__( 'Right Sidebar', 'tyche' ),
+	),
+) );
+
+Tyche_Kirki::add_field( 'tyche_theme', array(
+	'type'     => 'toggle',
+	'settings' => 'tyche_enable_zoom_image_product',
+	'label'    => esc_html__( 'Enable Image Zoom', 'tyche' ),
+	'section'  => 'theme_options_woocommerce',
+	'default'  => true,
+	'priority' => 1,
+) );
+Tyche_Kirki::add_field( 'tyche_theme', array(
+	'type'     => 'number',
+	'settings' => 'tyche_shop_full_width_columns',
+	'label'    => esc_attr__( 'Number the columns on Full Width Shop', 'tyche' ),
+	'section'  => 'theme_options_woocommerce',
+	'default'  => 4,
+	'choices'  => array(
+		'min'  => 0,
+		'max'  => 80,
+		'step' => 1,
+	),
+) );
+Tyche_Kirki::add_field( 'tyche_theme', array(
+	'type'     => 'number',
+	'settings' => 'tyche_shop_full_width_products',
+	'label'    => esc_attr__( 'Number the products on Full Width Shop', 'tyche' ),
+	'section'  => 'theme_options_woocommerce',
+	'default'  => 12,
+	'choices'  => array(
+		'min'  => 0,
+		'max'  => 80,
+		'step' => 1,
+	),
+) );
+Tyche_Kirki::add_field( 'tyche_theme', array(
+	'type'     => 'number',
+	'settings' => 'tyche_shop_sidebar_columns',
+	'label'    => esc_attr__( 'Number the columns on Shop with Sidebar', 'tyche' ),
+	'section'  => 'theme_options_woocommerce',
+	'default'  => 3,
+	'choices'  => array(
+		'min'  => 0,
+		'max'  => 80,
+		'step' => 1,
+	),
+) );
+Tyche_Kirki::add_field( 'tyche_theme', array(
+	'type'     => 'number',
+	'settings' => 'tyche_shop_sidebar_products',
+	'label'    => esc_attr__( 'Number the products on Shop with Sidebar', 'tyche' ),
+	'section'  => 'theme_options_woocommerce',
+	'default'  => 12,
+	'choices'  => array(
+		'min'  => 0,
+		'max'  => 80,
+		'step' => 1,
 	),
 ) );
 
@@ -418,7 +475,7 @@ Tyche_Kirki::add_field( 'tyche_theme', array(
 	'settings' => 'info_section_three_text',
 	'default'  => 'OUR LOCATION',
 	'section'  => 'frontpage_sections_bigtitle_info',
-	'label'    => esc_html__( 'Info Section #1 Text', 'tyche' ),
+	'label'    => esc_html__( 'Info Section #3 Text', 'tyche' ),
 	'priority' => 16,
 ) );
 

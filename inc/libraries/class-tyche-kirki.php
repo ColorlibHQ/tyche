@@ -276,12 +276,14 @@ class Tyche_Kirki {
 							}
 							if ( 'variant' == $key ) {
 								$font_weight = str_replace( 'italic', '', $subvalue );
-								$font_weight = ( in_array( $font_weight, array(
-									'',
-									'regular',
-								) ) ) ? '400' : $font_weight;
+								$font_weight = ( in_array(
+									$font_weight, array(
+										'',
+										'regular',
+									)
+								) ) ? '400' : $font_weight;
 								// Is this italic?
-								$is_italic                                         = ( false !== strpos( $subvalue, 'italic' ) );
+								$is_italic = ( false !== strpos( $subvalue, 'italic' ) );
 								$styles[ $media_query ][ $element ]['font-weight'] = $font_weight;
 								if ( $is_italic ) {
 									$styles[ $media_query ][ $element ]['font-style'] = 'italic';

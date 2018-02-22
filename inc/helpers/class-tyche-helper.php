@@ -71,8 +71,21 @@ class Tyche_Helper {
 			'post_type'      => 'product',
 		);
 
+		$product_visibility_term_ids = wc_get_product_visibility_term_ids();
+
 		if ( '' !== $args['cats'] ) {
 			$atts['product_cat'] = $args['cats'];
+		}
+
+		if ( 'yes' === get_option( 'woocommerce_hide_out_of_stock_items' ) ) {
+			$atts['tax_query'] = array(
+				array(
+					'taxonomy' => 'product_visibility',
+					'field'    => 'term_taxonomy_id',
+					'terms'    => $product_visibility_term_ids['outofstock'],
+					'operator' => 'NOT IN',
+				),
+			);
 		}
 
 		$posts = new WP_Query( $atts );
@@ -108,7 +121,7 @@ class Tyche_Helper {
 	public static function get_post_meta_without_date( $id ) {
 		$comments = wp_count_comments( $id );
 
-		$html = '<ul class="meta-list">';
+		$html  = '<ul class="meta-list">';
 		$html .= '<li class="post-author"><icon class="fa fa-user"></icon> <a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author_meta( 'nicename' ) ) . '</a></li>';
 		$html .= '<li class="post-comments"> <span class="sep">/</span> <icon class="fa fa-comments"></icon> <a href="' . esc_url( get_the_permalink( get_the_ID() ) ) . '#comments">' . absint( $comments->approved ) . '</a></li>';
 		$html .= '</ul>';
@@ -252,7 +265,7 @@ class Tyche_Helper {
 			<?php
 			$comments = wp_count_comments( get_the_ID() );
 			global $authordata;
-			$html = '<ul class="meta-list">';
+			$html  = '<ul class="meta-list">';
 			$html .= '<li class="post-author"><icon class="fa fa-user"></icon> ' . esc_html__( 'By', 'tyche' ) . ' <a href="' . esc_url( get_author_posts_url( $authordata->ID, $authordata->user_nicename ) ) . '">' . esc_html( get_the_author_meta( 'display_name' ) ) . '</a></li>';
 			$html .= '<li class="post-comments"> <span class="sep">/</span> <icon class="fa fa-comments"></icon> <a href="' . esc_url( get_the_permalink( get_the_ID() ) ) . '#comments">' . absint( $comments->approved ) . esc_html__( ' Comments', 'tyche' ) . '</a></li>';
 			$html .= '</ul>';

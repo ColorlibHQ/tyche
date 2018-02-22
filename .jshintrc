@@ -20,6 +20,7 @@
     "wp": false,
     "tycheVariables": false,
     "EpsilonWPUrls": false,
-    "console":false
+    "console":false,
+    "tycheHelper": false
   }
 }
