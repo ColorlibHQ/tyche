@@ -23,7 +23,7 @@
 						<!-- Cart -->
 						<li class="top-cart">
 							<a href="<?php echo esc_url( Tyche_Helper::get_woocommerge_page( 'cart' ) ); ?>"><i class="fa fa-shopping-cart"></i> <?php echo esc_html__( 'My Cart', 'tyche' ); ?>
-								- <?php echo esc_html( get_woocommerce_currency_symbol( get_woocommerce_currency() ) . ' ' . Tyche_WooCommerce_Hooks::get_cart_total() ); ?>
+								- <?php echo esc_html( get_woocommerce_currency_symbol( get_woocommerce_currency() ) ) . ' <span class="price">' . esc_html( Tyche_WooCommerce_Hooks::get_cart_total() ) . '</span>'; ?>
 							</a>
 						</li> <!-- / Cart -->
 					<?php endif; ?>
@@ -43,7 +43,7 @@
 							$current_lang = pll_current_language( 'name' );
 							$current_flag = pll_current_language( 'flag' );
 							?>
-							<a href="#" class="multilang-toggle" id="multilang-toggle"> <?php echo esc_html( $current_flag ) . esc_html( $current_lang ); ?> </a>
+							<a href="#" class="multilang-toggle" id="multilang-toggle"> <?php echo $current_flag . esc_html( $current_lang ); ?> </a>
 							<ul class="tyche-multilang-menu" data-menu data-menu-toggle="#multilang-toggle">
 								<?php
 								$args = array(

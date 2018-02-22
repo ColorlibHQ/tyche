@@ -65,9 +65,9 @@ $hooray = true;
 
 				<?php $hooray = false; ?>
 			</div>
-		<?php } // End foreach(). ?>
+		<?php } /* End foreach(). */ ?>
 
-	<?php } // End if(). ?>
+	<?php } /* End if(). */ ?>
 
 	<?php if ( $hooray ) { ?>
 		<span class="hooray"><?php echo esc_html__( 'Hooray! There are no required actions for you right now.', 'tyche' ); ?> </span>

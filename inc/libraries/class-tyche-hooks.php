@@ -29,14 +29,18 @@ class Tyche_Hooks {
 		/**
 		 * Add ajax functionality
 		 */
-		add_action( 'wp_ajax_tyche_ajax_action', array(
-			$this,
-			'tyche_ajax_action',
-		) );
-		add_action( 'wp_ajax_nopriv_tyche_ajax_action', array(
-			$this,
-			'tyche_ajax_action',
-		) );
+		add_action(
+			'wp_ajax_tyche_ajax_action', array(
+				$this,
+				'tyche_ajax_action',
+			)
+		);
+		add_action(
+			'wp_ajax_nopriv_tyche_ajax_action', array(
+				$this,
+				'tyche_ajax_action',
+			)
+		);
 
 		/**
 		 * Register TGMPA
@@ -108,8 +112,8 @@ class Tyche_Hooks {
 				'required' => false,
 			),
 			array(
-				'name'     => 'Google Maps',
-				'slug'     => 'google-maps',
+				'name'     => 'WP Google Maps',
+				'slug'     => 'wp-google-maps',
 				'required' => false,
 			),
 			array(

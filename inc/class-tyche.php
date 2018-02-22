@@ -38,6 +38,9 @@ class Tyche {
 				$this->$method();
 			}
 		}
+
+		// Added backwards compatibility with WooCommerce lower than 3.3.0
+		require_once 'tyche-functions.php';
 	}
 
 	/**
@@ -216,6 +219,17 @@ class Tyche {
 			'',
 			false
 		);
+		$tyche_helper = array(
+			'initZoom' => 1,
+			'ajaxURL' => admin_url( 'admin-ajax.php' ),
+		);
+
+		if ( false === get_theme_mod( 'tyche_enable_zoom_image_product', true ) ) {
+			$tyche_helper['initZoom'] = 0;
+		}
+
+		wp_localize_script( 'tyche-scripts', 'tycheHelper', $tyche_helper );
+
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
 		}
@@ -328,4 +342,5 @@ class Tyche {
 			$GLOBALS['content_width'] = 600;
 		}
 	}
+
 }

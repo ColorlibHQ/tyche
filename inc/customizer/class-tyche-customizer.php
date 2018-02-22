@@ -24,10 +24,12 @@ class Tyche_Customizer {
 		/**
 		 * Add the theme configuration
 		 */
-		Tyche_Kirki::add_config( 'tyche_theme', array(
-			'option_type' => 'theme_mod',
-			'capability'  => 'edit_theme_options',
-		) );
+		Tyche_Kirki::add_config(
+			'tyche_theme', array(
+				'option_type' => 'theme_mod',
+				'capability'  => 'edit_theme_options',
+			)
+		);
 
 		/**
 		 * Load panels, sections and options
@@ -63,14 +65,18 @@ class Tyche_Customizer {
 			return;
 		}
 
-		$wp_customize->selective_refresh->add_partial( 'blogname', array(
-			'selector'        => '.site-title',
-			'render_callback' => array( 'Tyche_Helper', 'customize_partial_blogname' ),
-		) );
-		$wp_customize->selective_refresh->add_partial( 'blogdescription', array(
-			'selector'        => '.site-description',
-			'render_callback' => array( 'Tyche_Helper', 'customize_partial_blogdescription' ),
-		) );
+		$wp_customize->selective_refresh->add_partial(
+			'blogname', array(
+				'selector'        => '.site-title',
+				'render_callback' => array( 'Tyche_Helper', 'customize_partial_blogname' ),
+			)
+		);
+		$wp_customize->selective_refresh->add_partial(
+			'blogdescription', array(
+				'selector'        => '.site-description',
+				'render_callback' => array( 'Tyche_Helper', 'customize_partial_blogdescription' ),
+			)
+		);
 	}
 
 	/**
@@ -78,11 +84,13 @@ class Tyche_Customizer {
 	 */
 	public function customize_preview_js() {
 		wp_enqueue_script( 'tyche_customizer', get_template_directory_uri() . '/inc/customizer/assets/js/previewer.js', array( 'customize-preview' ), '20132', true );
-		wp_localize_script( 'tyche_customizer', 'EpsilonWPUrls', array(
-			'siteurl' => get_option( 'siteurl' ),
-			'theme'   => get_template_directory_uri(),
-			'ajaxurl' => admin_url( 'admin-ajax.php' ),
-		) );
+		wp_localize_script(
+			'tyche_customizer', 'EpsilonWPUrls', array(
+				'siteurl' => get_option( 'siteurl' ),
+				'theme'   => get_template_directory_uri(),
+				'ajaxurl' => admin_url( 'admin-ajax.php' ),
+			)
+		);
 	}
 
 	/**
@@ -99,11 +107,13 @@ class Tyche_Customizer {
 				'customize - controls',
 			)
 		);
-		wp_localize_script( 'tyche_media_upload_js', 'EpsilonWPUrls', array(
-			'siteurl' => get_option( 'siteurl' ),
-			'theme'   => get_template_directory_uri(),
-			'ajaxurl' => admin_url( 'admin-ajax.php' ),
-		) );
+		wp_localize_script(
+			'tyche_media_upload_js', 'EpsilonWPUrls', array(
+				'siteurl' => get_option( 'siteurl' ),
+				'theme'   => get_template_directory_uri(),
+				'ajaxurl' => admin_url( 'admin-ajax.php' ),
+			)
+		);
 	}
 
 }

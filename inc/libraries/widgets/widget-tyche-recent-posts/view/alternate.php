@@ -8,11 +8,14 @@
 $posts = Tyche_Helper::get_posts( $params ); ?>
 
 
-<?php while ( $posts->have_posts() ) : $posts->the_post(); ?>
+<?php
+while ( $posts->have_posts() ) :
+	$posts->the_post();
+?>
 	<div class="tyche-recent-post-alternate-widget">
 		<div class="tyche-meta">
 			<div class="tyche-date">
-				<?php echo '<span class="day">' . esc_html( get_the_date( 'd', absint( get_the_ID() ) ) ) . '</span> <span class="month">' . esc_html( get_the_date( 'M', absint( get_the_ID() ) ) ) . '</span>' ?>
+				<?php echo '<span class="day">' . esc_html( get_the_date( 'd', absint( get_the_ID() ) ) ) . '</span> <span class="month">' . esc_html( get_the_date( 'M', absint( get_the_ID() ) ) ) . '</span>'; ?>
 			</div>
 			<div class="tyche-image">
 				<a href="<?php echo esc_url( get_the_permalink() ); ?>">

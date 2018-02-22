@@ -40,6 +40,23 @@ class Tyche_WooCommerce_Hooks {
 		 * Add Filters
 		 */
 		add_filter( 'loop_shop_columns', array( $this, 'loop_columns' ) );
+		add_filter( 'loop_shop_per_page', array( $this, 'loop_products' ), 20 );
+
+		/**
+		 * Add ajax functionality
+		 */
+		add_action(
+			'wp_ajax_tyche_update_totals', array(
+				$this,
+				'tyche_update_totals',
+			)
+		);
+		add_action(
+			'wp_ajax_nopriv_tyche_update_totals', array(
+				$this,
+				'tyche_update_totals',
+			)
+		);
 	}
 
 	/**
@@ -96,10 +113,25 @@ class Tyche_WooCommerce_Hooks {
 		$layout = get_theme_mod( 'tyche_shop_layout', 'fullwidth' );
 
 		if ( is_active_sidebar( 'shop-sidebar' ) && 'fullwidth' !== $layout ) {
-			return 3;
+			return absint( get_theme_mod( 'tyche_shop_sidebar_columns', 3 ) );
 		}
 
-		return 4;
+		return absint( get_theme_mod( 'tyche_shop_full_width_columns', 4 ) );
+	}
+
+	/**
+	 * Select how many products we will show on shop pages
+	 *
+	 * @return int
+	 */
+	public function loop_products() {
+		$layout = get_theme_mod( 'tyche_shop_layout', 'fullwidth' );
+
+		if ( is_active_sidebar( 'shop-sidebar' ) && 'fullwidth' !== $layout ) {
+			return absint( get_theme_mod( 'tyche_shop_sidebar_products', 12 ) );
+		}
+
+		return absint( get_theme_mod( 'tyche_shop_full_width_products', 12 ) );
 	}
 
 	/**
@@ -224,4 +256,20 @@ class Tyche_WooCommerce_Hooks {
 		echo '</ul></div>' . "\n";
 
 	}
+
+	/**
+	 * Ajax function to update cart totals
+	 */
+	public function tyche_update_totals() {
+		$totals = Tyche_WooCommerce_Hooks::get_cart_total();
+		wp_die(
+			json_encode(
+				array(
+					'status'  => true,
+					'message' => $totals,
+				)
+			)
+		);
+	}
+
 }

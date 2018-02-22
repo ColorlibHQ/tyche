@@ -1,3 +1,12 @@
+Tyche v1.1.0
+- Fixed Tyche Icons ( https://github.com/puikinsh/tyche/issues/38 )
+- Added settings for setting number of columns and products per page ( https://github.com/puikinsh/tyche/issues/39 )
+- Added control to disable product zoom on hover ( https://github.com/puikinsh/tyche/issues/40 )
+- Added real time update of minicart ( https://github.com/puikinsh/tyche/issues/41 )
+- Added option to translate slider text ( https://github.com/puikinsh/tyche/issues/42 )
+- Updated WooCommerce files ( https://github.com/puikinsh/tyche/issues/47 )
+- Fixed : Hide out of stock products ( https://github.com/puikinsh/tyche/issues/46 )
+
 Tyche v1.0.13
 - https://themes.trac.wordpress.org/ticket/47201#comment:4
 

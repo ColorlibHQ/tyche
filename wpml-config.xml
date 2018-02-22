@@ -1,0 +1,12 @@
+<wpml-config>
+    <admin-texts>
+		<key name='theme_mods_tyche'>
+			<key name='info_section_one_text' />
+			<key name='info_section_one_subtext' />
+			<key name='info_section_two_text' />
+			<key name='info_section_two_subtext' />
+			<key name='info_section_three_text' />
+			<key name='info_section_three_subtext' />
+		</key>
+    </admin-texts>
+</wpml-config>

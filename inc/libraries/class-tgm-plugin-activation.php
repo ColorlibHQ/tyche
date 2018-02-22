@@ -459,24 +459,30 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		public function add_plugin_action_link_filters() {
 			foreach ( $this->plugins as $slug => $plugin ) {
 				if ( false === $this->can_plugin_activate( $slug ) ) {
-					add_filter( 'plugin_action_links_' . $plugin['file_path'], array(
-						$this,
-						'filter_plugin_action_links_activate',
-					), 20 );
+					add_filter(
+						'plugin_action_links_' . $plugin['file_path'], array(
+							$this,
+							'filter_plugin_action_links_activate',
+						), 20
+					);
 				}
 
 				if ( true === $plugin['force_activation'] ) {
-					add_filter( 'plugin_action_links_' . $plugin['file_path'], array(
-						$this,
-						'filter_plugin_action_links_deactivate',
-					), 20 );
+					add_filter(
+						'plugin_action_links_' . $plugin['file_path'], array(
+							$this,
+							'filter_plugin_action_links_deactivate',
+						), 20
+					);
 				}
 
 				if ( false !== $this->does_plugin_require_update( $slug ) ) {
-					add_filter( 'plugin_action_links_' . $plugin['file_path'], array(
-						$this,
-						'filter_plugin_action_links_update',
-					), 20 );
+					add_filter(
+						'plugin_action_links_' . $plugin['file_path'], array(
+							$this,
+							'filter_plugin_action_links_update',
+						), 20
+					);
 				}
 			}
 		}
@@ -747,8 +753,8 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 				);
 
 				$method = ''; // Leave blank so WP_Filesystem can populate it as necessary.
-
-				if ( false === ( $creds = request_filesystem_credentials( esc_url_raw( $url ), $method, false, false, array() ) ) ) {
+				$creds  = request_filesystem_credentials( esc_url_raw( $url ), $method, false, false, array() );
+				if ( false === $creds ) {
 					return true;
 				}
 
@@ -943,16 +949,20 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 					if ( true === $GLOBALS['wp_filesystem']->move( $from_path, $to_path ) ) {
 						return trailingslashit( $to_path );
 					} else {
-						return new WP_Error( 'rename_failed', esc_html__( 'The remote plugin package does not contain a folder with the desired slug and renaming did not work.', 'tyche' ) . ' ' . esc_html__( 'Please contact the plugin provider and ask them to package their plugin according to the WordPress guidelines.', 'tyche' ), array(
-							'found'    => $subdir_name,
-							'expected' => $desired_slug,
-						) );
+						return new WP_Error(
+							'rename_failed', esc_html__( 'The remote plugin package does not contain a folder with the desired slug and renaming did not work.', 'tyche' ) . ' ' . esc_html__( 'Please contact the plugin provider and ask them to package their plugin according to the WordPress guidelines.', 'tyche' ), array(
+								'found'    => $subdir_name,
+								'expected' => $desired_slug,
+							)
+						);
 					}
 				} elseif ( empty( $subdir_name ) ) {
-					return new WP_Error( 'packaged_wrong', esc_html__( 'The remote plugin package consists of more than one file, but the files are not packaged in a folder.', 'tyche' ) . ' ' . esc_html__( 'Please contact the plugin provider and ask them to package their plugin according to the WordPress guidelines.', 'tyche' ), array(
-						'found'    => $subdir_name,
-						'expected' => $desired_slug,
-					) );
+					return new WP_Error(
+						'packaged_wrong', esc_html__( 'The remote plugin package consists of more than one file, but the files are not packaged in a folder.', 'tyche' ) . ' ' . esc_html__( 'Please contact the plugin provider and ask them to package their plugin according to the WordPress guidelines.', 'tyche' ), array(
+							'found'    => $subdir_name,
+							'expected' => $desired_slug,
+						)
+					);
 				}
 			}
 
@@ -1115,7 +1125,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 				$line_template = '<span style="display: block; margin: 0.5em 0.5em 0 0; clear: both;">%s</span>' . "\n";
 
 				if ( ! current_user_can( 'activate_plugins' ) && ! current_user_can( 'install_plugins' ) && ! current_user_can( 'update_plugins' ) ) {
-					$rendered = esc_html( $this->strings['notice_cannot_install_activate'] ) . ' ' . esc_html( $this->strings['contact_admin'] );
+					$rendered  = esc_html( $this->strings['notice_cannot_install_activate'] ) . ' ' . esc_html( $this->strings['contact_admin'] );
 					$rendered .= $this->create_user_action_links_for_notice( 0, 0, 0, $line_template );
 				} else {
 
@@ -1585,12 +1595,14 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 					require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
 				}
 
-				$response = plugins_api( 'plugin_information', array(
-					'slug'   => $slug,
-					'fields' => array(
-						'sections' => false,
-					),
-				) );
+				$response = plugins_api(
+					'plugin_information', array(
+						'slug'   => $slug,
+						'fields' => array(
+							'sections' => false,
+						),
+					)
+				);
 
 				$api[ $slug ] = false;
 
@@ -2183,11 +2195,13 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 				)
 			);
 
-			if ( isset( $_REQUEST['plugin_status'] ) && in_array( $_REQUEST['plugin_status'], array(
-				'install',
-				'update',
-				'activate',
-			), true )
+			if ( isset( $_REQUEST['plugin_status'] ) && in_array(
+				$_REQUEST['plugin_status'], array(
+					'install',
+					'update',
+					'activate',
+				), true
+			)
 			) {
 				$this->view_context = sanitize_key( $_REQUEST['plugin_status'] );
 			}
@@ -2882,7 +2896,8 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 				$method = ''; // Leave blank so WP_Filesystem can populate it as necessary.
 				$fields = array_keys( $_POST ); // Extra fields to pass to WP_Filesystem.
 
-				if ( false === ( $creds = request_filesystem_credentials( esc_url_raw( $url ), $method, false, false, $fields ) ) ) {
+				$creds = request_filesystem_credentials( esc_url_raw( $url ), $method, false, false, $fields );
+				if ( false === $creds ) {
 					return true; // Stop the normal page form from displaying, credential request form will be shown.
 				}
 
@@ -3386,12 +3401,14 @@ if ( ! function_exists( 'tgmpa_load_bulk_installer' ) ) {
 						 * @type array            $packages Array of plugin, theme, or core packages to update.
 						 * }
 						 */
-						do_action( 'upgrader_process_complete', $this, array(
-							'action'  => 'install', // [TGMPA + ] adjusted.
-							'type'    => 'plugin',
-							'bulk'    => true,
-							'plugins' => $plugins,
-						) );
+						do_action(
+							'upgrader_process_complete', $this, array(
+								'action'  => 'install', // [TGMPA + ] adjusted.
+								'type'    => 'plugin',
+								'bulk'    => true,
+								'plugins' => $plugins,
+							)
+						);
 
 						$this->skin->bulk_footer();
 
