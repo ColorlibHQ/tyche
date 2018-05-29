@@ -52,10 +52,6 @@ class Epsilon_Framework {
 			$this,
 			'epsilon_framework_ajax_action',
 		) );
-		add_action( 'wp_ajax_nopriv_epsilon_framework_ajax_action', array(
-			$this,
-			'epsilon_framework_ajax_action',
-		) );
 
 	}
 
@@ -142,7 +138,7 @@ class Epsilon_Framework {
 			);
 		}
 
-		if ( ! class_exists( $_POST['args']['action'][0] ) ) {
+		if ( ! class_exists( $_POST['args']['action'][0] ) || ! in_array( $_POST['args']['action'][0], array( 'Epsilon_Framework', 'Epsilon_Notifications' ) ) ) {
 			wp_die(
 				json_encode(
 					array(
