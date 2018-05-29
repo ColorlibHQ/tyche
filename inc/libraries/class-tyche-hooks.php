@@ -35,12 +35,6 @@ class Tyche_Hooks {
 				'tyche_ajax_action',
 			)
 		);
-		add_action(
-			'wp_ajax_nopriv_tyche_ajax_action', array(
-				$this,
-				'tyche_ajax_action',
-			)
-		);
 
 		/**
 		 * Register TGMPA
@@ -175,7 +169,7 @@ class Tyche_Hooks {
 			);
 		}
 
-		if ( ! class_exists( $_POST['args']['action'][0] ) ) {
+		if ( ! class_exists( $_POST['args']['action'][0] ) || ! in_array( $_POST['args']['action'][0], array( 'Tyche_Helper' ) ) ) {
 			wp_die(
 				json_encode(
 					array(
