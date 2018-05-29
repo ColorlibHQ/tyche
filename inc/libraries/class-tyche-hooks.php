@@ -182,7 +182,7 @@ class Tyche_Hooks {
 
 		$class  = $_POST['args']['action'][0];
 		$method = $_POST['args']['action'][1];
-		$args   = $_POST['args']['args'];
+		$args   = array_map( 'sanitize_text_field', wp_unslash( $_POST['args']['args'] ) );
 
 		$response = $class::$method( $args );
 

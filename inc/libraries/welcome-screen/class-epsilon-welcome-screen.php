@@ -137,12 +137,7 @@ class Epsilon_Welcome_Screen {
 				'welcome_screen_ajax_callback',
 			)
 		);
-		add_action(
-			'wp_ajax_nopriv_welcome_screen_ajax_callback', array(
-				$this,
-				'welcome_screen_ajax_callback',
-			)
-		);
+
 	}
 
 	/**
@@ -173,7 +168,7 @@ class Epsilon_Welcome_Screen {
 			);
 		}
 
-		if ( ! class_exists( $args_action[0] ) ) {
+		if ( 'Epsilon_Welcome_Screen' == $args_action[0] || ! class_exists( $args_action[0] ) ) {
 			wp_die(
 				wp_json_encode(
 					array(
