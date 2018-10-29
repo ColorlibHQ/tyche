@@ -141,7 +141,7 @@ class Tyche_WooCommerce_Hooks {
 	 */
 	public static function get_cart_total() {
 		if ( function_exists( 'WC' ) ) {
-			return WC()->cart->cart_contents_total;
+			return WC()->cart->get_total( false );
 		}
 
 		return 0;
