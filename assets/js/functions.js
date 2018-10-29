@@ -226,7 +226,8 @@
 
     initZoom: function() {
       $( '.tyche-product-image' ).zoom( {
-        url: $( this ).find( 'img' ).attr( 'data-src' )
+		url: $( this ).find( 'img' ).attr( 'data-src' ),
+		touch: false
       } );
     },
 
