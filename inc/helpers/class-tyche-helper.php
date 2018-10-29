@@ -345,4 +345,26 @@ class Tyche_Helper {
 		echo json_encode( $src );
 		wp_die();
 	}
+
+	/**
+	 * Get current language suffix
+	 *
+	 * @return string
+	 */
+	public static function get_current_language_suffix() {
+		$suffix = '';
+
+		// if wpml is active
+		if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
+			$suffix = '_' . ICL_LANGUAGE_CODE;
+		}
+
+		// if polylang is active
+		if ( function_exists( 'pll_current_language' ) ) {
+			$suffix = '_' . pll_current_language();
+		}
+
+		return $suffix;
+	}
+
 }
