@@ -27,22 +27,6 @@ class Tyche_Hooks {
 		add_filter( 'video_embed_html', array( $this, 'fix_responsive_videos' ) );
 
 		/**
-		 * Add ajax functionality
-		 */
-		add_action(
-			'wp_ajax_tyche_ajax_action', array(
-				$this,
-				'tyche_ajax_action',
-			)
-		);
-		add_action(
-			'wp_ajax_nopriv_tyche_ajax_action', array(
-				$this,
-				'tyche_ajax_action',
-			)
-		);
-
-		/**
 		 * Register TGMPA
 		 */
 		add_action( 'tgmpa_register', array( $this, 'register_required_plugins' ) );
@@ -146,70 +130,5 @@ class Tyche_Hooks {
 		);
 
 		tgmpa( $plugins, $config );
-	}
-
-
-	/**
-	 * Ajax handler
-	 */
-	public function tyche_ajax_action() {
-		if ( 'tyche_ajax_action' !== $_POST['action'] ) {
-			wp_die(
-				json_encode(
-					array(
-						'status' => false,
-						'error'  => 'Not allowed',
-					)
-				)
-			);
-		}
-
-		if ( 2 !== count( $_POST['args']['action'] ) ) {
-			wp_die(
-				json_encode(
-					array(
-						'status' => false,
-						'error'  => 'Not allowed',
-					)
-				)
-			);
-		}
-
-		if ( ! class_exists( $_POST['args']['action'][0] ) ) {
-			wp_die(
-				json_encode(
-					array(
-						'status' => false,
-						'error'  => 'Class does not exist',
-					)
-				)
-			);
-		}
-
-		$class  = $_POST['args']['action'][0];
-		$method = $_POST['args']['action'][1];
-		$args   = $_POST['args']['args'];
-
-		$response = $class::$method( $args );
-
-		if ( 'ok' == $response ) {
-			wp_die(
-				json_encode(
-					array(
-						'status'  => true,
-						'message' => 'ok',
-					)
-				)
-			);
-		}
-
-		wp_die(
-			json_encode(
-				array(
-					'status'  => false,
-					'message' => 'nok',
-				)
-			)
-		);
 	}
 }

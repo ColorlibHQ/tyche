@@ -110,7 +110,23 @@ class Tyche {
 			 * Removed recommended plugins for now (until we integrate them nicely)
 			 * https://themes.trac.wordpress.org/ticket/43404#comment:24
 			 */
-			$tyche_recommended_plugins = array();
+			$tyche_recommended_plugins = array(
+				'colorlib-login-customizer' => array(
+					'recommended' => false,
+				),
+		        'colorlib-404-customizer' => array(
+		            'recommended' => false,
+		        ),
+		        'colorlib-coming-soon-maintenance' => array(
+		            'recommended' => false,
+		        ),
+				'simple-custom-post-order'  => array(
+					'recommended' => false,
+				),
+				'fancybox-for-wordpress'    => array(
+					'recommended' => false,
+				),
+			);
 
 			/*
 			 * id - unique id; required
@@ -248,6 +264,14 @@ class Tyche {
 
 			wp_enqueue_script( 'tyche_media_upload_js', get_template_directory_uri() . '/inc/customizer/assets/js/upload-media.js', array( 'jquery' ) );
 			wp_enqueue_style( 'tyche_media_upload_css', get_template_directory_uri() . '/inc/customizer/assets/css/upload-media.css' );
+
+			wp_localize_script(
+				'tyche_media_upload_js', 'EpsilonWPUrls', array(
+					'siteurl' => get_option( 'siteurl' ),
+					'theme'   => get_template_directory_uri(),
+					'ajaxurl' => admin_url( 'admin-ajax.php' ),
+				)
+			);
 		}
 	}
 

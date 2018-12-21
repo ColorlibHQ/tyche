@@ -7,7 +7,7 @@
  * @package Tyche
  */
 
-$images = get_theme_mod( 'tyche_slider_bg', array() );
+$images = get_theme_mod( 'tyche_slider_bg' . Tyche_Helper::get_current_language_suffix(), array() );
 
 if ( ! class_exists( 'Kirki' ) ) {
 	return;

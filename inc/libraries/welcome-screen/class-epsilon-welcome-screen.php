@@ -137,12 +137,7 @@ class Epsilon_Welcome_Screen {
 				'welcome_screen_ajax_callback',
 			)
 		);
-		add_action(
-			'wp_ajax_nopriv_welcome_screen_ajax_callback', array(
-				$this,
-				'welcome_screen_ajax_callback',
-			)
-		);
+
 	}
 
 	/**
@@ -155,6 +150,18 @@ class Epsilon_Welcome_Screen {
 					array(
 						'status' => false,
 						'error'  => esc_html__( 'Not allowed', 'tyche' ),
+					)
+				)
+			);
+		}
+
+		$super_admin = is_super_admin( get_current_user_id() );
+		if ( ! $super_admin ) {
+			wp_die(
+				wp_json_encode(
+					array(
+						'status' => false,
+					'error'  => esc_html__( 'You must be a Super User!', 'tyche' ),
 					)
 				)
 			);
@@ -173,7 +180,7 @@ class Epsilon_Welcome_Screen {
 			);
 		}
 
-		if ( ! class_exists( $args_action[0] ) ) {
+		if ( 'Epsilon_Welcome_Screen' != $args_action[0] ) {
 			wp_die(
 				wp_json_encode(
 					array(
@@ -184,11 +191,10 @@ class Epsilon_Welcome_Screen {
 			);
 		}
 
-		$class  = $args_action[0];
 		$method = $args_action[1];
 		$args   = array_map( 'sanitize_text_field', wp_unslash( $_POST['args']['args'] ) );
 
-		$response = $class::$method( $args );
+		$response = self::$method( $args );
 
 		if ( is_array( $response ) ) {
 			wp_die( wp_json_encode( $response ) );
@@ -707,12 +713,17 @@ class Epsilon_Welcome_Screen {
 			if ( ! empty( $_GET['action'] ) && 'set_page_automatic' === $_GET['action'] ) {
 				$active_tab = $_GET['tab'];
 				$about      = get_page_by_title( 'Home' );
-				update_option( 'page_on_front', $about->ID );
-				update_option( 'show_on_front', 'page' );
+				if ( $about ) {
+					update_option( 'page_on_front', $about->ID );
+					update_option( 'show_on_front', 'page' );
+				}
 
 				// Set the blog page
 				$blog = get_page_by_title( 'Blog' );
-				update_option( 'page_for_posts', $blog->ID );
+				if ( $blog ) {
+					update_option( 'page_for_posts', $blog->ID );
+				}
+				
 
 				wp_redirect( esc_url( self_admin_url( 'themes.php?page=tyche-welcome&tab=' . $active_tab ) ) );
 			}

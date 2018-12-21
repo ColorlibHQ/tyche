@@ -1,3 +1,9 @@
+Tyche v1.1.2
+- https://github.com/ColorlibHQ/tyche/milestone/1?closed=1
+
+Tyche v1.1.1
+- Fixed security issue
+
 Tyche v1.1.0
 - Fixed Tyche Icons ( https://github.com/puikinsh/tyche/issues/38 )
 - Added settings for setting number of columns and products per page ( https://github.com/puikinsh/tyche/issues/39 )
