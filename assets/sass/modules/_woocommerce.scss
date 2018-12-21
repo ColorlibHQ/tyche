@@ -1,3 +1,7 @@
+.woocommerce div.product form.cart .group_table td:first-child {
+    width: 10em;
+    text-align: left;
+}
 .woocommerce {
   a.button {
     @extend .button;

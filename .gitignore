@@ -2,3 +2,4 @@ node_modules
 .idea/
 /.sass-cache/
 tyche.zip
+package-lock.json

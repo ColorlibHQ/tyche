@@ -1,3 +1,6 @@
+Tyche v1.1.2
+- https://github.com/ColorlibHQ/tyche/milestone/1?closed=1
+
 Tyche v1.1.1
 - Fixed security issue
 
