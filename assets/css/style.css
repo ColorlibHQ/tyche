@@ -4966,6 +4966,10 @@ a:hover, a:active {
 .woocommerce .tyche-has-sidebar .woocommerce-result-count {
   width: 30%;
 }
+.woocommerce div.product form.cart .group_table td:first-child {
+    width: 10em;
+    text-align: left;
+}
 @media (min-width: 768px) {
   .woocommerce .tyche-has-sidebar ul.products li.product, .woocommerce .tyche-has-sidebar ul.products li.product {
     width: 30.80%;
