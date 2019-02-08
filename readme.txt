@@ -12,6 +12,9 @@ Tested up to:		4.8
 
 Tyche is a WooCommerce driven theme. 
 
+== Translation ==
+Theme can be translated directly on https://translate.wordpress.org/projects/wp-themes/tyche without relying on the .po file. All the translatable strings are pulled automatically. For more info please check this link https://make.wordpress.org/polyglots/handbook/tools/glotpress-translate-wordpress-org/
+
 = License =
 
 Tyche WordPress theme, Copyright (C) 2017 colorlib.com
