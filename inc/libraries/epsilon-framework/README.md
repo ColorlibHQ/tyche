@@ -79,7 +79,6 @@
                                               )
                                            ),
           'plugins'                      => array(
-                                              'kiwi-social-share'        => array( 'recommended' => false ),
                                               'modula-best-grid-gallery' => array( 'recommended' => true )
                                             ),
           'theme_specific_option'        => $theme_slug . '_show_required_actions',
