@@ -91,7 +91,7 @@
 						);
 						?>
 						<!-- /// Mobile Menu Trigger //////// -->
-						<a href="#" id="mobile-menu-trigger"> <i class="fa fa-bars"></i> </a>
+						<button href="#" id="mobile-menu-trigger"> <i class="fa fa-bars"></i> </button>
 						<!-- end #mobile-menu-trigger -->
 					</div>
 				</div>

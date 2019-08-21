@@ -433,6 +433,9 @@
 			this.$stage.children('.active').removeClass('active');
 			this.$stage.children(':eq(' + matches.join('), :eq(') + ')').addClass('active');
 
+			this.$stage.children().find('.hero-caption').find('a').attr('tabindex', '-1');
+			this.$stage.children(':eq(' + matches.join('), :eq(') + ')').find('.hero-caption').find('a').removeAttr('tabindex');
+
 			if ( this.settings.center ) {
 				this.$stage.children('.center').removeClass('center');
 				this.$stage.children().eq(this.current()).addClass('center');

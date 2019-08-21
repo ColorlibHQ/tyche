@@ -39,7 +39,7 @@
       margin: $menu-grid * 1.5 0;
       padding: 0;
 
-      &:hover {
+      &:hover, &:focus {
         background: $menu-separator;
       }
     }
@@ -49,7 +49,7 @@
     &:last-child {
       margin-bottom: 0
     }
-    &:hover {
+    &:hover, &:focus {
       background: $menu-item-hover;
     }
   }
@@ -63,7 +63,7 @@
     text-decoration: none;
     width: 100%;
     white-space: nowrap;
-    &:hover {
+    &:hover, &:focus {
       color: $menu-link-hover
     }
   }
