@@ -91,11 +91,6 @@ class Tyche_Hooks {
 	function register_required_plugins() {
 		$plugins = array(
 			array(
-				'name'     => 'Kaliforms',
-				'slug'     => 'kali-forms',
-				'required' => true,
-			),
-			array(
 				'name'     => 'WP Google Maps',
 				'slug'     => 'wp-google-maps',
 				'required' => false,
