@@ -111,6 +111,15 @@ class Tyche {
 			 * https://themes.trac.wordpress.org/ticket/43404#comment:24
 			 */
 			$tyche_recommended_plugins = array(
+				'kali-forms' => array(
+					'recommended' => false,
+				),
+				'modula-best-grid-gallery' => array(
+					'recommended' => false,
+				),
+				'strong-testimonials' => array(
+					'recommended' => false,
+				),
 				'colorlib-login-customizer' => array(
 					'recommended' => false,
 				),
