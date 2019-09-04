@@ -93,7 +93,7 @@ class Tyche_Hooks {
 			array(
 				'name'     => 'Kaliforms',
 				'slug'     => 'kali-forms',
-				'required' => true,
+				'required' => false,
 			),
 			array(
 				'name'     => 'WP Google Maps',

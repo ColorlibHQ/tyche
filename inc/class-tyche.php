@@ -111,30 +111,13 @@ class Tyche {
 			 * https://themes.trac.wordpress.org/ticket/43404#comment:24
 			 */
 			$tyche_recommended_plugins = array(
-				'kali-forms' => array(
-					'recommended' => false,
-				),
-				'modula-best-grid-gallery' => array(
-					'recommended' => false,
-				),
-				'strong-testimonials' => array(
-					'recommended' => false,
-				),
-				'colorlib-login-customizer' => array(
-					'recommended' => false,
-				),
-		        'colorlib-404-customizer' => array(
-		            'recommended' => false,
-		        ),
-		        'colorlib-coming-soon-maintenance' => array(
-		            'recommended' => false,
-		        ),
-				'simple-custom-post-order'  => array(
-					'recommended' => false,
-				),
-				'fancybox-for-wordpress'    => array(
-					'recommended' => false,
-				),
+				'kali-forms'                       => array( 'recommended' => true ),
+				'modula-best-grid-gallery'         => array( 'recommended' => true ),
+				'fancybox-for-wordpress'           => array( 'recommended' => false ),
+				'simple-custom-post-order'         => array( 'recommended' => false ),
+				'colorlib-404-customizer'          => array( 'recommended' => false ),
+				'colorlib-coming-soon-maintenance' => array( 'recommended' => false ),
+				'colorlib-login-customizer'        => array( 'recommended' => false ),
 			);
 
 			/*
