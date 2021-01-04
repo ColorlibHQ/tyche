@@ -91,8 +91,8 @@ class Tyche_Hooks {
 	function register_required_plugins() {
 		$plugins = array(
 			array(
-				'name'     => 'Contact Form 7',
-				'slug'     => 'contact-form-7',
+				'name'     => 'Kaliforms',
+				'slug'     => 'kali-forms',
 				'required' => false,
 			),
 			array(

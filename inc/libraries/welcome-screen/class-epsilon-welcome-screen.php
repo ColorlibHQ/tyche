@@ -306,11 +306,8 @@ class Epsilon_Welcome_Screen {
 		}
 
 		if ( empty( $this->notice ) ) {
-			if ( ! empty( $this->author_logo ) ) {
-				$this->notice .= '<img src="' . $this->author_logo . '" class="epsilon-author-logo" />';
-			}
 			/* Translators: Notice Title */
-			$this->notice .= '<h1>' . sprintf( esc_html__( 'Welcome to %1$s', 'tyche' ), $this->theme_name ) . '</h1>';
+			$this->notice .= '<h3>' . sprintf( esc_html__( 'Welcome to %1$s', 'tyche' ), $this->theme_name ) . '</h3>';
 			$this->notice .= '<p>';
 			$this->notice .=
 				sprintf( /* Translators: Notice */
@@ -329,7 +326,7 @@ class Epsilon_Welcome_Screen {
 		$notifications->add_notice(
 			array(
 				'id'      => 'notification_testing',
-				'type'    => 'notice epsilon-big',
+				'type'    => 'notice notice-success',
 				'message' => $this->notice,
 			)
 		);
@@ -723,7 +720,7 @@ class Epsilon_Welcome_Screen {
 				if ( $blog ) {
 					update_option( 'page_for_posts', $blog->ID );
 				}
-				
+
 
 				wp_redirect( esc_url( self_admin_url( 'themes.php?page=tyche-welcome&tab=' . $active_tab ) ) );
 			}

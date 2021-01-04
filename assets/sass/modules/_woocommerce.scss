@@ -73,7 +73,7 @@
       background: $color__brand-primary;
       color: #FFF;
       padding: 7px 30px;
-      &:hover {
+      &:hover, &:focus {
         background: $color__brand-primary-hover;
         border-color: $color__brand-primary-hover;
       }
@@ -89,7 +89,7 @@
       padding: 10px 30px;
       display: block;
       margin-top: 20px;
-      &:hover {
+      &:hover, &:focus {
         background: lighten($color__brand-primary, 5%);
       }
     }
@@ -247,7 +247,7 @@
         font-weight: 400;
         font-size: 15px;
         padding: 15px;
-        &:hover {
+        &:hover, &:focus {
           background-color: $color__brand-primary-hover;
           color: #FFF;
         }
@@ -263,7 +263,7 @@
         font-size: 18px;
       }
       a {
-        &:hover {
+        &:hover, &:focus {
           h2 {
             color: $color__brand-primary;
           }
@@ -467,7 +467,7 @@
       color: $color__text-main;
       a {
         color: $color__text-main;
-        &:hover {
+        &:hover, &:focus {
           color: $color__brand-primary;
         }
       }
@@ -483,7 +483,7 @@
           margin: 0 auto;
           background: $color__brand-primary;
           color: #FFF !important;
-          &:hover {
+          &:hover, &:focus {
             background: $color__brand-primary-hover;
           }
         }
@@ -510,7 +510,7 @@
         font-size: 14px;
         text-transform: uppercase;
         font-weight: 400;
-        &:hover {
+        &:hover, &:focus {
           background: $color__brand-primary-hover;
         }
       }
@@ -558,7 +558,7 @@
   .wc-proceed-to-checkout {
     a.checkout-button {
       background-color: $color__brand-primary;
-      &:hover {
+      &:hover, &:focus {
         background-color: $color__brand-primary-hover;
       }
     }
@@ -706,7 +706,7 @@
     font-weight: 400;
     position: relative;
     right: 50px;
-    &:hover {
+    &:hover, &:focus {
       background: $color__brand-primary-hover;
     }
   }
@@ -1135,7 +1135,7 @@
         font-size: 15px;
         line-height: 29px;
       }
-      &:hover {
+      &:hover, &:focus {
         outline: none;
         color: $color__brand-primary;
       }

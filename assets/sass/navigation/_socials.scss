@@ -31,7 +31,7 @@
           -webkit-font-smoothing: antialiased;
         }
         /* Add hover effects for the links, the brand colors */
-        &:hover {
+        &:hover, &:focus {
           &[href*="wordpress.org"]::before,
           &[href*="wordpress.com"]::before {
             color: #21759b;

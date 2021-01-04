@@ -21,8 +21,11 @@ textarea {
   font-size: 16px;
   -webkit-appearance: textfield;
   &:focus {
-    color: $color__text-input-focus;
-    outline: none;
+	color: $color__text-input-focus;
+	background-color: #F1F1F1;
+	box-shadow: 0 3px 6px rgba(0,0,0,.08) inset;
+    -moz-box-shadow: 0 3px 6px rgba(0,0,0,.08) inset;
+	-webkit-box-shadow: 0 3px 6px rgba(0,0,0,.08) inset;
   }
 }
 
@@ -61,7 +64,8 @@ textarea {
     background: $color__brand-primary;
     color: #FFF;
     padding: 5px 35px;
-    &:hover {
+	&:hover,
+	&:focus {
       background: lighten($color__brand-primary, 5%);
       border-color: lighten($color__brand-primary, 5%);
       color: #FFF;

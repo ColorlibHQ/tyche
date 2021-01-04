@@ -161,7 +161,7 @@
     color: #FFF;
   }
   a {
-    &:hover {
+    &:hover, &:focus {
       color: $color__brand-primary;
     }
   }

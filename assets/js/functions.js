@@ -99,7 +99,7 @@
                 if ( $t.next().hasClass( 'sub-menu' ) || $t.next().is( 'ul' ) ||
                     $t.next().is( '.sf-mega' ) ) {
                   $t.append(
-                      '<span class="fa fa-angle-down mobile-menu-submenu-arrow mobile-menu-submenu-closed"></span>' );
+                      '<button class="fa fa-angle-down mobile-menu-submenu-arrow mobile-menu-submenu-closed"></button>' );
                 }
               } );
 
@@ -164,7 +164,8 @@
         mouseDrag: true,
         navText: [
           '<i class=\'fa fa-angle-left\'></i>',
-          '<i class=\'fa fa-angle-right\'></i>' ],
+		  '<i class=\'fa fa-angle-right\'></i>' ],
+		navElement: 'button',
         navClass: [ 'main-slider-previous', 'main-slider-next' ],
         autoplay: true,
         autoplayTimeout: 17000,
