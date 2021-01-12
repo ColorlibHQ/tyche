@@ -5,7 +5,7 @@
       return;
     }
 
-    wp.customize.selectiveRefresh.bind( 'widget-updated',
+    wp.customize.selectiveRefresh.on( 'widget-updated',
         function( placement ) {
           var selects = $( 'select' );
           var elements = jQuery( '.tyche-product-slider' );
