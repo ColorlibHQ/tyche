@@ -1,3 +1,4 @@
+[![Build Status](https://api.travis-ci.org/puikinsh/tyche.svg?branch=master)](https://travis-ci.org/puikinsh/tyche)
 === Tyche ===
 
 Contributors: colorlib
@@ -54,9 +55,15 @@ Unless otherwise specified, all the theme files, scripts and images are licensed
 === Images ===
 
 - Images from assets/images are created by Colorlib unless otherwise specified
-- assets/banner.jpg image License can be found here: https://pixabay.com/en/jeans-denim-trousers-pants-933682/
-- assets/hero.jpg image License can be found here: https://pixabay.com/en/model-fashion-glamour-girl-female-600238/
+- assets/images/banner.jpg image License can be found here: https://pxhere.com/en/photo/849323
+- assets/images/hero.jpg image License can be found here: https://pxhere.com/en/photo/761299
 - assets/logo.png designed/created by Colorlib
+- https://pxhere.com/en/photo/609722 - used for screenshot
+- https://pxhere.com/en/photo/1634252 - used for screenshot
+- https://pxhere.com/en/photo/708775 - used for screenshot
+- https://pxhere.com/en/photo/639769 - used for screenshot
+- https://pxhere.com/en/photo/849323 - used for screenshot
+- https://pxhere.com/en/photo/761299 - used for screenshot
 - Images from theme demo shop are taken from www.pixabay.com (CC0 Public Domain | Free for commercial use No attribution required ), attached license in each URL
 
 https://pixabay.com/en/person-jeans-fashion-style-shirt-1148941/
