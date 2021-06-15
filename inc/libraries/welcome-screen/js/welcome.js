@@ -4,7 +4,7 @@ var epsilonWelcomeScreenFunctions = {
    */
   frontPageToStatic: function() {
     var action, args, container;
-    jQuery( '.epsilon-ajax-button' ).click( function() {
+    jQuery( '.epsilon-ajax-button' ).on('click', function() {
       action = jQuery( this ).attr( 'data-action' ) ? jQuery( this ).attr( 'data-action' ) : jQuery( this ).attr( 'id' );
       container = jQuery( this ).parents( '.action-required-box' );
 
@@ -47,7 +47,7 @@ var epsilonWelcomeScreenFunctions = {
   dismissAction: function() {
     var args;
 
-    jQuery( '.required-action-button' ).click( function() {
+    jQuery( '.required-action-button' ).on('click', function() {
       args = {
         action: [ 'Epsilon_Welcome_Screen', 'handle_required_action' ],
         nonce: epsilonWelcomeScreen.ajax_nonce,
@@ -123,7 +123,7 @@ var epsilonWelcomeScreenFunctions = {
       } );
 
       jQuery( input ).on( 'focus', function() {
-        jQuery( this ).blur();
+        jQuery( this ).trigger('blur');
       } );
 
       instance.attr( 'value', ( instance.slider( 'value' ) ) );

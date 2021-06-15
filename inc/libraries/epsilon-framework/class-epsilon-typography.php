@@ -68,16 +68,8 @@ class Epsilon_Typography {
 			$this,
 			'epsilon_generate_typography_css',
 		) );
-		add_action( 'wp_ajax_nopriv_epsilon_generate_typography_css', array(
-			$this,
-			'epsilon_generate_typography_css',
-		) );
 
 		add_action( 'wp_ajax_epsilon_retrieve_font_weights', array(
-			$this,
-			'epsilon_retrieve_font_weights',
-		) );
-		add_action( 'wp_ajax_nopriv_epsilon_retrieve_font_weights', array(
 			$this,
 			'epsilon_retrieve_font_weights',
 		) );

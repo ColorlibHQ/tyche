@@ -19,7 +19,7 @@ if ( ! class_exists( 'Kirki' ) ) {
 	<?php if ( empty( $images ) ) : ?>
 		<div class="owl-carousel owl-theme" id="main-slider">
 			<div class="item">
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/images/hero.jpg"/>
+				<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/hero.jpg"/>
 				<div class="hero-caption left hidden-xs hidden-sm">
 					<span class="year"><?php echo esc_html( date( 'Y' ) ); ?></span>
 					<span class="caption"><?php echo esc_html__( 'Autumn Collection', 'tyche' ); ?></span>
