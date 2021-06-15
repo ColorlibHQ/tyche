@@ -4,9 +4,9 @@
 Contributors: colorlib
 Tags: e-commerce, custom-logo, two-columns, left-sidebar, right-sidebar, custom-colors, custom-header, custom-menu, featured-images, threaded-comments, footer-widgets, sticky-post, theme-options
 
-Requires at least:	4.0
+Requires at least:	WordPress 4.0
 
-Tested up to:		4.8
+Tested up to:		WordPress 5.7.2
 
 == Description ==
 
