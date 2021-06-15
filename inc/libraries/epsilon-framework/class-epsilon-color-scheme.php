@@ -45,10 +45,6 @@ class Epsilon_Color_Scheme {
 			$this,
 			'epsilon_generate_color_scheme_css',
 		) );
-		add_action( 'wp_ajax_nopriv_epsilon_generate_color_scheme_css', array(
-			$this,
-			'epsilon_generate_color_scheme_css',
-		) );
 
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
 		add_action( 'customize_register', array( $this, 'add_controls_settings' ) );
