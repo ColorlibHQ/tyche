@@ -510,6 +510,14 @@ msgstr ""
 msgid "Banner URL"
 msgstr ""
 
+#: inc/customizer/theme-options/options.php:254
+msgid "Top Bar Email"
+msgstr ""
+
+#: inc/customizer/theme-options/options.php:270
+msgid "Top Bar Search"
+msgstr ""
+
 #: inc/customizer/theme-options/options.php:212
 msgid "AdSense Code"
 msgstr ""

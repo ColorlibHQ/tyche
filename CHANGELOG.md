@@ -1,7 +1,10 @@
+Tyche v1.6.0
+
+- Added - Feature Requests #28
+
 Tyche v1.5.0
 
 - Update from wp chill
-- version update
 
 Tyche v1.1.2
 
