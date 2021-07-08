@@ -232,20 +232,52 @@ Tyche_Kirki::add_field( 'tyche_theme', array(
 ) );
 
 Tyche_Kirki::add_field( 'tyche_theme', array(
-	'type'              => 'text',
-	'settings'          => 'tyche_banner_link',
-	'label'             => esc_html__( 'Banner URL', 'tyche' ),
-	'section'           => 'theme_options_general',
-	'default'           => 'https://colorlib.com',
-	'priority'          => 16,
-	'sanitize_callback' => 'esc_url_raw',
-	'required'          => array(
-		array(
-			'setting'  => 'tyche_banner_type',
-			'value'    => 'image',
-			'operator' => '==',
-		),
-	),
+    'type'              => 'text',
+    'settings'          => 'tyche_banner_link',
+    'label'             => esc_html__( 'Banner URL', 'tyche' ),
+    'section'           => 'theme_options_general',
+    'default'           => 'https://colorlib.com',
+    'priority'          => 16,
+    'sanitize_callback' => 'esc_url_raw',
+    'required'          => array(
+        array(
+            'setting'  => 'tyche_banner_type',
+            'value'    => 'image',
+            'operator' => '==',
+        ),
+    ),
+) );
+
+Tyche_Kirki::add_field( 'tyche_theme', array(
+    'type'              => 'text',
+    'settings'          => 'tyche_top_bar_email',
+    'label'             => esc_html__( 'Top Bar Email', 'tyche' ),
+    'section'           => 'theme_options_general',
+    'default'           => get_option( 'admin_email' ),
+    'priority'          => 16,
+    'required'          => array(
+        array(
+            'setting'  => 'tyche_enable_top_bar',
+            'value'    => true,
+            'operator' => '==',
+        ),
+    ),
+) );
+
+Tyche_Kirki::add_field( 'tyche_theme', array(
+    'type'              => 'toggle',
+    'settings'          => 'tyche_enable_top_bar_search',
+    'label'             => esc_html__( 'Top Bar Search', 'tyche' ),
+    'section'           => 'theme_options_general',
+    'default'           => true,
+    'priority'          => 16,
+    'required'          => array(
+        array(
+            'setting'  => 'tyche_enable_top_bar',
+            'value'    => true,
+            'operator' => '==',
+        ),
+    ),
 ) );
 
 Tyche_Kirki::add_field( 'tyche_theme', array(
