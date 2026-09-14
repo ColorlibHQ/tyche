@@ -7,6 +7,31 @@ if ( ! defined( 'WPINC' ) ) {
  * Class Tyche_Hooks
  */
 class Tyche_WooCommerce_Hooks {
+
+	/**
+	 * Put the cart icon back on loop add-to-cart buttons.
+	 *
+	 * This used to be a full copy of woocommerce/loop/add-to-cart.php whose only change
+	 * was the icon. Overriding the template froze it at WooCommerce 3.3 and cost the
+	 * button the aria-describedby support core added in 9.2; a filter adds the icon and
+	 * leaves the template to WooCommerce.
+	 *
+	 * @param string     $html    Button markup.
+	 * @param WC_Product $product Product.
+	 *
+	 * @return string
+	 */
+	public function loop_add_to_cart_icon( $html, $product ) {
+		unset( $product );
+
+		return preg_replace(
+			'/(<a\\b[^>]*>)/',
+			'$1<span class="fa fa-shopping-cart" aria-hidden="true"></span> ',
+			$html,
+			1
+		);
+	}
+
 	/**
 	 * Tyche_WooCommerce_Hooks constructor.
 	 */
@@ -40,6 +65,7 @@ class Tyche_WooCommerce_Hooks {
 		 * Add Filters
 		 */
 		add_filter( 'loop_shop_columns', array( $this, 'loop_columns' ) );
+		add_filter( 'woocommerce_loop_add_to_cart_link', array( $this, 'loop_add_to_cart_icon' ), 10, 2 );
 		add_filter( 'loop_shop_per_page', array( $this, 'loop_products' ), 20 );
 
 		/**
