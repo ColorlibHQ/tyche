@@ -184,14 +184,27 @@ class Tyche_Customize_Control_Repeater extends WP_Customize_Control {
 		wp_enqueue_media();
 	}
 
+	/**
+	 * The saved rows, always as a list.
+	 *
+	 * render_content() cannot read $this->json for these: WordPress renders a PHP
+	 * control through maybe_render() without having called to_json() first, so the
+	 * key is simply absent there.
+	 */
+	protected function rows() {
+		$value = $this->value();
+
+		return is_array( $value ) ? array_values( $value ) : array();
+	}
+
 	public function to_json() {
 		parent::to_json();
 		$this->json['fields'] = $this->fields;
-		$value                = $this->value();
-		$this->json['rows']   = is_array( $value ) ? array_values( $value ) : array();
+		$this->json['rows']   = $this->rows();
 	}
 
 	public function render_content() {
+		$rows = $this->rows();
 		?>
 		<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
 		<?php if ( $this->description ) : ?>
@@ -200,12 +213,12 @@ class Tyche_Customize_Control_Repeater extends WP_Customize_Control {
 
 		<div class="tyche-repeater"
 			data-fields="<?php echo esc_attr( wp_json_encode( $this->fields ) ); ?>"
-			data-rows="<?php echo esc_attr( wp_json_encode( $this->json['rows'] ) ); ?>"
+			data-rows="<?php echo esc_attr( wp_json_encode( $rows ) ); ?>"
 			data-choose="<?php esc_attr_e( 'Choose image', 'tyche' ); ?>"
 			data-remove="<?php esc_attr_e( 'Remove row', 'tyche' ); ?>">
 			<div class="tyche-repeater__rows"></div>
 			<button type="button" class="button tyche-repeater__add"><?php esc_html_e( 'Add row', 'tyche' ); ?></button>
-			<input type="hidden" class="tyche-repeater__value" value="<?php echo esc_attr( wp_json_encode( $this->json['rows'] ) ); ?>" <?php $this->link(); ?> />
+			<input type="hidden" class="tyche-repeater__value" value="<?php echo esc_attr( wp_json_encode( $rows ) ); ?>" <?php $this->link(); ?> />
 		</div>
 		<?php
 	}
