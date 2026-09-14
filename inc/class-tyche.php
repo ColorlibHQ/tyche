@@ -212,6 +212,18 @@ class Tyche {
 			wp_enqueue_style( 'tyche-style', get_stylesheet_directory_uri() . '/assets/css/style.css' );
 		}
 
+		/*
+		 * Loaded after the colour scheme, and declaring it as a dependency, so the
+		 * refresh always layers on top of whichever scheme is active rather than
+		 * relying on enqueue order. See the file header for why it is not in the SASS.
+		 */
+		wp_enqueue_style(
+			'tyche-refresh',
+			get_template_directory_uri() . '/assets/css/refresh.css',
+			array( 'tyche-style' ),
+			wp_get_theme()->get( 'Version' )
+		);
+
 		$color = get_theme_mod( 'header_textcolor', '#ffffff' );
 		if ( '#ffffff' === $color ) {
 			$custom_css = '

@@ -1,0 +1,194 @@
+/*!
+ * Tyche design refresh.
+ *
+ * A layer on top of whichever colour scheme is active, loaded after it. It deliberately
+ * changes spacing, type scale, product cards, buttons and badges, and deliberately does
+ * not change colour: the seven schemes each set their own accent, and hard-coding one
+ * here would break the other six.
+ *
+ * It is a separate stylesheet rather than edits to assets/sass because the SASS in this
+ * repository no longer reproduces the shipped CSS -- building it with current dart-sass
+ * expands @extend into 10,000-character selectors and a 1.1 MB file. Until that is dealt
+ * with, editing the compiled stylesheets by hand or layering on top of them are the only
+ * safe options, and a layer is far easier to read and to revert.
+ */
+
+/* ---------- type and rhythm ---------- */
+
+body {
+	font-size: 15px;
+	line-height: 1.65;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	line-height: 1.25;
+	letter-spacing: -0.01em;
+}
+
+.entry-content p,
+.woocommerce div.product .woocommerce-product-details__short-description p {
+	margin-bottom: 1.5em;
+}
+
+/* ---------- product cards ---------- */
+
+.woocommerce ul.products li.product,
+.woocommerce-page ul.products li.product {
+	margin-bottom: 44px;
+	transition: transform .18s ease;
+}
+
+.woocommerce ul.products li.product:hover,
+.woocommerce-page ul.products li.product:hover {
+	transform: translateY(-3px);
+}
+
+.woocommerce ul.products li.product a img,
+.woocommerce-page ul.products li.product a img {
+	margin-bottom: 18px;
+	border-radius: 3px;
+	transition: opacity .18s ease;
+}
+
+.woocommerce ul.products li.product:hover a img,
+.woocommerce-page ul.products li.product:hover a img {
+	opacity: .88;
+}
+
+.woocommerce ul.products li.product h3,
+.woocommerce ul.products li.product .woocommerce-loop-product__title,
+.woocommerce-page ul.products li.product .woocommerce-loop-product__title {
+	margin-bottom: 6px;
+	font-size: 15px;
+	line-height: 1.4;
+	letter-spacing: 0;
+}
+
+.woocommerce ul.products li.product .price,
+.woocommerce-page ul.products li.product .price {
+	display: block;
+	margin-bottom: 14px;
+	font-size: 15px;
+}
+
+/* ---------- a quieter sale badge ----------
+   The scheme stylesheets place this as a 165px bar hanging off the left edge at
+   left:-38px. These selectors match their specificity so the reset actually applies,
+   and deliberately leave `background` alone -- each scheme sets its own. */
+
+.woocommerce ul.products li.product span.onsale,
+.woocommerce-page ul.products li.product span.onsale,
+.woocommerce span.onsale,
+.tyche-product .tyche-product-image span.onsale {
+	top: 12px;
+	right: 12px;
+	left: auto;
+	min-width: 0;
+	min-height: 0;
+	width: auto;
+	height: auto;
+	padding: 4px 12px;
+	border-radius: 999px;
+	font-size: 11px;
+	font-weight: 700;
+	line-height: 1.6;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+	transform: none;
+}
+
+/* ---------- buttons ---------- */
+
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button,
+.woocommerce #respond input#submit,
+.woocommerce ul.products li.product .button {
+	padding: 11px 22px;
+	border-radius: 3px;
+	font-size: 12px;
+	letter-spacing: .08em;
+	transition: opacity .18s ease, transform .18s ease;
+}
+
+.woocommerce a.button:hover,
+.woocommerce button.button:hover,
+.woocommerce input.button:hover,
+.woocommerce #respond input#submit:hover,
+.woocommerce ul.products li.product .button:hover {
+	opacity: .9;
+	transform: translateY(-1px);
+}
+
+.woocommerce a.button:focus-visible,
+.woocommerce button.button:focus-visible,
+.woocommerce input.button:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+/* ---------- chrome ---------- */
+
+.site-header {
+	border-bottom: 1px solid rgba(255, 255, 255, .06);
+}
+
+.top-header-bar {
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+#colophon .widget-title,
+#colophon .widget .widget-title {
+	margin-bottom: 18px;
+	font-size: 15px;
+	letter-spacing: .04em;
+}
+
+/* ---------- shop header ---------- */
+
+.woocommerce-products-header__title,
+.page-title {
+	margin-bottom: 24px;
+	letter-spacing: -0.02em;
+}
+
+/* ---------- single product ---------- */
+
+.woocommerce div.product .product_title {
+	margin-bottom: 10px;
+	letter-spacing: -0.02em;
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li a {
+	font-size: 13px;
+	letter-spacing: .06em;
+}
+
+/* ---------- keyboard focus, everywhere ---------- */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+/* ---------- respect reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+	.woocommerce ul.products li.product,
+	.woocommerce ul.products li.product a img,
+	.woocommerce a.button,
+	.woocommerce button.button {
+		transition: none;
+	}
+
+	.woocommerce ul.products li.product:hover,
+	.woocommerce a.button:hover,
+	.woocommerce button.button:hover {
+		transform: none;
+	}
+}
