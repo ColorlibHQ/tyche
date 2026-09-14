@@ -63,19 +63,7 @@
                     <?php if (get_theme_mod('tyche_enable_top_bar_search', 'enabled')) : ?>
                         <!-- Top Search -->
                         <li class="top-search">
-                            <!-- Search Form -->
-                            <form role="search" method="get" class="pull-right" id="searchform_topbar"
-                                  action="<?php echo esc_url(home_url('/')); ?>">
-                                <label>
-                                    <span class="screen-reader-text"><?php esc_html__('Search for:', 'tyche'); ?></span>
-                                    <input class="search-field-top-bar" id="search-field-top-bar"
-                                           placeholder="<?php echo esc_attr__('Search ...', 'tyche'); ?>" value=""
-                                           name="s" type="search">
-                                </label>
-                                <button id="search-top-bar-submit" type="submit" class="search-top-bar-submit">
-                                    <span class="fa-solid fa-magnifying-glass"></span>
-                                </button>
-                            </form>
+                            <?php get_search_form( array( 'tyche_variant' => 'topbar' ) ); ?>
                         </li><!-- / Top Search -->
                     <?php endif; ?>
                 </ul>

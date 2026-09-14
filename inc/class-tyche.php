@@ -345,6 +345,19 @@ class Tyche {
 			)
 		);
 
+		// The Customizer offers a background colour and image; declaring support is what
+		// puts those controls there.
+		add_theme_support(
+			'custom-background',
+			apply_filters(
+				'tyche_custom_background_args',
+				array(
+					'default-color' => 'ffffff',
+					'default-image' => '',
+				)
+			)
+		);
+
 		add_theme_support( 'woocommerce' );
 		add_theme_support( 'wc-product-gallery-zoom' );
 		add_theme_support( 'wc-product-gallery-lightbox' );
