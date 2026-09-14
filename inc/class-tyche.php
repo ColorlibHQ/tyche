@@ -44,6 +44,13 @@ class Tyche {
 	}
 
 	/**
+	 * The Customizer setup checklist
+	 */
+	public function init_recommended_actions() {
+		new Tyche_Recommended_Actions();
+	}
+
+	/**
 	 * Tyche sidebars
 	 */
 	public function init_sidebars() {
