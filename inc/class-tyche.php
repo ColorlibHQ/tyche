@@ -195,10 +195,18 @@ class Tyche {
 	 * Enqueue styles and scripts
 	 */
 	public function enqueues() {
+		/*
+		 * Every asset this theme owns is versioned with the theme version. Left
+		 * empty, WordPress stamps its own version instead, so the URL stays
+		 * identical across theme releases -- and a CDN serving these as immutable
+		 * then keeps handing out the previous release's file forever.
+		 */
+		$version = wp_get_theme()->get( 'Version' );
+
 		/**
 		 * Enqueue styles
 		 */
-		wp_enqueue_style( 'tyche-fonts', get_template_directory_uri() . '/assets/css/fonts.css', array(), wp_get_theme()->get( 'Version' ) );
+		wp_enqueue_style( 'tyche-fonts', get_template_directory_uri() . '/assets/css/fonts.css', array(), $version );
 		/*
 		 * Font Awesome 7, self-hosted. The bundled stylesheet is subsetted to the glyphs
 		 * this theme renders, which is a fraction of the full set. A site that needs the
@@ -217,13 +225,13 @@ class Tyche {
 			wp_enqueue_style( 'tyche-icons', $fa_uri . 'subset/fontawesome-subset.min.css', array(), '7.3.1' );
 		}
 		wp_enqueue_style( 'dashicons' );
-		wp_enqueue_style( 'tyche', get_stylesheet_uri() );
+		wp_enqueue_style( 'tyche', get_stylesheet_uri(), array(), $version );
 
 		$scheme = get_theme_mod( 'tyche_color_scheme', 'red' );
 		if ( 'red' !== $scheme ) {
-			wp_enqueue_style( 'tyche-style', get_stylesheet_directory_uri() . '/assets/css/style-' . sanitize_key( $scheme ) . '.css' );
+			wp_enqueue_style( 'tyche-style', get_stylesheet_directory_uri() . '/assets/css/style-' . sanitize_key( $scheme ) . '.css', array(), $version );
 		} else {
-			wp_enqueue_style( 'tyche-style', get_stylesheet_directory_uri() . '/assets/css/style.css' );
+			wp_enqueue_style( 'tyche-style', get_stylesheet_directory_uri() . '/assets/css/style.css', array(), $version );
 		}
 
 		/*
@@ -235,7 +243,7 @@ class Tyche {
 			'tyche-refresh',
 			get_template_directory_uri() . '/assets/css/refresh.css',
 			array( 'tyche-style' ),
-			wp_get_theme()->get( 'Version' )
+			$version
 		);
 
 		$color = get_theme_mod( 'header_textcolor', '#ffffff' );
@@ -250,9 +258,9 @@ class Tyche {
 		/**
 		 * Enqueue scripts
 		 */
-		wp_enqueue_script( 'tyche-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '', true );
-		wp_enqueue_script( 'tyche-multilang-menu', get_template_directory_uri() . '/assets/vendors/menu/menu.min.js', array(), '', true );
-		wp_enqueue_script( 'tyche-carousel', get_template_directory_uri() . '/assets/js/carousel.js', array(), wp_get_theme()->get( 'Version' ), true );
+		wp_enqueue_script( 'tyche-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), $version, true );
+		wp_enqueue_script( 'tyche-multilang-menu', get_template_directory_uri() . '/assets/vendors/menu/menu.min.js', array(), $version, true );
+		wp_enqueue_script( 'tyche-carousel', get_template_directory_uri() . '/assets/js/carousel.js', array(), $version, true );
 		wp_localize_script(
 			'tyche-carousel',
 			'tycheCarousel',
@@ -270,7 +278,7 @@ class Tyche {
 				'jquery',
 				'jquery-zoom',
 			),
-			'',
+			$version,
 			false
 		);
 		$tyche_helper = array(
@@ -300,8 +308,8 @@ class Tyche {
 			wp_enqueue_script( 'thickbox' );
 			wp_enqueue_style( 'thickbox' );
 
-			wp_enqueue_script( 'tyche_media_upload_js', get_template_directory_uri() . '/inc/customizer/assets/js/upload-media.js', array( 'jquery' ) );
-			wp_enqueue_style( 'tyche_media_upload_css', get_template_directory_uri() . '/inc/customizer/assets/css/upload-media.css' );
+			wp_enqueue_script( 'tyche_media_upload_js', get_template_directory_uri() . '/inc/customizer/assets/js/upload-media.js', array( 'jquery' ), $version );
+			wp_enqueue_style( 'tyche_media_upload_css', get_template_directory_uri() . '/inc/customizer/assets/css/upload-media.css', array(), $version );
 
 			wp_localize_script(
 				'tyche_media_upload_js', 'EpsilonWPUrls', array(

@@ -1,3 +1,18 @@
+Tyche v1.6.1
+
+- Removed the bundled Epsilon framework (10,113 lines) and the Kirki dependency; the
+  customizer now runs on core add_setting/add_control, so the theme needs no plugin.
+- Removed Owl Carousel in favour of a dependency-free scroll-snap carousel that honours
+  prefers-reduced-motion.
+- Added theme.json, block patterns and block styles (hybrid block-theme support).
+- Added a native Recommended Actions panel with live-checked setup steps.
+- Dropped six stale WooCommerce template overrides frozen at WooCommerce 3.3.
+- Fixed the welcome screen loading translations before init (_load_textdomain_just_in_time).
+- Fixed the products widget rendering two cart icons.
+- Fixed the customizer repeater emitting "Undefined array key" warnings.
+- Every theme asset is now versioned with the theme version, so a release actually
+  reaches browsers instead of being pinned by a CDN as immutable.
+
 Tyche v1.6.0
 
 - Added - Feature Requests #28

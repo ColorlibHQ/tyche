@@ -104,8 +104,8 @@ class Widget_Tyche_Products extends WP_Widget {
 	 */
 	function form( $instance ) {
 		wp_enqueue_media();
-		wp_enqueue_style( 'tyche_media_upload_css', get_template_directory_uri() . '/inc/customizer/assets/css/upload-media.css' );
-		wp_enqueue_script( 'tyche_media_upload_js', get_template_directory_uri() . '/inc/customizer/assets/js/upload-media.js', array( 'jquery' ) );
+		wp_enqueue_style( 'tyche_media_upload_css', get_template_directory_uri() . '/inc/customizer/assets/css/upload-media.css', array(), wp_get_theme()->get( 'Version' ) );
+		wp_enqueue_script( 'tyche_media_upload_js', get_template_directory_uri() . '/inc/customizer/assets/js/upload-media.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ) );
 		wp_localize_script(
 			'tyche_media_upload_js', 'EpsilonWPUrls', array(
 				'siteurl' => get_option( 'siteurl' ),
