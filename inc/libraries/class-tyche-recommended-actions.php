@@ -34,47 +34,55 @@ class Tyche_Recommended_Actions {
 	 *
 	 * @return array
 	 */
+	/**
+	 * The setup steps.
+	 *
+	 * Values here are plain, unescaped strings on purpose: the customizer section
+	 * renders them through a wp.template, where {{ }} escapes. Escaping in PHP too
+	 * double-escapes -- an apostrophe reaches the panel as &#039;, and esc_url()'s
+	 * &#038; separators survive into the href, breaking the query string.
+	 */
 	public static function get_actions() {
 		$actions = array(
 			array(
 				'id'           => 'tyche-set-static-front-page',
-				'title'        => esc_html__( 'Set a static front page', 'tyche' ),
-				'description'  => esc_html__( 'Tyche\'s storefront front page only appears when Settings, Reading is set to show a static page.', 'tyche' ),
+				'title'        => __( 'Set a static front page', 'tyche' ),
+				'description'  => __( 'Tyche\'s storefront front page only appears when Settings, Reading is set to show a static page.', 'tyche' ),
 				'done'         => Tyche_Notify_System::is_not_static_page(),
-				'button_url'   => esc_url( self_admin_url( 'options-reading.php' ) ),
-				'button_label' => esc_html__( 'Open Reading settings', 'tyche' ),
+				'button_url'   => self_admin_url( 'options-reading.php' ),
+				'button_label' => __( 'Open Reading settings', 'tyche' ),
 			),
 			array(
 				'id'           => 'tyche-install-woocommerce',
-				'title'        => esc_html__( 'Install WooCommerce', 'tyche' ),
-				'description'  => esc_html__( 'Tyche is a shop theme. Without WooCommerce the product, cart and checkout templates have nothing to render.', 'tyche' ),
+				'title'        => __( 'Install WooCommerce', 'tyche' ),
+				'description'  => __( 'Tyche is a shop theme. Without WooCommerce the product, cart and checkout templates have nothing to render.', 'tyche' ),
 				'done'         => Tyche_Notify_System::check_plugin_is_active( 'woocommerce' ),
-				'button_url'   => esc_url( self_admin_url( 'plugin-install.php?s=woocommerce&tab=search&type=term' ) ),
-				'button_label' => esc_html__( 'Find WooCommerce', 'tyche' ),
+				'button_url'   => self_admin_url( 'plugin-install.php?s=woocommerce&tab=search&type=term' ),
+				'button_label' => __( 'Find WooCommerce', 'tyche' ),
 			),
 			array(
 				'id'           => 'tyche-add-products',
-				'title'        => esc_html__( 'Add a few products', 'tyche' ),
-				'description'  => esc_html__( 'The front page pulls its product rows from your catalogue, so it stays empty until there are products to show.', 'tyche' ),
+				'title'        => __( 'Add a few products', 'tyche' ),
+				'description'  => __( 'The front page pulls its product rows from your catalogue, so it stays empty until there are products to show.', 'tyche' ),
 				'done'         => self::has_products(),
-				'button_url'   => esc_url( self_admin_url( 'post-new.php?post_type=product' ) ),
-				'button_label' => esc_html__( 'Add a product', 'tyche' ),
+				'button_url'   => self_admin_url( 'post-new.php?post_type=product' ),
+				'button_label' => __( 'Add a product', 'tyche' ),
 			),
 			array(
 				'id'           => 'tyche-set-menu',
-				'title'        => esc_html__( 'Build the main menu', 'tyche' ),
-				'description'  => esc_html__( 'Assign a menu to the Primary location so visitors can reach your shop and category pages.', 'tyche' ),
+				'title'        => __( 'Build the main menu', 'tyche' ),
+				'description'  => __( 'Assign a menu to the Primary location so visitors can reach your shop and category pages.', 'tyche' ),
 				'done'         => self::has_primary_menu(),
-				'button_url'   => esc_url( self_admin_url( 'nav-menus.php' ) ),
-				'button_label' => esc_html__( 'Open menus', 'tyche' ),
+				'button_url'   => self_admin_url( 'nav-menus.php' ),
+				'button_label' => __( 'Open menus', 'tyche' ),
 			),
 			array(
 				'id'           => 'tyche-add-widgets',
-				'title'        => esc_html__( 'Fill the front page widget areas', 'tyche' ),
-				'description'  => esc_html__( 'The front page is built from widget areas. Drop a widget into one to see a section appear.', 'tyche' ),
+				'title'        => __( 'Fill the front page widget areas', 'tyche' ),
+				'description'  => __( 'The front page is built from widget areas. Drop a widget into one to see a section appear.', 'tyche' ),
 				'done'         => self::has_front_page_widgets(),
-				'button_url'   => esc_url( self_admin_url( 'widgets.php' ) ),
-				'button_label' => esc_html__( 'Open widgets', 'tyche' ),
+				'button_url'   => self_admin_url( 'widgets.php' ),
+				'button_label' => __( 'Open widgets', 'tyche' ),
 			),
 		);
 
