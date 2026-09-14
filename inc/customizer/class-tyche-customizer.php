@@ -14,29 +14,6 @@ class Tyche_Customizer {
 		add_action( 'customize_register', array( $this, 'customize_register' ) );
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'customizer_enqueues' ) );
 		add_action( 'customize_preview_init', array( $this, 'customize_preview_js' ) );
-		add_action( 'init', array( $this, 'add_kirki_options' ) );
-	}
-
-	/**
-	 * Kirki options should be added in the INIT hook @since Kirki 3.0.10.
-	 */
-	public function add_kirki_options() {
-		/**
-		 * Add the theme configuration
-		 */
-		Tyche_Kirki::add_config(
-			'tyche_theme', array(
-				'option_type' => 'theme_mod',
-				'capability'  => 'edit_theme_options',
-			)
-		);
-
-		/**
-		 * Load panels, sections and options
-		 */
-		require_once get_template_directory() . '/inc/customizer/theme-options/panels.php';
-		require_once get_template_directory() . '/inc/customizer/theme-options/sections.php';
-		require_once get_template_directory() . '/inc/customizer/theme-options/options.php';
 	}
 
 	/**
@@ -48,18 +25,25 @@ class Tyche_Customizer {
 		$wp_customize->get_setting( 'custom_logo' )->transport     = 'refresh';
 		$wp_customize->get_setting( 'header_textcolor' )->default  = 'ffffff';
 
-		if ( ! class_exists( 'Kirki' ) ) {
-			require_once get_template_directory() . '/inc/libraries/class-kirki-installer-section.php';
-		} else {
-			$wp_customize->get_section( 'title_tagline' )->panel    = 'theme_options';
-			$wp_customize->get_section( 'title_tagline' )->priority = 1;
+		/*
+		 * Panels, sections and fields are all registered here now. Kirki wanted them on
+		 * init; core wants them on customize_register, where $wp_customize exists.
+		 */
+		require_once get_template_directory() . '/inc/customizer/class-tyche-customize-controls.php';
+		require_once get_template_directory() . '/inc/customizer/class-tyche-customizer-fields.php';
 
-			$wp_customize->get_section( 'colors' )->priority = 2;
-			$wp_customize->get_section( 'colors' )->panel    = 'theme_options';
-		}
+		Tyche_Customizer_Fields::set_manager( $wp_customize );
 
-		require_once get_template_directory() . '/inc/customizer/theme-options/regular-sections.php';
-		require_once get_template_directory() . '/inc/customizer/theme-options/regular-options.php';
+		require_once get_template_directory() . '/inc/customizer/theme-options/panels.php';
+		require_once get_template_directory() . '/inc/customizer/theme-options/sections.php';
+		require_once get_template_directory() . '/inc/customizer/theme-options/options.php';
+
+		$wp_customize->get_section( 'title_tagline' )->panel    = 'theme_options';
+		$wp_customize->get_section( 'title_tagline' )->priority = 1;
+
+		$wp_customize->get_section( 'colors' )->priority = 2;
+		$wp_customize->get_section( 'colors' )->panel    = 'theme_options';
+
 
 		if ( ! isset( $wp_customize->selective_refresh ) ) {
 			return;
@@ -98,13 +82,31 @@ class Tyche_Customizer {
 	 */
 	public function customizer_enqueues() {
 		wp_enqueue_media();
+
+		$version = wp_get_theme()->get( 'Version' );
+
+		wp_enqueue_style(
+			'tyche-customizer-controls',
+			get_template_directory_uri() . '/assets/css/customizer-controls.css',
+			array(),
+			$version
+		);
+
+		wp_enqueue_script(
+			'tyche-customizer-controls',
+			get_template_directory_uri() . '/assets/js/customizer-controls.js',
+			array( 'jquery', 'jquery-ui-sortable', 'customize-controls' ),
+			$version,
+			true
+		);
+
 		wp_enqueue_style( 'tyche_media_upload_css', get_template_directory_uri() . '/inc/customizer/assets/css/upload-media.css' );
 		wp_enqueue_script(
 			'tyche_media_upload_js',
 			get_template_directory_uri() . '/inc/customizer/assets/js/upload-media.js',
 			array(
 				'jquery',
-				'customize - controls',
+				'customize-controls',
 			)
 		);
 		wp_localize_script(

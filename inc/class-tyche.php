@@ -65,13 +65,6 @@ class Tyche {
 	}
 
 	/**
-	 * Initiate kirki
-	 */
-	public function init_kirki() {
-		new Tyche_Kirki();
-	}
-
-	/**
 	 *
 	 */
 	public function init_hooks() {

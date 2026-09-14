@@ -9,10 +9,6 @@
 
 $images = get_theme_mod( 'tyche_slider_bg' . Tyche_Helper::get_current_language_suffix(), array() );
 
-if ( ! class_exists( 'Kirki' ) ) {
-	return;
-}
-
 ?>
 <!-- Main Slider -->
 <section class="main-slider">

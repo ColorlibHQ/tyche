@@ -110,11 +110,6 @@ class Tyche_Hooks {
 				'slug'     => 'polylang',
 				'required' => false,
 			),
-			array(
-				'name'     => 'Kirki Toolkit',
-				'slug'     => 'kirki',
-				'required' => false,
-			),
 
 		);
 
