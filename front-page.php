@@ -64,8 +64,8 @@ if ( 'posts' == $show_on_front ) :
 
 						the_posts_pagination(
 							array(
-								'prev_text' => '<span class="pagination-arrow-container"><span class="fa fa-long-arrow-left"></span> ' . esc_html__( 'PREV', 'tyche' ) . '</span>',
-								'next_text' => '<span class="pagination-arrow-container">' . esc_html__( 'NEXT', 'tyche' ) . ' <span class="fa fa-long-arrow-right"></span></span>',
+								'prev_text' => '<span class="pagination-arrow-container"><span class="fa-solid fa-arrow-left-long"></span> ' . esc_html__( 'PREV', 'tyche' ) . '</span>',
+								'next_text' => '<span class="pagination-arrow-container">' . esc_html__( 'NEXT', 'tyche' ) . ' <span class="fa-solid fa-arrow-right-long"></span></span>',
 							)
 						);
 

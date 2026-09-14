@@ -44,7 +44,7 @@ if ( $breadcrumbs_enabled ) {
 				<div class="col-xs-12 col-sm-6">
 					<div class="tyche-icon-box">
 						<div class="icon">
-							<span class="fa fa-mobile"></span>
+							<span class="fa-solid fa-mobile-screen-button"></span>
 						</div>
 						<div class="text">
 							<?php echo esc_html__( 'GIVE US A CALL', 'tyche' ); ?>
@@ -55,7 +55,7 @@ if ( $breadcrumbs_enabled ) {
 				<div class="col-xs-12 col-sm-6">
 					<div class="tyche-icon-box">
 						<div class="icon">
-							<span class="fa fa-map-marker"></span>
+							<span class="fa-solid fa-location-dot"></span>
 						</div>
 						<div class="text">
 							<?php echo esc_html__( 'OUR LOCATION', 'tyche' ); ?>

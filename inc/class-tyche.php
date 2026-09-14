@@ -183,7 +183,23 @@ class Tyche {
 		 * Enqueue styles
 		 */
 		wp_enqueue_style( 'tyche-fonts', get_template_directory_uri() . '/assets/css/fonts.css', array(), wp_get_theme()->get( 'Version' ) );
-		wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/vendors/fontawesome/font-awesome.min.css' );
+		/*
+		 * Font Awesome 7, self-hosted. The bundled stylesheet is subsetted to the glyphs
+		 * this theme renders, which is a fraction of the full set. A site that needs the
+		 * rest -- for a widget, a page builder or a child theme -- can swap it:
+		 *
+		 *     add_filter( 'tyche_full_fontawesome', '__return_true' );
+		 */
+		$fa_uri = get_template_directory_uri() . '/assets/vendors/fontawesome7/';
+
+		if ( apply_filters( 'tyche_full_fontawesome', false ) ) {
+			wp_enqueue_style( 'tyche-icons', $fa_uri . 'fontawesome.min.css', array(), '7.3.1' );
+			wp_enqueue_style( 'tyche-icons-solid', $fa_uri . 'solid.min.css', array( 'tyche-icons' ), '7.3.1' );
+			wp_enqueue_style( 'tyche-icons-regular', $fa_uri . 'regular.min.css', array( 'tyche-icons' ), '7.3.1' );
+			wp_enqueue_style( 'tyche-icons-brands', $fa_uri . 'brands.min.css', array( 'tyche-icons' ), '7.3.1' );
+		} else {
+			wp_enqueue_style( 'tyche-icons', $fa_uri . 'subset/fontawesome-subset.min.css', array(), '7.3.1' );
+		}
 		wp_enqueue_style( 'owlCarousel', get_template_directory_uri() . '/assets/vendors/owl-carousel/owl.carousel.min.css' );
 		wp_enqueue_style( 'owlCarousel-theme', get_template_directory_uri() . '/assets/vendors/owl-carousel/owl.theme.default.css' );
 		wp_enqueue_style( 'dashicons' );

@@ -99,7 +99,7 @@
                 if ( $t.next().hasClass( 'sub-menu' ) || $t.next().is( 'ul' ) ||
                     $t.next().is( '.sf-mega' ) ) {
                   $t.append(
-                      '<button class="fa fa-angle-down mobile-menu-submenu-arrow mobile-menu-submenu-closed"></button>' );
+                      '<button class="fa-solid fa-angle-down mobile-menu-submenu-arrow mobile-menu-submenu-closed"></button>' );
                 }
               } );
 

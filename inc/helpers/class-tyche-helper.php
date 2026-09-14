@@ -122,8 +122,8 @@ class Tyche_Helper {
 		$comments = wp_count_comments( $id );
 
 		$html  = '<ul class="meta-list">';
-		$html .= '<li class="post-author"><icon class="fa fa-user"></icon> <a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author_meta( 'nicename' ) ) . '</a></li>';
-		$html .= '<li class="post-comments"> <span class="sep">/</span> <icon class="fa fa-comments"></icon> <a href="' . esc_url( get_the_permalink( get_the_ID() ) ) . '#comments">' . absint( $comments->approved ) . '</a></li>';
+		$html .= '<li class="post-author"><icon class="fa-solid fa-user"></icon> <a href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author_meta( 'nicename' ) ) . '</a></li>';
+		$html .= '<li class="post-comments"> <span class="sep">/</span> <icon class="fa-solid fa-comments"></icon> <a href="' . esc_url( get_the_permalink( get_the_ID() ) ) . '#comments">' . absint( $comments->approved ) . '</a></li>';
 		$html .= '</ul>';
 
 		return $html;
@@ -276,9 +276,9 @@ class Tyche_Helper {
 
 			$html  = '<ul class="meta-list">';
 			if ( $author_id ) {
-				$html .= '<li class="post-author"><icon class="fa fa-user"></icon> ' . esc_html__( 'By', 'tyche' ) . ' <a href="' . esc_url( get_author_posts_url( $author_id, get_the_author_meta( 'user_nicename' ) ) ) . '">' . esc_html( get_the_author_meta( 'display_name' ) ) . '</a></li>';
+				$html .= '<li class="post-author"><icon class="fa-solid fa-user"></icon> ' . esc_html__( 'By', 'tyche' ) . ' <a href="' . esc_url( get_author_posts_url( $author_id, get_the_author_meta( 'user_nicename' ) ) ) . '">' . esc_html( get_the_author_meta( 'display_name' ) ) . '</a></li>';
 			}
-			$html .= '<li class="post-comments"> <span class="sep">/</span> <icon class="fa fa-comments"></icon> <a href="' . esc_url( get_the_permalink( get_the_ID() ) ) . '#comments">' . absint( $comments->approved ) . esc_html__( ' Comments', 'tyche' ) . '</a></li>';
+			$html .= '<li class="post-comments"> <span class="sep">/</span> <icon class="fa-solid fa-comments"></icon> <a href="' . esc_url( get_the_permalink( get_the_ID() ) ) . '#comments">' . absint( $comments->approved ) . esc_html__( ' Comments', 'tyche' ) . '</a></li>';
 			$html .= '</ul>';
 
 			echo $html;

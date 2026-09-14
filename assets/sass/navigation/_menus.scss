@@ -189,14 +189,16 @@
 .sf-menu .dropdown > a:after,
 .sf-menu .mega > a:after {
   content: "\f107";
-  font-family: 'FontAwesome';
+  font-family: "Font Awesome 7 Free";
+  font-weight: 900;
   padding-left: 7px;
   padding-left: 0.46666666em;
 }
 
 .sf-menu .dropdown .dropdown > a:after {
   content: "\f105";
-  font-family: 'FontAwesome';
+  font-family: "Font Awesome 7 Free";
+  font-weight: 900;
   padding-left: 7px;
   padding-left: 0.46666666em;
   float: right;

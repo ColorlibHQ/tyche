@@ -1204,7 +1204,8 @@ ul {
 
 .entry-content ul > li:before, .widget ul > li:before {
   content: "\F105";
-  font-family: 'FontAwesome';
+  font-family: "Font Awesome 7 Free";
+  font-weight: 900;
   display: inline-block;
   margin-left: 0;
   width: 15px;
@@ -1760,7 +1761,8 @@ textarea {
     color: #99ca45;
     top: 3px;
     right: 15px;
-    font-family: 'FontAwesome';
+    font-family: "Font Awesome 7 Free";
+  font-weight: 900;
     font-size: 20px;
     cursor: pointer;
     z-index: -1; }
@@ -1937,13 +1939,15 @@ a {
 .sf-menu .dropdown > a:after,
 .sf-menu .mega > a:after {
   content: "\F107";
-  font-family: 'FontAwesome';
+  font-family: "Font Awesome 7 Free";
+  font-weight: 900;
   padding-left: 7px;
   padding-left: 0.46666666em; }
 
 .sf-menu .dropdown .dropdown > a:after {
   content: "\F105";
-  font-family: 'FontAwesome';
+  font-family: "Font Awesome 7 Free";
+  font-weight: 900;
   padding-left: 7px;
   padding-left: 0.46666666em;
   float: right; }
@@ -2111,7 +2115,8 @@ a {
         content: '\F408';
         display: inline-block;
         padding: 0 5px;
-        font-family: 'FontAwesome';
+        font-family: "Font Awesome 7 Free";
+  font-weight: 900;
         font-size: 16px;
         vertical-align: top;
         -webkit-font-smoothing: antialiased; }
@@ -2438,7 +2443,8 @@ a {
     content: '\F002';
     color: #99ca45;
     display: block;
-    font-family: 'FontAwesome'; }
+    font-family: "Font Awesome 7 Free";
+  font-weight: 900; }
   .widget.widget_search .search-submit {
     width: 46px;
     height: 35px;
@@ -2575,7 +2581,8 @@ a {
           text-align: center;
           position: relative;
           color: #FFF;
-          font-family: 'FontAwesome'; }
+          font-family: "Font Awesome 7 Free";
+  font-weight: 900; }
         .widget.widget_calendar #wp-calendar #prev > a {
           font-size: 15px;
           top: 6px;
@@ -2600,7 +2607,8 @@ a {
           text-align: center;
           position: relative;
           color: #FFF;
-          font-family: 'FontAwesome'; }
+          font-family: "Font Awesome 7 Free";
+  font-weight: 900; }
         .widget.widget_calendar #wp-calendar #next > a {
           line-height: initial;
           font-size: 15px;
@@ -3222,13 +3230,15 @@ a {
   border-top: 1px solid #e1e1e1; }
 
 .comment-navigation .nav-next a:after {
-  font-family: 'FontAwesome';
+  font-family: "Font Awesome 7 Free";
+  font-weight: 900;
   content: "\F105";
   padding-left: 4px;
   padding-left: 0.26666666em; }
 
 .comment-navigation .nav-previous a:before {
-  font-family: 'FontAwesome';
+  font-family: "Font Awesome 7 Free";
+  font-weight: 900;
   content: "\F104";
   padding-right: 4px;
   padding-right: 0.26666666em; }
@@ -3361,7 +3371,8 @@ a {
         position: relative;
         display: inline-block;
         color: #FFF;
-        font-family: 'FontAwesome'; }
+        font-family: "Font Awesome 7 Free";
+  font-weight: 900; }
       .top-header-bar-container .top-header-bar li.top-multilang .multilang-toggle {
         margin-left: 15px; }
         .top-header-bar-container .top-header-bar li.top-multilang .multilang-toggle img {
@@ -4314,10 +4325,12 @@ a {
     left: 0;
     top: 1.3em; }
   .woocommerce .woocommerce-info:first-of-type:before {
-    font-family: 'FontAwesome';
+    font-family: "Font Awesome 7 Free";
+  font-weight: 900;
     content: '\F007'; }
   .woocommerce .woocommerce-info:last-of-type:before {
-    font-family: 'FontAwesome';
+    font-family: "Font Awesome 7 Free";
+  font-weight: 900;
     content: '\F295'; }
   .woocommerce .woocommerce-info .showlogin, .woocommerce .woocommerce-info .showcoupon {
     display: block;
@@ -4681,7 +4694,8 @@ a {
 
 .ajax_add_to_cart.loading:after {
   color: #fff;
-  font-family: 'FontAwesome';
+  font-family: "Font Awesome 7 Free";
+  font-weight: 900;
   content: '\F250';
   margin-left: 5px;
   position: relative; }

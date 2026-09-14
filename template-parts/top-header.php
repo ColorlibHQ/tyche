@@ -16,14 +16,14 @@
                 <ul class="top-header-bar">
                     <!-- Email -->
                     <li class="top-email">
-                        <i class="fa fa-envelope-o"></i> <?php echo esc_html(get_theme_mod('tyche_top_bar_email', get_option('admin_email'))); ?>
+                        <i class="fa-regular fa-envelope"></i> <?php echo esc_html(get_theme_mod('tyche_top_bar_email', get_option('admin_email'))); ?>
                     </li>
                     <!-- / Email -->
                     <?php if (class_exists('WooCommerce')) : ?>
                         <!-- Cart -->
                         <li class="top-cart">
                             <a href="<?php echo esc_url(Tyche_Helper::get_woocommerge_page('cart')); ?>"><i
-                                        class="fa fa-shopping-cart"></i> <?php echo esc_html__('My Cart', 'tyche'); ?>
+                                        class="fa-solid fa-cart-shopping"></i> <?php echo esc_html__('My Cart', 'tyche'); ?>
                                 - <?php echo esc_html(get_woocommerce_currency_symbol(get_woocommerce_currency())) . ' <span class="price">' . esc_html(Tyche_WooCommerce_Hooks::get_cart_total()) . '</span>'; ?>
                             </a>
                         </li> <!-- / Cart -->
@@ -33,7 +33,7 @@
                         <!-- Account -->
                         <li class="top-account">
                             <a href="<?php echo esc_url(Tyche_Helper::get_woocommerge_page('account')); ?>"><i
-                                        class="fa fa-user"></i> <?php echo esc_html__('Account', 'tyche'); ?>
+                                        class="fa-solid fa-user"></i> <?php echo esc_html__('Account', 'tyche'); ?>
                             </a>
                         </li><!-- / Account -->
                     <?php endif; ?>
@@ -73,7 +73,7 @@
                                            name="s" type="search">
                                 </label>
                                 <button id="search-top-bar-submit" type="submit" class="search-top-bar-submit">
-                                    <span class="fa fa-search"></span>
+                                    <span class="fa-solid fa-magnifying-glass"></span>
                                 </button>
                             </form>
                         </li><!-- / Top Search -->

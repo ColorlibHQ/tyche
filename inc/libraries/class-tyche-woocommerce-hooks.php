@@ -26,7 +26,7 @@ class Tyche_WooCommerce_Hooks {
 
 		return preg_replace(
 			'/(<a\\b[^>]*>)/',
-			'$1<span class="fa fa-shopping-cart" aria-hidden="true"></span> ',
+			'$1<span class="fa-solid fa-cart-shopping" aria-hidden="true"></span> ',
 			$html,
 			1
 		);
@@ -235,7 +235,7 @@ class Tyche_WooCommerce_Hooks {
 		 * Previous Post Link
 		 */
 		if ( get_previous_posts_link() ) {
-			printf( '<li>%s</li>' . "\n", get_previous_posts_link( '<span class="fa fa-long-arrow-left"></span> <span class="pager-text prev">' . esc_html__( 'PREV', 'tyche' ) . '</span>' ) );
+			printf( '<li>%s</li>' . "\n", get_previous_posts_link( '<span class="fa-solid fa-arrow-left-long"></span> <span class="pager-text prev">' . esc_html__( 'PREV', 'tyche' ) . '</span>' ) );
 		}
 
 		/**
@@ -276,7 +276,7 @@ class Tyche_WooCommerce_Hooks {
 		 * Next Post Link
 		 */
 		if ( get_next_posts_link() ) {
-			printf( '<li>%s</li>' . "\n", get_next_posts_link( '<span class="pager-text right">' . esc_html__( 'NEXT', 'tyche' ) . '</span> <span class="fa fa-long-arrow-right"></span>' ) );
+			printf( '<li>%s</li>' . "\n", get_next_posts_link( '<span class="pager-text right">' . esc_html__( 'NEXT', 'tyche' ) . '</span> <span class="fa-solid fa-arrow-right-long"></span>' ) );
 		}
 
 		echo '</ul></div>' . "\n";

@@ -7,8 +7,8 @@ $posts = Tyche_Helper::get_products( $params ); ?>
 
 <div class="row tyche-product-slider-container">
 	<div class="tyche-product-slider-navigation hidden-xs">
-		<a class="prev" href="#"><i class="fa fa-angle-left"></i></a>
-		<a class="next" href="#"><i class="fa fa-angle-right"></i></a>
+		<a class="prev" href="#"><i class="fa-solid fa-angle-left"></i></a>
+		<a class="next" href="#"><i class="fa-solid fa-angle-right"></i></a>
 	</div>
 	<div class="col-xs-12">
 		<div class="owl-carousel tyche-product-slider" data-attr-elements="4">
@@ -75,7 +75,7 @@ $posts = Tyche_Helper::get_products( $params ); ?>
 							echo apply_filters(
 								'woocommerce_loop_add_to_cart_link',
 								sprintf(
-									'<a rel="nofollow" href="%s" data-quantity="%s" data-product_id="%s" data-product_sku="%s" class="%s"><span class="fa fa-shopping-cart"></span> %s</a>',
+									'<a rel="nofollow" href="%s" data-quantity="%s" data-product_id="%s" data-product_sku="%s" class="%s"><span class="fa-solid fa-cart-shopping"></span> %s</a>',
 									esc_url( $product->add_to_cart_url() ),
 									esc_attr( isset( $quantity ) ? $quantity : 1 ),
 									esc_attr( $product->get_id() ),

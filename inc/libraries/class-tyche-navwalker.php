@@ -115,7 +115,7 @@ class Tyche_Navwalker extends Walker_Nav_Menu {
 				if ( false !== $pos ) :
 					$item_output .= '<a' . $attributes . '><span class="glyphicon ' . esc_attr( $item->attr_title ) . '" aria-hidden="true"></span>&nbsp;';
 				else :
-					$item_output .= '<a' . $attributes . '><i class="fa ' . esc_attr( $item->attr_title ) . '" aria-hidden="true"></i>&nbsp;';
+					$item_output .= '<a' . $attributes . '><i class="fa-solid ' . esc_attr( $item->attr_title ) . '" aria-hidden="true"></i>&nbsp;';
 				endif;
 			else :
 				$item_output .= '<a' . $attributes . '>';

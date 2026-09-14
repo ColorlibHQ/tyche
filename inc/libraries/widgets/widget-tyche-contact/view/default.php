@@ -12,19 +12,19 @@
 <?php endif; ?>
 
 <?php if ( isset( $params['address'] ) ) : ?>
-	<p class="tyche-contact-p"><i class="fa fa-map-marker"></i>
+	<p class="tyche-contact-p"><i class="fa-solid fa-location-dot"></i>
 		<strong><?php echo esc_html__( 'Address:', 'tyche' ); ?></strong>
 		<br/><?php echo esc_html( $params['address'] ); ?></p>
 <?php endif; ?>
 
 <?php if ( isset( $params['phone'] ) ) : ?>
-	<p class="tyche-contact-p"><i class="fa fa-mobile"></i>
+	<p class="tyche-contact-p"><i class="fa-solid fa-mobile-screen-button"></i>
 		<strong><?php echo esc_html__( 'Phone:', 'tyche' ); ?></strong>
 		<br/><?php echo esc_html( $params['phone'] ); ?></p>
 <?php endif; ?>
 
 <?php if ( isset( $params['email'] ) ) : ?>
-	<p class="tyche-contact-p"><i class="fa fa-envelope"></i>
+	<p class="tyche-contact-p"><i class="fa-solid fa-envelope"></i>
 		<strong><?php echo esc_html__( 'Email:', 'tyche' ); ?></strong>
 		<br/><?php echo esc_html( $params['email'] ); ?></p>
 <?php endif; ?>
