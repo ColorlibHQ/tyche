@@ -378,4 +378,47 @@ class Tyche_Helper {
 		return $suffix;
 	}
 
+	/**
+	 * Render an image that may be stored as an attachment id or as a bare URL.
+	 *
+	 * The customizer repeater stores attachment ids, which is what
+	 * wp_get_attachment_image() wants. Every install that predates that change --
+	 * the demo included -- stored the URL the media frame handed back instead, and
+	 * passing one of those to wp_get_attachment_image() returns an empty string, so
+	 * the slide collapses to nothing.
+	 *
+	 * A URL that belongs to this site is resolved back to its attachment so the
+	 * markup still gets srcset and sizes; anything else falls back to a plain img.
+	 *
+	 * @param string|int $image Attachment id, or an image URL.
+	 * @param string     $size  Registered image size.
+	 * @param string     $alt   Alt text for the URL fallback.
+	 *
+	 * @return string
+	 */
+	public static function get_image_by_id_or_url( $image, $size, $alt = '' ) {
+		if ( empty( $image ) ) {
+			return '';
+		}
+
+		if ( is_numeric( $image ) ) {
+			return wp_get_attachment_image( (int) $image, $size );
+		}
+
+		if ( ! is_string( $image ) ) {
+			return '';
+		}
+
+		$id = attachment_url_to_postid( $image );
+		if ( $id ) {
+			return wp_get_attachment_image( $id, $size );
+		}
+
+		return sprintf(
+			'<img src="%s" alt="%s" />',
+			esc_url( $image ),
+			esc_attr( $alt )
+		);
+	}
+
 }

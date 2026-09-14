@@ -30,7 +30,7 @@ $images = get_theme_mod( 'tyche_slider_bg' . Tyche_Helper::get_current_language_
 		<div id="main-slider">
 			<?php foreach ( $images as $image ) : ?>
 				<div class="item">
-					<?php echo wp_get_attachment_image( $image['image_bg'], 'tyche-slider-image' ); ?>
+					<?php echo Tyche_Helper::get_image_by_id_or_url( $image['image_bg'], 'tyche-slider-image', isset( $image['cta_subtext'] ) ? $image['cta_subtext'] : '' ); ?>
 					<div class="hero-caption <?php echo esc_attr( get_theme_mod( 'tyche_slider_layout', 'left' ) ); ?> hidden-xs hidden-sm">
 						<?php if ( ! empty( $image['cta_text'] ) ) : ?>
 							<span class="year"><?php echo esc_html( $image['cta_text'] ); ?></span>
