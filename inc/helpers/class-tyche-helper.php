@@ -264,9 +264,20 @@ class Tyche_Helper {
 		<div class="meta">
 			<?php
 			$comments = wp_count_comments( get_the_ID() );
-			global $authordata;
+
+			/*
+			 * $authordata is only set up for entries that went through setup_postdata()
+			 * with an author, so on a search page that also matches products it is
+			 * false and reading ->ID off it warns on PHP 8. get_the_author_meta()
+			 * answers the same question without the global, and the byline is dropped
+			 * entirely when there is no author to name.
+			 */
+			$author_id = (int) get_the_author_meta( 'ID' );
+
 			$html  = '<ul class="meta-list">';
-			$html .= '<li class="post-author"><icon class="fa fa-user"></icon> ' . esc_html__( 'By', 'tyche' ) . ' <a href="' . esc_url( get_author_posts_url( $authordata->ID, $authordata->user_nicename ) ) . '">' . esc_html( get_the_author_meta( 'display_name' ) ) . '</a></li>';
+			if ( $author_id ) {
+				$html .= '<li class="post-author"><icon class="fa fa-user"></icon> ' . esc_html__( 'By', 'tyche' ) . ' <a href="' . esc_url( get_author_posts_url( $author_id, get_the_author_meta( 'user_nicename' ) ) ) . '">' . esc_html( get_the_author_meta( 'display_name' ) ) . '</a></li>';
+			}
 			$html .= '<li class="post-comments"> <span class="sep">/</span> <icon class="fa fa-comments"></icon> <a href="' . esc_url( get_the_permalink( get_the_ID() ) ) . '#comments">' . absint( $comments->approved ) . esc_html__( ' Comments', 'tyche' ) . '</a></li>';
 			$html .= '</ul>';
 

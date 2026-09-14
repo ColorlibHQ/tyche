@@ -16,7 +16,6 @@ class Tyche_Sidebars {
 	 * MedZone_Sidebars constructor.
 	 */
 	public function __construct() {
-		$this->collect_sidebars();
 		add_action( 'widgets_init', array( $this, 'set_sidebars' ) );
 		add_action( 'widgets_init', array( $this, 'initiate_widgets' ) );
 	}
@@ -25,6 +24,16 @@ class Tyche_Sidebars {
 	 * registers sidebars
 	 */
 	public function set_sidebars() {
+		/*
+		 * Collected here rather than in the constructor. The constructor runs while
+		 * functions.php is still being included, and these labels are translated, so
+		 * doing it there loads the text domain before init -- which WordPress 6.7
+		 * reports as _load_textdomain_just_in_time being called incorrectly, on every
+		 * single page load. widgets_init is after init, and is where the sidebars are
+		 * registered anyway.
+		 */
+		$this->collect_sidebars();
+
 		foreach ( $this->sidebars as $sidebar ) {
 			register_sidebar( $sidebar );
 		}
