@@ -1,8 +1,5 @@
 <?php
 
-wp_enqueue_script( 'owlCarousel' );
-wp_enqueue_style( 'owlCarousel' );
-wp_enqueue_style( 'owlCarousel-theme' );
 
 $posts           = Tyche_Helper::get_products( $params ); ?>
 
@@ -32,7 +29,7 @@ $posts           = Tyche_Helper::get_products( $params ); ?>
 		</div>
 	</div>
 	<div class="col-sm-9 col-xs-12">
-		<div class="owl-carousel tyche-product-slider" data-attr-elements="3">
+		<div class="tyche-product-slider" data-attr-elements="3">
 			<?php
 			while ( $posts->have_posts() ) :
 				$posts->the_post();

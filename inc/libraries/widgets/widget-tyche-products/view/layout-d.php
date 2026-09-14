@@ -1,7 +1,4 @@
 <?php
-wp_enqueue_script( 'owlCarousel' );
-wp_enqueue_style( 'owlCarousel' );
-wp_enqueue_style( 'owlCarousel-theme' );
 
 $params['posts_per_page'] = 3;
 

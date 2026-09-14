@@ -48,7 +48,7 @@
 		} );
 	}
 
-	/* ---------------- repeater: slider rows ---------------- */
+	/* ---------------- repeater: rows built from declared fields ---------------- */
 
 	function initRepeater( context ) {
 		$( '.tyche-repeater', context ).each( function () {
@@ -61,43 +61,59 @@
 
 			var $value = $repeater.find( '.tyche-repeater__value' );
 			var $rows = $repeater.find( '.tyche-repeater__rows' );
-			var template = $repeater.find( '.tyche-repeater__template' ).html();
+			var fields = $repeater.data( 'fields' ) || {};
+			var chooseLabel = $repeater.attr( 'data-choose' ) || 'Choose image';
+			var removeLabel = $repeater.attr( 'data-remove' ) || 'Remove row';
 
 			function serialise() {
 				var rows = [];
 				$rows.find( '.tyche-repeater__row' ).each( function () {
-					var $row = $( this );
-					rows.push( {
-						image: $row.find( '.tyche-repeater__preview' ).attr( 'src' ) || '',
-						title: $row.find( '[data-field="title"]' ).val() || '',
-						subtitle: $row.find( '[data-field="subtitle"]' ).val() || '',
-						link: $row.find( '[data-field="link"]' ).val() || ''
+					var $row = $( this ), row = {};
+					$row.find( '[data-field]' ).each( function () {
+						row[ $( this ).data( 'field' ) ] = $( this ).val();
 					} );
+					rows.push( row );
 				} );
 				$value.val( JSON.stringify( rows ) ).trigger( 'change' );
 			}
 
 			function addRow( data ) {
-				var $row = $( template );
 				data = data || {};
-				$row.find( '[data-field="title"]' ).val( data.title || '' );
-				$row.find( '[data-field="subtitle"]' ).val( data.subtitle || '' );
-				$row.find( '[data-field="link"]' ).val( data.link || '' );
-				if ( data.image ) {
-					$row.find( '.tyche-repeater__preview' ).attr( 'src', data.image ).prop( 'hidden', false );
-				}
+				var $row = $( '<div class="tyche-repeater__row"></div>' );
+
+				$.each( fields, function ( name, field ) {
+					var label = ( field && field.label ) || name;
+					var value = typeof data[ name ] !== 'undefined' ? data[ name ] : '';
+
+					if ( field && field.type === 'image' ) {
+						var $wrap = $( '<div class="tyche-repeater__media"></div>' );
+						var $img = $( '<img class="tyche-repeater__preview" alt="" />' ).prop( 'hidden', true );
+						var $hidden = $( '<input type="hidden" />' ).attr( 'data-field', name ).val( value );
+						var $pick = $( '<button type="button" class="button tyche-repeater__pick"></button>' ).text( chooseLabel );
+						if ( value ) {
+							wp.media.attachment( value ).fetch().then( function () {
+								var url = wp.media.attachment( value ).get( 'url' );
+								if ( url ) { $img.attr( 'src', url ).prop( 'hidden', false ); }
+							} );
+						}
+						$wrap.append( $( '<span class="tyche-repeater__label"></span>' ).text( label ), $img, $pick, $hidden );
+						$row.append( $wrap );
+					} else {
+						var $label = $( '<label></label>' ).text( label );
+						var $input = $( '<input type="text" class="widefat" />' ).attr( 'data-field', name ).val( value );
+						$row.append( $label.append( $input ) );
+					}
+				} );
+
+				$row.append( $( '<button type="button" class="button-link tyche-repeater__remove"></button>' ).text( removeLabel ) );
 				$rows.append( $row );
 			}
 
-			var existing;
-			try {
-				existing = JSON.parse( $value.val() || '[]' );
-			} catch ( e ) {
-				existing = [];
+			var existing = $repeater.data( 'rows' );
+			if ( typeof existing === 'string' ) {
+				try { existing = JSON.parse( existing ); } catch ( e ) { existing = []; }
 			}
-			$.each( existing, function ( i, row ) {
-				addRow( row );
-			} );
+			$.each( existing || [], function ( i, row ) { addRow( row ); } );
 
 			$repeater.on( 'click', '.tyche-repeater__add', function () {
 				addRow( {} );
@@ -109,15 +125,17 @@
 				serialise();
 			} );
 
-			$repeater.on( 'input change', 'input[data-field]', serialise );
+			$repeater.on( 'input change', '[data-field]', serialise );
 
 			$repeater.on( 'click', '.tyche-repeater__pick', function () {
-				var $row = $( this ).closest( '.tyche-repeater__row' );
-				var frame = wp.media( { title: 'Slide image', multiple: false, library: { type: 'image' } } );
+				var $media = $( this ).closest( '.tyche-repeater__media' );
+				var frame = wp.media( { title: chooseLabel, multiple: false, library: { type: 'image' } } );
 
 				frame.on( 'select', function () {
 					var attachment = frame.state().get( 'selection' ).first().toJSON();
-					$row.find( '.tyche-repeater__preview' ).attr( 'src', attachment.url ).prop( 'hidden', false );
+					// Store the id: wp_get_attachment_image() takes an id, not a URL.
+					$media.find( 'input[data-field]' ).val( attachment.id );
+					$media.find( '.tyche-repeater__preview' ).attr( 'src', attachment.url ).prop( 'hidden', false );
 					serialise();
 				} );
 

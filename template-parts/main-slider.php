@@ -13,7 +13,7 @@ $images = get_theme_mod( 'tyche_slider_bg' . Tyche_Helper::get_current_language_
 <!-- Main Slider -->
 <section class="main-slider">
 	<?php if ( empty( $images ) ) : ?>
-		<div class="owl-carousel owl-theme" id="main-slider">
+		<div id="main-slider">
 			<div class="item">
 				<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/hero.jpg"/>
 				<div class="hero-caption left hidden-xs hidden-sm">
@@ -27,7 +27,7 @@ $images = get_theme_mod( 'tyche_slider_bg' . Tyche_Helper::get_current_language_
 			</div>
 		</div>
 	<?php else : ?>
-		<div class="owl-carousel owl-theme" id="main-slider">
+		<div id="main-slider">
 			<?php foreach ( $images as $image ) : ?>
 				<div class="item">
 					<?php echo wp_get_attachment_image( $image['image_bg'], 'tyche-slider-image' ); ?>

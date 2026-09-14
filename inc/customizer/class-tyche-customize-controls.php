@@ -164,49 +164,49 @@ class Tyche_Customize_Control_Sortable extends WP_Customize_Control {
 }
 
 /**
- * Repeating rows for the homepage slider.
+ * Repeating rows, built from whatever subfields the field declares.
+ *
+ * The slider is the only user of this, and it declares seven subfields -- an image and
+ * six bits of call-to-action text. The rows are stored as an array of associative
+ * arrays keyed by those field names, which is the shape main-slider.php reads, and the
+ * image is stored as an attachment id because that is what wp_get_attachment_image()
+ * wants.
  */
 class Tyche_Customize_Control_Repeater extends WP_Customize_Control {
 	public $type = 'tyche-repeater';
+
+	/**
+	 * @var array Subfield definitions, keyed by field name.
+	 */
+	public $fields = array();
 
 	public function enqueue() {
 		wp_enqueue_media();
 	}
 
+	public function to_json() {
+		parent::to_json();
+		$this->json['fields'] = $this->fields;
+		$value                = $this->value();
+		$this->json['rows']   = is_array( $value ) ? array_values( $value ) : array();
+	}
+
 	public function render_content() {
-		$rows = $this->value();
-		$rows = is_string( $rows ) ? json_decode( $rows, true ) : $rows;
-		$rows = is_array( $rows ) ? $rows : array();
 		?>
 		<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
 		<?php if ( $this->description ) : ?>
 			<span class="description customize-control-description"><?php echo esc_html( $this->description ); ?></span>
 		<?php endif; ?>
 
-		<div class="tyche-repeater" data-empty-image="<?php esc_attr_e( 'Choose image', 'tyche' ); ?>">
+		<div class="tyche-repeater"
+			data-fields="<?php echo esc_attr( wp_json_encode( $this->fields ) ); ?>"
+			data-rows="<?php echo esc_attr( wp_json_encode( $this->json['rows'] ) ); ?>"
+			data-choose="<?php esc_attr_e( 'Choose image', 'tyche' ); ?>"
+			data-remove="<?php esc_attr_e( 'Remove row', 'tyche' ); ?>">
 			<div class="tyche-repeater__rows"></div>
-			<button type="button" class="button tyche-repeater__add"><?php esc_html_e( 'Add slide', 'tyche' ); ?></button>
-			<input type="hidden" class="tyche-repeater__value" value="<?php echo esc_attr( wp_json_encode( $rows ) ); ?>" <?php $this->link(); ?> />
+			<button type="button" class="button tyche-repeater__add"><?php esc_html_e( 'Add row', 'tyche' ); ?></button>
+			<input type="hidden" class="tyche-repeater__value" value="<?php echo esc_attr( wp_json_encode( $this->json['rows'] ) ); ?>" <?php $this->link(); ?> />
 		</div>
-
-		<script type="text/html" class="tyche-repeater__template">
-			<div class="tyche-repeater__row">
-				<div class="tyche-repeater__media">
-					<img class="tyche-repeater__preview" src="" alt="" hidden />
-					<button type="button" class="button tyche-repeater__pick"><?php esc_html_e( 'Choose image', 'tyche' ); ?></button>
-				</div>
-				<label><?php esc_html_e( 'Title', 'tyche' ); ?>
-					<input type="text" class="widefat" data-field="title" />
-				</label>
-				<label><?php esc_html_e( 'Subtitle', 'tyche' ); ?>
-					<input type="text" class="widefat" data-field="subtitle" />
-				</label>
-				<label><?php esc_html_e( 'Link', 'tyche' ); ?>
-					<input type="url" class="widefat" data-field="link" />
-				</label>
-				<button type="button" class="button-link tyche-repeater__remove"><?php esc_html_e( 'Remove slide', 'tyche' ); ?></button>
-			</div>
-		</script>
 		<?php
 	}
 }

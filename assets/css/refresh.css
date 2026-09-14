@@ -192,3 +192,106 @@ textarea:focus-visible {
 		transform: none;
 	}
 }
+
+/* ---------- carousels, without a carousel library ----------
+   The hero shows one slide at a time; the product rows are a scroll-snap track, so
+   dragging and flicking come from the browser rather than from script. */
+
+.tyche-slider {
+	position: relative;
+}
+
+.tyche-slider__slide {
+	display: none;
+}
+
+.tyche-slider__slide.is-active {
+	display: block;
+	animation: tyche-fade .5s ease;
+}
+
+/* Owl's stylesheet used to size the slide images; it does not ship any more. */
+.tyche-slider__slide > img,
+.tyche-slider__slide > a > img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+@keyframes tyche-fade {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+
+.main-slider-previous,
+.main-slider-next {
+	position: absolute;
+	top: 50%;
+	z-index: 2;
+	width: 44px;
+	height: 44px;
+	transform: translateY(-50%);
+	border: 0;
+	border-radius: 50%;
+	background: rgba(0, 0, 0, .35);
+	color: #fff;
+	font-size: 20px;
+	line-height: 1;
+	cursor: pointer;
+	transition: background .18s ease;
+}
+
+.main-slider-previous { left: 18px; }
+.main-slider-next     { right: 18px; }
+
+.main-slider-previous:hover,
+.main-slider-next:hover,
+.main-slider-previous:focus-visible,
+.main-slider-next:focus-visible {
+	background: rgba(0, 0, 0, .6);
+}
+
+@media (max-width: 991px) {
+	.main-slider-previous,
+	.main-slider-next {
+		display: none;
+	}
+}
+
+.tyche-track {
+	display: flex;
+	gap: 30px;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.tyche-track::-webkit-scrollbar {
+	display: none;
+}
+
+.tyche-track > * {
+	flex: 0 0 calc((100% - 60px) / 3);
+	scroll-snap-align: start;
+}
+
+@media (max-width: 991px) {
+	.tyche-track > * { flex-basis: calc((100% - 30px) / 2); }
+}
+
+@media (max-width: 600px) {
+	.tyche-track    { gap: 20px; }
+	.tyche-track > * { flex-basis: 100%; }
+}
+
+.tyche-product-slider-navigation .is-disabled {
+	opacity: .35;
+	pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.tyche-slider__slide.is-active { animation: none; }
+	.main-slider-previous,
+	.main-slider-next { transition: none; }
+}

@@ -200,8 +200,6 @@ class Tyche {
 		} else {
 			wp_enqueue_style( 'tyche-icons', $fa_uri . 'subset/fontawesome-subset.min.css', array(), '7.3.1' );
 		}
-		wp_enqueue_style( 'owlCarousel', get_template_directory_uri() . '/assets/vendors/owl-carousel/owl.carousel.min.css' );
-		wp_enqueue_style( 'owlCarousel-theme', get_template_directory_uri() . '/assets/vendors/owl-carousel/owl.theme.default.css' );
 		wp_enqueue_style( 'dashicons' );
 		wp_enqueue_style( 'tyche', get_stylesheet_uri() );
 
@@ -238,7 +236,15 @@ class Tyche {
 		 */
 		wp_enqueue_script( 'tyche-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '', true );
 		wp_enqueue_script( 'tyche-multilang-menu', get_template_directory_uri() . '/assets/vendors/menu/menu.min.js', array(), '', true );
-		wp_enqueue_script( 'owlCarousel', get_template_directory_uri() . '/assets/vendors/owl-carousel/owl.carousel.min.js', array( 'jquery' ), '1.3.3', true );
+		wp_enqueue_script( 'tyche-carousel', get_template_directory_uri() . '/assets/js/carousel.js', array(), wp_get_theme()->get( 'Version' ), true );
+		wp_localize_script(
+			'tyche-carousel',
+			'tycheCarousel',
+			array(
+				'previous' => esc_html__( 'Previous slide', 'tyche' ),
+				'next'     => esc_html__( 'Next slide', 'tyche' ),
+			)
+		);
 		wp_enqueue_script( 'jquery-zoom', get_template_directory_uri() . '/assets/vendors/jquery-zoom/jquery.zoom.min.js', array( 'jquery' ), '1.3.3', true );
 		wp_register_script( 'adsenseloader', get_template_directory_uri() . '/assets/vendors/adsenseloader/jquery.adsenseloader.min.js', array( 'jquery' ), '1.0.0', true );
 		wp_register_script(
@@ -247,7 +253,6 @@ class Tyche {
 			array(
 				'jquery',
 				'jquery-zoom',
-				'owlCarousel',
 			),
 			'',
 			false

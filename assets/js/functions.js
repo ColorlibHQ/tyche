@@ -155,72 +155,6 @@
 
     },
 
-    initMainSlider: function() {
-      jQuery( '#main-slider' ).owlCarousel( {
-        loop: true,
-        nav: true,
-        items: 1,
-        dots: false,
-        mouseDrag: true,
-        navText: [
-          '<i class=\'fa fa-angle-left\'></i>',
-		  '<i class=\'fa fa-angle-right\'></i>' ],
-		navElement: 'button',
-        navClass: [ 'main-slider-previous', 'main-slider-next' ],
-        autoplay: true,
-        autoplayTimeout: 17000,
-        responsive: {
-          1: {
-            nav: false
-          },
-          600: {
-            nav: false
-          },
-          991: {
-            nav: true
-
-          }
-        }
-      } );
-    },
-
-    initProductSlider: function() {
-      var elements = jQuery( '.tyche-product-slider-container' );
-      elements.each( function() {
-        var selector = jQuery( this ).find( '.tyche-product-slider' ),
-            prev = jQuery( this ).
-                find( '.tyche-product-slider-navigation .prev' ),
-            next = jQuery( this ).
-                find( '.tyche-product-slider-navigation .next' );
-
-        selector.owlCarousel( {
-          loop: false,
-          margin: 30,
-          responsive: {
-            1: {
-              items: 1
-            },
-            600: {
-              items: 2
-            },
-            991: {
-              items: parseInt( selector.attr( 'data-attr-elements' ) )
-            }
-          }
-        } );
-
-        prev.on( 'click', function( event ) {
-          event.preventDefault();
-          selector.trigger( 'prev.owl.carousel' );
-        } );
-        next.on( 'click', function( event ) {
-          event.preventDefault();
-          selector.trigger( 'next.owl.carousel' );
-        } );
-      } );
-
-    },
-
     initMultiLang: function() {
       $( '.tyche-multilang-menu' ).menu();
     },
@@ -259,9 +193,7 @@
   };
 
   jQuery( document ).ready( function( $ ) {
-    Tyche.initMainSlider();
     Tyche.initMultiLang();
-    Tyche.initProductSlider();
     Tyche.handleMobileMenu();
     Tyche.showHideMobileMenu();
     Tyche.initStyleSelects();

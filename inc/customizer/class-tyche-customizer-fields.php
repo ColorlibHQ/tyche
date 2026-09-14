@@ -278,7 +278,11 @@ class Tyche_Customizer_Fields {
 				};
 
 			case 'repeater':
-				return array( __CLASS__, 'sanitize_repeater' );
+				$fields = isset( $args['fields'] ) ? $args['fields'] : array();
+
+				return function ( $value ) use ( $fields ) {
+					return Tyche_Customizer_Fields::sanitize_repeater( $value, $fields );
+				};
 
 			default:
 				return 'sanitize_text_field';
@@ -295,17 +299,22 @@ class Tyche_Customizer_Fields {
 	}
 
 	/**
-	 * Repeater rows arrive as JSON from the control.
+	 * Repeater rows arrive as JSON from the control and are stored as an array.
 	 *
-	 * @param mixed $value Raw value.
+	 * An array, not a JSON string, because main-slider.php iterates the value directly.
+	 * Each subfield is sanitised by its declared type, so the image comes back as an
+	 * attachment id rather than a URL -- which is what wp_get_attachment_image() takes.
 	 *
-	 * @return string
+	 * @param mixed $value  Raw value.
+	 * @param array $fields Subfield definitions.
+	 *
+	 * @return array
 	 */
-	public static function sanitize_repeater( $value ) {
+	public static function sanitize_repeater( $value, $fields = array() ) {
 		$rows = is_string( $value ) ? json_decode( $value, true ) : $value;
 
 		if ( ! is_array( $rows ) ) {
-			return wp_json_encode( array() );
+			return array();
 		}
 
 		$clean = array();
@@ -315,14 +324,24 @@ class Tyche_Customizer_Fields {
 				continue;
 			}
 
-			$clean[] = array(
-				'image'    => isset( $row['image'] ) ? esc_url_raw( $row['image'] ) : '',
-				'title'    => isset( $row['title'] ) ? sanitize_text_field( $row['title'] ) : '',
-				'subtitle' => isset( $row['subtitle'] ) ? sanitize_text_field( $row['subtitle'] ) : '',
-				'link'     => isset( $row['link'] ) ? esc_url_raw( $row['link'] ) : '',
-			);
+			$out = array();
+
+			foreach ( $fields as $name => $field ) {
+				$raw  = isset( $row[ $name ] ) ? $row[ $name ] : '';
+				$type = isset( $field['type'] ) ? $field['type'] : 'text';
+
+				if ( 'image' === $type ) {
+					$out[ $name ] = absint( $raw );
+				} elseif ( 'url' === $type || preg_match( '/_url$/', $name ) ) {
+					$out[ $name ] = esc_url_raw( $raw );
+				} else {
+					$out[ $name ] = sanitize_text_field( $raw );
+				}
+			}
+
+			$clean[] = $out;
 		}
 
-		return wp_json_encode( $clean );
+		return $clean;
 	}
 }
