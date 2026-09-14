@@ -12,7 +12,7 @@
 	<div class="wp-block-column">
 		<!-- wp:cover {"overlayColor":"dark","dimRatio":50,"minHeight":320,"layout":{"type":"constrained"}} -->
 		<div class="wp-block-cover" style="min-height:320px">
-			<span aria-hidden="true" class="wp-block-cover__background has-dark-background-color has-background-dim-50 has-background-dim"></span>
+			<span aria-hidden="true" class="wp-block-cover__background has-dark-background-color has-background-dim"></span>
 			<div class="wp-block-cover__inner-container">
 				<!-- wp:heading {"level":3,"textColor":"background","fontSize":"large"} -->
 				<h3 class="wp-block-heading has-background-color has-text-color has-large-font-size"><?php echo esc_html_x( 'Outerwear', 'Pattern heading', 'tyche' ); ?></h3>
