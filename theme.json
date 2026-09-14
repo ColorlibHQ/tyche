@@ -1,0 +1,117 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": true,
+		"useRootPaddingAwareAlignments": true,
+		"layout": {
+			"contentSize": "760px",
+			"wideSize": "1170px"
+		},
+		"color": {
+			"defaultPalette": false,
+			"defaultGradients": false,
+			"custom": true,
+			"customDuotone": false,
+			"palette": [
+				{ "slug": "primary",    "color": "#f66249", "name": "Primary" },
+				{ "slug": "headings",   "color": "#2a313e", "name": "Headings" },
+				{ "slug": "body",       "color": "#717171", "name": "Body text" },
+				{ "slug": "dark",       "color": "#2b2e34", "name": "Dark" },
+				{ "slug": "darker",     "color": "#25262b", "name": "Darker" },
+				{ "slug": "screen",     "color": "#f1f1f1", "name": "Light grey" },
+				{ "slug": "border",     "color": "#ebebeb", "name": "Border" },
+				{ "slug": "background", "color": "#ffffff", "name": "Background" }
+			]
+		},
+		"typography": {
+			"fluid": true,
+			"defaultFontSizes": false,
+			"customFontSize": true,
+			"fontFamilies": [
+				{
+					"slug": "karla",
+					"name": "Karla",
+					"fontFamily": "Karla, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+					"fontFace": [
+						{
+							"fontFamily": "Karla",
+							"fontWeight": "400",
+							"fontStyle": "normal",
+							"fontDisplay": "swap",
+							"src": [ "file:./assets/fonts/karla-400-latin.woff2" ]
+						},
+						{
+							"fontFamily": "Karla",
+							"fontWeight": "700",
+							"fontStyle": "normal",
+							"fontDisplay": "swap",
+							"src": [ "file:./assets/fonts/karla-700-latin.woff2" ]
+						}
+					]
+				},
+				{
+					"slug": "monospace",
+					"name": "Monospace",
+					"fontFamily": "Monaco, Consolas, \"Andale Mono\", \"DejaVu Sans Mono\", monospace"
+				}
+			],
+			"fontSizes": [
+				{ "slug": "small",   "size": "13px", "name": "Small",   "fluid": false },
+				{ "slug": "medium",  "size": "15px", "name": "Medium",  "fluid": false },
+				{ "slug": "large",   "size": "20px", "name": "Large",   "fluid": { "min": "18px", "max": "22px" } },
+				{ "slug": "x-large", "size": "30px", "name": "Extra large", "fluid": { "min": "24px", "max": "34px" } },
+				{ "slug": "xx-large","size": "44px", "name": "Display", "fluid": { "min": "32px", "max": "48px" } }
+			]
+		},
+		"spacing": {
+			"units": [ "px", "em", "rem", "%", "vw", "vh" ],
+			"spacingSizes": [
+				{ "slug": "20", "size": "10px", "name": "1" },
+				{ "slug": "30", "size": "20px", "name": "2" },
+				{ "slug": "40", "size": "30px", "name": "3" },
+				{ "slug": "50", "size": "50px", "name": "4" },
+				{ "slug": "60", "size": "80px", "name": "5" }
+			]
+		},
+		"border": { "color": true, "radius": true, "style": true, "width": true }
+	},
+	"styles": {
+		"color": {
+			"background": "var(--wp--preset--color--background)",
+			"text": "var(--wp--preset--color--body)"
+		},
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--karla)",
+			"fontSize": "var(--wp--preset--font-size--medium)",
+			"lineHeight": "1.5"
+		},
+		"elements": {
+			"heading": {
+				"color": { "text": "var(--wp--preset--color--headings)" },
+				"typography": { "fontWeight": "700", "lineHeight": "1.25" }
+			},
+			"link": {
+				"color": { "text": "var(--wp--preset--color--primary)" },
+				"typography": { "textDecoration": "none" },
+				":hover": { "typography": { "textDecoration": "underline" } }
+			},
+			"button": {
+				"color": {
+					"background": "var(--wp--preset--color--primary)",
+					"text": "var(--wp--preset--color--background)"
+				},
+				"border": { "radius": "0px" },
+				"spacing": { "padding": { "top": "12px", "bottom": "12px", "left": "28px", "right": "28px" } },
+				"typography": { "fontWeight": "700", "textTransform": "uppercase", "fontSize": "13px" },
+				":hover": { "color": { "background": "#d94a33" } }
+			}
+		},
+		"blocks": {
+			"core/quote": {
+				"border": { "left": { "color": "var(--wp--preset--color--primary)", "style": "solid", "width": "3px" } },
+				"spacing": { "padding": { "left": "20px" } }
+			}
+		}
+	}
+}

@@ -44,6 +44,13 @@ class Tyche {
 	}
 
 	/**
+	 * Block editor support
+	 */
+	public function init_blocks() {
+		new Tyche_Blocks();
+	}
+
+	/**
 	 * The Customizer setup checklist
 	 */
 	public function init_recommended_actions() {
@@ -175,7 +182,7 @@ class Tyche {
 		/**
 		 * Enqueue styles
 		 */
-		wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Karla:400,700' );
+		wp_enqueue_style( 'tyche-fonts', get_template_directory_uri() . '/assets/css/fonts.css', array(), wp_get_theme()->get( 'Version' ) );
 		wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/vendors/fontawesome/font-awesome.min.css' );
 		wp_enqueue_style( 'owlCarousel', get_template_directory_uri() . '/assets/vendors/owl-carousel/owl.carousel.min.css' );
 		wp_enqueue_style( 'owlCarousel-theme', get_template_directory_uri() . '/assets/vendors/owl-carousel/owl.theme.default.css' );
