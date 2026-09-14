@@ -23,7 +23,6 @@ class Tyche_Autoloader {
 			dirname( __FILE__ ) . '/libraries/',
 			dirname( __FILE__ ) . '/helpers/',
 			dirname( __FILE__ ) . '/customizer/',
-			dirname( __FILE__ ) . '/libraries/epsilon-framework/',
 			dirname( __FILE__ ) . '/libraries/welcome-screen/',
 			dirname( __FILE__ ) . '/libraries/welcome-screen/inc/',
 		);

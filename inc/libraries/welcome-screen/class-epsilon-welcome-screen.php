@@ -504,8 +504,8 @@ class Epsilon_Welcome_Screen {
 	 */
 	private function check_plugin( $slug = '' ) {
 		$arr = array(
-			'installed' => Epsilon_Notify_System::check_plugin_is_installed( $slug ),
-			'active'    => Epsilon_Notify_System::check_plugin_is_active( $slug ),
+			'installed' => Tyche_Notify_System::check_plugin_is_installed( $slug ),
+			'active'    => Tyche_Notify_System::check_plugin_is_active( $slug ),
 			'needs'     => 'install',
 			'class'     => 'install-now button',
 			'label'     => __( 'Install', 'tyche' ),

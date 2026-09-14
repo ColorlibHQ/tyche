@@ -6,7 +6,81 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Class Tyche_Notify_System
  */
-class Tyche_Notify_System extends Epsilon_Notify_System {
+class Tyche_Notify_System {
+	/**
+	 * @var array Cached plugin basenames.
+	 */
+	public static $plugins;
+
+	/**
+	 * Inlined from the Epsilon framework this theme no longer bundles. The original
+	 * looked for plugins under ABSPATH . 'wp-content/plugins/', which is wrong on any
+	 * install that moves WP_PLUGIN_DIR; these use the constant.
+	 *
+	 * @return array
+	 */
+	public static function _get_plugins() {
+		if ( ! function_exists( 'get_plugins' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
+
+		return get_plugins();
+	}
+
+	/**
+	 * @param string $slug Plugin slug.
+	 *
+	 * @return string
+	 */
+	public static function _get_plugin_basename_from_slug( $slug ) {
+		if ( empty( self::$plugins ) ) {
+			self::$plugins = array_keys( self::_get_plugins() );
+		}
+
+		foreach ( self::$plugins as $key ) {
+			if ( preg_match( '|^' . preg_quote( $slug, '|' ) . '/|', $key ) ) {
+				return $key;
+			}
+		}
+
+		return $slug;
+	}
+
+	/**
+	 * @param string $slug Plugin slug.
+	 *
+	 * @return bool
+	 */
+	public static function check_plugin_is_installed( $slug ) {
+		return file_exists( WP_PLUGIN_DIR . '/' . self::_get_plugin_basename_from_slug( $slug ) );
+	}
+
+	/**
+	 * @param string $slug Plugin slug.
+	 *
+	 * @return bool
+	 */
+	public static function check_plugin_is_active( $slug ) {
+		$plugin_path = self::_get_plugin_basename_from_slug( $slug );
+
+		if ( ! file_exists( WP_PLUGIN_DIR . '/' . $plugin_path ) ) {
+			return false;
+		}
+
+		if ( ! function_exists( 'is_plugin_active' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
+
+		return is_plugin_active( $plugin_path );
+	}
+
+	/**
+	 * @return bool
+	 */
+	public static function is_not_static_page() {
+		return 'page' === get_option( 'show_on_front' );
+	}
+
 	/**
 	 * Are the required plugins installed ?
 	 *
