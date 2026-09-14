@@ -223,37 +223,48 @@ textarea:focus-visible {
 	to   { opacity: 1; }
 }
 
-.main-slider-previous,
-.main-slider-next {
-	position: absolute;
-	top: 50%;
-	z-index: 2;
-	width: 44px;
-	height: 44px;
-	transform: translateY(-50%);
+/* The scheme stylesheets style these at .main-slider .main-slider-previous, with an
+   !important background and a 110px icon, so these selectors match that specificity --
+   at the old size the chevrons swamped the hero, and on a phone they sat on top of it. */
+
+.main-slider button.main-slider-previous,
+.main-slider button.main-slider-next {
+	display: grid;
+	place-items: center;
+	width: 48px;
+	height: 48px;
+	padding: 0;
 	border: 0;
 	border-radius: 50%;
-	background: rgba(0, 0, 0, .35);
-	color: #fff;
-	font-size: 20px;
-	line-height: 1;
-	cursor: pointer;
+	background: rgba(0, 0, 0, .3) !important;
 	transition: background .18s ease;
 }
 
-.main-slider-previous { left: 18px; }
-.main-slider-next     { right: 18px; }
+.main-slider button.main-slider-previous { left: 24px; }
+.main-slider button.main-slider-next     { right: 24px; }
 
-.main-slider-previous:hover,
-.main-slider-next:hover,
-.main-slider-previous:focus-visible,
-.main-slider-next:focus-visible {
-	background: rgba(0, 0, 0, .6);
+.main-slider .main-slider-previous i,
+.main-slider .main-slider-next i {
+	color: #fff;
+	font-size: 22px;
+	line-height: 1;
+}
+
+.main-slider button.main-slider-previous:hover,
+.main-slider button.main-slider-next:hover,
+.main-slider button.main-slider-previous:focus-visible,
+.main-slider button.main-slider-next:focus-visible {
+	background: rgba(0, 0, 0, .55) !important;
+}
+
+.main-slider .main-slider-previous:hover i,
+.main-slider .main-slider-next:hover i {
+	color: #fff;
 }
 
 @media (max-width: 991px) {
-	.main-slider-previous,
-	.main-slider-next {
+	.main-slider button.main-slider-previous,
+	.main-slider button.main-slider-next {
 		display: none;
 	}
 }
@@ -294,4 +305,23 @@ textarea:focus-visible {
 	.tyche-slider__slide.is-active { animation: none; }
 	.main-slider-previous,
 	.main-slider-next { transition: none; }
+}
+
+/* ---------- promotional banner ----------
+   The caption is set very large in a narrow column, so a single long word -- a category
+   name like OVERCOATS -- used to spill out of the card. Let it wrap and scale. */
+
+.tyche-banner-caption {
+	overflow-wrap: anywhere;
+	word-break: normal;
+	hyphens: auto;
+}
+
+.tyche-banner-caption .second_line {
+	font-size: clamp(22px, 3.4vw, 42px);
+	line-height: 1.1;
+}
+
+.tyche-banner {
+	overflow: hidden;
 }

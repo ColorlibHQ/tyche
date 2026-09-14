@@ -100,16 +100,16 @@ $posts = Tyche_Helper::get_products( $params ); ?>
 			<?php echo ! empty( $image[0] ) ? 'style="background-image:url(' . esc_url( $image[0] ) . ')"' : ''; ?>>
 			<div class="tyche-banner-caption">
 				<?php if ( ! empty( $params['first_line'] ) ) : ?>
-					<span class="first_line"> <?php echo $params['first_line']; ?> </span>
+					<span class="first_line"> <?php echo esc_html( $params['first_line'] ); ?> </span>
 				<?php endif; ?>
 				<?php if ( ! empty( $params['second_line'] ) ) : ?>
-					<span class="second_line"> <?php echo $params['second_line']; ?> </span>
+					<span class="second_line"> <?php echo esc_html( $params['second_line'] ); ?> </span>
 				<?php endif; ?>
 				<?php if ( ! empty( $params['third_line'] ) ) : ?>
-					<span class="third_line"> <?php echo $params['third_line']; ?> </span>
+					<span class="third_line"> <?php echo esc_html( $params['third_line'] ); ?> </span>
 				<?php endif; ?>
 				<?php if ( ! empty( $params['button_label'] ) && ! empty( $params['button_link'] ) ) : ?>
-					<a href="<?php echo $params['button_link']; ?>"><?php echo $params['button_label']; ?></a>
+					<a href="<?php echo esc_url( $params['button_link'] ); ?>"><?php echo esc_html( $params['button_label'] ); ?></a>
 				<?php endif; ?>
 			</div>
 		</div>
