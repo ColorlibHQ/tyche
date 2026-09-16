@@ -34,7 +34,7 @@ defined( 'ABSPATH' ) || exit;
 <section class="wp-block-group alignfull tyche-section" style="padding-top:var(--wp--preset--spacing--0);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:columns {"verticalAlignment":"center","align":"wide","className":"tyche-story","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|80","left":"var:preset|spacing|80"}}}} -->
 <div class="wp-block-columns alignwide are-vertically-aligned-center tyche-story"><!-- wp:column {"width":"45%"} -->
 <div class="wp-block-column" style="flex-basis:45%"><!-- wp:image {"aspectRatio":"4/5","scale":"cover","sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/about-1.jpg' ) ); ?>" alt="<?php esc_attr_e( 'Folded wool knitwear on a workshop table', 'tyche' ); ?>" style="aspect-ratio:4/5;object-fit:cover"/></figure>
+<figure class="wp-block-image size-large"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/about-1.webp' ) ); ?>" alt="<?php esc_attr_e( 'Horn buttons on the cuff of a tweed jacket', 'tyche' ); ?>" style="aspect-ratio:4/5;object-fit:cover"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column -->
 
@@ -122,19 +122,19 @@ defined( 'ABSPATH' ) || exit;
 <section class="wp-block-group alignfull tyche-section" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:columns {"align":"wide","className":"tyche-about-gallery","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|30","left":"var:preset|spacing|30"}}}} -->
 <div class="wp-block-columns alignwide tyche-about-gallery"><!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {"aspectRatio":"3/4","scale":"cover","sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/about-2.jpg' ) ); ?>" alt="<?php esc_attr_e( 'A seamstress at her sewing machine', 'tyche' ); ?>" style="aspect-ratio:3/4;object-fit:cover"/></figure>
+<figure class="wp-block-image size-large"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/about-2.webp' ) ); ?>" alt="<?php esc_attr_e( 'Hands holding a coffee cup against a grey wool coat and rust scarf', 'tyche' ); ?>" style="aspect-ratio:3/4;object-fit:cover"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column -->
 
 <!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {"aspectRatio":"3/4","scale":"cover","sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/about-3.jpg' ) ); ?>" alt="<?php esc_attr_e( 'Bolts of undyed wool cloth', 'tyche' ); ?>" style="aspect-ratio:3/4;object-fit:cover"/></figure>
+<figure class="wp-block-image size-large"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/about-3.webp' ) ); ?>" alt="<?php esc_attr_e( 'Grey, navy and charcoal knitted fabrics side by side', 'tyche' ); ?>" style="aspect-ratio:3/4;object-fit:cover"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column -->
 
 <!-- wp:column -->
 <div class="wp-block-column"><!-- wp:image {"aspectRatio":"3/4","scale":"cover","sizeSlug":"large","linkDestination":"none"} -->
-<figure class="wp-block-image size-large"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/about-4.jpg' ) ); ?>" alt="<?php esc_attr_e( 'A finished coat on a hanger in the studio', 'tyche' ); ?>" style="aspect-ratio:3/4;object-fit:cover"/></figure>
+<figure class="wp-block-image size-large"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/about-4.webp' ) ); ?>" alt="<?php esc_attr_e( 'A woman walking through a field wrapped in a pale blue blanket scarf', 'tyche' ); ?>" style="aspect-ratio:3/4;object-fit:cover"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></section>

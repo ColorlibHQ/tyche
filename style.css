@@ -306,6 +306,13 @@ a {
 	padding-bottom: var(--wp--preset--spacing--70);
 }
 
+/* A cover with a content position shrinks its inner container to the text
+   (core doubles the class to win), which left nothing for the wide wrapper to
+   span. Full width, so the text lines up with the header at every screen size. */
+.tyche-hero.tyche-hero.has-custom-content-position.has-custom-content-position .wp-block-cover__inner-container {
+	width: 100%;
+}
+
 .tyche-hero__title {
 	line-height: 0.95;
 	margin: var(--wp--preset--spacing--20) 0 var(--wp--preset--spacing--30);

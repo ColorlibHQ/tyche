@@ -78,7 +78,7 @@ defined( 'ABSPATH' ) || exit;
 
 <!-- wp:group {"tagName":"section","align":"full","className":"tyche-section","style":{"spacing":{"padding":{"top":"var:preset|spacing|0","bottom":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
 <section class="wp-block-group alignfull tyche-section" style="padding-top:var(--wp--preset--spacing--0);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:image {"aspectRatio":"21/9","scale":"cover","sizeSlug":"large","linkDestination":"none","align":"wide"} -->
-<figure class="wp-block-image alignwide size-large"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/contact-1.jpg' ) ); ?>" alt="<?php esc_attr_e( 'The studio shop front on a quiet street', 'tyche' ); ?>" style="aspect-ratio:21/9;object-fit:cover"/></figure>
+<figure class="wp-block-image alignwide size-large"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/contact-1.webp' ) ); ?>" alt="<?php esc_attr_e( 'A brown leather messenger bag resting on a stone wall', 'tyche' ); ?>" style="aspect-ratio:21/9;object-fit:cover"/></figure>
 <!-- /wp:image --></section>
 <!-- /wp:group -->
 

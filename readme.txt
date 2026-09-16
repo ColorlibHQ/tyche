@@ -58,8 +58,26 @@ Tabler Icons (assets/icons)
 Copyright (c) 2020-2026 Pawel Kuna
 License: MIT, https://github.com/tabler/tabler-icons/blob/main/LICENSE
 
-Images in assets/images
-Created by Colorlib for this theme. License: GPL v2 or later.
+Photographs in assets/images
+License: CC0 1.0 Universal, https://creativecommons.org/publicdomain/zero/1.0/
+Source: StockSnap, https://stocksnap.io/license
+* hero-1.webp: Lucas Defibaugh, https://stocksnap.io/photo/people-back-Q71CIRI83F
+* promo-1.webp: Freestocks.org, https://stocksnap.io/photo/people-woman-YXR4DJ0MFG
+* promo-2.webp: Freestocks.org, https://stocksnap.io/photo/girl-woman-KCY1MEEWD2
+* cat-coats.webp: Matt Moloney, https://stocksnap.io/photo/woman-fashion-94TN6BQCV4
+* cat-knitwear.webp: Beauty and Fashion, https://stocksnap.io/photo/woman-fashion-QGXSDEZ0FE
+* cat-dresses.webp: Matt Bango, https://stocksnap.io/photo/woman-city-Z8KGNYGS8D
+* cat-accessories.webp: Clem Onojeghuo, https://stocksnap.io/photo/brown-leather-9YGBJUD1FY
+* story-1.webp: Alex Andrews, https://stocksnap.io/photo/stack-sheets-WNPRW5MEWD
+* about-1.webp: Seacoast Sage, https://stocksnap.io/photo/tweed-suit-IAEXJXGTXE
+* about-2.webp: Karen Cantu Q, https://stocksnap.io/photo/people-woman-L1IARTVGHE
+* about-3.webp: Michal Kulesza, https://stocksnap.io/photo/clothes-sweaters-OA0AFM3HYZ
+* about-4.webp: Elliott Chau, https://stocksnap.io/photo/walking-girl-XOIKTG7EVX
+* contact-1.webp: Alvaro Serrano, https://stocksnap.io/photo/bag-leather-DQCQ6W96UC
+* size-1.webp: Beauty and Fashion, https://stocksnap.io/photo/people-woman-FVLLWFVVHH
+* avatar-1.webp: Candace McDaniel, https://stocksnap.io/photo/woman-model-TJHZP9PY4F
+* avatar-2.webp: Kristin Hardwick, https://stocksnap.io/photo/black-portrait-T8VNJRQH7F
+* avatar-3.webp: Candace McDaniel, https://stocksnap.io/photo/smiling-woman-GS765ITKWA
 
 == Changelog ==
 

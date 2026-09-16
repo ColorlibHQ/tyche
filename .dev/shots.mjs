@@ -51,6 +51,16 @@ for ( const [ width, height, tag ] of [ [ 1440, 900, 'desk' ], [ 390, 844, 'phon
 		}
 		await page.goto( base + path, { waitUntil: 'load' } );
 		await page.evaluate( () => document.fonts.ready );
+		// Scroll through once: a full-page capture never scrolls, so lazy-loaded
+		// images below the fold would otherwise photograph as empty frames.
+		await page.evaluate( async () => {
+			for ( let y = 0; y < document.body.scrollHeight; y += 600 ) {
+				window.scrollTo( 0, y );
+				await new Promise( ( r ) => setTimeout( r, 60 ) );
+			}
+			window.scrollTo( 0, 0 );
+		} );
+		await page.waitForLoadState( 'networkidle' ).catch( () => {} );
 		await page.waitForTimeout( 700 );
 		await page.screenshot( { path: join( out, `${ tag }-${ name }.png` ), fullPage: true } );
 	}

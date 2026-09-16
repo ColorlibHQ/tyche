@@ -11,8 +11,9 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/hero-1.jpg' ) ); ?>","isUserOverlayColor":true,"minHeight":86,"minHeightUnit":"vh","customGradient":"linear-gradient(90deg,rgba(12,10,8,0.62) 0%,rgba(12,10,8,0.18) 60%,rgba(12,10,8,0) 100%)","contentPosition":"bottom left","align":"full","className":"tyche-hero","layout":{"type":"constrained"}} -->
-<div class="wp-block-cover alignfull has-custom-content-position is-position-bottom-left tyche-hero" style="min-height:86vh"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/hero-1.jpg' ) ); ?>" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-background-dim-100 has-background-dim wp-block-cover__gradient-background has-background-gradient" style="background:linear-gradient(90deg,rgba(12,10,8,0.62) 0%,rgba(12,10,8,0.18) 60%,rgba(12,10,8,0) 100%)"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"className":"tyche-hero__content","layout":{"type":"default"}} -->
+<!-- wp:cover {"url":"<?php echo esc_url( get_theme_file_uri( 'assets/images/hero-1.webp' ) ); ?>","isUserOverlayColor":true,"minHeight":86,"minHeightUnit":"vh","customGradient":"linear-gradient(90deg,rgba(12,10,8,0.62) 0%,rgba(12,10,8,0.18) 60%,rgba(12,10,8,0) 100%)","contentPosition":"bottom left","align":"full","className":"tyche-hero","layout":{"type":"constrained"}} -->
+<div class="wp-block-cover alignfull has-custom-content-position is-position-bottom-left tyche-hero" style="min-height:86vh"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/images/hero-1.webp' ) ); ?>" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-background-dim-100 has-background-dim wp-block-cover__gradient-background has-background-gradient" style="background:linear-gradient(90deg,rgba(12,10,8,0.62) 0%,rgba(12,10,8,0.18) 60%,rgba(12,10,8,0) 100%)"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"align":"wide","layout":{"type":"default"}} -->
+<div class="wp-block-group alignwide"><!-- wp:group {"className":"tyche-hero__content","layout":{"type":"default"}} -->
 <div class="wp-block-group tyche-hero__content"><!-- wp:paragraph {"className":"is-style-tyche-eyebrow","textColor":"overlay"} -->
 <p class="is-style-tyche-eyebrow has-overlay-color has-text-color"><?php esc_html_e( 'New season', 'tyche' ); ?></p>
 <!-- /wp:paragraph -->
@@ -34,5 +35,6 @@ defined( 'ABSPATH' ) || exit;
 <div class="wp-block-button is-style-tyche-outline"><a class="wp-block-button__link has-overlay-color has-text-color wp-element-button" href="#"><?php esc_html_e( 'Explore the lookbook', 'tyche' ); ?></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
+<!-- /wp:group --></div>
 <!-- /wp:group --></div></div>
 <!-- /wp:cover -->

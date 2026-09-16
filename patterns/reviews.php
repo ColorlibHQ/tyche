@@ -35,7 +35,7 @@ defined( 'ABSPATH' ) || exit;
 
 <!-- wp:group {"className":"tyche-review__author","style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
 <div class="wp-block-group tyche-review__author"><!-- wp:image {"aspectRatio":"1","scale":"cover","sizeSlug":"large","linkDestination":"none","className":"tyche-review__avatar"} -->
-<figure class="wp-block-image size-large tyche-review__avatar"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/avatar-1.jpg' ) ); ?>" alt="" style="aspect-ratio:1;object-fit:cover"/></figure>
+<figure class="wp-block-image size-large tyche-review__avatar"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/avatar-1.webp' ) ); ?>" alt="" style="aspect-ratio:1;object-fit:cover"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"flex","orientation":"vertical"}} -->
@@ -63,7 +63,7 @@ defined( 'ABSPATH' ) || exit;
 
 <!-- wp:group {"className":"tyche-review__author","style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
 <div class="wp-block-group tyche-review__author"><!-- wp:image {"aspectRatio":"1","scale":"cover","sizeSlug":"large","linkDestination":"none","className":"tyche-review__avatar"} -->
-<figure class="wp-block-image size-large tyche-review__avatar"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/avatar-2.jpg' ) ); ?>" alt="" style="aspect-ratio:1;object-fit:cover"/></figure>
+<figure class="wp-block-image size-large tyche-review__avatar"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/avatar-2.webp' ) ); ?>" alt="" style="aspect-ratio:1;object-fit:cover"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"flex","orientation":"vertical"}} -->
@@ -91,7 +91,7 @@ defined( 'ABSPATH' ) || exit;
 
 <!-- wp:group {"className":"tyche-review__author","style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
 <div class="wp-block-group tyche-review__author"><!-- wp:image {"aspectRatio":"1","scale":"cover","sizeSlug":"large","linkDestination":"none","className":"tyche-review__avatar"} -->
-<figure class="wp-block-image size-large tyche-review__avatar"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/avatar-3.jpg' ) ); ?>" alt="" style="aspect-ratio:1;object-fit:cover"/></figure>
+<figure class="wp-block-image size-large tyche-review__avatar"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/avatar-3.webp' ) ); ?>" alt="" style="aspect-ratio:1;object-fit:cover"/></figure>
 <!-- /wp:image -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"flex","orientation":"vertical"}} -->

@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || exit;
 <section class="wp-block-group alignfull tyche-section has-surface-background-color has-background" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:columns {"verticalAlignment":"center","align":"wide","className":"tyche-story","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|80","left":"var:preset|spacing|80"}}}} -->
 <div class="wp-block-columns alignwide are-vertically-aligned-center tyche-story"><!-- wp:column {"width":"50%"} -->
 <div class="wp-block-column" style="flex-basis:50%"><!-- wp:image {"aspectRatio":"4/5","scale":"cover","sizeSlug":"large","linkDestination":"none","className":"tyche-story__image"} -->
-<figure class="wp-block-image size-large tyche-story__image"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/story-1.jpg' ) ); ?>" alt="<?php esc_attr_e( 'A tailor pressing the seam of a wool coat', 'tyche' ); ?>" style="aspect-ratio:4/5;object-fit:cover"/></figure>
+<figure class="wp-block-image size-large tyche-story__image"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/story-1.webp' ) ); ?>" alt="<?php esc_attr_e( 'Folded grey knitwear stacked on an oak table', 'tyche' ); ?>" style="aspect-ratio:4/5;object-fit:cover"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column -->
 

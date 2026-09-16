@@ -61,7 +61,7 @@ def ta(text):
 
 
 def img(slug):
-    return "<?php echo esc_url( get_theme_file_uri( 'assets/images/%s.jpg' ) ); ?>" % slug
+    return "<?php echo esc_url( get_theme_file_uri( 'assets/images/%s.webp' ) ); ?>" % slug
 
 
 def url(page):
@@ -271,6 +271,10 @@ def image(slug, alt, ratio=None, cls=None, align=None):
 # top of the picture untouched and the text on a dark ground whatever the photo.
 SCRIM = "linear-gradient(180deg,rgba(12,10,8,0) 30%,rgba(12,10,8,0.72) 100%)"
 SCRIM_SIDE = "linear-gradient(90deg,rgba(12,10,8,0.62) 0%,rgba(12,10,8,0.18) 60%,rgba(12,10,8,0) 100%)"
+# Promotions carry an eyebrow, a two-line heading, a sentence and a button, so
+# their text starts about half-way down. On the snow photographs the bottom-only
+# scrim left the heading at 2.5:1; this one is dark from the middle down.
+SCRIM_TALL = "linear-gradient(180deg,rgba(12,10,8,0.15) 0%,rgba(12,10,8,0.6) 38%,rgba(12,10,8,0.85) 100%)"
 
 
 def cover(inner, slug, dim=30, min_height=None, unit="px", position=None, cls=None, ratio=None,
@@ -851,7 +855,10 @@ def hero():
         buttons(button(t("Shop new arrivals"), url("shop"), bg="overlay", color="dark"),
                 button(t("Explore the lookbook"), "#", style="tyche-outline", color="overlay")),
     ])
-    return cover(group(inner, layout="default", cls="tyche-hero__content"),
+    # The text block sits inside a wide-aligned wrapper so its left edge lines up
+    # with the header and every section at any screen width; on its own it hugged
+    # the page edge beyond 1440px while the logo moved inwards.
+    return cover(group(group(inner, layout="default", cls="tyche-hero__content"), align="wide", layout="default"),
                  "hero-1", min_height=86, unit="vh", position="bottom left", cls="tyche-hero",
                  align="full", gradient=SCRIM_SIDE)
 
@@ -891,7 +898,7 @@ def story_split():
                    t("Free repairs for the first year")),
         buttons(button(t("Read our story"), "#", style="tyche-outline")),
     ])
-    body = columns(column(image("story-1", ta("A tailor pressing the seam of a wool coat"), ratio="4/5",
+    body = columns(column(image("story-1", ta("Folded grey knitwear stacked on an oak table"), ratio="4/5",
                                 cls="tyche-story__image"), width="50%"),
                    column(group(text, layout="flex", orientation="vertical", gap="40"), valign="center"),
                    cls="tyche-story", align="wide", gap="80", valign="center")
@@ -905,7 +912,7 @@ def promo_duo():
             heading(t(title), level=2, color="overlay", size="huge"),
             para(t(text), color="overlay"),
             buttons(button(t(cta), url("shop"), bg="overlay", color="dark")),
-        ]), slug, min_height=560, position="bottom left", cls="tyche-promo is-style-tyche-zoom", gradient=SCRIM))
+        ]), slug, min_height=560, position="bottom left", cls="tyche-promo is-style-tyche-zoom", gradient=SCRIM_TALL))
     body = columns(
         promo("promo-1", "Sale", "Up to 40% off outerwear", "Last season's coats and jackets, while sizes last.",
               "Shop the sale"),
@@ -1025,7 +1032,7 @@ def icon_items(items, cols=3):
 # ---------------------------------------------------------------------------
 def page_about():
     story = columns(
-        column(image("about-1", ta("Folded wool knitwear on a workshop table"), ratio="4/5"), width="45%"),
+        column(image("about-1", ta("Horn buttons on the cuff of a tweed jacket"), ratio="4/5"), width="45%"),
         column(group("\n".join([
             eyebrow(t("Since 2014")),
             heading(t("We started with one coat and a list of things we wished it did better"), level=2),
@@ -1041,9 +1048,9 @@ def page_about():
         ("heart", "Fair from start to finish", "We pay the workshops we use a fair price and publish who they are."),
     ])
     gallery = columns(
-        column(image("about-2", ta("A seamstress at her sewing machine"), ratio="3/4")),
-        column(image("about-3", ta("Bolts of undyed wool cloth"), ratio="3/4")),
-        column(image("about-4", ta("A finished coat on a hanger in the studio"), ratio="3/4")),
+        column(image("about-2", ta("Hands holding a coffee cup against a grey wool coat and rust scarf"), ratio="3/4")),
+        column(image("about-3", ta("Grey, navy and charcoal knitted fabrics side by side"), ratio="3/4")),
+        column(image("about-4", ta("A woman walking through a field wrapped in a pale blue blanket scarf"), ratio="3/4")),
         align="wide", gap="30", cls="tyche-about-gallery")
     return "\n\n".join([
         section(page_intro("Our story", "Clothes worth keeping", "We make a small collection of well-made clothing and accessories, and we stand behind every piece."), pad=("70", "60")),
@@ -1076,7 +1083,7 @@ def page_contact():
     return "\n\n".join([
         section(page_intro("Contact", "We are here to help", "Write to us about an order, sizing or anything else. We answer every message within one working day."), pad=("70", "60")),
         section(details, pad=("0", "70")),
-        section(image("contact-1", ta("The studio shop front on a quiet street"), ratio="21/9", align="wide"), pad=("0", "70")),
+        section(image("contact-1", ta("A brown leather messenger bag resting on a stone wall"), ratio="21/9", align="wide"), pad=("0", "70")),
         section(help_links, bg="surface"),
     ])
 
@@ -1145,7 +1152,7 @@ def page_size_guide():
     men = table([t("Size"), t("Chest (cm)"), t("Waist (cm)"), t("Sleeve (cm)")], [
         ["S", "92", "78", "63"], ["M", "100", "86", "64"], ["L", "108", "94", "65"], ["XL", "116", "102", "66"]])
     measure = columns(
-        column(image("size-1", ta("A tape measure around a wool jacket"), ratio="4/5"), width="40%"),
+        column(image("size-1", ta("A woman in a soft grey rollneck sweater"), ratio="4/5"), width="40%"),
         column(group("\n".join([
             heading(t("How to measure"), level=2),
             check_list(t("Chest: around the fullest part, under your arms"),
