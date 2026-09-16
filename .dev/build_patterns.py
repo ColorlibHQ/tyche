@@ -446,7 +446,7 @@ def product_collection(collection=None, per_page=4, cols=4, carousel=False, inhe
 # Writers
 # ---------------------------------------------------------------------------
 def write_pattern(slug, title, content, categories=None, keywords=None, description=None,
-                  inserter=True, block_types=None, template_types=None, viewport=1400):
+                  inserter=True, block_types=None, template_types=None, viewport=1400, post_types=None):
     header = ["Title: " + title, "Slug: tyche/" + slug]
     if categories:
         header.append("Categories: " + ", ".join(categories))
@@ -456,6 +456,8 @@ def write_pattern(slug, title, content, categories=None, keywords=None, descript
         header.append("Block Types: " + ", ".join(block_types))
     if template_types:
         header.append("Template Types: " + ", ".join(template_types))
+    if post_types:
+        header.append("Post Types: " + ", ".join(post_types))
     if description:
         header.append("Description: " + description)
     header.append("Viewport Width: %d" % viewport)
@@ -953,7 +955,9 @@ def main():
     for slug, title, fn, cats, keywords in HOME_SECTIONS:
         write_pattern(slug, title, fn(), categories=cats, keywords=keywords)
     write_pattern("page-home", "Store homepage", "\n\n".join(pattern_ref(s[0]) for s in HOME_SECTIONS),
-                  categories=PAGES, keywords=["home", "front page"], template_types=["front-page"])
+                  categories=PAGES, keywords=["home", "front page"], template_types=["front-page"],
+                  block_types=["core/post-content"], post_types=["page"],
+                  description="The designed store homepage. Offered when you create a page.")
 
     hidden = {
         "hidden-shop": shop_body(),

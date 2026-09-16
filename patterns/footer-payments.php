@@ -11,7 +11,5 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 <?php if ( tyche_has_woocommerce() ) : ?>
-
 <!-- wp:woocommerce/payment-method-icons {"className":"tyche-footer__payments"} /-->
-
 <?php endif; ?>

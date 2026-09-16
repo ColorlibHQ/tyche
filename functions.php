@@ -24,3 +24,5 @@ require get_template_directory() . '/inc/block-styles.php';
 require get_template_directory() . '/inc/patterns.php';
 require get_template_directory() . '/inc/icons.php';
 require get_template_directory() . '/inc/woocommerce.php';
+require get_template_directory() . '/inc/front-page.php';
+require get_template_directory() . '/inc/upgrade.php';
