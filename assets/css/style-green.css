@@ -2112,7 +2112,7 @@ a {
       /* Add hover effects for the links, the brand colors */
       /* Add the social links depending on the link href */ }
       #menu-social ul li a:before {
-        content: '\F408';
+        content: '\F1E0';
         display: inline-block;
         padding: 0 5px;
         font-family: "Font Awesome 7 Free";
@@ -2176,6 +2176,9 @@ a {
         content: '\F1CB'; }
       #menu-social ul li a[href*="linkedin.com"]::before {
         content: '\F0E1'; }
+    #menu-social ul li a[href*="wordpress.org"]::before, #menu-social ul li a[href*="wordpress.com"]::before, #menu-social ul li a[href*="facebook.com"]::before, #menu-social ul li a[href*="twitter.com"]::before, #menu-social ul li a[href*="dribbble.com"]::before, #menu-social ul li a[href*="plus.google.com"]::before, #menu-social ul li a[href*="pinterest.com"]::before, #menu-social ul li a[href*="github.com"]::before, #menu-social ul li a[href*="tumblr.com"]::before, #menu-social ul li a[href*="youtube.com"]::before, #menu-social ul li a[href*="flickr.com"]::before, #menu-social ul li a[href*="vimeo.com"]::before, #menu-social ul li a[href*="instagram.com"]::before, #menu-social ul li a[href*="codepen.io"]::before, #menu-social ul li a[href*="linkedin.com"]::before {
+        font-family: "Font Awesome 7 Brands";
+        font-weight: 400; }
     #menu-social ul li:first-of-type a {
       padding-left: 0; }
 

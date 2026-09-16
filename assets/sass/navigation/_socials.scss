@@ -121,6 +121,26 @@
         &[href*="linkedin.com"]::before {
           content: '\f0e1';
         }
+        /* The network icons are brand glyphs, and brand glyphs live in the Brands
+           face. The default share icon above is solid, so only these switch family. */
+        &[href*="wordpress.org"]::before,
+        &[href*="wordpress.com"]::before,
+        &[href*="facebook.com"]::before,
+        &[href*="twitter.com"]::before,
+        &[href*="dribbble.com"]::before,
+        &[href*="plus.google.com"]::before,
+        &[href*="pinterest.com"]::before,
+        &[href*="github.com"]::before,
+        &[href*="tumblr.com"]::before,
+        &[href*="youtube.com"]::before,
+        &[href*="flickr.com"]::before,
+        &[href*="vimeo.com"]::before,
+        &[href*="instagram.com"]::before,
+        &[href*="codepen.io"]::before,
+        &[href*="linkedin.com"]::before {
+          font-family: "Font Awesome 7 Brands";
+          font-weight: 400;
+        }
       }
 
       &:first-of-type {
