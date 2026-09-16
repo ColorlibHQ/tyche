@@ -1,3 +1,17 @@
+Tyche v2.0.0
+
+- Rebuilt as a WooCommerce block theme on WooCommerce's own blocks: header with search,
+  account and a slide-out cart; shop with filters; product page with gallery, sticky
+  summary and details accordions; cart; checkout with its own header; order confirmation.
+- Ten homepage sections, five complete page layouts (About, Contact, FAQ, Delivery and
+  returns, Size guide) and four header layouts plus two footers.
+- Eight colour palettes generated from one table and audited for WCAG AA on every pair
+  the design uses; self-hosted Instrument Serif and Figtree.
+- A site's chosen static front page is kept; the designed homepage is offered as a
+  pattern. Sites updating from 1.x get a dismissible notice about what changed.
+- Requires WordPress 7.0 and WooCommerce 11. Removes jQuery, the Bootstrap 3 grid, the
+  Customizer options and TGMPA.
+
 Tyche v1.6.3
 
 - Security: removed the legacy About screen. One of its handlers ran on every request
