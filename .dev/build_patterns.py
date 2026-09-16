@@ -756,15 +756,9 @@ def single_body():
         group(block("post-navigation-link", {"type": "previous", "showTitle": True, "arrow": "arrow"}) + "\n" +
               block("post-navigation-link", {"type": "next", "showTitle": True, "arrow": "arrow"}),
               cls="tyche-post-nav", layout="flex", justify="space-between", wrap="wrap"),
-        block("comments", {"className": "tyche-comments"}, "\n".join([
-            block("comments-title"),
-            block("comment-template", None, "\n".join([
-                block("comment-author-name"), block("comment-date"), block("comment-content"),
-                block("comment-reply-link")])),
-            block("comments-pagination", None, block("comments-pagination-previous") + "\n" +
-                  block("comments-pagination-numbers") + "\n" + block("comments-pagination-next")),
-            block("post-comments-form"),
-        ])),
+        captured("comments").replace(
+            '<!-- wp:comments -->\n<div class="wp-block-comments">',
+            '<!-- wp:comments {"className":"tyche-comments"} -->\n<div class="wp-block-comments tyche-comments">', 1),
     ]), pad=("60", "80"))
 
 

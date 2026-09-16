@@ -37,6 +37,7 @@ const JOBS = {
 		{ displayLayout: { type: 'carousel', columns: 4, shrinkColumns: true } },
 	],
 	'accordion': [ 'core/accordion', {} ],
+	'comments': [ 'core/comments', {} ],
 };
 
 // Blocks that only exist inside a product's context, captured in that template.
