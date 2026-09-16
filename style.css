@@ -763,3 +763,50 @@ a {
 		overflow-x: auto;
 	}
 }
+
+/* Header layouts ------------------------------------------------------------ */
+
+.tyche-header__bar--left.tyche-header__bar {
+	grid-template-columns: auto minmax(0, 1fr) auto;
+}
+
+.tyche-header__bar--left .tyche-header__brand,
+.tyche-header__bar--minimal .tyche-header__brand {
+	justify-self: start;
+}
+
+.tyche-header__bar--left .tyche-header__nav {
+	justify-self: start;
+	margin-inline-start: var(--wp--preset--spacing--50);
+}
+
+.tyche-header__bar--minimal.tyche-header__bar {
+	grid-template-columns: minmax(0, 1fr) auto;
+}
+
+@media (max-width: 599px) {
+	/* One layout on phones whatever the desktop one: menu, brand, icons. */
+	.tyche-header__bar--left.tyche-header__bar {
+		grid-template-columns: auto minmax(0, 1fr) auto;
+	}
+
+	.tyche-header__bar--left .tyche-header__nav {
+		grid-column: 1;
+		grid-row: 1;
+		margin-inline-start: 0;
+	}
+
+	.tyche-header__bar--left .tyche-header__brand {
+		grid-column: 2;
+		justify-self: center;
+	}
+}
+
+.tyche-footer--simple .tyche-footer__links {
+	justify-content: center;
+}
+
+.tyche-footer--simple .tyche-footer__title,
+.tyche-footer--simple .tyche-footer__legal {
+	margin: 0;
+}

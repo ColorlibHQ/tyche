@@ -499,20 +499,48 @@ def main_group(inner, pad=("50", "80"), cls=None, content_size=None):
 # ---------------------------------------------------------------------------
 # Header and footer
 # ---------------------------------------------------------------------------
-def header_pattern():
-    announcement = group(
+def header_markup(layout="centered", announcement=True):
+    """The header in one of three layouts.
+
+    centered: menu left, brand centred, icons right (the default).
+    left:     brand left, menu next to it, icons right.
+    minimal:  brand left, icons and a menu button right, the menu always in the overlay.
+    """
+    bar_announcement = group(
         para(tk('Free delivery on orders over $75 &middot; Free 30-day returns') +
              ' <a href="%s">%s</a>' % (url("shop"), t("Shop new in")), align="center", size="small"),
         cls="tyche-announcement", align="full", bg="dark", color="on-dark", pad="20")
 
-    nav = block("navigation", {"overlayMenu": "mobile", "className": "tyche-header__nav",
+    nav = block("navigation", {"overlayMenu": "always" if "minimal" == layout else "mobile",
+                               "className": "tyche-header__nav",
                                "layout": {"type": "flex", "justifyContent": "left"},
                                "style": {"spacing": {"blockGap": "var:preset|spacing|40"}}})
     brand = group("\n".join([
         block("site-logo", {"width": 120, "shouldSyncIcon": False}),
         block("site-title", {"level": 0}),
-    ]), cls="tyche-header__brand", layout="flex", wrap="nowrap", justify="center")
+    ]), cls="tyche-header__brand", layout="flex", wrap="nowrap", justify="center" if "centered" == layout else "left")
 
+    actions_inner = [
+        block("search", {"label": "SEARCH_LABEL", "showLabel": False, "placeholder": "SEARCH_PLACEHOLDER",
+                         "buttonText": "SEARCH_LABEL", "buttonPosition": "button-only", "buttonUseIcon": True,
+                         "query": {"post_type": "product"}, "className": "tyche-header__search"}),
+        pattern_ref("header-store-actions"),
+    ]
+    if "minimal" == layout:
+        actions_inner.append(nav)
+    actions = group("\n".join(actions_inner), cls="tyche-header__actions", layout="flex", wrap="nowrap",
+                    justify="right", gap="30")
+
+    order = {"centered": [nav, brand, actions], "left": [brand, nav, actions], "minimal": [brand, actions]}[layout]
+    bar = group("\n".join(order), cls="tyche-header__bar tyche-header__bar--%s" % layout, align="wide",
+                layout="flex", wrap="nowrap", justify="space-between")
+    main = group(bar, cls="tyche-header", align="full", bg="base", pad="30")
+    content = (bar_announcement + "\n\n" + main) if announcement else main
+    content = content.replace('"SEARCH_LABEL"', '"%s"' % "<?php echo esc_attr__( 'Search', 'tyche' ); ?>")
+    return content.replace('"SEARCH_PLACEHOLDER"', '"%s"' % "<?php echo esc_attr__( 'Search products', 'tyche' ); ?>")
+
+
+def header_pattern():
     # The account and cart blocks only exist with WooCommerce. A PHP condition
     # cannot sit between blocks inside a group -- re-serialising drops it -- so
     # the condition lives at the top level of its own small pattern.
@@ -525,21 +553,15 @@ def header_pattern():
                                         "hasHiddenPrice": True, "className": "tyche-header__cart"}),
         END_IF,
     ]), inserter=False)
-    actions = "\n".join([
-        block("search", {"label": "SEARCH_LABEL", "showLabel": False, "placeholder": "SEARCH_PLACEHOLDER",
-                         "buttonText": "SEARCH_LABEL", "buttonPosition": "button-only", "buttonUseIcon": True,
-                         "query": {"post_type": "product"}, "className": "tyche-header__search"}),
-        pattern_ref("header-store-actions"),
-    ])
-    actions = group(actions, cls="tyche-header__actions", layout="flex", wrap="nowrap", justify="right", gap="30")
-    bar = group("\n".join([nav, brand, actions]), cls="tyche-header__bar", align="wide", layout="flex",
-                wrap="nowrap", justify="space-between")
-    main = group(bar, cls="tyche-header", align="full", bg="base", pad="30")
-    content = announcement + "\n\n" + main
-    content = content.replace('"SEARCH_LABEL"', '"%s"' % "<?php echo esc_attr__( 'Search', 'tyche' ); ?>")
-    content = content.replace('"SEARCH_PLACEHOLDER"', '"%s"' % "<?php echo esc_attr__( 'Search products', 'tyche' ); ?>")
-    write_pattern("header", "Header with announcement bar", content, inserter=False,
+    write_pattern("header", "Header: centred logo", header_markup("centered"), inserter=False,
                   block_types=["core/template-part/header"])
+    for slug, title, layout, bar in (
+            ("header-left", "Header: logo on the left", "left", True),
+            ("header-minimal", "Header: minimal with menu button", "minimal", True),
+            ("header-no-announcement", "Header: centred logo without announcement bar", "centered", False)):
+        write_pattern(slug, title, header_markup(layout, bar), categories=["header"],
+                      block_types=["core/template-part/header"],
+                      description="Swap it in from the Site Editor: select the header and choose Replace.")
 
 
 def footer_links(title, items):
@@ -583,6 +605,25 @@ def footer_pattern():
                     cls="tyche-footer", align="full", bg="dark", color="on-dark", pad=("70", "40"))
     write_pattern("footer", "Footer with link columns", content, inserter=False,
                   block_types=["core/template-part/footer"])
+
+
+def footer_simple_pattern():
+    links = "\n".join(block("navigation-link", {"label": label, "url": "#", "kind": "custom", "isTopLevelLink": True})
+                      for label in ("Shop", "About", "Delivery", "Returns", "Contact"))
+    nav = block("navigation", {"overlayMenu": "never", "className": "tyche-footer__links",
+                               "layout": {"type": "flex", "justifyContent": "center"},
+                               "style": {"spacing": {"blockGap": "var:preset|spacing|40"}}}, links)
+    year = "<?php echo esc_html( gmdate( 'Y' ) ); ?>"
+    inner = "\n\n".join([
+        block("site-title", {"level": 0, "textAlign": "center", "className": "tyche-footer__title"}),
+        nav,
+        para("&copy; %s <?php bloginfo( 'name' ); ?>. %s" % (year, t("All rights reserved.")), align="center",
+             size="small", cls="tyche-footer__legal"),
+    ])
+    write_pattern("footer-simple", "Footer: simple, centred", group(inner, cls="tyche-footer tyche-footer--simple",
+                  align="full", bg="dark", color="on-dark", pad=("60", "50"), gap="40"),
+                  categories=["footer"], block_types=["core/template-part/footer"],
+                  description="Swap it in from the Site Editor: select the footer and choose Replace.")
 
 
 def checkout_header_pattern():
@@ -1151,6 +1192,7 @@ HOME_SECTIONS = [
 def main():
     header_pattern()
     footer_pattern()
+    footer_simple_pattern()
     checkout_header_pattern()
 
     for slug, title, fn, cats, keywords in HOME_SECTIONS:
