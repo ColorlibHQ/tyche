@@ -40,7 +40,7 @@ class Tyche_WooCommerce_Hooks {
 		 * Remove actions
 		 */
 		remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper' );
-		remove_action( 'woocommerce_after_main_content', 'woocommerce_after_main_content' );
+		remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end' );
 		remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price' );
 		remove_action( 'woocommerce_after_shop_loop', 'woocommerce_pagination' );
 
