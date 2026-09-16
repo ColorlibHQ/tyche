@@ -262,9 +262,19 @@ def image(slug, alt, ratio=None, cls=None):
             "<!-- /wp:image -->" % (attrs(data), _classes(*classes), img(slug), alt, style))
 
 
+# Text on a photograph sits at the bottom of every cover in the theme, so the
+# darkening sits there too. A flat dim light enough to keep the photograph
+# lively left white text at 3.3:1 on a pale knitwear shot; a gradient keeps the
+# top of the picture untouched and the text on a dark ground whatever the photo.
+SCRIM = "linear-gradient(180deg,rgba(12,10,8,0) 30%,rgba(12,10,8,0.72) 100%)"
+SCRIM_SIDE = "linear-gradient(90deg,rgba(12,10,8,0.62) 0%,rgba(12,10,8,0.18) 60%,rgba(12,10,8,0) 100%)"
+
+
 def cover(inner, slug, dim=30, min_height=None, unit="px", position=None, cls=None, ratio=None,
-          overlay="dark", align=None):
+          overlay="dark", align=None, gradient=None):
     data = {"url": "TYCHE_IMAGE", "dimRatio": dim, "overlayColor": overlay, "isUserOverlayColor": True}
+    if gradient:
+        data = {"url": "TYCHE_IMAGE", "dimRatio": 100, "customGradient": gradient, "isUserOverlayColor": True}
     classes = ["wp-block-cover"]
     css = []
     if min_height:
@@ -284,8 +294,13 @@ def cover(inner, slug, dim=30, min_height=None, unit="px", position=None, cls=No
         data["style"] = {"dimensions": {"aspectRatio": ratio}}
     data["layout"] = {"type": "constrained"}
     style_attr = ' style="%s"' % ";".join(css) if css else ""
-    span = ('<span aria-hidden="true" class="wp-block-cover__background has-%s-background-color '
-            'has-background-dim-%d has-background-dim"></span>' % (overlay, 10 * round(dim / 10)))
+    if gradient:
+        span = ('<span aria-hidden="true" class="wp-block-cover__background has-background-dim-100 '
+                'has-background-dim wp-block-cover__gradient-background has-background-gradient" '
+                'style="background:%s"></span>' % gradient)
+    else:
+        span = ('<span aria-hidden="true" class="wp-block-cover__background has-%s-background-color '
+                'has-background-dim-%d has-background-dim"></span>' % (overlay, 10 * round(dim / 10)))
     comment = attrs(data).replace('"TYCHE_IMAGE"', '"%s"' % img(slug))
     return ("<!-- wp:cover%s -->\n<div class=\"%s\"%s><img class=\"wp-block-cover__image-background\" "
             "alt=\"\" src=\"%s\" data-object-fit=\"cover\"/>%s<div class=\"wp-block-cover__inner-container\">\n"
@@ -793,8 +808,8 @@ def hero():
                 button(t("Explore the lookbook"), "#", style="tyche-outline", color="overlay")),
     ])
     return cover(group(inner, layout="default", cls="tyche-hero__content"),
-                 "hero-1", dim=30, min_height=86, unit="vh", position="bottom left", cls="tyche-hero",
-                 align="full")
+                 "hero-1", min_height=86, unit="vh", position="bottom left", cls="tyche-hero",
+                 align="full", gradient=SCRIM_SIDE)
 
 
 def category_tiles():
@@ -808,8 +823,8 @@ def category_tiles():
                     cls="tyche-tile__title"),
             para(t(note), color="overlay", size="small"),
         ])
-        tiles.append(column(cover(inner, slug, dim=20, position="bottom left", ratio="4/5",
-                                  cls="tyche-tile is-style-tyche-zoom")))
+        tiles.append(column(cover(inner, slug, position="bottom left", ratio="4/5",
+                                  cls="tyche-tile is-style-tyche-zoom", gradient=SCRIM)))
     body = section_head(t("Shop by category"), kicker=t("Collections"), link_text=t("View all"),
                         link_href=url("shop")) + "\n\n" + columns(*tiles, cls="tyche-tiles", align="wide", gap="40")
     return section(body, cls="tyche-categories")
@@ -846,7 +861,7 @@ def promo_duo():
             heading(t(title), level=2, color="overlay", size="huge"),
             para(t(text), color="overlay"),
             buttons(button(t(cta), url("shop"), bg="overlay", color="contrast")),
-        ]), slug, dim=40, min_height=560, position="bottom left", cls="tyche-promo is-style-tyche-zoom"))
+        ]), slug, min_height=560, position="bottom left", cls="tyche-promo is-style-tyche-zoom", gradient=SCRIM))
     body = columns(
         promo("promo-1", "Sale", "Up to 40% off outerwear", "Last season's coats and jackets, while sizes last.",
               "Shop the sale"),
