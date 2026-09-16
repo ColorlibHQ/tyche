@@ -18,7 +18,7 @@ defined( 'ABSPATH' ) || exit;
 <!-- wp:columns {"align":"wide","className":"tyche-product","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|70","left":"var:preset|spacing|70"}}}} -->
 <div class="wp-block-columns alignwide tyche-product"><!-- wp:column {"width":"58%","className":"tyche-product__gallery"} -->
 <div class="wp-block-column tyche-product__gallery" style="flex-basis:58%"><!-- wp:woocommerce/product-gallery -->
-<div class="wp-block-woocommerce-product-gallery wc-block-product-gallery"><!-- wp:woocommerce/product-gallery-thumbnails /-->
+<div class="wp-block-woocommerce-product-gallery wc-block-product-gallery"><!-- wp:woocommerce/product-gallery-thumbnails {"thumbnailSize":"20%","aspectRatio":"4/5"} /-->
 
 <!-- wp:woocommerce/product-gallery-large-image -->
 <div class="wp-block-woocommerce-product-gallery-large-image wc-block-product-gallery-large-image__inner-blocks"><!-- wp:woocommerce/product-image {"showProductLink":false,"showSaleBadge":false} -->

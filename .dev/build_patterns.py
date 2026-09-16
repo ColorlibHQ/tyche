@@ -625,7 +625,11 @@ def shop_body(search=False):
 
 
 def product_body():
-    gallery = column(captured("product-gallery"), width="58%", cls="tyche-product__gallery")
+    # Thumbnails match the portrait crop of the main image instead of WooCommerce's squares.
+    gallery_markup = captured("product-gallery").replace(
+        "<!-- wp:woocommerce/product-gallery-thumbnails /-->",
+        '<!-- wp:woocommerce/product-gallery-thumbnails {"thumbnailSize":"20%","aspectRatio":"4/5"} /-->', 1)
+    gallery = column(gallery_markup, width="58%", cls="tyche-product__gallery")
     assurances = group("\n".join(
         group(icon("tyche/" + name) + "\n" + para(text, size="small"), layout="flex", wrap="nowrap", gap="20")
         for name, text in (("truck-delivery", t("Free delivery on orders over $75")),
