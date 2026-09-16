@@ -28,7 +28,7 @@ const PAGES = {
 	product: '/?product=wool-overcoat',
 	cart: '/?page_id=31',
 	checkout: '/?page_id=32',
-	blog: '/?page_id=0&post_type=post',
+	blog: '/?cat=1',
 	post: '/?p=1',
 	search: '/?s=wool&post_type=product',
 	notfound: '/?p=999999',

@@ -32,10 +32,18 @@
 }
 
 @media (max-width: 781px) {
-	.wc-block-product-template.tyche-product-cards:not(.is-flex-container):not(.is-product-collection-layout-carousel) {
+	/* Two up on phones, whatever column count the block asks for: the column
+	   rules above carry an extra class, so this has to name them too. */
+	.wc-block-product-template.tyche-product-cards:not(.is-flex-container):not(.is-product-collection-layout-carousel),
+	.wc-block-product-template.tyche-product-cards[class*="columns-"]:not(.is-flex-container):not(.is-product-collection-layout-carousel) {
 		column-gap: var(--wp--preset--spacing--30);
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		row-gap: var(--wp--preset--spacing--50);
+	}
+
+	.tyche-card-button .wc-block-components-product-button__button {
+		padding: 0.55rem 0.75rem;
+		white-space: nowrap;
 	}
 
 	.tyche-card-title {
@@ -659,4 +667,18 @@
 .tyche-no-results h3,
 .tyche-no-results p {
 	margin: 0;
+}
+
+/* Tablets and small laptops: the filter sidebar leaves too little room for three
+   cards (165px each at 900px wide), so the shop grid drops to two. */
+@media (min-width: 782px) and (max-width: 1099px) {
+	.tyche-shop__results .wc-block-product-template.tyche-product-cards[class*="columns-"]:not(.is-flex-container):not(.is-product-collection-layout-carousel) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@container carousel (max-width: 599px) {
+	.is-product-collection-layout-carousel.tyche-product-cards .wc-block-product {
+		min-width: 62%;
+	}
 }
