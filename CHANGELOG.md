@@ -1,3 +1,11 @@
+Tyche v1.6.3
+
+- Security: removed the legacy About screen. One of its handlers ran on every request
+  without checking permissions, so a logged-out visitor could change which pages the
+  site uses as its front page and posts page. Setup now lives only in Appearance >
+  Customize > Set up Tyche.
+- Fixed shop, category and product pages printing an unmatched closing </main></div>.
+
 Tyche v1.6.2
 
 - Fixed the social links menu showing blank icons. Font Awesome 7 keeps brand icons in

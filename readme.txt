@@ -4,7 +4,7 @@ Contributors: colorlib
 Requires at least: 5.2
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.6.2
+Stable tag: 1.6.3
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: e-commerce, custom-logo, two-columns, left-sidebar, right-sidebar, custom-header, custom-menu, featured-images, threaded-comments, footer-widgets, sticky-post, theme-options
@@ -76,6 +76,10 @@ Unless otherwise specified, all the theme files, scripts and images are licensed
   above ship in the package.
 
 == Changelog ==
+
+= 1.6.3 =
+* Security: removed the legacy About screen, one of whose handlers let a logged-out visitor change the front page and posts page settings. Setup now lives in Appearance > Customize > Set up Tyche
+* Fixed shop, category and product pages printing an unmatched closing </main></div>
 
 = 1.6.2 =
 * Fixed the social links menu showing blank icons: brand icons such as Facebook, Twitter and YouTube were being drawn from the solid icon font, which does not contain them
