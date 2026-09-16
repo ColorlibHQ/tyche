@@ -4,7 +4,7 @@ Contributors: colorlib
 Requires at least: 5.2
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.6.1
+Stable tag: 1.6.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: e-commerce, custom-logo, two-columns, left-sidebar, right-sidebar, custom-header, custom-menu, featured-images, threaded-comments, footer-widgets, sticky-post, theme-options
@@ -77,8 +77,16 @@ Unless otherwise specified, all the theme files, scripts and images are licensed
 
 == Changelog ==
 
+= 1.6.2 =
+* Fixed the social links menu showing blank icons: brand icons such as Facebook, Twitter and YouTube were being drawn from the solid icon font, which does not contain them
+* Fixed the default share icon, shown for links that are not a known network, missing from the bundled icon subset
+* Fixed every icon disappearing when the complete Font Awesome is enabled with the tyche_full_fontawesome filter
+* Fixed the About screen caching a failed WordPress.org plugin lookup for 30 minutes and printing PHP warnings until it expired
+* Stopped recommending KB Support, which WordPress.org closed for a security issue
+
 = 1.6.1 =
 * Removed the bundled Epsilon framework and the Kirki dependency; the customizer now runs on core WordPress APIs, so the theme needs no plugins
+* Removed the colour-coded categories option, which came with the Epsilon framework
 * Replaced Owl Carousel with a dependency-free carousel that honours prefers-reduced-motion
 * Added theme.json, block patterns and block styles for the block editor
 * Added a native Recommended Actions panel with live-checked setup steps

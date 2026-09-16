@@ -1,3 +1,18 @@
+Tyche v1.6.2
+
+- Fixed the social links menu showing blank icons. Font Awesome 7 keeps brand icons in
+  a separate Brands face, and the menu asked the solid face for Facebook, Twitter,
+  YouTube and the rest, which it does not contain.
+- Fixed the default share icon, shown for links that are not a known network, missing
+  from the bundled icon subset.
+- Fixed every icon disappearing when the complete Font Awesome is enabled with the
+  tyche_full_fontawesome filter: its webfonts sat one directory away from where its
+  stylesheets look for them.
+- Fixed the About screen caching a failed WordPress.org plugin lookup for 30 minutes and
+  printing PHP warnings until it expired.
+- Stopped recommending KB Support, which WordPress.org closed in April 2025 for a
+  security issue.
+
 Tyche v1.6.1
 
 - Removed the bundled Epsilon framework (10,113 lines) and the Kirki dependency; the
