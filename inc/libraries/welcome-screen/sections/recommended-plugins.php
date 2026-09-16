@@ -18,6 +18,9 @@ add_thickbox();
 	<?php
 	foreach ( $this->plugins as $plugin => $prop ) {
 		$info = $this->get_plugin_information( $plugin );
+		if ( empty( $info ) ) {
+			continue;
+		}
 		?>
 		<div class="col plugin_box">
 

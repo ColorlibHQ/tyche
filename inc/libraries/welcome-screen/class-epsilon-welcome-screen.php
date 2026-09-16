@@ -610,6 +610,11 @@ class Epsilon_Welcome_Screen {
 			'info' => $this->call_plugin_api( $slug ),
 		);
 
+		// WordPress.org unreachable, timed out, or the plugin closed: no card.
+		if ( is_wp_error( $arr['info'] ) || empty( $arr['info'] ) ) {
+			return array();
+		}
+
 		$arr['icon'] = $this->check_for_icon( $arr['info']->icons );
 		$merge       = $this->check_plugin( $slug );
 
@@ -652,7 +657,11 @@ class Epsilon_Welcome_Screen {
 					),
 				)
 			);
-			set_transient( $this->theme_slug . '_plugin_information_transient_' . $slug, $call_api, 30 * MINUTE_IN_SECONDS );
+			// Cache only a real answer. A cached WP_Error keeps the tab broken, and
+			// printing warnings, for the full 30 minutes after one failed request.
+			if ( ! is_wp_error( $call_api ) ) {
+				set_transient( $this->theme_slug . '_plugin_information_transient_' . $slug, $call_api, 30 * MINUTE_IN_SECONDS );
+			}
 		}
 
 		return $call_api;
