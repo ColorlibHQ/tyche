@@ -1,17 +1,659 @@
-/*!
+/*
 Theme Name: Tyche
 Theme URI: https://colorlib.com/wp/themes/tyche/
 Author: Colorlib
 Author URI: https://colorlib.com/
-Description: Tyche is a free WooCommerce theme for building a real online shop. It ships a hero slider, product carousels, category and sale widgets and a live mini-cart, and needs no other plugins to configure: the customizer is built on core WordPress APIs, with no bundled framework and no companion plugin. Supports the block editor through theme.json, block patterns and block styles, and self-hosts its fonts and icons.
-Version: 1.6.3
-Requires at least: 5.2
+Description: Tyche is a WooCommerce block theme for fashion, lifestyle and independent stores. Every store page is designed: a header with a slide-out cart, product grids with filters, a product page with a gallery, a focused checkout and an order confirmation. Includes homepage sections for collections, promotions, reviews and stories, eight colour palettes and self-hosted fonts. Edit everything in the Site Editor.
+Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
+Version: 2.0.0-dev
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: tyche
-Tags: e-commerce, custom-logo, two-columns, left-sidebar, right-sidebar, custom-header, custom-menu, featured-images, threaded-comments, footer-widgets, sticky-post, theme-options
-This theme, like WordPress, is licensed under the GPL.
-Use it to make something cool, have fun, and share what you've learned with others.
+Tags: e-commerce, full-site-editing, block-patterns, block-styles, style-variations, template-editing, wide-blocks, custom-colors, custom-logo, custom-menu, editor-style, featured-images, one-column, two-columns, left-sidebar, translation-ready, threaded-comments
+
+Tyche WordPress Theme, (C) 2017-2026 Colorlib.
+Tyche is distributed under the terms of the GNU GPL v2 or later.
 */
+
+/* ==========================================================================
+   Tyche. Component styles.
+
+   theme.json carries the design system: palette, type, spacing, buttons and
+   element styles. This file holds what theme.json has no property for, and every
+   value in it reads a theme.json token so the eight palettes restyle it too.
+   WooCommerce components live in assets/css/woocommerce.css.
+   ========================================================================== */
+
+/* Base ------------------------------------------------------------------- */
+
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+a {
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.2em;
+}
+
+:where(a, button, input, select, textarea, summary):focus-visible {
+	outline: 2px solid var(--wp--preset--color--contrast);
+	outline-offset: 3px;
+}
+
+:where(.has-dark-background-color, .wp-block-cover) :where(a, button):focus-visible {
+	outline-color: var(--wp--preset--color--overlay);
+}
+
+::selection {
+	background: var(--wp--preset--color--contrast);
+	color: var(--wp--preset--color--base);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
+}
+
+.wp-site-blocks > * {
+	margin-block-start: 0;
+}
+
+.tyche-main {
+	margin-block-start: 0;
+}
+
+/* Type helpers ---------------------------------------------------------- */
+
+.is-style-tyche-eyebrow {
+	font-family: var(--wp--preset--font-family--figtree);
+	font-size: var(--wp--preset--font-size--tiny) !important;
+	font-weight: 600;
+	letter-spacing: 0.14em;
+	line-height: 1.4;
+	text-transform: uppercase;
+}
+
+.is-style-tyche-eyebrow a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.tyche-page-title {
+	font-size: var(--wp--preset--font-size--huge);
+	margin: 0;
+}
+
+/* Buttons ---------------------------------------------------------------- */
+
+.wp-block-button__link,
+.wp-element-button {
+	transition: background-color var(--wp--custom--transition), color var(--wp--custom--transition),
+		box-shadow var(--wp--custom--transition), transform var(--wp--custom--transition);
+}
+
+.wp-block-button.is-style-tyche-outline > .wp-block-button__link {
+	background: transparent;
+	box-shadow: inset 0 0 0 1.5px currentColor;
+}
+
+.wp-block-button.is-style-tyche-outline > .wp-block-button__link:not(.has-text-color) {
+	color: var(--wp--preset--color--contrast);
+}
+
+.wp-block-button.is-style-tyche-outline > .wp-block-button__link:hover {
+	background: color-mix(in srgb, currentColor 10%, transparent);
+}
+
+.wp-block-button.is-style-tyche-link > .wp-block-button__link {
+	background: none;
+	border-radius: 0;
+	color: var(--wp--preset--color--contrast);
+	padding: 0.25rem 0;
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.4em;
+}
+
+.wp-block-button.is-style-tyche-link > .wp-block-button__link::after {
+	content: "\2192";
+	display: inline-block;
+	margin-inline-start: 0.4em;
+	transition: transform var(--wp--custom--transition);
+}
+
+.wp-block-button.is-style-tyche-link > .wp-block-button__link:hover::after {
+	transform: translateX(3px);
+}
+
+/* Header ----------------------------------------------------------------- */
+
+.tyche-site-header {
+	position: sticky;
+	top: calc(var(--wp-admin--admin-bar--height, 0px) - var(--tyche-bar-height, 0px));
+	z-index: 60;
+}
+
+.tyche-announcement p {
+	margin: 0;
+}
+
+.tyche-announcement a {
+	color: var(--wp--preset--color--overlay);
+	margin-inline-start: 0.5em;
+}
+
+.tyche-header {
+	border-bottom: 1px solid transparent;
+	transition: border-color var(--wp--custom--transition), box-shadow var(--wp--custom--transition);
+}
+
+.tyche-site-header.is-scrolled .tyche-header {
+	border-bottom-color: var(--wp--preset--color--divider);
+	box-shadow: 0 6px 24px -18px rgba(20, 16, 12, 0.35);
+}
+
+/* Three columns so the brand sits on the true centre however long the menu is. */
+.tyche-header__bar.tyche-header__bar {
+	align-items: center;
+	display: grid;
+	gap: var(--wp--preset--spacing--30);
+	grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+}
+
+.tyche-header__nav {
+	justify-self: start;
+}
+
+.tyche-header__brand {
+	justify-self: center;
+}
+
+.tyche-header__actions {
+	justify-self: end;
+}
+
+.tyche-header .wp-block-site-title a,
+.tyche-checkout-header .wp-block-site-title a {
+	color: var(--wp--preset--color--contrast);
+}
+
+.tyche-header__nav .wp-block-navigation-item__content {
+	padding-block: 0.35rem;
+	position: relative;
+	text-decoration: none;
+}
+
+.tyche-header__nav .wp-block-navigation__container > .wp-block-navigation-item > .wp-block-navigation-item__content::after {
+	background: currentColor;
+	bottom: 0;
+	content: "";
+	height: 1px;
+	left: 0;
+	position: absolute;
+	transform: scaleX(0);
+	transform-origin: left;
+	transition: transform var(--wp--custom--transition);
+	width: 100%;
+}
+
+.tyche-header__nav .wp-block-navigation-item__content:hover::after,
+.tyche-header__nav .current-menu-item > .wp-block-navigation-item__content::after {
+	transform: scaleX(1);
+}
+
+.tyche-header .wp-block-navigation__submenu-container {
+	border: 1px solid var(--wp--preset--color--divider) !important;
+	border-radius: var(--wp--custom--radius--medium);
+	box-shadow: var(--wp--preset--shadow--lifted);
+	padding: 0.5rem !important;
+}
+
+.tyche-header .wp-block-navigation__responsive-container.is-menu-open {
+	padding: var(--wp--preset--spacing--40);
+}
+
+.tyche-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item__content {
+	font-family: var(--wp--preset--font-family--instrument-serif);
+	font-size: var(--wp--preset--font-size--xx-large);
+}
+
+/* Icon buttons in the header: search, account, cart. */
+.tyche-header__search .wp-block-search__button,
+.tyche-header .wp-block-navigation__responsive-container-open {
+	align-items: center;
+	background: transparent;
+	border-radius: var(--wp--custom--radius--pill);
+	color: var(--wp--preset--color--contrast);
+	height: 2.75rem;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+	width: 2.75rem;
+}
+
+/* Core hides the menu toggle on wide screens; only give it a flex box where it shows. */
+.tyche-header__search .wp-block-search__button {
+	display: inline-flex;
+}
+
+@media (max-width: 599px) {
+	.tyche-header .wp-block-navigation__responsive-container-open:not(.always-shown) {
+		display: inline-flex;
+	}
+}
+
+.tyche-header__search .wp-block-search__button:hover,
+.tyche-header .wp-block-navigation__responsive-container-open:hover {
+	background: var(--wp--preset--color--surface);
+}
+
+.tyche-header__search .wp-block-search__button svg {
+	height: 1.5rem;
+	width: 1.5rem;
+}
+
+.tyche-header__search .wp-block-search__inside-wrapper {
+	border: 0;
+	padding: 0;
+}
+
+.tyche-header__search:not(.wp-block-search__searchfield-hidden) .wp-block-search__input {
+	border: 1px solid var(--wp--preset--color--divider);
+	border-radius: var(--wp--custom--radius--pill);
+	margin-inline-end: 0.25rem;
+	padding: 0.55rem 1rem;
+}
+
+/* Sections --------------------------------------------------------------- */
+
+.tyche-section-head {
+	align-items: flex-end !important;
+	gap: var(--wp--preset--spacing--30);
+	margin-bottom: var(--wp--preset--spacing--50) !important;
+}
+
+.tyche-section-head h2 {
+	margin: 0;
+}
+
+.tyche-section-head .is-style-tyche-eyebrow {
+	color: var(--wp--preset--color--muted);
+	margin: 0;
+}
+
+.tyche-section:not(.has-background) + .tyche-section:not(.has-background) {
+	padding-top: 0 !important;
+}
+
+.tyche-hero .wp-block-cover__inner-container {
+	padding-bottom: var(--wp--preset--spacing--70);
+}
+
+.tyche-hero__title {
+	line-height: 0.95;
+	margin: var(--wp--preset--spacing--20) 0 var(--wp--preset--spacing--30);
+}
+
+.tyche-hero__lede {
+	max-width: 34rem;
+}
+
+/* A whole tile is the link; the heading's anchor stretches over it. */
+.tyche-tile,
+.tyche-promo {
+	border-radius: var(--wp--custom--media--radius);
+	overflow: hidden;
+}
+
+.tyche-tile .wp-block-cover__inner-container,
+.tyche-promo .wp-block-cover__inner-container {
+	position: static;
+}
+
+.tyche-tile .wp-block-cover__inner-container > *,
+.tyche-promo .wp-block-cover__inner-container > * {
+	position: relative;
+	z-index: 2;
+}
+
+.tyche-tile__title {
+	margin: 0 0 0.25rem;
+}
+
+.tyche-tile__title a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.tyche-tile__title a::after {
+	content: "";
+	inset: 0;
+	position: absolute;
+	z-index: 3;
+}
+
+.tyche-tile p {
+	margin: 0;
+}
+
+.is-style-tyche-zoom .wp-block-cover__image-background,
+.is-style-tyche-zoom img {
+	transition: transform 700ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.is-style-tyche-zoom:hover .wp-block-cover__image-background,
+	.wp-block-image.is-style-tyche-zoom:hover img {
+		transform: scale(1.04);
+	}
+}
+
+.wp-block-image.is-style-tyche-zoom {
+	overflow: hidden;
+}
+
+.tyche-story__image img {
+	width: 100%;
+}
+
+/* Lists, cards, icons ---------------------------------------------------- */
+
+.is-style-tyche-checks {
+	list-style: none;
+	padding-left: 0;
+}
+
+.is-style-tyche-checks li {
+	padding-left: 2rem;
+	position: relative;
+}
+
+.is-style-tyche-checks li + li {
+	margin-top: 0.6rem;
+}
+
+.is-style-tyche-checks li::before {
+	background: currentColor;
+	content: "";
+	height: 1.25rem;
+	left: 0;
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5l10 -10'/%3E%3C/svg%3E") center / contain no-repeat;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5l10 -10'/%3E%3C/svg%3E") center / contain no-repeat;
+	position: absolute;
+	top: 0.2rem;
+	width: 1.25rem;
+}
+
+.is-style-tyche-card {
+	background: var(--wp--preset--color--base);
+	border: 1px solid var(--wp--preset--color--divider);
+	border-radius: var(--wp--custom--radius--large);
+	height: 100%;
+	padding: var(--wp--preset--spacing--50);
+}
+
+.tyche-icon svg {
+	display: block;
+	height: 1.25rem;
+	width: 1.25rem;
+}
+
+.tyche-icon--large svg {
+	height: 2rem;
+	width: 2rem;
+}
+
+.tyche-usp-band {
+	border-block: 1px solid var(--wp--preset--color--divider);
+}
+
+.tyche-usp h3 {
+	margin: 0;
+}
+
+.tyche-usp p {
+	margin: 0;
+}
+
+.tyche-stars {
+	color: var(--wp--preset--color--contrast);
+	font-size: var(--wp--preset--font-size--small);
+	letter-spacing: 0.2em;
+	margin: 0;
+}
+
+.tyche-review__quote {
+	flex-grow: 1;
+	font-family: var(--wp--preset--font-family--instrument-serif);
+	font-size: var(--wp--preset--font-size--x-large) !important;
+	line-height: 1.3;
+	margin: 0;
+}
+
+.tyche-review__author p {
+	margin: 0;
+}
+
+.tyche-review__avatar {
+	flex-shrink: 0;
+	margin: 0;
+	width: 3rem;
+}
+
+.tyche-review__avatar img {
+	border-radius: 50%;
+}
+
+/* Journal ---------------------------------------------------------------- */
+
+.tyche-post-cards {
+	gap: var(--wp--preset--spacing--60) var(--wp--preset--spacing--40);
+}
+
+.tyche-post-cards > li > * {
+	margin-block: 0 0.6rem;
+}
+
+.tyche-post-card__media {
+	margin-bottom: var(--wp--preset--spacing--30) !important;
+	overflow: hidden;
+}
+
+.tyche-post-card__media img {
+	border-radius: var(--wp--custom--media--radius);
+}
+
+.tyche-post-cards .wp-block-post-title a {
+	text-decoration: none;
+}
+
+.tyche-post-cards .wp-block-post-title a:hover {
+	text-decoration: underline;
+}
+
+.tyche-post-card__excerpt {
+	color: var(--wp--preset--color--muted);
+}
+
+.tyche-post-card__excerpt .wp-block-post-excerpt__more-text {
+	display: none;
+}
+
+.tyche-post-cards .wp-block-post-date {
+	color: var(--wp--preset--color--muted);
+}
+
+.tyche-post-head {
+	margin-bottom: var(--wp--preset--spacing--60);
+}
+
+.tyche-post-hero img {
+	border-radius: var(--wp--custom--media--radius);
+}
+
+.tyche-post-meta {
+	color: var(--wp--preset--color--muted);
+}
+
+.tyche-page-head {
+	margin-bottom: var(--wp--preset--spacing--60) !important;
+}
+
+.wp-block-query-pagination {
+	gap: 0.5rem;
+	margin-top: var(--wp--preset--spacing--60);
+}
+
+.wp-block-query-pagination-numbers .page-numbers {
+	border-radius: var(--wp--custom--radius--pill);
+	display: inline-grid;
+	min-width: 2.5rem;
+	padding: 0.45rem 0.6rem;
+	place-items: center;
+	text-decoration: none;
+}
+
+.wp-block-query-pagination-numbers .page-numbers.current {
+	background: var(--wp--preset--color--contrast);
+	color: var(--wp--preset--color--base);
+}
+
+/* Forms ------------------------------------------------------------------ */
+
+:where(input[type="text"], input[type="email"], input[type="search"], input[type="tel"], input[type="number"],
+	input[type="password"], input[type="url"], select, textarea) {
+	background-color: var(--wp--preset--color--base);
+	border: 1px solid var(--wp--preset--color--divider);
+	border-radius: var(--wp--custom--radius--medium);
+	box-sizing: border-box;
+	color: var(--wp--preset--color--contrast);
+	font: inherit;
+	padding: 0.7rem 0.9rem;
+}
+
+:where(input, select, textarea):focus {
+	border-color: var(--wp--preset--color--contrast);
+}
+
+/* Footer ----------------------------------------------------------------- */
+
+.tyche-footer a {
+	color: var(--wp--preset--color--on-dark);
+	text-decoration: none;
+}
+
+.tyche-footer a:hover {
+	color: var(--wp--preset--color--overlay);
+	text-decoration: underline;
+}
+
+.tyche-footer__title a,
+.tyche-footer__title {
+	color: var(--wp--preset--color--overlay) !important;
+	font-size: var(--wp--preset--font-size--xx-large);
+}
+
+.tyche-footer__heading {
+	color: var(--wp--preset--color--overlay);
+	font-family: var(--wp--preset--font-family--figtree);
+	font-size: var(--wp--preset--font-size--tiny);
+	font-weight: 600;
+	letter-spacing: 0.14em;
+	margin: 0 0 var(--wp--preset--spacing--30);
+	text-transform: uppercase;
+}
+
+.tyche-footer__about {
+	max-width: 22rem;
+}
+
+.tyche-footer .wp-block-social-links {
+	margin-top: var(--wp--preset--spacing--40);
+}
+
+.tyche-footer__rule {
+	border: 0;
+	border-top: 1px solid color-mix(in srgb, var(--wp--preset--color--on-dark) 22%, transparent) !important;
+	margin-block: var(--wp--preset--spacing--60) var(--wp--preset--spacing--40);
+	opacity: 1;
+}
+
+.tyche-footer__legal {
+	margin: 0;
+}
+
+/* Checkout header -------------------------------------------------------- */
+
+.tyche-checkout-header__back {
+	justify-self: start;
+	margin: 0;
+}
+
+.tyche-checkout-header__back a {
+	color: var(--wp--preset--color--contrast);
+}
+
+.tyche-checkout-header__back a::before {
+	content: "\2190";
+	margin-inline-end: 0.4em;
+}
+
+.tyche-checkout-header__secure {
+	color: var(--wp--preset--color--muted);
+	justify-self: end;
+}
+
+.tyche-checkout-header__secure p {
+	margin: 0;
+}
+
+.tyche-checkout-header {
+	border-bottom: 1px solid var(--wp--preset--color--divider);
+}
+
+/* Small screens ---------------------------------------------------------- */
+
+@media (max-width: 599px) {
+	.tyche-header__account,
+	.tyche-checkout-header__secure p {
+		display: none;
+	}
+
+	.tyche-header__actions {
+		gap: 0 !important;
+	}
+
+	.tyche-header .wp-block-site-title {
+		font-size: var(--wp--preset--font-size--large);
+	}
+}
+
+@media (max-width: 781px) {
+	.tyche-section-head {
+		align-items: flex-start !important;
+	}
+
+	/* Four stacked portrait tiles make a phone scroll past four screens of photographs. */
+	.tyche-tiles.wp-block-columns {
+		display: grid;
+		gap: var(--wp--preset--spacing--30);
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.tyche-tiles .tyche-tile__title {
+		font-size: var(--wp--preset--font-size--x-large) !important;
+	}
+
+	.tyche-tiles .tyche-tile p {
+		display: none;
+	}
+}
+
+.tyche-hero__content {
+	max-width: 40rem;
+}

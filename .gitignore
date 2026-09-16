@@ -1,11 +1,4 @@
-node_modules/*
-.idea/*
-.jscsrc
-.jshintignore
-.jshintrc
-.travis.yml
-Gruntfile.js
-phpcs.ruleset.xml
-.standard.json
-tyche.zip
-package-lock.json
+node_modules
+.DS_Store
+*.map
+.dev/shots/
