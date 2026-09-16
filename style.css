@@ -657,3 +657,109 @@ a {
 .tyche-hero__content {
 	max-width: 40rem;
 }
+
+/* Page patterns ------------------------------------------------------------ */
+
+.tyche-page-intro .tyche-page-title {
+	font-size: var(--wp--preset--font-size--colossal);
+	line-height: 1;
+}
+
+.tyche-page-intro > * {
+	margin-block: 0;
+}
+
+.tyche-icon-items .tyche-usp p,
+.tyche-icon-items .tyche-usp h3 {
+	margin: 0;
+}
+
+.tyche-about-gallery img,
+.tyche-page-intro + * img {
+	border-radius: var(--wp--custom--media--radius);
+}
+
+.tyche-step__number {
+	color: var(--wp--preset--color--muted);
+	font-family: var(--wp--preset--font-family--instrument-serif);
+	font-size: var(--wp--preset--font-size--xx-large);
+	line-height: 1;
+	margin: 0;
+}
+
+.tyche-step h3,
+.tyche-step p {
+	margin: 0;
+}
+
+/* Accordions: product details and FAQ share one look. */
+.wp-block-accordion .wp-block-accordion-item {
+	border-top: 1px solid var(--wp--preset--color--divider);
+}
+
+.wp-block-accordion .wp-block-accordion-item:last-child {
+	border-bottom: 1px solid var(--wp--preset--color--divider);
+}
+
+.wp-block-accordion .wp-block-accordion-heading {
+	font-size: var(--wp--preset--font-size--large);
+	margin: 0;
+}
+
+.tyche-faq .wp-block-accordion-heading {
+	font-family: var(--wp--preset--font-family--figtree);
+	font-weight: 500;
+}
+
+.wp-block-accordion .wp-block-accordion-heading__toggle {
+	padding-block: var(--wp--preset--spacing--30);
+}
+
+.wp-block-accordion .wp-block-accordion-panel > p {
+	color: var(--wp--preset--color--muted);
+	margin-top: 0;
+}
+
+/* Tables. */
+.wp-block-table table {
+	border-collapse: collapse;
+	font-size: var(--wp--preset--font-size--small);
+	width: 100%;
+}
+
+.wp-block-table th {
+	border-bottom: 1px solid var(--wp--preset--color--contrast);
+	font-weight: 600;
+	text-align: left;
+}
+
+.wp-block-table th,
+.wp-block-table td {
+	border-left: 0;
+	border-right: 0;
+	border-top: 0;
+	padding: 0.85rem 1rem 0.85rem 0;
+}
+
+.wp-block-table td {
+	border-bottom: 1px solid var(--wp--preset--color--divider);
+}
+
+.wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
+	background-color: var(--wp--preset--color--surface);
+}
+
+.wp-block-table.is-style-stripes {
+	border-bottom: 0;
+}
+
+.wp-block-table.is-style-stripes td:first-child,
+.wp-block-table.is-style-stripes th:first-child {
+	padding-left: 1rem;
+}
+
+@media (max-width: 599px) {
+	.wp-block-table {
+		overflow-x: auto;
+	}
+}

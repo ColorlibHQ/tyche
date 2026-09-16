@@ -248,13 +248,16 @@ def column(inner, width=None, cls=None, valign=None):
         attrs(data), _classes(*classes), css, inner)
 
 
-def image(slug, alt, ratio=None, cls=None):
+def image(slug, alt, ratio=None, cls=None, align=None):
     data = {"sizeSlug": "large", "linkDestination": "none"}
     style = ""
     if ratio:
         data = {"aspectRatio": ratio, "scale": "cover", "sizeSlug": "large", "linkDestination": "none"}
         style = ' style="aspect-ratio:%s;object-fit:cover"' % ratio
     classes = ["wp-block-image", "size-large"]
+    if align:
+        data["align"] = align
+        classes.append("align" + align)
     if cls:
         data["className"] = cls
         classes.append(cls)
@@ -928,6 +931,206 @@ def newsletter():
                    bg="dark", color="on-dark", pad="70")
 
 
+# ---------------------------------------------------------------------------
+# Content helpers for page patterns
+# ---------------------------------------------------------------------------
+def accordion(items, cls=None):
+    """core/accordion in the shape the editor saves (captured in .dev/captured/accordion.html)."""
+    rows = []
+    for question, answer in items:
+        rows.append(
+            '<!-- wp:accordion-item -->\n<div class="wp-block-accordion-item">'
+            '<!-- wp:accordion-heading -->\n'
+            '<h3 class="wp-block-accordion-heading has-icon has-icon-right"><button type="button" class="wp-block-accordion-heading__toggle">'
+            '<span class="wp-block-accordion-heading__toggle-title">%s</span>'
+            '<span class="wp-block-accordion-heading__toggle-icon" aria-hidden="true">+</span></button></h3>\n'
+            '<!-- /wp:accordion-heading -->\n\n'
+            '<!-- wp:accordion-panel -->\n<div role="region" class="wp-block-accordion-panel">%s</div>\n'
+            '<!-- /wp:accordion-panel --></div>\n<!-- /wp:accordion-item -->' % (question, para(answer)))
+    data = {"className": cls} if cls else None
+    classes = "wp-block-accordion" + (" " + cls if cls else "")
+    return '<!-- wp:accordion%s -->\n<div role="group" class="%s">%s</div>\n<!-- /wp:accordion -->' % (
+        attrs(data), classes, "\n\n".join(rows))
+
+
+def table(head, rows, cls="is-style-stripes"):
+    thead = "<thead><tr>%s</tr></thead>" % "".join("<th>%s</th>" % h for h in head)
+    tbody = "<tbody>%s</tbody>" % "".join("<tr>%s</tr>" % "".join("<td>%s</td>" % c for c in r) for r in rows)
+    return ('<!-- wp:table {"className":"%s"} -->\n<figure class="wp-block-table %s"><table class="has-fixed-layout">%s%s</table></figure>\n'
+            '<!-- /wp:table -->' % (cls, cls, thead, tbody))
+
+
+def page_intro(kicker, title, lede):
+    return group("\n".join([
+        eyebrow(t(kicker), align="center"),
+        heading(t(title), level=1, align="center", cls="tyche-page-title"),
+        para(t(lede), align="center", size="large", color="muted"),
+    ]), layout="constrained", content_size="680px", gap="30", cls="tyche-page-intro")
+
+
+def icon_items(items, cols=3):
+    cells = []
+    for name, title, text in items:
+        cells.append(column(group("\n".join([
+            icon("tyche/" + name, cls="tyche-icon tyche-icon--large"),
+            heading(t(title), level=3, size="large", family="figtree", cls="tyche-usp__title"),
+            para(t(text), color="muted"),
+        ]), layout="flex", orientation="vertical", gap="20", cls="tyche-usp")))
+    return columns(*cells, align="wide", gap="50", cls="tyche-icon-items")
+
+
+# ---------------------------------------------------------------------------
+# Page patterns
+# ---------------------------------------------------------------------------
+def page_about():
+    story = columns(
+        column(image("about-1", ta("Folded wool knitwear on a workshop table"), ratio="4/5"), width="45%"),
+        column(group("\n".join([
+            eyebrow(t("Since 2014")),
+            heading(t("We started with one coat and a list of things we wished it did better"), level=2),
+            para(t("Our founder spent a winter taking apart the coats she loved, to see why some lasted and others did not. "
+                   "The answer was never the label. It was the cloth, the seams and the care someone took with them.")),
+            para(t("Today we work with a handful of mills and workshops we visit every season. We make fewer pieces, in small runs, "
+                   "and we fix what we sell.")),
+        ]), layout="flex", orientation="vertical", gap="30"), valign="center"),
+        align="wide", gap="80", valign="center", cls="tyche-story")
+    values = icon_items([
+        ("leaf", "Better materials", "Traceable wool, organic cotton and leather from tanneries we have visited."),
+        ("recycle", "Made to be mended", "Free repairs in the first year, and spare buttons in every pocket."),
+        ("heart", "Fair from start to finish", "We pay the workshops we use a fair price and publish who they are."),
+    ])
+    gallery = columns(
+        column(image("about-2", ta("A seamstress at her sewing machine"), ratio="3/4")),
+        column(image("about-3", ta("Bolts of undyed wool cloth"), ratio="3/4")),
+        column(image("about-4", ta("A finished coat on a hanger in the studio"), ratio="3/4")),
+        align="wide", gap="30", cls="tyche-about-gallery")
+    return "\n\n".join([
+        section(page_intro("Our story", "Clothes worth keeping", "We make a small collection of well-made clothing and accessories, and we stand behind every piece."), pad=("70", "60")),
+        section(story, pad=("0", "70")),
+        section(section_head(t("What we care about"), kicker=t("Values")) + "\n\n" + values, bg="surface"),
+        section(gallery),
+        newsletter(),
+    ])
+
+
+def page_contact():
+    details = columns(*[
+        column(group("\n".join([
+            icon("tyche/" + name, cls="tyche-icon tyche-icon--large"),
+            heading(t(title), level=2, size="large", family="figtree", cls="tyche-usp__title"),
+            para(body, color="muted"),
+        ]), layout="flex", orientation="vertical", gap="20", cls="tyche-usp"))
+        for name, title, body in (
+            ("headset", "Customer care", tk("hello@example.com<br>+1 (555) 014-2030")),
+            ("clock", "Opening hours", tk("Monday to Friday, 9am to 6pm<br>Saturday, 10am to 4pm")),
+            ("map-pin", "Visit the studio", tk("12 Market Street<br>Portland, OR 97204")),
+        )
+    ], align="wide", gap="50")
+    help_links = group("\n".join([
+        heading(t("Looking for a quick answer?"), level=2, align="center"),
+        para(t("Most questions about orders, delivery and returns are answered in our help pages."), align="center", color="muted"),
+        buttons(button(t("Read the FAQ"), "#", style="tyche-outline"),
+                button(t("Delivery and returns"), "#", style="tyche-outline"), justify="center"),
+    ]), layout="constrained", content_size="620px", gap="30")
+    return "\n\n".join([
+        section(page_intro("Contact", "We are here to help", "Write to us about an order, sizing or anything else. We answer every message within one working day."), pad=("70", "60")),
+        section(details, pad=("0", "70")),
+        section(image("contact-1", ta("The studio shop front on a quiet street"), ratio="21/9", align="wide"), pad=("0", "70")),
+        section(help_links, bg="surface"),
+    ])
+
+
+def page_faq():
+    topics = (
+        ("Orders", (
+            ("Can I change or cancel my order?", "We can change or cancel an order within an hour of it being placed. Write to us with your order number and we will do our best."),
+            ("Do you restock sold-out sizes?", "Most pieces return each season. Create an account and we will email you when a size you want is back."),
+        )),
+        ("Delivery", (
+            ("How long does delivery take?", "Standard delivery takes two to four working days. Orders placed before 1pm on a working day leave the same day."),
+            ("Do you ship internationally?", "We ship to most of Europe and North America. Delivery options and costs for your address appear at checkout."),
+        )),
+        ("Returns and exchanges", (
+            ("What is your returns policy?", "Return unworn items within 30 days for a full refund. Returns are free within the country we shipped to."),
+            ("How do I exchange a size?", "Start a return from your account and choose exchange. We send the new size as soon as the return is scanned."),
+        )),
+        ("Care and repairs", (
+            ("How should I wash knitwear?", "Hand wash or use a wool cycle at 30 degrees, then dry flat. Every piece has care details on its product page."),
+            ("Do you repair items?", "Yes. Repairs are free in the first year and at cost after that. Contact us and we will send a prepaid label."),
+        )),
+    )
+    blocks = []
+    for title, qa in topics:
+        blocks.append(heading(t(title), level=2, size="xx-large"))
+        blocks.append(accordion([(t(q), t(a)) for q, a in qa], cls="tyche-faq"))
+    body = group("\n\n".join(blocks), layout="constrained", content_size="780px", gap="40")
+    return "\n\n".join([
+        section(page_intro("Help", "Frequently asked questions", "Answers to the questions we hear most. Cannot find yours? Our team is happy to help."), pad=("70", "60")),
+        section(body, pad=("0", "80")),
+    ])
+
+
+def page_shipping():
+    delivery = table(
+        [t("Service"), t("Delivery time"), t("Cost")],
+        [
+            [t("Standard"), t("2 to 4 working days"), t("$8, free over $75")],
+            [t("Express"), t("Next working day"), t("$18")],
+            [t("International"), t("5 to 10 working days"), t("Calculated at checkout")],
+        ])
+    steps = columns(*[
+        column(group("\n".join([
+            para(number, cls="tyche-step__number"),
+            heading(t(title), level=3, size="large", family="figtree"),
+            para(t(text), color="muted"),
+        ]), layout="flex", orientation="vertical", gap="20", cls="is-style-tyche-card tyche-step"))
+        for number, title, text in (
+            ("01", "Start your return", "Sign in to your account, choose the order and the items you are sending back."),
+            ("02", "Pack and send", "Use the original packaging if you can, attach the prepaid label and drop it off."),
+            ("03", "Get your refund", "We refund to your original payment method within five days of receiving it."),
+        )
+    ], align="wide", gap="40")
+    return "\n\n".join([
+        section(page_intro("Help", "Delivery and returns", "Tracked delivery on every order, and 30 days to change your mind."), pad=("70", "60")),
+        section(group(heading(t("Delivery options"), level=2) + "\n" + delivery, layout="constrained", content_size="880px", gap="40"), pad=("0", "70")),
+        section(section_head(t("Returns in three steps"), kicker=t("Returns")) + "\n\n" + steps, bg="surface"),
+    ])
+
+
+def page_size_guide():
+    women = table([t("Size"), t("UK"), t("US"), t("Bust (cm)"), t("Waist (cm)"), t("Hips (cm)")], [
+        ["XS", "6", "2", "80", "62", "88"], ["S", "8", "4", "84", "66", "92"], ["M", "10", "6", "88", "70", "96"],
+        ["L", "12", "8", "93", "75", "101"], ["XL", "14", "10", "98", "80", "106"]])
+    men = table([t("Size"), t("Chest (cm)"), t("Waist (cm)"), t("Sleeve (cm)")], [
+        ["S", "92", "78", "63"], ["M", "100", "86", "64"], ["L", "108", "94", "65"], ["XL", "116", "102", "66"]])
+    measure = columns(
+        column(image("size-1", ta("A tape measure around a wool jacket"), ratio="4/5"), width="40%"),
+        column(group("\n".join([
+            heading(t("How to measure"), level=2),
+            check_list(t("Chest: around the fullest part, under your arms"),
+                       t("Waist: around your natural waistline"),
+                       t("Hips: around the fullest part of your hips"),
+                       t("Sleeve: from the centre back of your neck to your wrist")),
+            para(t("Between two sizes? Our pieces are cut relaxed, so choose the smaller size for a closer fit."), color="muted"),
+        ]), layout="flex", orientation="vertical", gap="30"), valign="center"),
+        align="wide", gap="80", valign="center")
+    return "\n\n".join([
+        section(page_intro("Fit", "Size guide", "Body measurements in centimetres. Each product page also lists the garment's own measurements."), pad=("70", "60")),
+        section(group("\n\n".join([heading(t("Women"), level=2), women, heading(t("Men"), level=2), men]),
+                      layout="constrained", content_size="880px", gap="40"), pad=("0", "70")),
+        section(measure, bg="surface"),
+    ])
+
+
+PAGE_PATTERNS = [
+    ("page-about", "About page", page_about, ["about", "story", "brand"]),
+    ("page-contact", "Contact page", page_contact, ["contact", "address", "hours"]),
+    ("page-faq", "FAQ page", page_faq, ["faq", "questions", "help"]),
+    ("page-shipping", "Delivery and returns page", page_shipping, ["shipping", "delivery", "returns"]),
+    ("page-size-guide", "Size guide page", page_size_guide, ["size", "fit", "measurements"]),
+]
+
+
 HOME_SECTIONS = [
     ("hero", "Hero: full-width photograph", hero, STORE, ["hero", "banner", "cover"]),
     ("categories", "Shop by category tiles", category_tiles, STORE, ["category", "collection", "tiles"]),
@@ -952,6 +1155,9 @@ def main():
 
     for slug, title, fn, cats, keywords in HOME_SECTIONS:
         write_pattern(slug, title, fn(), categories=cats, keywords=keywords)
+    for slug, title, fn, keywords in PAGE_PATTERNS:
+        write_pattern(slug, title, fn(), categories=PAGES, keywords=keywords, block_types=["core/post-content"],
+                      post_types=["page"], description="A complete page layout, offered when you create a page.")
     write_pattern("page-home", "Store homepage", "\n\n".join(pattern_ref(s[0]) for s in HOME_SECTIONS),
                   categories=PAGES, keywords=["home", "front page"], template_types=["front-page"],
                   block_types=["core/post-content"], post_types=["page"],
