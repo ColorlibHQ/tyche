@@ -130,6 +130,14 @@ a {
 	transform: translateX(3px);
 }
 
+[dir="rtl"] .wp-block-button.is-style-tyche-link > .wp-block-button__link::after {
+	content: "\2190";
+}
+
+[dir="rtl"] .wp-block-button.is-style-tyche-link > .wp-block-button__link:hover::after {
+	transform: translateX(-3px);
+}
+
 /* Header ----------------------------------------------------------------- */
 
 .tyche-site-header {
@@ -193,12 +201,16 @@ a {
 	bottom: 0;
 	content: "";
 	height: 1px;
-	left: 0;
+	inset-inline-start: 0;
 	position: absolute;
 	transform: scaleX(0);
 	transform-origin: left;
 	transition: transform var(--wp--custom--transition);
 	width: 100%;
+}
+
+[dir="rtl"] .tyche-header__nav .wp-block-navigation__container > .wp-block-navigation-item > .wp-block-navigation-item__content::after {
+	transform-origin: right;
 }
 
 .tyche-header__nav .wp-block-navigation-item__content:hover::after,
@@ -365,11 +377,11 @@ a {
 
 .is-style-tyche-checks {
 	list-style: none;
-	padding-left: 0;
+	padding-inline-start: 0;
 }
 
 .is-style-tyche-checks li {
-	padding-left: 2rem;
+	padding-inline-start: 2rem;
 	position: relative;
 }
 
@@ -381,7 +393,7 @@ a {
 	background: currentColor;
 	content: "";
 	height: 1.25rem;
-	left: 0;
+	inset-inline-start: 0;
 	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5l10 -10'/%3E%3C/svg%3E") center / contain no-repeat;
 	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5l10 -10'/%3E%3C/svg%3E") center / contain no-repeat;
 	position: absolute;
@@ -603,6 +615,10 @@ a {
 	margin-inline-end: 0.4em;
 }
 
+[dir="rtl"] .tyche-checkout-header__back a::before {
+	content: "\2192";
+}
+
 .tyche-checkout-header__secure {
 	color: var(--wp--preset--color--muted);
 	justify-self: end;
@@ -730,7 +746,7 @@ a {
 .wp-block-table th {
 	border-bottom: 1px solid var(--wp--preset--color--contrast);
 	font-weight: 600;
-	text-align: left;
+	text-align: start;
 }
 
 .wp-block-table th,
@@ -755,7 +771,7 @@ a {
 
 .wp-block-table.is-style-stripes td:first-child,
 .wp-block-table.is-style-stripes th:first-child {
-	padding-left: 1rem;
+	padding-inline-start: 1rem;
 }
 
 @media (max-width: 599px) {
