@@ -804,7 +804,7 @@ def hero():
         heading(t("The autumn edit"), level=1, size="colossal", color="overlay", cls="tyche-hero__title"),
         para(t("Wool coats, soft knitwear and the pieces you will reach for all season long."),
              size="large", color="overlay", cls="tyche-hero__lede"),
-        buttons(button(t("Shop new arrivals"), url("shop"), bg="overlay", color="contrast"),
+        buttons(button(t("Shop new arrivals"), url("shop"), bg="overlay", color="dark"),
                 button(t("Explore the lookbook"), "#", style="tyche-outline", color="overlay")),
     ])
     return cover(group(inner, layout="default", cls="tyche-hero__content"),
@@ -860,7 +860,7 @@ def promo_duo():
             eyebrow(t(kicker), color="overlay"),
             heading(t(title), level=2, color="overlay", size="huge"),
             para(t(text), color="overlay"),
-            buttons(button(t(cta), url("shop"), bg="overlay", color="contrast")),
+            buttons(button(t(cta), url("shop"), bg="overlay", color="dark")),
         ]), slug, min_height=560, position="bottom left", cls="tyche-promo is-style-tyche-zoom", gradient=SCRIM))
     body = columns(
         promo("promo-1", "Sale", "Up to 40% off outerwear", "Last season's coats and jackets, while sizes last.",
@@ -922,7 +922,7 @@ def newsletter():
         para(t("Create an account for early access to new collections, members-only offers and faster checkout."),
              color="on-dark", size="large"),
     ]), width="60%")
-    right = column(buttons(button(t("Create an account"), url("myaccount"), bg="overlay", color="contrast")),
+    right = column(buttons(button(t("Create an account"), url("myaccount"), bg="overlay", color="dark")),
                    valign="center", cls="tyche-newsletter__action")
     return section(columns(left, right, align="wide", gap="60", valign="center", cls="tyche-newsletter"),
                    bg="dark", color="on-dark", pad="70")

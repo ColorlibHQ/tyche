@@ -25,8 +25,8 @@ defined( 'ABSPATH' ) || exit;
 
 <!-- wp:column {"verticalAlignment":"center","className":"tyche-newsletter__action"} -->
 <div class="wp-block-column is-vertically-aligned-center tyche-newsletter__action"><!-- wp:buttons -->
-<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"overlay","textColor":"contrast"} -->
-<div class="wp-block-button"><a class="wp-block-button__link has-contrast-color has-overlay-background-color has-text-color has-background wp-element-button" href="<?php echo esc_url( tyche_store_url( 'myaccount' ) ); ?>"><?php esc_html_e( 'Create an account', 'tyche' ); ?></a></div>
+<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"overlay","textColor":"dark"} -->
+<div class="wp-block-button"><a class="wp-block-button__link has-dark-color has-overlay-background-color has-text-color has-background wp-element-button" href="<?php echo esc_url( tyche_store_url( 'myaccount' ) ); ?>"><?php esc_html_e( 'Create an account', 'tyche' ); ?></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:column --></div>

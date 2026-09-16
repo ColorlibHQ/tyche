@@ -28,8 +28,8 @@ defined( 'ABSPATH' ) || exit;
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons -->
-<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"overlay","textColor":"contrast"} -->
-<div class="wp-block-button"><a class="wp-block-button__link has-contrast-color has-overlay-background-color has-text-color has-background wp-element-button" href="<?php echo esc_url( tyche_store_url( 'shop' ) ); ?>"><?php esc_html_e( 'Shop the sale', 'tyche' ); ?></a></div>
+<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"overlay","textColor":"dark"} -->
+<div class="wp-block-button"><a class="wp-block-button__link has-dark-color has-overlay-background-color has-text-color has-background wp-element-button" href="<?php echo esc_url( tyche_store_url( 'shop' ) ); ?>"><?php esc_html_e( 'Shop the sale', 'tyche' ); ?></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div></div>
 <!-- /wp:cover --></div>
@@ -50,8 +50,8 @@ defined( 'ABSPATH' ) || exit;
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons -->
-<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"overlay","textColor":"contrast"} -->
-<div class="wp-block-button"><a class="wp-block-button__link has-contrast-color has-overlay-background-color has-text-color has-background wp-element-button" href="<?php echo esc_url( tyche_store_url( 'shop' ) ); ?>"><?php esc_html_e( 'Discover the capsule', 'tyche' ); ?></a></div>
+<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"overlay","textColor":"dark"} -->
+<div class="wp-block-button"><a class="wp-block-button__link has-dark-color has-overlay-background-color has-text-color has-background wp-element-button" href="<?php echo esc_url( tyche_store_url( 'shop' ) ); ?>"><?php esc_html_e( 'Discover the capsule', 'tyche' ); ?></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div></div>
 <!-- /wp:cover --></div>

@@ -47,15 +47,28 @@ const page = await ( await browser.newContext( {
 await page.goto( site + path, { waitUntil: 'domcontentloaded', timeout: 90000 } );
 await page.waitForTimeout( 2500 );
 
-// TYCHE_DARK=1 measures the same page with dark mode on, which is where the
-// palette is lifted rather than replaced and is the likeliest place for a
-// pairing to fall under AA.
-if ( process.env.TYCHE_DARK ) {
-	await page.evaluate( () => {
-		document.documentElement.classList.add( 'tyche-dark' );
-	} );
+// TYCHE_PALETTE=colors-7-midnight measures the page under a style variation by
+// overriding the preset variables, exactly what the variation changes. The
+// palette audit in build_theme.py checks pairs it knows about; this catches the
+// ones a pattern creates -- a light button labelled `contrast` read white on
+// white in both dark palettes and passed every audit.
+if ( process.env.TYCHE_PALETTE ) {
+	const { readFileSync } = await import( 'node:fs' );
+	const { dirname, join } = await import( 'node:path' );
+	const { fileURLToPath } = await import( 'node:url' );
+	const root = join( dirname( fileURLToPath( import.meta.url ) ), '..' );
+	const file = join( root, 'styles/colors', process.env.TYCHE_PALETTE + '.json' );
+	const palette = JSON.parse( readFileSync( file, 'utf8' ) ).settings.color.palette;
+	const css = ':root, body { ' + palette.map( ( c ) => `--wp--preset--color--${ c.slug }: ${ c.color } !important;` ).join( ' ' ) + ' }';
+	await page.addStyleTag( { content: css } );
 	await page.waitForTimeout( 400 );
 }
+
+// Controls that only appear on hover are measured in their shown state, the only
+// state anyone reads them in. Measuring them hidden sampled the photograph under
+// invisible text and reported the product card buttons at 1.8:1.
+await page.addStyleTag( { content: '.tyche-card-button { opacity: 1 !important; transform: none !important; transition: none !important; }' } );
+await page.waitForTimeout( 200 );
 
 const candidates = await page.evaluate( () => {
 	// rgb()/rgba(), or color(srgb r g b / a), which color-mix() produces.
@@ -83,8 +96,18 @@ const candidates = await page.evaluate( () => {
 		}
 
 		const style = getComputedStyle( el );
-		if ( 'hidden' === style.visibility || '0' === style.opacity || 'none' === style.display ) {
+		if ( 'hidden' === style.visibility || 'none' === style.display ) {
 			return;
+		}
+
+		// Opacity is not inherited as a computed value: a transparent wrapper
+		// leaves its text reporting 1. Anything invisible through an ancestor is
+		// skipped, and counted, so a skip is never silent.
+		for ( let node = el; node; node = node.parentElement ) {
+			if ( '0' === getComputedStyle( node ).opacity ) {
+				window.__tycheHidden = ( window.__tycheHidden || 0 ) + 1;
+				return;
+			}
 		}
 
 		// Climb to whichever comes first: an opaque background colour, which is
@@ -122,6 +145,11 @@ const candidates = await page.evaluate( () => {
 
 	return out;
 } );
+
+const hidden = await page.evaluate( () => window.__tycheHidden || 0 );
+if ( hidden ) {
+	console.log( `${ hidden } text node(s) invisible through an ancestor with opacity 0, not measured` );
+}
 
 const findings = [];
 let onPhotos = 0;

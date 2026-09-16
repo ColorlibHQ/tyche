@@ -119,6 +119,9 @@ CONTRAST_CHECKS = [
     ("on-sale", "sale"),                              # sale badge label
     ("success", "base"),                              # "In stock"
     ("on-dark", "dark"), ("overlay", "dark"),         # announcement bar, footer
+    # Light buttons on photographs: an `overlay` fill with a `dark` label. The
+    # label was `contrast` until the dark palettes turned it near-white on white.
+    ("dark", "overlay"),
 ]
 
 # ---------------------------------------------------------------------------
