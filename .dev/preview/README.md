@@ -16,8 +16,22 @@ same reason: `tyche` is the 1.x theme that demo uses.
 
 ## Redeploying the theme and plugin
 
+Bump `TYCHE_VERSION` and the `Version:` header first: assets are cached by
+their `?ver=` string, so an unchanged version keeps serving the old CSS.
+
 ```bash
-git archive 2.0 | ssh hetzner 'D=$(mktemp -d); tar -x -C $D; sudo rsync -a --delete --chown=web_colorlibhub_com:web_colorlibhub_com $D/ /var/www/colorlibhub.com/public/wp-content/themes/tyche-2/; rm -rf $D'
+git archive 2.0 | ssh hetzner 'D=$(mktemp -d); tar -x -C $D; sudo rsync -a --delete --chmod=D755,F644 --chown=web_colorlibhub_com:web_colorlibhub_com $D/ /var/www/colorlibhub.com/public/wp-content/themes/tyche-2/; rm -rf $D'
+```
+
+`--chmod` matters. `mktemp -d` makes a 700 directory and `rsync -a` copies that
+mode onto the theme directory, which leaves nginx unable to read any theme file:
+every stylesheet returns 403 and the store renders unstyled. That happened on
+2026-09-17. Check afterwards in a browser, not with curl -- Cloudflare answers a
+bare curl for theme assets with its own 403 whatever the file's state:
+
+```bash
+# expect 200 for style.css and woocommerce.css
+node -e "const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await b.newPage();p.on('response',r=>/themes\/tyche-2\/.*\.css/.test(r.url())&&console.log(r.status(),r.url()));await p.goto('https://colorlibhub.com/tyche-2/');await b.close()})()"
 ```
 
 Then purge this site's FastCGI entries:
