@@ -49,7 +49,7 @@ defined( 'ABSPATH' ) || exit;
 
 <!-- wp:buttons -->
 <div class="wp-block-buttons"><!-- wp:button {"className":"is-style-tyche-outline"} -->
-<div class="wp-block-button is-style-tyche-outline"><a class="wp-block-button__link wp-element-button" href="#"><?php esc_html_e( 'Read our story', 'tyche' ); ?></a></div>
+<div class="wp-block-button is-style-tyche-outline"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( tyche_page_url( 'about' ) ); ?>"><?php esc_html_e( 'Read our story', 'tyche' ); ?></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></div>

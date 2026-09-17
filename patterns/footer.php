@@ -37,13 +37,13 @@ defined( 'ABSPATH' ) || exit;
 <!-- /wp:heading -->
 
 <!-- wp:navigation {"overlayMenu":"never","className":"tyche-footer__links","style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-<!-- wp:navigation-link {"label":"New arrivals","url":"#","kind":"custom","isTopLevelLink":true} /-->
+<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'New arrivals', 'tyche' ); ?>","url":"<?php echo esc_url( tyche_shop_sorted_url( 'date' ) ); ?>","kind":"custom","isTopLevelLink":true} /-->
 
-<!-- wp:navigation-link {"label":"Best sellers","url":"#","kind":"custom","isTopLevelLink":true} /-->
+<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Best sellers', 'tyche' ); ?>","url":"<?php echo esc_url( tyche_shop_sorted_url( 'popularity' ) ); ?>","kind":"custom","isTopLevelLink":true} /-->
 
-<!-- wp:navigation-link {"label":"Sale","url":"#","kind":"custom","isTopLevelLink":true} /-->
+<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Top rated', 'tyche' ); ?>","url":"<?php echo esc_url( tyche_shop_sorted_url( 'rating' ) ); ?>","kind":"custom","isTopLevelLink":true} /-->
 
-<!-- wp:navigation-link {"label":"Gift cards","url":"#","kind":"custom","isTopLevelLink":true} /-->
+<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'All products', 'tyche' ); ?>","url":"<?php echo esc_url( tyche_store_url( 'shop' ) ); ?>","kind":"custom","isTopLevelLink":true} /-->
 <!-- /wp:navigation --></div>
 <!-- /wp:column -->
 
@@ -53,13 +53,13 @@ defined( 'ABSPATH' ) || exit;
 <!-- /wp:heading -->
 
 <!-- wp:navigation {"overlayMenu":"never","className":"tyche-footer__links","style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-<!-- wp:navigation-link {"label":"Delivery","url":"#","kind":"custom","isTopLevelLink":true} /-->
+<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Delivery and returns', 'tyche' ); ?>","url":"<?php echo esc_url( tyche_page_url( 'delivery-returns' ) ); ?>","kind":"custom","isTopLevelLink":true} /-->
 
-<!-- wp:navigation-link {"label":"Returns \u0026 exchanges","url":"#","kind":"custom","isTopLevelLink":true} /-->
+<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Size guide', 'tyche' ); ?>","url":"<?php echo esc_url( tyche_page_url( 'size-guide' ) ); ?>","kind":"custom","isTopLevelLink":true} /-->
 
-<!-- wp:navigation-link {"label":"Size guide","url":"#","kind":"custom","isTopLevelLink":true} /-->
+<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'FAQ', 'tyche' ); ?>","url":"<?php echo esc_url( tyche_page_url( 'faq' ) ); ?>","kind":"custom","isTopLevelLink":true} /-->
 
-<!-- wp:navigation-link {"label":"Contact us","url":"#","kind":"custom","isTopLevelLink":true} /-->
+<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'My account', 'tyche' ); ?>","url":"<?php echo esc_url( tyche_store_url( 'myaccount' ) ); ?>","kind":"custom","isTopLevelLink":true} /-->
 <!-- /wp:navigation --></div>
 <!-- /wp:column -->
 
@@ -69,13 +69,11 @@ defined( 'ABSPATH' ) || exit;
 <!-- /wp:heading -->
 
 <!-- wp:navigation {"overlayMenu":"never","className":"tyche-footer__links","style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-<!-- wp:navigation-link {"label":"Our story","url":"#","kind":"custom","isTopLevelLink":true} /-->
+<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Our story', 'tyche' ); ?>","url":"<?php echo esc_url( tyche_page_url( 'about' ) ); ?>","kind":"custom","isTopLevelLink":true} /-->
 
-<!-- wp:navigation-link {"label":"Journal","url":"#","kind":"custom","isTopLevelLink":true} /-->
+<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Journal', 'tyche' ); ?>","url":"<?php echo esc_url( tyche_blog_url() ); ?>","kind":"custom","isTopLevelLink":true} /-->
 
-<!-- wp:navigation-link {"label":"Sustainability","url":"#","kind":"custom","isTopLevelLink":true} /-->
-
-<!-- wp:navigation-link {"label":"Stores","url":"#","kind":"custom","isTopLevelLink":true} /-->
+<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Contact us', 'tyche' ); ?>","url":"<?php echo esc_url( tyche_page_url( 'contact' ) ); ?>","kind":"custom","isTopLevelLink":true} /-->
 <!-- /wp:navigation --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->

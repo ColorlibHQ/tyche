@@ -32,7 +32,7 @@ defined( 'ABSPATH' ) || exit;
 <!-- /wp:button -->
 
 <!-- wp:button {"textColor":"overlay","className":"is-style-tyche-outline"} -->
-<div class="wp-block-button is-style-tyche-outline"><a class="wp-block-button__link has-overlay-color has-text-color wp-element-button" href="#"><?php esc_html_e( 'Explore the lookbook', 'tyche' ); ?></a></div>
+<div class="wp-block-button is-style-tyche-outline"><a class="wp-block-button__link has-overlay-color has-text-color wp-element-button" href="<?php echo esc_url( tyche_category_url( 'knitwear' ) ); ?>"><?php esc_html_e( 'Shop knitwear', 'tyche' ); ?></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></div>

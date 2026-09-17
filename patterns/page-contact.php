@@ -94,11 +94,11 @@ defined( 'ABSPATH' ) || exit;
 
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
 <div class="wp-block-buttons"><!-- wp:button {"className":"is-style-tyche-outline"} -->
-<div class="wp-block-button is-style-tyche-outline"><a class="wp-block-button__link wp-element-button" href="#"><?php esc_html_e( 'Read the FAQ', 'tyche' ); ?></a></div>
+<div class="wp-block-button is-style-tyche-outline"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( tyche_page_url( 'faq' ) ); ?>"><?php esc_html_e( 'Read the FAQ', 'tyche' ); ?></a></div>
 <!-- /wp:button -->
 
 <!-- wp:button {"className":"is-style-tyche-outline"} -->
-<div class="wp-block-button is-style-tyche-outline"><a class="wp-block-button__link wp-element-button" href="#"><?php esc_html_e( 'Delivery and returns', 'tyche' ); ?></a></div>
+<div class="wp-block-button is-style-tyche-outline"><a class="wp-block-button__link wp-element-button" href="<?php echo esc_url( tyche_page_url( 'delivery-returns' ) ); ?>"><?php esc_html_e( 'Delivery and returns', 'tyche' ); ?></a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group --></section>

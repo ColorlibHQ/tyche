@@ -69,6 +69,26 @@ def url(page):
 
 
 HOME = "<?php echo esc_url( home_url( '/' ) ); ?>"
+
+
+def page_link(slug):
+    return "<?php echo esc_url( tyche_page_url( '%s' ) ); ?>" % slug
+
+
+def category_link(slug):
+    return "<?php echo esc_url( tyche_category_url( '%s' ) ); ?>" % slug
+
+
+def sorted_link(orderby):
+    return "<?php echo esc_url( tyche_shop_sorted_url( '%s' ) ); ?>" % orderby
+
+
+BLOG = "<?php echo esc_url( tyche_blog_url() ); ?>"
+
+
+def attr_t(text):
+    """A translated string inside a block comment attribute (a navigation label)."""
+    return "<?php echo esc_attr__( '%s', 'tyche' ); ?>" % _php(text)
 IF_WOO = "<?php if ( tyche_has_woocommerce() ) : ?>"
 END_IF = "<?php endif; ?>"
 
@@ -568,9 +588,13 @@ def header_pattern():
                       description="Swap it in from the Site Editor: select the header and choose Replace.")
 
 
+def nav_links(items):
+    return "\n".join(block("navigation-link", {"label": attr_t(label), "url": href, "kind": "custom", "isTopLevelLink": True})
+                     for label, href in items)
+
+
 def footer_links(title, items):
-    links = "\n".join(block("navigation-link", {"label": label, "url": "#", "kind": "custom", "isTopLevelLink": True})
-                      for label in items)
+    links = nav_links(items)
     nav = block("navigation", {"overlayMenu": "never", "className": "tyche-footer__links",
                                "layout": {"type": "flex", "orientation": "vertical"},
                                "style": {"spacing": {"blockGap": "var:preset|spacing|20"}}}, links)
@@ -590,9 +614,12 @@ def footer_pattern():
     ]), width="36%")
     top = columns(
         brand,
-        footer_links("Shop", ["New arrivals", "Best sellers", "Sale", "Gift cards"]),
-        footer_links("Help", ["Delivery", "Returns & exchanges", "Size guide", "Contact us"]),
-        footer_links("About", ["Our story", "Journal", "Sustainability", "Stores"]),
+        footer_links("Shop", [("New arrivals", sorted_link("date")), ("Best sellers", sorted_link("popularity")),
+                               ("Top rated", sorted_link("rating")), ("All products", url("shop"))]),
+        footer_links("Help", [("Delivery and returns", page_link("delivery-returns")), ("Size guide", page_link("size-guide")),
+                              ("FAQ", page_link("faq")), ("My account", url("myaccount"))]),
+        footer_links("About", [("Our story", page_link("about")), ("Journal", BLOG),
+                               ("Contact us", page_link("contact"))]),
         cls="tyche-footer__columns", align="wide", gap="60")
     write_pattern("footer-payments", "Footer payment icons", "\n".join([
         IF_WOO, block("woocommerce/payment-method-icons", {"className": "tyche-footer__payments"}), END_IF,
@@ -612,8 +639,8 @@ def footer_pattern():
 
 
 def footer_simple_pattern():
-    links = "\n".join(block("navigation-link", {"label": label, "url": "#", "kind": "custom", "isTopLevelLink": True})
-                      for label in ("Shop", "About", "Delivery", "Returns", "Contact"))
+    links = nav_links([("Shop", url("shop")), ("About", page_link("about")), ("Delivery and returns", page_link("delivery-returns")),
+                       ("FAQ", page_link("faq")), ("Contact", page_link("contact"))])
     nav = block("navigation", {"overlayMenu": "never", "className": "tyche-footer__links",
                                "layout": {"type": "flex", "justifyContent": "center"},
                                "style": {"spacing": {"blockGap": "var:preset|spacing|40"}}}, links)
@@ -853,7 +880,7 @@ def hero():
         para(t("Wool coats, soft knitwear and the pieces you will reach for all season long."),
              size="large", color="overlay", cls="tyche-hero__lede"),
         buttons(button(t("Shop new arrivals"), url("shop"), bg="overlay", color="dark"),
-                button(t("Explore the lookbook"), "#", style="tyche-outline", color="overlay")),
+                button(t("Shop knitwear"), category_link("knitwear"), style="tyche-outline", color="overlay")),
     ])
     # The text block sits inside a wide-aligned wrapper so its left edge lines up
     # with the header and every section at any screen width; on its own it hugged
@@ -870,7 +897,7 @@ def category_tiles():
                              ("cat-dresses", "Dresses", "Easy shapes, day to evening"),
                              ("cat-accessories", "Accessories", "Scarves, bags and finishing touches")):
         inner = "\n".join([
-            heading('<a href="%s">%s</a>' % (url("shop"), t(name)), level=3, color="overlay", size="xx-large",
+            heading('<a href="%s">%s</a>' % (category_link(name.lower()), t(name)), level=3, color="overlay", size="xx-large",
                     cls="tyche-tile__title"),
             para(t(note), color="overlay", size="small"),
         ])
@@ -882,7 +909,8 @@ def category_tiles():
 
 
 def product_row(collection, kicker, title, link, carousel=False, bg=None):
-    body = section_head(t(title), kicker=t(kicker), link_text=t(link), link_href=url("shop"))
+    href = {"new-arrivals": sorted_link("date"), "best-sellers": sorted_link("popularity")}.get(collection, url("shop"))
+    body = section_head(t(title), kicker=t(kicker), link_text=t(link), link_href=href)
     body += "\n\n" + product_collection(collection, per_page=8 if carousel else 4, cols=4, carousel=carousel)
     return IF_WOO + "\n" + section(body, cls="tyche-product-row", bg=bg) + "\n" + END_IF
 
@@ -896,7 +924,7 @@ def story_split():
              size="large", color="muted"),
         check_list(t("Traceable wool from family-run farms"), t("Finished by hand in small batches"),
                    t("Free repairs for the first year")),
-        buttons(button(t("Read our story"), "#", style="tyche-outline")),
+        buttons(button(t("Read our story"), page_link("about"), style="tyche-outline")),
     ])
     body = columns(column(image("story-1", ta("Folded grey knitwear stacked on an oak table"), ratio="4/5",
                                 cls="tyche-story__image"), width="50%"),
@@ -962,7 +990,7 @@ def reviews():
 
 
 def journal():
-    body = section_head(t("From the journal"), kicker=t("Stories"), link_text=t("All stories"), link_href="#")
+    body = section_head(t("From the journal"), kicker=t("Stories"), link_text=t("All stories"), link_href=BLOG)
     body += "\n\n" + post_grid(inherit=False, per_page=3, cols=3, pagination=False)
     return section(body)
 
@@ -1077,8 +1105,8 @@ def page_contact():
     help_links = group("\n".join([
         heading(t("Looking for a quick answer?"), level=2, align="center"),
         para(t("Most questions about orders, delivery and returns are answered in our help pages."), align="center", color="muted"),
-        buttons(button(t("Read the FAQ"), "#", style="tyche-outline"),
-                button(t("Delivery and returns"), "#", style="tyche-outline"), justify="center"),
+        buttons(button(t("Read the FAQ"), page_link("faq"), style="tyche-outline"),
+                button(t("Delivery and returns"), page_link("delivery-returns"), style="tyche-outline"), justify="center"),
     ]), layout="constrained", content_size="620px", gap="30")
     return "\n\n".join([
         section(page_intro("Contact", "We are here to help", "Write to us about an order, sizing or anything else. We answer every message within one working day."), pad=("70", "60")),
