@@ -270,9 +270,34 @@
 	text-decoration: underline;
 }
 
+/* Notices: WooCommerce draws a 1px near-black border (green for success) and
+   focuses the notice for screen readers, which added its focus ring on top. */
 .wc-block-components-notice-banner {
+	background-color: var(--wp--preset--color--base) !important;
+	border: 1px solid var(--wp--preset--color--divider) !important;
+	border-inline-start: 3px solid var(--wp--preset--color--contrast) !important;
 	border-radius: var(--wp--custom--radius--medium) !important;
+	box-shadow: none !important;
+	color: var(--wp--preset--color--contrast) !important;
 	font-size: var(--wp--preset--font-size--small);
+}
+
+.wc-block-components-notice-banner.is-success {
+	border-inline-start-color: var(--wp--preset--color--success) !important;
+}
+
+.wc-block-components-notice-banner.is-error {
+	border-inline-start-color: var(--wp--preset--color--sale) !important;
+}
+
+.wc-block-components-notice-banner:focus,
+.wc-block-components-notice-banner:focus-visible {
+	outline: none !important;
+}
+
+.wc-block-components-notice-banner.is-success > svg {
+	background-color: var(--wp--preset--color--success) !important;
+	fill: var(--wp--preset--color--base) !important;
 }
 
 .tyche-shop__toolbar {
@@ -832,4 +857,116 @@
 .tyche-product__add table.variations tr {
 	display: block;
 	width: 100%;
+}
+
+/* Filter chips, clear button and price fields: the theme's quiet borders
+   instead of WooCommerce's dark defaults. */
+.wc-block-product-filter-removable-chips__item {
+	background: var(--wp--preset--color--surface) !important;
+	border-color: var(--wp--preset--color--divider) !important;
+	border-radius: var(--wp--custom--radius--pill) !important;
+	font-size: var(--wp--preset--font-size--small);
+	padding: 0.3rem 0.75rem !important;
+}
+
+.wc-block-product-filter-clear-button .wp-block-button__link {
+	border: 1px solid var(--wp--preset--color--divider) !important;
+	border-radius: var(--wp--custom--radius--pill) !important;
+	font-size: var(--wp--preset--font-size--small) !important;
+	padding: 0.35rem 0.9rem !important;
+}
+
+.wc-block-product-filter-clear-button .wp-block-button__link:hover {
+	border-color: var(--wp--preset--color--contrast) !important;
+}
+
+.wc-block-product-filter-price-slider__left.text,
+.wc-block-product-filter-price-slider__right.text {
+	border: 1px solid var(--wp--preset--color--divider) !important;
+	border-radius: var(--wp--custom--radius--small) !important;
+	font-size: var(--wp--preset--font-size--small);
+}
+
+/* Add to cart with options: stepper, button and variation chips. ------------ */
+
+/* One row: the stepper at its own width, the button filling the rest. The
+   button's wrapper is a column flex box, so a flex size given to it became its
+   height -- a 192px-tall pill -- until the direction was set. */
+.tyche-product__add.wc-block-add-to-cart-with-options > .wp-block-group {
+	align-items: center;
+	flex-wrap: nowrap;
+	gap: 0.75rem;
+}
+
+.tyche-product__add .wp-block-woocommerce-add-to-cart-with-options-quantity-selector {
+	flex: 0 0 auto;
+}
+
+.tyche-product__add .wc-block-add-to-cart-with-options__quantity-selector .wc-block-components-quantity-selector {
+	height: 3.25rem;
+	margin: 0;
+	min-width: 8.5rem;
+}
+
+.tyche-product__add .wc-block-components-quantity-selector input.qty {
+	border: 0;
+	box-shadow: none;
+	font-size: var(--wp--preset--font-size--medium);
+}
+
+.tyche-product__add .wp-block-woocommerce-product-button {
+	align-items: center;
+	flex: 1 1 auto;
+	flex-direction: row;
+	margin: 0;
+	min-width: 0;
+}
+
+.tyche-product__add .wc-block-components-product-button__button {
+	flex: 1 1 auto;
+	font-size: var(--wp--preset--font-size--medium);
+	height: 3.25rem;
+	justify-content: center;
+	min-height: 3.25rem;
+	width: 100%;
+}
+
+.tyche-product__add .wp-block-woocommerce-add-to-cart-with-options-variation-selector-attribute-name {
+	font-size: var(--wp--preset--font-size--small);
+	font-weight: 600;
+}
+
+.tyche-product__add .wc-block-product-filter-chips__items {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.tyche-product__add .wc-block-product-filter-chips__item {
+	background: var(--wp--preset--color--base);
+	border: 1px solid var(--wp--preset--color--divider);
+	border-radius: var(--wp--custom--radius--pill);
+	color: var(--wp--preset--color--contrast);
+	font-size: var(--wp--preset--font-size--small);
+	min-height: 2.75rem;
+	min-width: 3rem;
+	padding: 0.5rem 1rem;
+	transition: border-color var(--wp--custom--transition), background-color var(--wp--custom--transition);
+}
+
+.tyche-product__add .wc-block-product-filter-chips__item:hover {
+	border-color: var(--wp--preset--color--contrast);
+}
+
+.tyche-product__add .wc-block-product-filter-chips__item[aria-checked="true"] {
+	background: var(--wp--preset--color--contrast);
+	border-color: var(--wp--preset--color--contrast);
+	color: var(--wp--preset--color--base);
+}
+
+.tyche-product__add .wc-block-product-filter-chips__item:disabled,
+.tyche-product__add .wc-block-product-filter-chips__item[aria-disabled="true"] {
+	cursor: not-allowed;
+	opacity: 0.45;
+	text-decoration: line-through;
 }

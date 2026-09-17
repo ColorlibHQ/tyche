@@ -45,7 +45,7 @@ defined( 'ABSPATH' ) || exit;
 
 <!-- wp:post-excerpt {"excerptLength":60,"className":"tyche-product__excerpt","__woocommerceNamespace":"woocommerce/product-query/product-summary"} /-->
 
-<!-- wp:woocommerce/add-to-cart-form {"className":"tyche-product__add"} /-->
+<!-- wp:woocommerce/add-to-cart-with-options {"className":"tyche-product__add"} /-->
 
 <!-- wp:group {"className":"tyche-assurances","style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","orientation":"vertical"}} -->
 <div class="wp-block-group tyche-assurances"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->

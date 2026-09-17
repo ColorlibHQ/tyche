@@ -720,7 +720,7 @@ def product_body():
                                             "className": "tyche-product__price"}),
         block("post-excerpt", {"excerptLength": 60, "className": "tyche-product__excerpt",
                                "__woocommerceNamespace": "woocommerce/product-query/product-summary"}),
-        block("woocommerce/add-to-cart-form", {"className": "tyche-product__add"}),
+        block("woocommerce/add-to-cart-with-options", {"className": "tyche-product__add"}),
         assurances,
         block("woocommerce/product-meta", None, '<div class="wp-block-woocommerce-product-meta">\n%s\n</div>' % group(
             "\n".join([block("woocommerce/product-sku"),

@@ -7,7 +7,7 @@ Description: Tyche is a WooCommerce block theme for fashion, lifestyle and indep
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 2.0.0-dev.2
+Version: 2.0.0-dev.3
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: tyche
@@ -39,9 +39,20 @@ a {
 	text-underline-offset: 0.2em;
 }
 
-:where(a, button, input, select, textarea, summary):focus-visible {
+/* Keyboard focus on links and buttons: a clear ring that only keyboard users see. */
+:where(a, button, summary, [role="button"], [role="radio"], [role="checkbox"]):focus-visible {
 	outline: 2px solid var(--wp--preset--color--contrast);
-	outline-offset: 3px;
+	outline-offset: 2px;
+}
+
+/* Fields: a darker border and a soft halo instead of an outline. A 2px outline
+   three pixels outside the field's own border drew a heavy double ring around
+   every select and search box a shopper clicked into. */
+:where(input, select, textarea):focus,
+:where(input, select, textarea):focus-visible {
+	border-color: var(--wp--preset--color--contrast);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--wp--preset--color--contrast) 12%, transparent);
+	outline: none;
 }
 
 :where(.has-dark-background-color, .wp-block-cover) :where(a, button):focus-visible {
@@ -274,11 +285,30 @@ a {
 	padding: 0;
 }
 
+/* The three header controls share one 44px box so their icons sit on one line.
+   The search form was 50px tall with its button pinned to the top, the account
+   link 40px and the cart 44px, which put the glyphs up to 3px apart. */
+.tyche-header__actions > * {
+	align-items: center;
+	display: flex;
+	margin: 0;
+	min-height: 2.75rem;
+}
+
+.tyche-header__search.wp-block-search,
+.tyche-header__search .wp-block-search__inside-wrapper {
+	align-items: center;
+	display: flex;
+	margin: 0;
+	min-height: 2.75rem;
+}
+
 .tyche-header__search:not(.wp-block-search__searchfield-hidden) .wp-block-search__input {
 	border: 1px solid var(--wp--preset--color--divider);
 	border-radius: var(--wp--custom--radius--pill);
+	height: 2.5rem;
 	margin-inline-end: 0.25rem;
-	padding: 0.55rem 1rem;
+	padding: 0 1rem;
 }
 
 /* Sections --------------------------------------------------------------- */
@@ -550,10 +580,6 @@ a {
 	color: var(--wp--preset--color--contrast);
 	font: inherit;
 	padding: 0.7rem 0.9rem;
-}
-
-:where(input, select, textarea):focus {
-	border-color: var(--wp--preset--color--contrast);
 }
 
 /* Footer ----------------------------------------------------------------- */
@@ -852,8 +878,14 @@ a {
 	border-inline-start: 1px solid var(--wp--preset--color--divider);
 }
 
+/* Icons line up with the titles, so all four sit on one line however the
+   copy under each title wraps. */
 .tyche-promise {
-	align-items: center !important;
+	align-items: flex-start !important;
+}
+
+.tyche-promise__copy {
+	padding-top: 0.35rem;
 }
 
 .tyche-promise__icon {
