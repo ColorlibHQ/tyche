@@ -951,17 +951,27 @@ def promo_duo():
 
 
 def usp_strip():
+    """Store promises: a bordered card, icon discs beside short copy, dividers between.
+
+    The first version was a full-bleed band with hairlines, small left-aligned items
+    and icons pressed against the top rule. Grouping the four promises in one card
+    gives them an edge, and putting each icon beside its copy reads as a list of
+    promises rather than four unrelated paragraphs.
+    """
     items = []
     for name, title, text in (("truck-delivery", "Free delivery over $75", "Tracked delivery in two to four working days."),
                               ("arrow-back-up", "30-day returns", "Changed your mind? Send it back for free."),
                               ("lock", "Secure payment", "Card, wallet and pay-later options at checkout."),
                               ("headset", "Real people", "Our team answers every message within a day.")):
-        items.append(column(group("\n".join([
-            icon("tyche/" + name, cls="tyche-icon tyche-icon--large"),
-            heading(t(title), level=3, cls="tyche-usp__title", size="medium", family="figtree"),
-            para(t(text), size="small", color="muted"),
-        ]), layout="flex", orientation="vertical", gap="20", cls="tyche-usp")))
-    return section(columns(*items, cls="tyche-usps", align="wide", gap="50"), pad="60", cls="tyche-usp-band")
+        copy = group("\n".join([
+            heading(t(title), level=3, cls="tyche-promise__title", size="medium", family="figtree"),
+            para(t(text), size="small", color="muted", cls="tyche-promise__text"),
+        ]), layout="flex", orientation="vertical", gap="10", cls="tyche-promise__copy")
+        items.append(column(group(icon("tyche/" + name, cls="tyche-icon tyche-promise__icon") + "\n" + copy,
+                                  layout="flex", wrap="nowrap", gap="30", cls="tyche-promise")))
+    card = group(columns(*items, cls="tyche-promises__items", gap="0"), cls="tyche-promises", align="wide",
+                 layout="default")
+    return section(card, pad=("0", "70"), cls="tyche-promises-section")
 
 
 def reviews():
@@ -996,15 +1006,25 @@ def journal():
 
 
 def newsletter():
-    left = column("\n".join([
-        heading(t("Take 10% off your first order"), level=2, size="huge", color="overlay"),
-        para(t("Create an account for early access to new collections, members-only offers and faster checkout."),
-             color="on-dark", size="large"),
-    ]), width="60%")
-    right = column(buttons(button(t("Create an account"), url("myaccount"), bg="overlay", color="dark")),
-                   valign="center", cls="tyche-newsletter__action")
-    return section(columns(left, right, align="wide", gap="60", valign="center", cls="tyche-newsletter"),
-                   bg="dark", color="on-dark", pad="70")
+    """Account sign-up: a light card with a photograph, just above the dark footer.
+
+    It was a dark band, and above the dark footer the two read as one block, so
+    the offer disappeared into the page's end. A light rounded card with a
+    photograph separates it from the footer and gives the offer its own moment.
+    """
+    image_col = column(cover("", "about-2", min_height=460, dim=0, cls="tyche-cta__media"),
+                       width="45%", cls="tyche-cta__media-column")
+    content = column(group("\n".join([
+        eyebrow(t("Members")),
+        heading(t("Take 10% off your first order"), level=2, size="huge"),
+        para(t("Create a free account and your welcome code is waiting at checkout."), size="large", color="muted"),
+        check_list(t("Early access to new collections"), t("Members-only offers through the year"),
+                   t("Faster checkout and easy returns")),
+        buttons(button(t("Create an account"), url("myaccount")),
+                button(t("Shop new arrivals"), sorted_link("date"), style="tyche-outline")),
+    ]), layout="flex", orientation="vertical", gap="40", cls="tyche-cta__content"), valign="center")
+    card = columns(image_col, content, cls="tyche-cta", align="wide", gap="0", valign="center")
+    return section(card, pad=("0", "80"), cls="tyche-cta-section")
 
 
 # ---------------------------------------------------------------------------
@@ -1214,7 +1234,7 @@ HOME_SECTIONS = [
     ("story", "Brand story with photograph", story_split, CONTENT, ["about", "story", "craft"]),
     ("products-best", "Product carousel: best sellers", lambda: product_row("best-sellers", "Most loved", "Best sellers", "Shop best sellers", carousel=True), STORE, ["products", "carousel", "best sellers"]),
     ("promos", "Two promotions", promo_duo, STORE, ["sale", "promotion", "banner"]),
-    ("usps", "Store promises with icons", usp_strip, STORE, ["delivery", "returns", "features"]),
+    ("usps", "Store promises with icons", usp_strip, STORE, ["delivery", "returns", "features", "promises"]),
     ("reviews", "Customer reviews", reviews, CONTENT, ["testimonials", "reviews"]),
     ("journal", "Latest journal posts", journal, CONTENT, ["blog", "posts", "news"]),
     ("newsletter", "Account sign-up call to action", newsletter, STORE, ["newsletter", "signup", "cta"]),

@@ -416,27 +416,24 @@ a {
 	padding: var(--wp--preset--spacing--50);
 }
 
+/* Tyche's icons are outline drawings. The Icon block paints SVGs with
+   fill: currentColor, which turned every one into a solid blob. */
 .tyche-icon svg {
 	display: block;
+	fill: none;
 	height: 1.25rem;
+	stroke: currentColor;
 	width: 1.25rem;
+}
+
+.tyche-usp h3,
+.tyche-usp p {
+	margin: 0;
 }
 
 .tyche-icon--large svg {
 	height: 2rem;
 	width: 2rem;
-}
-
-.tyche-usp-band {
-	border-block: 1px solid var(--wp--preset--color--divider);
-}
-
-.tyche-usp h3 {
-	margin: 0;
-}
-
-.tyche-usp p {
-	margin: 0;
 }
 
 .tyche-stars {
@@ -832,4 +829,127 @@ a {
 .tyche-footer--simple .tyche-footer__title,
 .tyche-footer--simple .tyche-footer__legal {
 	margin: 0;
+}
+
+/* Store promises ------------------------------------------------------------ */
+
+.tyche-promises {
+	background: var(--wp--preset--color--base);
+	border: 1px solid var(--wp--preset--color--divider);
+	border-radius: var(--wp--custom--radius--large);
+	padding: var(--wp--preset--spacing--40) var(--wp--preset--spacing--30);
+}
+
+.tyche-promises__items.wp-block-columns {
+	margin: 0;
+}
+
+.tyche-promises__items > .wp-block-column {
+	padding: var(--wp--preset--spacing--20) var(--wp--preset--spacing--40);
+}
+
+.tyche-promises__items > .wp-block-column + .wp-block-column {
+	border-inline-start: 1px solid var(--wp--preset--color--divider);
+}
+
+.tyche-promise {
+	align-items: center !important;
+}
+
+.tyche-promise__icon {
+	align-items: center;
+	background: var(--wp--preset--color--surface);
+	border-radius: 50%;
+	color: var(--wp--preset--color--contrast);
+	display: flex;
+	flex-shrink: 0;
+	height: 3.25rem;
+	justify-content: center;
+	width: 3.25rem;
+}
+
+.tyche-promise__icon svg {
+	height: 1.5rem;
+	width: 1.5rem;
+}
+
+.tyche-promise__title {
+	font-weight: 600;
+	line-height: 1.3;
+	margin: 0;
+}
+
+.tyche-promise__text {
+	line-height: 1.45;
+	margin: 0;
+}
+
+@media (max-width: 1023px) {
+	.tyche-promises__items.wp-block-columns {
+		display: grid;
+		gap: var(--wp--preset--spacing--30);
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.tyche-promises__items > .wp-block-column + .wp-block-column {
+		border-inline-start: 0;
+	}
+}
+
+@media (max-width: 599px) {
+	.tyche-promises__items.wp-block-columns {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.tyche-promises__items > .wp-block-column {
+		padding-inline: var(--wp--preset--spacing--20);
+	}
+
+	.tyche-promises__items > .wp-block-column + .wp-block-column {
+		border-top: 1px solid var(--wp--preset--color--divider);
+		padding-top: var(--wp--preset--spacing--30);
+	}
+}
+
+/* Account sign-up card ------------------------------------------------------ */
+
+.tyche-cta.wp-block-columns {
+	background: var(--wp--preset--color--surface);
+	border-radius: var(--wp--custom--radius--large);
+	overflow: hidden;
+}
+
+.tyche-cta__media-column {
+	align-self: stretch !important;
+}
+
+.tyche-cta__media.wp-block-cover {
+	border-radius: 0;
+	height: 100%;
+}
+
+.tyche-cta__content {
+	padding: var(--wp--preset--spacing--60);
+}
+
+.tyche-cta__content > * {
+	margin-block: 0;
+}
+
+.tyche-cta__content h2 {
+	line-height: 1.02;
+}
+
+.tyche-cta__content .is-style-tyche-eyebrow {
+	color: var(--wp--preset--color--muted);
+}
+
+@media (max-width: 781px) {
+	.tyche-cta__media.wp-block-cover {
+		min-height: 260px !important;
+	}
+
+	.tyche-cta__content {
+		padding: var(--wp--preset--spacing--50) var(--wp--preset--spacing--40);
+	}
 }
