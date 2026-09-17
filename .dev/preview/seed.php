@@ -57,9 +57,9 @@ function tyche_demo_term( $name, $slug, $description ) {
 
 function tyche_demo_attribute( $name, $slug, $terms ) {
 	$id = wc_attribute_taxonomy_id_by_name( $slug );
-	if ( ! $id ) {
-		$id = wc_create_attribute( array( 'name' => $name, 'slug' => $slug, 'type' => 'select', 'has_archives' => false ) );
-	}
+	// Custom order, so sizes run XS to XL instead of alphabetically (L, M, S, XL, XS).
+	$args = array( 'name' => $name, 'slug' => $slug, 'type' => 'select', 'order_by' => 'menu_order', 'has_archives' => false );
+	$id   = $id ? wc_update_attribute( $id, $args ) : wc_create_attribute( $args );
 	$taxonomy = wc_attribute_taxonomy_name( $slug );
 	if ( ! taxonomy_exists( $taxonomy ) ) {
 		register_taxonomy( $taxonomy, array( 'product' ), array( 'hierarchical' => false ) );
@@ -70,7 +70,9 @@ function tyche_demo_attribute( $name, $slug, $terms ) {
 		if ( ! $found ) {
 			$found = wp_insert_term( $term, $taxonomy );
 		}
-		$ids[] = (int) ( is_array( $found ) ? $found['term_id'] : $found );
+		$term_id = (int) ( is_array( $found ) ? $found['term_id'] : $found );
+		update_term_meta( $term_id, 'order', count( $ids ) );
+		$ids[] = $term_id;
 	}
 	return array( (int) $id, $taxonomy, $ids );
 }
