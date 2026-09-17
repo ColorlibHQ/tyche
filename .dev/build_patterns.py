@@ -89,6 +89,11 @@ BLOG = "<?php echo esc_url( tyche_blog_url() ); ?>"
 def attr_t(text):
     """A translated string inside a block comment attribute (a navigation label)."""
     return "<?php echo esc_attr__( '%s', 'tyche' ); ?>" % _php(text)
+# The delivery promise is read from WooCommerce, so a store built from a starter
+# never advertises the amount this theme happened to be written with.
+FREE_DELIVERY = "<?php echo esc_html( tyche_free_delivery_line() ); ?>"
+FREE_DELIVERY_SHORT = "<?php echo esc_html( tyche_free_delivery_line( 'short' ) ); ?>"
+
 IF_WOO = "<?php if ( tyche_has_woocommerce() ) : ?>"
 END_IF = "<?php endif; ?>"
 
@@ -531,7 +536,7 @@ def header_markup(layout="centered", announcement=True):
     minimal:  brand left, icons and a menu button right, the menu always in the overlay.
     """
     bar_announcement = group(
-        para(tk('Free delivery on orders over $75 &middot; Free 30-day returns') +
+        para(FREE_DELIVERY + tk(' &middot; Free 30-day returns') +
              ' <a href="%s">%s</a>' % (url("shop"), t("Shop new in")), align="center", size="small"),
         cls="tyche-announcement", align="full", bg="dark", color="on-dark", pad="20")
 
@@ -707,7 +712,7 @@ def product_body():
     gallery = column(gallery_markup, width="58%", cls="tyche-product__gallery")
     assurances = group("\n".join(
         group(icon("tyche/" + name) + "\n" + para(text, size="small"), layout="flex", wrap="nowrap", gap="20")
-        for name, text in (("truck-delivery", t("Free delivery on orders over $75")),
+        for name, text in (("truck-delivery", FREE_DELIVERY),
                            ("arrow-back-up", t("Free returns within 30 days")),
                            ("lock", t("Secure checkout")))
     ), cls="tyche-assurances", layout="flex", orientation="vertical", gap="20")
@@ -1021,12 +1026,16 @@ def usp_strip():
     promises rather than four unrelated paragraphs.
     """
     items = []
-    for name, title, text in (("truck-delivery", "Free delivery over $75", "Tracked delivery in two to four working days."),
+    # The first title is already PHP -- it reads the store's own free-delivery
+    # amount -- so it must not be wrapped in a translation call as well: nesting
+    # <?php inside <?php is a parse error, and the whole site goes white.
+    for name, title, text in (("truck-delivery", FREE_DELIVERY_SHORT, "Tracked delivery in two to four working days."),
                               ("arrow-back-up", "30-day returns", "Changed your mind? Send it back for free."),
                               ("lock", "Secure payment", "Card, wallet and pay-later options at checkout."),
                               ("headset", "Real people", "Our team answers every message within a day.")):
         copy = group("\n".join([
-            heading(t(title), level=3, cls="tyche-promise__title", size="medium", family="figtree"),
+            heading(title if title.startswith("<?php") else t(title), level=3, cls="tyche-promise__title",
+                    size="medium", family="figtree"),
             para(t(text), size="small", color="muted", cls="tyche-promise__text"),
         ]), layout="flex", orientation="vertical", gap="10", cls="tyche-promise__copy")
         items.append(column(group(icon("tyche/" + name, cls="tyche-icon tyche-promise__icon") + "\n" + copy,

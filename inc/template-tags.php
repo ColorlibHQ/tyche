@@ -107,3 +107,77 @@ function tyche_blog_url() {
 function tyche_shop_sorted_url( $orderby ) {
 	return add_query_arg( 'orderby', $orderby, tyche_store_url( 'shop' ) );
 }
+
+/**
+ * The amount a shopper has to spend for free delivery, formatted, or ''.
+ *
+ * The theme's copy promises free delivery over an amount, and that amount is
+ * set in WooCommerce, not here. Reading it back means the promise on a product
+ * page, in the announcement bar and on the store-promises card always matches
+ * what the checkout actually does -- including on a store built from a starter,
+ * where the threshold is the starter's, not the one this theme was written for.
+ *
+ * @return string
+ */
+function tyche_free_shipping_amount() {
+	static $amount = null;
+
+	if ( null !== $amount ) {
+		return $amount;
+	}
+
+	$amount = '';
+
+	if ( ! class_exists( 'WC_Shipping_Zones' ) ) {
+		return $amount;
+	}
+
+	$zones   = WC_Shipping_Zones::get_zones();
+	$zones[] = array( 'id' => 0 );
+	$lowest  = 0;
+
+	foreach ( $zones as $zone ) {
+		$zone_object = new WC_Shipping_Zone( $zone['id'] );
+		foreach ( $zone_object->get_shipping_methods( true ) as $method ) {
+			if ( 'free_shipping' !== $method->id ) {
+				continue;
+			}
+			$requires = $method->get_option( 'requires' );
+			$minimum  = (float) $method->get_option( 'min_amount' );
+			if ( $minimum > 0 && in_array( $requires, array( 'min_amount', 'either', 'both' ), true ) && ( ! $lowest || $minimum < $lowest ) ) {
+				$lowest = $minimum;
+			}
+		}
+	}
+
+	if ( $lowest ) {
+		// fmod() returns a float, so a strict comparison with 0 is never true and
+		// every whole amount printed as "$40.00".
+		$whole  = abs( fmod( $lowest, 1 ) ) < 0.005;
+		$amount = wp_strip_all_tags( wc_price( $lowest, array( 'decimals' => $whole ? 0 : 2 ) ) );
+	}
+
+	return $amount;
+}
+
+/**
+ * "Free delivery on orders over $40", or a sentence that promises no amount.
+ *
+ * @param string $context short for a badge, long for a sentence.
+ * @return string
+ */
+function tyche_free_delivery_line( $context = 'long' ) {
+	$amount = tyche_free_shipping_amount();
+
+	if ( ! $amount ) {
+		return 'short' === $context
+			? __( 'Free delivery', 'tyche' )
+			: __( 'Free delivery on qualifying orders', 'tyche' );
+	}
+
+	return 'short' === $context
+		/* translators: %s: the amount an order has to reach, such as $75. */
+		? sprintf( __( 'Free delivery over %s', 'tyche' ), $amount )
+		/* translators: %s: the amount an order has to reach, such as $75. */
+		: sprintf( __( 'Free delivery on orders over %s', 'tyche' ), $amount );
+}

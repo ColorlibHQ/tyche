@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
 
 <!-- wp:group {"className":"tyche-promise__copy","style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"flex","orientation":"vertical"}} -->
 <div class="wp-block-group tyche-promise__copy"><!-- wp:heading {"level":3,"className":"tyche-promise__title","fontSize":"medium","fontFamily":"figtree"} -->
-<h3 class="wp-block-heading tyche-promise__title has-figtree-font-family has-medium-font-size"><?php esc_html_e( 'Free delivery over $75', 'tyche' ); ?></h3>
+<h3 class="wp-block-heading tyche-promise__title has-figtree-font-family has-medium-font-size"><?php echo esc_html( tyche_free_delivery_line( 'short' ) ); ?></h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"tyche-promise__text","textColor":"muted","fontSize":"small"} -->

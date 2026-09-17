@@ -52,7 +52,7 @@ defined( 'ABSPATH' ) || exit;
 <div class="wp-block-group"><!-- wp:icon {"icon":"tyche/truck-delivery","className":"tyche-icon"} /-->
 
 <!-- wp:paragraph {"fontSize":"small"} -->
-<p class="has-small-font-size"><?php esc_html_e( 'Free delivery on orders over $75', 'tyche' ); ?></p>
+<p class="has-small-font-size"><?php echo esc_html( tyche_free_delivery_line() ); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
