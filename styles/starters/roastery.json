@@ -1,0 +1,98 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Roastery",
+	"settings": {
+		"color": {
+			"palette": [
+				{
+					"name": "Base",
+					"slug": "base",
+					"color": "#1b1512"
+				},
+				{
+					"name": "Surface",
+					"slug": "surface",
+					"color": "#261e1a"
+				},
+				{
+					"name": "Contrast",
+					"slug": "contrast",
+					"color": "#f3ebe3"
+				},
+				{
+					"name": "Muted",
+					"slug": "muted",
+					"color": "#b3a597"
+				},
+				{
+					"name": "Primary",
+					"slug": "primary",
+					"color": "#e8c9a6"
+				},
+				{
+					"name": "Primary deep",
+					"slug": "primary-deep",
+					"color": "#f3dcc2"
+				},
+				{
+					"name": "On primary",
+					"slug": "on-primary",
+					"color": "#1b1512"
+				},
+				{
+					"name": "Accent",
+					"slug": "accent",
+					"color": "#b86b4b"
+				},
+				{
+					"name": "Sale",
+					"slug": "sale",
+					"color": "#ff9b7a"
+				},
+				{
+					"name": "On sale",
+					"slug": "on-sale",
+					"color": "#1b1512"
+				},
+				{
+					"name": "Success",
+					"slug": "success",
+					"color": "#86d19c"
+				},
+				{
+					"name": "Dark",
+					"slug": "dark",
+					"color": "#120e0c"
+				},
+				{
+					"name": "On dark",
+					"slug": "on-dark",
+					"color": "#b3a597"
+				},
+				{
+					"name": "Divider",
+					"slug": "divider",
+					"color": "#352b25"
+				},
+				{
+					"name": "Overlay",
+					"slug": "overlay",
+					"color": "#ffffff"
+				}
+			]
+		}
+	},
+	"styles": {
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--instrument-sans)"
+		},
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--young-serif)"
+				}
+			}
+		}
+	}
+}

@@ -857,6 +857,55 @@ a {
 	margin: 0;
 }
 
+/* Numbered steps ------------------------------------------------------------ */
+
+/* A rule over each step, so four columns read as a sequence rather than as four
+   loose paragraphs, and the number carries the order instead of decorating it. */
+.tyche-steps > .wp-block-column {
+	border-top: 2px solid var(--wp--preset--color--contrast);
+	padding-top: var(--wp--preset--spacing--20);
+}
+
+.tyche-step__number {
+	margin: 0 0 var(--wp--preset--spacing--20);
+	font-size: var(--wp--preset--font-size--tiny);
+	font-weight: 600;
+	letter-spacing: 0.12em;
+	color: var(--wp--preset--color--accent);
+}
+
+.tyche-steps h3 {
+	margin-bottom: var(--wp--preset--spacing--20);
+}
+
+/* Details table -------------------------------------------------------------- */
+
+.tyche-spec__row.wp-block-columns {
+	margin: 0;
+	padding: var(--wp--preset--spacing--30) 0;
+	border-bottom: 1px solid var(--wp--preset--color--divider);
+}
+
+.tyche-spec__row:first-child {
+	border-top: 1px solid var(--wp--preset--color--divider);
+}
+
+.tyche-spec__row p {
+	margin: 0;
+}
+
+.tyche-spec__label {
+	font-weight: 600;
+}
+
+/* Two columns of a table must not stack into two unlabelled lines on a phone:
+   the label keeps its own line, the value follows it, and the row still reads. */
+@media (max-width: 599px) {
+	.tyche-spec__row.wp-block-columns {
+		gap: var(--wp--preset--spacing--10);
+	}
+}
+
 /* Store promises ------------------------------------------------------------ */
 
 .tyche-promises {

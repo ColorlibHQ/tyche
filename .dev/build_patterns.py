@@ -950,6 +950,68 @@ def promo_duo():
     return section(body, pad=("0", "70"))
 
 
+def hero_split():
+    """A quieter opening than the full-width photograph: copy beside one image.
+
+    Starters whose first screen has to sell a single thing -- a coffee, a bottle,
+    one piece of furniture -- use this instead of the cover hero.
+    """
+    text = "\n".join([
+        eyebrow(t("This week")),
+        heading(t("Winter knitwear, made to last"), level=1, size="colossal"),
+        para(t("Knitted in small runs from traceable wool, finished by hand, and repaired free for the first year."),
+             size="large", color="muted"),
+        buttons(button(t("Shop knitwear"), category_link("knitwear")),
+                button(t("Our story"), page_link("about"), style="tyche-outline")),
+    ])
+    body = columns(
+        column(group(text, layout="flex", orientation="vertical", gap="40"), valign="center"),
+        column(image("story-1", ta("Folded grey knitwear stacked on an oak table"), ratio="1/1",
+                     cls="tyche-hero-split__image"), width="46%"),
+        cls="tyche-hero-split", align="wide", gap="80", valign="center")
+    return section(body, pad=("50", "70"))
+
+
+def steps():
+    """A real sequence, numbered because the order is the point."""
+    items = (
+        ("01", "Choose the fibre", "We buy wool by the fleece from farms we have visited, and keep the lot number on the label."),
+        ("02", "Knit in small runs", "Sixty pieces at a time on hand-operated machines, so a mistake costs a morning, not a season."),
+        ("03", "Finish by hand", "Seams are linked, not overlocked, then the piece is washed, pressed and checked."),
+        ("04", "Repair, don't replace", "Send anything back in its first year and we will darn it, re-knit a cuff or replace a button."),
+    )
+    cols = []
+    for number, title, note in items:
+        cols.append(column("\n".join([
+            para(number, cls="tyche-step__number", size="small"),
+            heading(t(title), level=3, size="x-large"),
+            para(t(note), color="muted"),
+        ])))
+    body = section_head(t("How it is made"), kicker=t("Our craft")) + "\n\n" + \
+        columns(*cols, cls="tyche-steps", align="wide", gap="50")
+    return section(body, cls="tyche-steps-section")
+
+
+def spec_table():
+    """Label and value rows: fabric and care here, origin or specifications in a starter."""
+    rows = (
+        ("Fibre", "80% traceable lambswool, 20% recycled nylon"),
+        ("Weight", "12 gauge, 340 g in a size medium"),
+        ("Knitted in", "Hawick, Scotland"),
+        ("Care", "Cool wool wash, dry flat, fold rather than hang"),
+        ("Repairs", "Free in the first year, at cost after that"),
+    )
+    lines = []
+    for label, value in rows:
+        lines.append(columns(
+            column(para(t(label), cls="tyche-spec__label"), width="34%"),
+            column(para(t(value), color="muted")),
+            cls="tyche-spec__row", gap="40"))
+    body = section_head(t("Fabric and care"), kicker=t("The details")) + "\n\n" + \
+        group("\n".join(lines), cls="tyche-spec", align="wide", layout="default")
+    return section(body, bg="surface")
+
+
 def usp_strip():
     """Store promises: a bordered card, icon discs beside short copy, dividers between.
 
@@ -1227,6 +1289,14 @@ PAGE_PATTERNS = [
 ]
 
 
+# Patterns the homepage does not use, offered for pages and for starters that
+# open on a product rather than a photograph.
+EXTRA_SECTIONS = [
+    ("hero-split", "Hero: text beside a photograph", hero_split, STORE, ["hero", "banner", "split"]),
+    ("steps", "Numbered steps", steps, CONTENT, ["steps", "how it works", "process"]),
+    ("spec-table", "Details table", spec_table, CONTENT, ["specifications", "details", "care", "materials"]),
+]
+
 HOME_SECTIONS = [
     ("hero", "Hero: full-width photograph", hero, STORE, ["hero", "banner", "cover"]),
     ("categories", "Shop by category tiles", category_tiles, STORE, ["category", "collection", "tiles"]),
@@ -1250,7 +1320,7 @@ def main():
     footer_simple_pattern()
     checkout_header_pattern()
 
-    for slug, title, fn, cats, keywords in HOME_SECTIONS:
+    for slug, title, fn, cats, keywords in HOME_SECTIONS + EXTRA_SECTIONS:
         write_pattern(slug, title, fn(), categories=cats, keywords=keywords)
     for slug, title, fn, keywords in PAGE_PATTERNS:
         write_pattern(slug, title, fn(), categories=PAGES, keywords=keywords, block_types=["core/post-content"],

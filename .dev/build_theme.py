@@ -142,12 +142,27 @@ FAMILIES = collections.OrderedDict([
                           [("400", "normal"), ("400", "italic")])),
     ("figtree", ("Figtree", "Figtree, system-ui, -apple-system, 'Segoe UI', sans-serif",
                  [("400", "normal"), ("500", "normal"), ("600", "normal")])),
+    ("young-serif", ("Young Serif",
+                     "'Young Serif', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif",
+                     [("400", "normal")])),
+    ("instrument-sans", ("Instrument Sans",
+                         "'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif",
+                         [("400", "normal"), ("500", "normal"), ("600", "normal")])),
     ("system", ("System sans", "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif", [])),
 ])
 
 TYPE_SETS = collections.OrderedDict([
     ("type-1-editorial", ("Editorial", "instrument-serif", "figtree")),
     ("type-2-system", ("System fonts", "system", "system")),
+    # Slab-ish serif headings over a neutral grotesque: shop signage, not fashion.
+    ("type-3-roaster", ("Roaster", "young-serif", "instrument-sans")),
+])
+
+# A starter's look, as one style a person can also pick in the Site Editor
+# without importing anything: a palette and a type pairing under the starter's
+# own name.
+STARTER_SETS = collections.OrderedDict([
+    ("roastery", ("Roastery", "colors-8-espresso", "type-3-roaster")),
 ])
 
 
@@ -398,6 +413,18 @@ def build_type_variation(name, heading, body):
     )
 
 
+def build_starter_variation(name, colors, heading, body):
+    return od(
+        ("$schema", "https://schemas.wp.org/trunk/theme.json"),
+        ("version", 3), ("title", name),
+        ("settings", od(("color", od(("palette", palette(colors)))))),
+        ("styles", od(
+            ("typography", od(("fontFamily", ff(body)))),
+            ("elements", od(("heading", od(("typography", od(("fontFamily", ff(heading)))))))),
+        )),
+    )
+
+
 def write(path, data):
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
     with open(path, "w", encoding="utf-8") as handle:
@@ -427,6 +454,11 @@ def main():
         if slug == "type-1-editorial":
             continue
         written.append(write("styles/typography/%s.json" % slug, build_type_variation(name, heading, body)))
+    for slug, (name, color_slug, type_slug) in STARTER_SETS.items():
+        colors = COLOR_SETS[color_slug][1]
+        heading, body = TYPE_SETS[type_slug][1], TYPE_SETS[type_slug][2]
+        written.append(write("styles/starters/%s.json" % slug,
+                             build_starter_variation(name, colors, heading, body)))
     write(".dev/fonts.json", [od(("family", k), ("subset", s), ("weight", w), ("style", st))
                                for k, s, w, st in font_files()])
     print("\n  %d files written" % len(written))
