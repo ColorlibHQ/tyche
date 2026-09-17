@@ -110,12 +110,54 @@ const candidates = await page.evaluate( () => {
 			}
 		}
 
+		// Text clipped out of sight by an ancestor. WooCommerce's star ratings
+		// are written this way: "Rated 4 out of 5" is pushed below a 26px box
+		// with overflow hidden and stars are drawn over the top, so the words
+		// are for screen readers and nobody reads them off the photograph they
+		// happen to sit on.
+		const textBox = ( () => {
+			const range = document.createRange();
+			let box = null;
+			for ( const node of el.childNodes ) {
+				if ( 3 !== node.nodeType || ! node.textContent.trim() ) {
+					continue;
+				}
+				range.selectNodeContents( node );
+				const r = range.getBoundingClientRect();
+				if ( ! r.width && ! r.height ) {
+					continue;
+				}
+				box = box
+					? { top: Math.min( box.top, r.top ), bottom: Math.max( box.bottom, r.bottom ),
+						left: Math.min( box.left, r.left ), right: Math.max( box.right, r.right ) }
+					: { top: r.top, bottom: r.bottom, left: r.left, right: r.right };
+			}
+			return box;
+		} )();
+
+		if ( textBox ) {
+			for ( let node = el.parentElement; node; node = node.parentElement ) {
+				const s = getComputedStyle( node );
+				if ( 'visible' === s.overflow && 'visible' === s.overflowY && 'visible' === s.overflowX ) {
+					continue;
+				}
+				const clip = node.getBoundingClientRect();
+				const hiddenVertically = textBox.top >= clip.bottom - 1 || textBox.bottom <= clip.top + 1;
+				const hiddenHorizontally = textBox.left >= clip.right - 1 || textBox.right <= clip.left + 1;
+				if ( hiddenVertically || hiddenHorizontally ) {
+					window.__tycheClipped = ( window.__tycheClipped || 0 ) + 1;
+					return;
+				}
+			}
+		}
+
 		// Climb to whichever comes first: an opaque background colour, which is
 		// the ground; or a photograph, or an element out of flow, where the
 		// ground is pixels. A translucent background — a tinted panel laid on a
 		// photograph — is not a ground on its own, so the climb carries on past it.
 		let ground = null;
 		let pixels = false;
+		const layers = [];
 		for ( let node = el; node; node = node.parentElement ) {
 			const s = getComputedStyle( node );
 			if ( node.classList.contains( 'wp-block-cover' ) || ( s.backgroundImage && 'none' !== s.backgroundImage ) ) {
@@ -126,6 +168,13 @@ const candidates = await page.evaluate( () => {
 			if ( alpha >= 0.99 ) {
 				ground = s.backgroundColor;
 				break;
+			}
+			// A translucent panel is not a ground, but it is not nothing either.
+			// Ignoring it reported a label on an 88%-opaque pill at 1.3:1 against
+			// the photograph under the pill, a contrast no one can see. The climb
+			// carries on, and the layers are painted back over whatever it finds.
+			if ( alpha > 0 ) {
+				layers.push( s.backgroundColor );
 			}
 			if ( alpha > 0 || 'absolute' === s.position || 'fixed' === s.position ) {
 				pixels = true;
@@ -140,15 +189,48 @@ const candidates = await page.evaluate( () => {
 			colour: style.color,
 			// Nothing painted anywhere up the tree is the browser's white canvas.
 			ground: pixels ? null : ( ground || 'rgb(255, 255, 255)' ),
+			layers,
 		} );
 	} );
 
 	return out;
 } );
 
+const clipped = await page.evaluate( () => window.__tycheClipped || 0 );
+if ( clipped ) {
+	console.log( `${ clipped } text node(s) clipped out of view by an ancestor, not measured` );
+}
+
 const hidden = await page.evaluate( () => window.__tycheHidden || 0 );
 if ( hidden ) {
 	console.log( `${ hidden } text node(s) invisible through an ancestor with opacity 0, not measured` );
+}
+
+/**
+ * Paint an element's translucent backgrounds back over the pixels behind it,
+ * outermost layer first, so what is measured is what the eye is given.
+ */
+function paintOver( pixels, layers ) {
+	if ( ! layers || ! layers.length ) {
+		return pixels;
+	}
+	const parsed = layers
+		.map( ( layer ) => ( { colour: parseColor( layer ), alpha: alphaFromCss( layer ) } ) )
+		.filter( ( layer ) => layer.colour )
+		.reverse();
+
+	return pixels.map( ( pixel ) => parsed.reduce( ( base, layer ) => ( {
+		r: layer.colour.r * layer.alpha + base.r * ( 1 - layer.alpha ),
+		g: layer.colour.g * layer.alpha + base.g * ( 1 - layer.alpha ),
+		b: layer.colour.b * layer.alpha + base.b * ( 1 - layer.alpha ),
+	} ), pixel ) );
+}
+
+/** The alpha of a CSS colour, in either rgba() or color(srgb ... / a) form. */
+function alphaFromCss( value ) {
+	const m = String( value ).match( /\/\s*([\d.]+)\s*\)$/ ) ||
+		String( value ).match( /^rgba\([^,]+,[^,]+,[^,]+,\s*([\d.]+)\s*\)$/ );
+	return m ? Number( m[ 1 ] ) : 1;
 }
 
 const findings = [];
@@ -172,7 +254,8 @@ for ( const c of candidates ) {
 	onPhotos++;
 	const handle = await page.$( `[data-uc-cr="${ c.i }"]` );
 	const sampled = handle ? await sampleBehind( page, handle, 0, { text: true } ) : null;
-	const r = sampled ? worstTenth( colour, sampled.interior ) : null;
+	const behind = sampled ? paintOver( sampled.interior, c.layers ) : null;
+	const r = behind ? worstTenth( colour, behind ) : null;
 	if ( null === r ) {
 		findings.push( { ratio: 0, text: c.text, colour: c.colour, background: 'a photograph it could not measure' } );
 	} else if ( r < 4.5 ) {
