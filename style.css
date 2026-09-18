@@ -7,7 +7,7 @@ Description: Tyche is a WooCommerce block theme for fashion, lifestyle and indep
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 2.0.0-dev.4
+Version: 2.0.0-dev.5
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: tyche
@@ -866,12 +866,14 @@ a {
 	padding-top: var(--wp--preset--spacing--20);
 }
 
+/* Muted, not accent: the terracotta accent on the light palettes' paper is
+   3.8:1, which the rendered contrast audit catches on any page with steps. */
 .tyche-step__number {
 	margin: 0 0 var(--wp--preset--spacing--20);
 	font-size: var(--wp--preset--font-size--tiny);
 	font-weight: 600;
 	letter-spacing: 0.12em;
-	color: var(--wp--preset--color--accent);
+	color: var(--wp--preset--color--muted);
 }
 
 .tyche-steps h3 {
