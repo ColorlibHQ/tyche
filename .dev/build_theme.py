@@ -164,6 +164,12 @@ FAMILIES = collections.OrderedDict([
     ("instrument-sans", ("Instrument Sans",
                          "'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif",
                          [("400", "normal"), ("500", "normal"), ("600", "normal")])),
+    ("newsreader", ("Newsreader",
+                    "Newsreader, 'Iowan Old Style', 'Palatino Linotype', Georgia, serif",
+                    [("400", "normal"), ("400", "italic"), ("500", "normal")])),
+    ("hanken-grotesk", ("Hanken Grotesk",
+                        "'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif",
+                        [("400", "normal"), ("500", "normal"), ("600", "normal")])),
     ("system", ("System sans", "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif", [])),
 ])
 
@@ -177,6 +183,9 @@ TYPE_SETS = collections.OrderedDict([
     # A warm high-contrast serif over a friendly grotesque: shops that sell
     # living things rather than objects.
     ("type-5-garden", ("Garden", "dm-serif-text", "karla")),
+    # A quiet text serif over a soft grotesque: the shelf of a chemist that
+    # would rather be read than shouted at.
+    ("type-6-apothecary", ("Apothecary", "newsreader", "hanken-grotesk")),
 ])
 
 # A starter's look, as one style a person can also pick in the Site Editor
@@ -186,6 +195,7 @@ STARTER_SETS = collections.OrderedDict([
     ("roastery", ("Roastery", "colors-8-espresso", "type-3-roaster")),
     ("stride", ("Stride", "colors-9-stride", "type-4-poster")),
     ("verdant", ("Verdant", "colors-3-sage", "type-5-garden")),
+    ("dew", ("Dew", "colors-4-blush", "type-6-apothecary")),
 ])
 
 

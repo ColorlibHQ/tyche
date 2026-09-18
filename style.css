@@ -7,7 +7,7 @@ Description: Tyche is a WooCommerce block theme for fashion, lifestyle and indep
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 2.0.0-dev.15
+Version: 2.0.0-dev.16
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: tyche
@@ -1026,6 +1026,56 @@ a {
 	/* Stacked, the photograph comes first and the numbers follow it. */
 	.tyche-spec-split.wp-block-columns {
 		flex-direction: column-reverse;
+	}
+}
+
+/* Facts worth saying in two words ------------------------------------------- */
+
+/* A row of small pills: "Fragrance-free", "30 ml", "Pet safe". They carry a
+   fact a shopper filters on, so they read as labels rather than as buttons --
+   no link, no hover, and the ground of the page behind them. */
+.tyche-chips {
+	gap: var(--wp--preset--spacing--10) var(--wp--preset--spacing--20);
+}
+
+.tyche-chip.tyche-chip {
+	background: var(--wp--preset--color--base);
+	border: 1px solid var(--wp--preset--color--divider);
+	border-radius: var(--wp--custom--radius--pill);
+	font-size: var(--wp--preset--font-size--small);
+	margin: 0;
+	padding: 0.45rem 0.9rem;
+}
+
+/* One product, held up ------------------------------------------------------ */
+
+/* A shop with one thing worth opening on -- a serum, a single release -- gives
+   it the whole right-hand side, on the tinted ground the product sits on in
+   its own photographs. */
+.tyche-spotlight {
+	background: var(--wp--preset--color--surface);
+	border-radius: var(--wp--custom--radius--large);
+	overflow: hidden;
+}
+
+.tyche-spotlight > .wp-block-column {
+	margin-block: 0;
+}
+
+.tyche-spotlight__words {
+	padding: var(--wp--preset--spacing--60) var(--wp--preset--spacing--50);
+}
+
+.tyche-spotlight__media img {
+	display: block;
+	height: 100%;
+	object-fit: cover;
+	width: 100%;
+}
+
+@media (max-width: 781px) {
+	.tyche-spotlight__words {
+		padding: var(--wp--preset--spacing--50) var(--wp--preset--spacing--40);
 	}
 }
 
