@@ -7,7 +7,7 @@ Description: Tyche is a WooCommerce block theme for fashion, lifestyle and indep
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 2.0.0-dev.7
+Version: 2.0.0-dev.8
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: tyche
@@ -689,7 +689,8 @@ a {
 /* Small screens ---------------------------------------------------------- */
 
 @media (max-width: 599px) {
-	.tyche-header__account,
+	/* The account icon stays: a shop's header is the search, the account and the
+	   cart, and on a phone the row is four icons wide, which fits. */
 	.tyche-checkout-header__secure p {
 		display: none;
 	}
