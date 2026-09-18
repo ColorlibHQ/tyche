@@ -18,12 +18,8 @@ mkdir -p "$out/$name"
 
 cd "$here"
 rsync -a \
-	--exclude '.git' \
-	--exclude '.github' \
-	--exclude '.dev' \
+	--exclude '.*' \
 	--exclude 'CLAUDE.md' \
-	--exclude '.gitignore' \
-	--exclude '.DS_Store' \
 	--exclude 'node_modules' \
 	./ "$out/$name/"
 
