@@ -529,11 +529,12 @@ def main_group(inner, pad=("50", "80"), cls=None, content_size=None):
 # Header and footer
 # ---------------------------------------------------------------------------
 def header_markup(layout="centered", announcement=True):
-    """The header in one of three layouts.
+    """The header in one of four layouts.
 
     centered: menu left, brand centred, icons right (the default).
     left:     brand left, menu next to it, icons right.
     minimal:  brand left, icons and a menu button right, the menu always in the overlay.
+    stacked:  brand centred on its own line, the menu centred under it.
     """
     bar_announcement = group(
         para(FREE_DELIVERY + tk(' &middot; Free 30-day returns') +
@@ -559,6 +560,20 @@ def header_markup(layout="centered", announcement=True):
         actions_inner.append(nav)
     actions = group("\n".join(actions_inner), cls="tyche-header__actions", layout="flex", wrap="nowrap",
                     justify="right", gap="30")
+
+    if "stacked" == layout:
+        # The brand sits alone on the first line, so the row either side of it
+        # has to balance: an empty span on the left holds the space the icons
+        # take on the right, and the menu goes underneath, centred.
+        top = group("\n".join([group("", cls="tyche-header__spacer"), brand, actions]),
+                    cls="tyche-header__bar tyche-header__bar--stacked", align="wide",
+                    layout="flex", wrap="nowrap", justify="space-between")
+        under = group(nav, cls="tyche-header__subnav", align="wide", layout="flex", justify="center")
+        main = group(top + "\n\n" + under, cls="tyche-header tyche-header--stacked", align="full",
+                     bg="base", pad="30")
+        content = (bar_announcement + "\n\n" + main) if announcement else main
+        content = content.replace('"SEARCH_LABEL"', '"%s"' % "<?php echo esc_attr__( 'Search', 'tyche' ); ?>")
+        return content.replace('"SEARCH_PLACEHOLDER"', '"%s"' % "<?php echo esc_attr__( 'Search products', 'tyche' ); ?>")
 
     order = {"centered": [nav, brand, actions], "left": [brand, nav, actions], "minimal": [brand, actions]}[layout]
     bar = group("\n".join(order), cls="tyche-header__bar tyche-header__bar--%s" % layout, align="wide",
@@ -588,7 +603,9 @@ def header_pattern():
             ("header-left", "Header: logo on the left", "left", True),
             ("header-minimal", "Header: minimal with menu button", "minimal", True),
             ("header-no-announcement", "Header: centred logo without announcement bar", "centered", False),
-            ("header-left-no-announcement", "Header: logo on the left without announcement bar", "left", False)):
+            ("header-left-no-announcement", "Header: logo on the left without announcement bar", "left", False),
+            ("header-stacked", "Header: logo above a centred menu", "stacked", True),
+            ("header-stacked-no-announcement", "Header: logo above a centred menu, without announcement bar", "stacked", False)):
         write_pattern(slug, title, header_markup(layout, bar), categories=["header"],
                       block_types=["core/template-part/header"],
                       description="Swap it in from the Site Editor: select the header and choose Replace.")

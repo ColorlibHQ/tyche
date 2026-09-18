@@ -7,7 +7,7 @@ Description: Tyche is a WooCommerce block theme for fashion, lifestyle and indep
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 2.0.0-dev.11
+Version: 2.0.0-dev.12
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: tyche
@@ -256,6 +256,35 @@ a {
 .tyche-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item__content {
 	font-family: var(--wp--preset--font-family--instrument-serif);
 	font-size: var(--wp--preset--font-size--xx-large);
+}
+
+/* Logo above a centred menu */
+
+.tyche-header--stacked .tyche-header__bar--stacked {
+	align-items: center;
+}
+
+/* The brand is centred against the whole bar, so the empty span on the left has
+   to weigh what the icons weigh on the right. */
+.tyche-header__spacer {
+	flex: 0 0 auto;
+	width: 8.5rem;
+}
+
+.tyche-header--stacked .tyche-header__subnav {
+	margin-top: var(--wp--preset--spacing--20);
+}
+
+@media (max-width: 1199px) {
+	/* With the menu folded into the button there is nothing under the brand,
+	   so the second line goes too. */
+	.tyche-header--stacked .tyche-header__subnav {
+		display: none;
+	}
+
+	.tyche-header__spacer {
+		display: none;
+	}
 }
 
 /* Icon buttons in the header: search, account, cart. */
@@ -881,6 +910,22 @@ a {
 .tyche-footer--simple .tyche-footer__title,
 .tyche-footer--simple .tyche-footer__legal {
 	margin: 0;
+}
+
+/* A hero that opens on categories */
+
+.tyche-tiles-hero__words {
+	margin-bottom: var(--wp--preset--spacing--50);
+}
+
+/* Aligned wide so the words start where the tiles start, but a headline and a
+   sentence still want a readable measure rather than the full width. */
+.tyche-tiles-hero__words > * {
+	max-width: 46rem;
+}
+
+.tyche-tiles-hero__words > p:not(.is-style-tyche-eyebrow) {
+	max-width: 34rem;
 }
 
 /* Numbered steps ------------------------------------------------------------ */

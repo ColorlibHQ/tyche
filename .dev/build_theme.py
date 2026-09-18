@@ -149,6 +149,11 @@ FAMILIES = collections.OrderedDict([
                           [("400", "normal"), ("400", "italic")])),
     ("figtree", ("Figtree", "Figtree, system-ui, -apple-system, 'Segoe UI', sans-serif",
                  [("400", "normal"), ("500", "normal"), ("600", "normal")])),
+    ("dm-serif-text", ("DM Serif Text",
+                       "'DM Serif Text', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif",
+                       [("400", "normal"), ("400", "italic")])),
+    ("karla", ("Karla", "Karla, system-ui, -apple-system, 'Segoe UI', sans-serif",
+               [("400", "normal"), ("500", "normal"), ("600", "normal")])),
     ("anton", ("Anton", "Anton, 'Haettenschweiler', 'Arial Narrow', sans-serif",
                [("400", "normal")])),
     ("archivo", ("Archivo", "Archivo, 'Helvetica Neue', Helvetica, Arial, sans-serif",
@@ -169,6 +174,9 @@ TYPE_SETS = collections.OrderedDict([
     ("type-3-roaster", ("Roaster", "young-serif", "instrument-sans")),
     # Tall condensed capitals over a workhorse grotesque: posters and drops.
     ("type-4-poster", ("Poster", "anton", "archivo")),
+    # A warm high-contrast serif over a friendly grotesque: shops that sell
+    # living things rather than objects.
+    ("type-5-garden", ("Garden", "dm-serif-text", "karla")),
 ])
 
 # A starter's look, as one style a person can also pick in the Site Editor
@@ -177,6 +185,7 @@ TYPE_SETS = collections.OrderedDict([
 STARTER_SETS = collections.OrderedDict([
     ("roastery", ("Roastery", "colors-8-espresso", "type-3-roaster")),
     ("stride", ("Stride", "colors-9-stride", "type-4-poster")),
+    ("verdant", ("Verdant", "colors-3-sage", "type-5-garden")),
 ])
 
 

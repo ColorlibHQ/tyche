@@ -49,6 +49,9 @@ function tyche_register_icons() {
 		'clock'          => __( 'Opening hours', 'tyche' ),
 		'heart'          => __( 'Favourite', 'tyche' ),
 		'star'           => __( 'Rating', 'tyche' ),
+		'sun'            => __( 'Light', 'tyche' ),
+		'droplet'        => __( 'Water', 'tyche' ),
+		'paw'            => __( 'Pet safe', 'tyche' ),
 	);
 
 	foreach ( $icons as $name => $label ) {
