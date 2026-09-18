@@ -13,11 +13,11 @@ defined( 'ABSPATH' ) || exit;
 <!-- wp:group {"tagName":"main","className":"tyche-main","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|80"},"margin":{"top":"0"}}},"layout":{"type":"constrained"}} -->
 <main class="wp-block-group tyche-main" style="margin-top:0;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--80)"><!-- wp:group {"align":"wide","className":"tyche-page-head","style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","orientation":"vertical"}} -->
 <div class="wp-block-group alignwide tyche-page-head"><!-- wp:heading {"level":1,"className":"tyche-page-title"} -->
-<h1 class="wp-block-heading tyche-page-title"><?php esc_html_e( 'Journal', 'tyche' ); ?></h1>
+<h1 class="wp-block-heading tyche-page-title"><?php echo esc_html( tyche_blog_words( 'title' ) ); ?></h1>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"textColor":"muted"} -->
-<p class="has-muted-color has-text-color"><?php esc_html_e( 'Styling notes, new collections and the people who make them.', 'tyche' ); ?></p>
+<p class="has-muted-color has-text-color"><?php echo esc_html( tyche_blog_words( 'intro' ) ); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 

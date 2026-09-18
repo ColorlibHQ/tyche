@@ -829,8 +829,10 @@ def post_grid(inherit=True, per_page=9, cols=3, pagination=True):
 
 def blog_body(kind):
     if kind == "home":
-        title = heading(t("Journal"), level=1, cls="tyche-page-title")
-        intro = para(t("Styling notes, new collections and the people who make them."), color="muted")
+        # The blog page's own title and excerpt, so a store's journal is
+        # described by the store rather than by the theme.
+        title = heading("<?php echo esc_html( tyche_blog_words( 'title' ) ); ?>", level=1, cls="tyche-page-title")
+        intro = para("<?php echo esc_html( tyche_blog_words( 'intro' ) ); ?>", color="muted")
     elif kind == "search":
         title = block("query-title", {"type": "search", "level": 1, "className": "tyche-page-title"})
         intro = block("search", {"label": "SEARCH_LABEL", "showLabel": False, "buttonText": "SEARCH_LABEL",

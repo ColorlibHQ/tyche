@@ -181,3 +181,32 @@ function tyche_free_delivery_line( $context = 'long' ) {
 		/* translators: %s: the amount an order has to reach, such as $75. */
 		: sprintf( __( 'Free delivery on orders over %s', 'tyche' ), $amount );
 }
+
+/**
+ * What the journal calls itself.
+ *
+ * The blog's own page carries the words: its title, and its excerpt as the line
+ * underneath. Theme copy cannot know what a store writes about — "Styling
+ * notes, new collections" is right for knitwear and wrong for a coffee roaster
+ * — so the store's own page is asked first and the theme only fills a gap.
+ *
+ * @param string $part title or intro.
+ * @return string
+ */
+function tyche_blog_words( $part = 'title' ) {
+	$page = (int) get_option( 'page_for_posts' );
+	$post = $page ? get_post( $page ) : null;
+
+	if ( 'intro' === $part ) {
+		if ( $post && '' !== trim( (string) $post->post_excerpt ) ) {
+			return $post->post_excerpt;
+		}
+		return __( 'Notes, guides and the people behind what we sell.', 'tyche' );
+	}
+
+	if ( $post && '' !== trim( (string) $post->post_title ) ) {
+		return $post->post_title;
+	}
+
+	return __( 'Journal', 'tyche' );
+}
