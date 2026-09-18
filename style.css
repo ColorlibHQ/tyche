@@ -7,7 +7,7 @@ Description: Tyche is a WooCommerce block theme for fashion, lifestyle and indep
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 2.0.0-dev.10
+Version: 2.0.0-dev.11
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: tyche
@@ -931,6 +931,41 @@ a {
 @media (max-width: 599px) {
 	.tyche-spec__row.wp-block-columns {
 		gap: var(--wp--preset--spacing--10);
+	}
+}
+
+/* Details table beside a photograph */
+
+.tyche-spec-split.wp-block-columns {
+	align-items: center;
+}
+
+/* The words column is a vertical flex box, and a flex box that aligns its
+   children to the start lets them shrink to their content: the table of
+   percentage-width rows collapsed to a 110px strip beside a wide empty gap.
+   Both the heading and the table take the full column. */
+.tyche-spec-split > .wp-block-column > .wp-block-group,
+.tyche-spec-split .tyche-spec,
+.tyche-spec-split .tyche-spec__row {
+	align-self: stretch;
+	width: 100%;
+}
+
+/* The table already rules its own rows, so the first one does not need a rule
+   above it when it sits under a heading rather than a section head. */
+.tyche-spec-split .tyche-spec__row:first-child {
+	border-top: 0;
+	padding-top: 0;
+}
+
+.tyche-spec__photo img {
+	border-radius: var(--wp--custom--radius--medium);
+}
+
+@media (max-width: 781px) {
+	/* Stacked, the photograph comes first and the numbers follow it. */
+	.tyche-spec-split.wp-block-columns {
+		flex-direction: column-reverse;
 	}
 }
 
