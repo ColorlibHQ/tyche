@@ -7,7 +7,7 @@ Description: Tyche is a WooCommerce block theme for fashion, lifestyle and indep
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 2.0.0-dev.12
+Version: 2.0.0-dev.13
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: tyche
@@ -276,14 +276,29 @@ a {
 }
 
 @media (max-width: 1199px) {
-	/* With the menu folded into the button there is nothing under the brand,
-	   so the second line goes too. */
-	.tyche-header--stacked .tyche-header__subnav {
-		display: none;
+	/* The menu folds into its button, and the button is the only thing left on
+	   the second line -- so the line is lifted onto the brand's row rather than
+	   hidden, which would take the only way into the menu with it. */
+	.tyche-header--stacked {
+		position: relative;
 	}
 
+	.tyche-header--stacked .tyche-header__subnav {
+		inset-block-start: 50%;
+		inset-inline: 0;
+		justify-content: flex-start;
+		margin: 0;
+		/* An absolute box hangs off the padding edge, so it takes the header's
+		   own inline padding to line the button up with everything else. */
+		padding-inline: inherit;
+		position: absolute;
+		transform: translateY(-50%);
+	}
+
+	/* The spacer still weighs the icons, so the brand stays centred and the
+	   button, which is out of flow, sits over the empty half of it. */
 	.tyche-header__spacer {
-		display: none;
+		width: 5.5rem;
 	}
 }
 
