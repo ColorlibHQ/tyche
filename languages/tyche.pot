@@ -1,0 +1,1988 @@
+# Copyright (C) 2026 Colorlib
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Tyche 2.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/tyche/\n"
+"Last-Translator: Colorlib <hello@colorlib.com>\n"
+"Language-Team: Colorlib <hello@colorlib.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-18T19:21:59+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: tyche\n"
+
+#. Theme Name of the theme
+#: style.css
+#: inc/icons.php:30
+msgid "Tyche"
+msgstr ""
+
+#. Theme URI of the theme
+#: style.css
+msgid "https://colorlib.com/wp/themes/tyche/"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "Tyche is a WooCommerce block theme for fashion, lifestyle and independent stores. Every store page is designed: a header with a slide-out cart, product grids with filters, a product page with a gallery, a focused checkout and an order confirmation. Includes homepage sections for collections, promotions, reviews and stories, eight colour palettes and self-hosted fonts. Edit everything in the Site Editor."
+msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "Colorlib"
+msgstr ""
+
+#. Author URI of the theme
+#: style.css
+msgid "https://colorlib.com/"
+msgstr ""
+
+#: inc/block-styles.php:20
+#: inc/block-styles.php:23
+msgid "Eyebrow"
+msgstr ""
+
+#: inc/block-styles.php:26
+msgid "Outline"
+msgstr ""
+
+#: inc/block-styles.php:27
+msgid "Text link"
+msgstr ""
+
+#: inc/block-styles.php:30
+#: inc/icons.php:39
+msgid "Card"
+msgstr ""
+
+#: inc/block-styles.php:33
+msgid "Check list"
+msgstr ""
+
+#: inc/block-styles.php:36
+#: inc/block-styles.php:39
+msgid "Zoom on hover"
+msgstr ""
+
+#: inc/icons.php:31
+msgid "Store promises: delivery, returns, payment and support."
+msgstr ""
+
+#: inc/icons.php:36
+#: patterns/page-faq.php:66
+msgid "Delivery"
+msgstr ""
+
+#: inc/icons.php:37
+#: patterns/page-shipping.php:49
+msgid "Returns"
+msgstr ""
+
+#: inc/icons.php:38
+#: patterns/usps.php:55
+msgid "Secure payment"
+msgstr ""
+
+#: inc/icons.php:40
+msgid "Support"
+msgstr ""
+
+#: inc/icons.php:41
+msgid "Sustainable"
+msgstr ""
+
+#: inc/icons.php:42
+msgid "Recycled"
+msgstr ""
+
+#: inc/icons.php:43
+msgid "Gift"
+msgstr ""
+
+#: inc/icons.php:44
+msgid "Package"
+msgstr ""
+
+#: inc/icons.php:45
+#: patterns/footer.php:58
+#: patterns/page-size-guide.php:24
+msgid "Size guide"
+msgstr ""
+
+#: inc/icons.php:46
+msgid "New"
+msgstr ""
+
+#: inc/icons.php:47
+msgid "Guarantee"
+msgstr ""
+
+#: inc/icons.php:48
+msgid "Location"
+msgstr ""
+
+#: inc/icons.php:49
+#: patterns/page-contact.php:54
+msgid "Opening hours"
+msgstr ""
+
+#: inc/icons.php:50
+msgid "Favourite"
+msgstr ""
+
+#: inc/icons.php:51
+#: patterns/hidden-shop-search.php:53
+#: patterns/hidden-shop.php:55
+msgid "Rating"
+msgstr ""
+
+#: inc/icons.php:52
+msgid "Light"
+msgstr ""
+
+#: inc/icons.php:53
+msgid "Water"
+msgstr ""
+
+#: inc/icons.php:54
+msgid "Pet safe"
+msgstr ""
+
+#: inc/patterns.php:19
+msgid "Tyche: store sections"
+msgstr ""
+
+#: inc/patterns.php:20
+msgid "Heroes, collections, product rows and promotions."
+msgstr ""
+
+#: inc/patterns.php:23
+msgid "Tyche: content sections"
+msgstr ""
+
+#: inc/patterns.php:24
+msgid "Stories, reviews, questions and journal posts."
+msgstr ""
+
+#: inc/patterns.php:27
+msgid "Tyche: pages"
+msgstr ""
+
+#: inc/patterns.php:28
+msgid "Complete page layouts."
+msgstr ""
+
+#: inc/template-tags.php:174
+msgid "Free delivery"
+msgstr ""
+
+#: inc/template-tags.php:175
+msgid "Free delivery on qualifying orders"
+msgstr ""
+
+#. translators: %s: the amount an order has to reach, such as $75.
+#: inc/template-tags.php:180
+#, php-format
+msgid "Free delivery over %s"
+msgstr ""
+
+#. translators: %s: the amount an order has to reach, such as $75.
+#: inc/template-tags.php:182
+#, php-format
+msgid "Free delivery on orders over %s"
+msgstr ""
+
+#: inc/template-tags.php:204
+msgid "Notes, guides and the people behind what we sell."
+msgstr ""
+
+#: inc/template-tags.php:211
+#: patterns/footer.php:74
+msgid "Journal"
+msgstr ""
+
+#: inc/upgrade.php:65
+msgid "Tyche 2.0 is a block theme."
+msgstr ""
+
+#: inc/upgrade.php:67
+msgid "Your menus, logo, products and pages carry over. The Tyche 1.x homepage slider, front-page widget sections, colour schemes and Customizer options are no longer used: the header, footer, shop and every other template are now designed in the Site Editor."
+msgstr ""
+
+#: inc/upgrade.php:70
+msgid "If Settings > Reading shows one of your pages as the front page, that page is still your homepage. To use the new store homepage, add the \"Store homepage\" pattern to that page, or set the front page to show your latest posts."
+msgstr ""
+
+#: inc/upgrade.php:73
+msgid "Open the Site Editor"
+msgstr ""
+
+#: inc/upgrade.php:74
+msgid "Reading settings"
+msgstr ""
+
+#: inc/upgrade.php:75
+msgid "Dismiss"
+msgstr ""
+
+#: patterns/categories.php
+msgctxt "Pattern title"
+msgid "Shop by category tiles"
+msgstr ""
+
+#: patterns/categories.php:18
+msgid "Collections"
+msgstr ""
+
+#: patterns/categories.php:22
+msgid "Shop by category"
+msgstr ""
+
+#: patterns/categories.php:29
+msgid "View all"
+msgstr ""
+
+#: patterns/categories.php:39
+msgid "Coats"
+msgstr ""
+
+#: patterns/categories.php:43
+msgid "Wool, cashmere and waxed cotton"
+msgstr ""
+
+#: patterns/categories.php:51
+msgid "Knitwear"
+msgstr ""
+
+#: patterns/categories.php:55
+msgid "Soft layers for cold mornings"
+msgstr ""
+
+#: patterns/categories.php:63
+msgid "Dresses"
+msgstr ""
+
+#: patterns/categories.php:67
+msgid "Easy shapes, day to evening"
+msgstr ""
+
+#: patterns/categories.php:75
+msgid "Accessories"
+msgstr ""
+
+#: patterns/categories.php:79
+msgid "Scarves, bags and finishing touches"
+msgstr ""
+
+#: patterns/checkout-header.php
+msgctxt "Pattern title"
+msgid "Checkout header"
+msgstr ""
+
+#: patterns/checkout-header.php:17
+msgid "Back to cart"
+msgstr ""
+
+#: patterns/checkout-header.php:30
+#: patterns/hidden-product.php:71
+msgid "Secure checkout"
+msgstr ""
+
+#: patterns/footer-payments.php
+msgctxt "Pattern title"
+msgid "Footer payment icons"
+msgstr ""
+
+#: patterns/footer-simple.php
+msgctxt "Pattern title"
+msgid "Footer: simple, centred"
+msgstr ""
+
+#: patterns/footer-simple.php
+msgctxt "Pattern description"
+msgid "Swap it in from the Site Editor: select the footer and choose Replace."
+msgstr ""
+
+#: patterns/footer-simple.php:19
+#: patterns/footer.php:36
+msgid "Shop"
+msgstr ""
+
+#: patterns/footer-simple.php:21
+#: patterns/footer.php:68
+msgid "About"
+msgstr ""
+
+#: patterns/footer-simple.php:23
+#: patterns/footer.php:56
+#: patterns/page-contact.php:101
+#: patterns/page-shipping.php:24
+msgid "Delivery and returns"
+msgstr ""
+
+#: patterns/footer-simple.php:25
+#: patterns/footer.php:60
+msgid "FAQ"
+msgstr ""
+
+#: patterns/footer-simple.php:27
+#: patterns/page-contact.php:20
+msgid "Contact"
+msgstr ""
+
+#: patterns/footer-simple.php:31
+#: patterns/footer.php:87
+msgid "All rights reserved."
+msgstr ""
+
+#: patterns/footer.php
+msgctxt "Pattern title"
+msgid "Footer with link columns"
+msgstr ""
+
+#: patterns/footer.php:20
+msgid "Considered clothing and everyday essentials, made to be worn for years and shipped with care."
+msgstr ""
+
+#: patterns/footer.php:40
+#: patterns/products-new.php:24
+msgid "New arrivals"
+msgstr ""
+
+#: patterns/footer.php:42
+#: patterns/products-best.php:24
+msgid "Best sellers"
+msgstr ""
+
+#: patterns/footer.php:44
+msgid "Top rated"
+msgstr ""
+
+#: patterns/footer.php:46
+msgid "All products"
+msgstr ""
+
+#: patterns/footer.php:52
+#: patterns/page-faq.php:20
+#: patterns/page-shipping.php:20
+msgid "Help"
+msgstr ""
+
+#: patterns/footer.php:62
+msgid "My account"
+msgstr ""
+
+#: patterns/footer.php:72
+#: patterns/hero-split.php:36
+#: patterns/page-about.php:20
+msgid "Our story"
+msgstr ""
+
+#: patterns/footer.php:76
+msgid "Contact us"
+msgstr ""
+
+#: patterns/header-left-no-announcement.php
+msgctxt "Pattern title"
+msgid "Header: logo on the left without announcement bar"
+msgstr ""
+
+#: patterns/header-left-no-announcement.php
+#: patterns/header-left.php
+#: patterns/header-minimal-no-announcement.php
+#: patterns/header-minimal.php
+#: patterns/header-no-announcement.php
+#: patterns/header-stacked-no-announcement.php
+#: patterns/header-stacked.php
+msgctxt "Pattern description"
+msgid "Swap it in from the Site Editor: select the header and choose Replace."
+msgstr ""
+
+#: patterns/header-left-no-announcement.php:26
+#: patterns/header-left.php:32
+#: patterns/header-minimal-no-announcement.php:24
+#: patterns/header-minimal.php:30
+#: patterns/header-no-announcement.php:26
+#: patterns/header-stacked-no-announcement.php:28
+#: patterns/header-stacked.php:34
+#: patterns/header.php:31
+#: patterns/hidden-404.php:27
+#: patterns/hidden-search.php:17
+msgid "Search"
+msgstr ""
+
+#: patterns/header-left-no-announcement.php:26
+#: patterns/header-left.php:32
+#: patterns/header-minimal-no-announcement.php:24
+#: patterns/header-minimal.php:30
+#: patterns/header-no-announcement.php:26
+#: patterns/header-stacked-no-announcement.php:28
+#: patterns/header-stacked.php:34
+#: patterns/header.php:31
+#: patterns/hidden-404.php:27
+msgid "Search products"
+msgstr ""
+
+#: patterns/header-left.php
+msgctxt "Pattern title"
+msgid "Header: logo on the left"
+msgstr ""
+
+#: patterns/header-left.php:17
+#: patterns/header-minimal.php:17
+#: patterns/header-stacked.php:17
+#: patterns/header.php:16
+msgid " &middot; Free 30-day returns"
+msgstr ""
+
+#: patterns/header-left.php:17
+#: patterns/header-minimal.php:17
+#: patterns/header-stacked.php:17
+#: patterns/header.php:16
+msgid "Shop new in"
+msgstr ""
+
+#: patterns/header-minimal-no-announcement.php
+msgctxt "Pattern title"
+msgid "Header: minimal with menu button, without announcement bar"
+msgstr ""
+
+#: patterns/header-minimal.php
+msgctxt "Pattern title"
+msgid "Header: minimal with menu button"
+msgstr ""
+
+#: patterns/header-no-announcement.php
+msgctxt "Pattern title"
+msgid "Header: centred logo without announcement bar"
+msgstr ""
+
+#: patterns/header-stacked-no-announcement.php
+msgctxt "Pattern title"
+msgid "Header: logo above a centred menu, without announcement bar"
+msgstr ""
+
+#: patterns/header-stacked.php
+msgctxt "Pattern title"
+msgid "Header: logo above a centred menu"
+msgstr ""
+
+#: patterns/header-store-actions.php
+msgctxt "Pattern title"
+msgid "Header store icons"
+msgstr ""
+
+#: patterns/header.php
+msgctxt "Pattern title"
+msgid "Header: centred logo"
+msgstr ""
+
+#: patterns/hero-split.php
+msgctxt "Pattern title"
+msgid "Hero: text beside a photograph"
+msgstr ""
+
+#: patterns/hero-split.php:19
+msgid "This week"
+msgstr ""
+
+#: patterns/hero-split.php:23
+msgid "Winter knitwear, made to last"
+msgstr ""
+
+#: patterns/hero-split.php:27
+msgid "Knitted in small runs from traceable wool, finished by hand, and repaired free for the first year."
+msgstr ""
+
+#: patterns/hero-split.php:32
+#: patterns/hero.php:35
+msgid "Shop knitwear"
+msgstr ""
+
+#: patterns/hero-split.php:44
+#: patterns/story.php:18
+msgid "Folded grey knitwear stacked on an oak table"
+msgstr ""
+
+#: patterns/hero.php
+msgctxt "Pattern title"
+msgid "Hero: full-width photograph"
+msgstr ""
+
+#: patterns/hero.php:18
+msgid "New season"
+msgstr ""
+
+#: patterns/hero.php:22
+msgid "The autumn edit"
+msgstr ""
+
+#: patterns/hero.php:26
+msgid "Wool coats, soft knitwear and the pieces you will reach for all season long."
+msgstr ""
+
+#: patterns/hero.php:31
+#: patterns/newsletter.php:56
+#: patterns/page-about.php:185
+msgid "Shop new arrivals"
+msgstr ""
+
+#: patterns/hidden-404-products.php
+msgctxt "Pattern title"
+msgid "404 product suggestions"
+msgstr ""
+
+#: patterns/hidden-404-products.php:19
+msgid "Popular right now"
+msgstr ""
+
+#: patterns/hidden-404-products.php:40
+#: patterns/hidden-product.php:181
+#: patterns/hidden-shop-search.php:120
+#: patterns/hidden-shop.php:122
+#: patterns/products-best.php:59
+#: patterns/products-new.php:53
+msgid "Nothing matches those filters"
+msgstr ""
+
+#: patterns/hidden-404-products.php:44
+#: patterns/hidden-product.php:185
+#: patterns/hidden-shop-search.php:124
+#: patterns/hidden-shop.php:126
+#: patterns/products-best.php:63
+#: patterns/products-new.php:57
+msgid "Try removing a filter, or browse everything in the shop."
+msgstr ""
+
+#: patterns/hidden-404-products.php:49
+#: patterns/hidden-product.php:190
+#: patterns/hidden-shop-search.php:129
+#: patterns/hidden-shop.php:131
+#: patterns/products-best.php:68
+#: patterns/products-new.php:62
+msgid "Clear filters and browse"
+msgstr ""
+
+#: patterns/hidden-404.php
+msgctxt "Pattern title"
+msgid "404 template body"
+msgstr ""
+
+#: patterns/hidden-404.php:16
+msgid "Error 404"
+msgstr ""
+
+#: patterns/hidden-404.php:20
+msgid "This page has moved on"
+msgstr ""
+
+#: patterns/hidden-404.php:24
+msgid "The link may be old, or the product may have sold out. Try a search, or start again from the shop."
+msgstr ""
+
+#: patterns/hidden-404.php:31
+msgid "Back to the shop"
+msgstr ""
+
+#: patterns/hidden-archive.php
+msgctxt "Pattern title"
+msgid "Archive template body"
+msgstr ""
+
+#: patterns/hidden-archive.php:43
+#: patterns/hidden-blog.php:47
+#: patterns/hidden-search.php:43
+#: patterns/journal.php:50
+msgid "No posts were found."
+msgstr ""
+
+#: patterns/hidden-blog.php
+msgctxt "Pattern title"
+msgid "Blog template body"
+msgstr ""
+
+#: patterns/hidden-cart.php
+msgctxt "Pattern title"
+msgid "Cart template body"
+msgstr ""
+
+#: patterns/hidden-checkout.php
+msgctxt "Pattern title"
+msgid "Checkout template body"
+msgstr ""
+
+#: patterns/hidden-order-confirmation.php
+msgctxt "Pattern title"
+msgid "Order confirmation template body"
+msgstr ""
+
+#: patterns/hidden-page-no-title.php
+msgctxt "Pattern title"
+msgid "Page no title template body"
+msgstr ""
+
+#: patterns/hidden-page-wide.php
+msgctxt "Pattern title"
+msgid "Page wide template body"
+msgstr ""
+
+#: patterns/hidden-page.php
+msgctxt "Pattern title"
+msgid "Page template body"
+msgstr ""
+
+#: patterns/hidden-product.php
+msgctxt "Pattern title"
+msgid "Product template body"
+msgstr ""
+
+#: patterns/hidden-product.php:63
+msgid "Free returns within 30 days"
+msgstr ""
+
+#: patterns/hidden-product.php:80
+msgid "Tags: "
+msgstr ""
+
+#: patterns/hidden-product.php:91
+msgid "Description"
+msgstr ""
+
+#: patterns/hidden-product.php:101
+msgid "Additional Information"
+msgstr ""
+
+#: patterns/hidden-product.php:111
+#: patterns/reviews.php:17
+msgid "Reviews"
+msgstr ""
+
+#: patterns/hidden-product.php:160
+msgid "You may also like"
+msgstr ""
+
+#: patterns/hidden-search.php
+msgctxt "Pattern title"
+msgid "Search template body"
+msgstr ""
+
+#: patterns/hidden-shop-search.php
+msgctxt "Pattern title"
+msgid "Shop search template body"
+msgstr ""
+
+#: patterns/hidden-shop-search.php:24
+#: patterns/hidden-shop.php:26
+msgid "Filters"
+msgstr ""
+
+#: patterns/hidden-shop-search.php:35
+#: patterns/hidden-shop.php:37
+msgid "Clear filters"
+msgstr ""
+
+#: patterns/hidden-shop-search.php:43
+#: patterns/hidden-shop.php:45
+msgid "Price"
+msgstr ""
+
+#: patterns/hidden-shop-search.php:67
+#: patterns/hidden-shop.php:69
+msgid "Category"
+msgstr ""
+
+#: patterns/hidden-shop-search.php:77
+#: patterns/hidden-shop.php:79
+msgid "Availability"
+msgstr ""
+
+#: patterns/hidden-shop.php
+msgctxt "Pattern title"
+msgid "Shop template body"
+msgstr ""
+
+#: patterns/hidden-single.php
+msgctxt "Pattern title"
+msgid "Single template body"
+msgstr ""
+
+#: patterns/journal.php
+msgctxt "Pattern title"
+msgid "Latest journal posts"
+msgstr ""
+
+#: patterns/journal.php:18
+msgid "Stories"
+msgstr ""
+
+#: patterns/journal.php:22
+msgid "From the journal"
+msgstr ""
+
+#: patterns/journal.php:29
+msgid "All stories"
+msgstr ""
+
+#: patterns/newsletter.php
+msgctxt "Pattern title"
+msgid "Account sign-up call to action"
+msgstr ""
+
+#: patterns/newsletter.php:25
+#: patterns/page-about.php:154
+msgid "Members"
+msgstr ""
+
+#: patterns/newsletter.php:29
+#: patterns/page-about.php:158
+msgid "Take 10% off your first order"
+msgstr ""
+
+#: patterns/newsletter.php:33
+#: patterns/page-about.php:162
+msgid "Create a free account and your welcome code is waiting at checkout."
+msgstr ""
+
+#: patterns/newsletter.php:38
+#: patterns/page-about.php:167
+msgid "Early access to new collections"
+msgstr ""
+
+#: patterns/newsletter.php:42
+#: patterns/page-about.php:171
+msgid "Members-only offers through the year"
+msgstr ""
+
+#: patterns/newsletter.php:46
+#: patterns/page-about.php:175
+msgid "Faster checkout and easy returns"
+msgstr ""
+
+#: patterns/newsletter.php:52
+#: patterns/page-about.php:181
+msgid "Create an account"
+msgstr ""
+
+#: patterns/page-about.php
+msgctxt "Pattern title"
+msgid "About page"
+msgstr ""
+
+#: patterns/page-about.php
+#: patterns/page-contact.php
+#: patterns/page-faq.php
+#: patterns/page-shipping.php
+#: patterns/page-size-guide.php
+msgctxt "Pattern description"
+msgid "A complete page layout, offered when you create a page."
+msgstr ""
+
+#: patterns/page-about.php:24
+msgid "Clothes worth keeping"
+msgstr ""
+
+#: patterns/page-about.php:28
+msgid "We make a small collection of well-made clothing and accessories, and we stand behind every piece."
+msgstr ""
+
+#: patterns/page-about.php:37
+msgid "Horn buttons on the cuff of a tweed jacket"
+msgstr ""
+
+#: patterns/page-about.php:44
+msgid "Since 2014"
+msgstr ""
+
+#: patterns/page-about.php:48
+msgid "We started with one coat and a list of things we wished it did better"
+msgstr ""
+
+#: patterns/page-about.php:52
+msgid "Our founder spent a winter taking apart the coats she loved, to see why some lasted and others did not. The answer was never the label. It was the cloth, the seams and the care someone took with them."
+msgstr ""
+
+#: patterns/page-about.php:56
+msgid "Today we work with a handful of mills and workshops we visit every season. We make fewer pieces, in small runs, and we fix what we sell."
+msgstr ""
+
+#: patterns/page-about.php:67
+msgid "Values"
+msgstr ""
+
+#: patterns/page-about.php:71
+msgid "What we care about"
+msgstr ""
+
+#: patterns/page-about.php:82
+msgid "Better materials"
+msgstr ""
+
+#: patterns/page-about.php:86
+msgid "Traceable wool, organic cotton and leather from tanneries we have visited."
+msgstr ""
+
+#: patterns/page-about.php:96
+msgid "Made to be mended"
+msgstr ""
+
+#: patterns/page-about.php:100
+msgid "Free repairs in the first year, and spare buttons in every pocket."
+msgstr ""
+
+#: patterns/page-about.php:110
+msgid "Fair from start to finish"
+msgstr ""
+
+#: patterns/page-about.php:114
+msgid "We pay the workshops we use a fair price and publish who they are."
+msgstr ""
+
+#: patterns/page-about.php:125
+msgid "Hands holding a coffee cup against a grey wool coat and rust scarf"
+msgstr ""
+
+#: patterns/page-about.php:131
+msgid "Grey, navy and charcoal knitted fabrics side by side"
+msgstr ""
+
+#: patterns/page-about.php:137
+msgid "A woman walking through a field wrapped in a pale blue blanket scarf"
+msgstr ""
+
+#: patterns/page-contact.php
+msgctxt "Pattern title"
+msgid "Contact page"
+msgstr ""
+
+#: patterns/page-contact.php:24
+msgid "We are here to help"
+msgstr ""
+
+#: patterns/page-contact.php:28
+msgid "Write to us about an order, sizing or anything else. We answer every message within one working day."
+msgstr ""
+
+#: patterns/page-contact.php:40
+msgid "Customer care"
+msgstr ""
+
+#: patterns/page-contact.php:44
+msgid "hello@example.com<br>+1 (555) 014-2030"
+msgstr ""
+
+#: patterns/page-contact.php:58
+msgid "Monday to Friday, 9am to 6pm<br>Saturday, 10am to 4pm"
+msgstr ""
+
+#: patterns/page-contact.php:68
+msgid "Visit the studio"
+msgstr ""
+
+#: patterns/page-contact.php:72
+msgid "12 Market Street<br>Portland, OR 97204"
+msgstr ""
+
+#: patterns/page-contact.php:81
+msgid "A brown leather messenger bag resting on a stone wall"
+msgstr ""
+
+#: patterns/page-contact.php:88
+msgid "Looking for a quick answer?"
+msgstr ""
+
+#: patterns/page-contact.php:92
+msgid "Most questions about orders, delivery and returns are answered in our help pages."
+msgstr ""
+
+#: patterns/page-contact.php:97
+msgid "Read the FAQ"
+msgstr ""
+
+#: patterns/page-faq.php
+msgctxt "Pattern title"
+msgid "FAQ page"
+msgstr ""
+
+#: patterns/page-faq.php:24
+msgid "Frequently asked questions"
+msgstr ""
+
+#: patterns/page-faq.php:28
+msgid "Answers to the questions we hear most. Cannot find yours? Our team is happy to help."
+msgstr ""
+
+#: patterns/page-faq.php:36
+msgid "Orders"
+msgstr ""
+
+#: patterns/page-faq.php:42
+msgid "Can I change or cancel my order?"
+msgstr ""
+
+#: patterns/page-faq.php:47
+msgid "We can change or cancel an order within an hour of it being placed. Write to us with your order number and we will do our best."
+msgstr ""
+
+#: patterns/page-faq.php:54
+msgid "Do you restock sold-out sizes?"
+msgstr ""
+
+#: patterns/page-faq.php:59
+msgid "Most pieces return each season. Create an account and we will email you when a size you want is back."
+msgstr ""
+
+#: patterns/page-faq.php:72
+msgid "How long does delivery take?"
+msgstr ""
+
+#: patterns/page-faq.php:77
+msgid "Standard delivery takes two to four working days. Orders placed before 1pm on a working day leave the same day."
+msgstr ""
+
+#: patterns/page-faq.php:84
+msgid "Do you ship internationally?"
+msgstr ""
+
+#: patterns/page-faq.php:89
+msgid "We ship to most of Europe and North America. Delivery options and costs for your address appear at checkout."
+msgstr ""
+
+#: patterns/page-faq.php:96
+msgid "Returns and exchanges"
+msgstr ""
+
+#: patterns/page-faq.php:102
+msgid "What is your returns policy?"
+msgstr ""
+
+#: patterns/page-faq.php:107
+msgid "Return unworn items within 30 days for a full refund. Returns are free within the country we shipped to."
+msgstr ""
+
+#: patterns/page-faq.php:114
+msgid "How do I exchange a size?"
+msgstr ""
+
+#: patterns/page-faq.php:119
+msgid "Start a return from your account and choose exchange. We send the new size as soon as the return is scanned."
+msgstr ""
+
+#: patterns/page-faq.php:126
+msgid "Care and repairs"
+msgstr ""
+
+#: patterns/page-faq.php:132
+msgid "How should I wash knitwear?"
+msgstr ""
+
+#: patterns/page-faq.php:137
+msgid "Hand wash or use a wool cycle at 30 degrees, then dry flat. Every piece has care details on its product page."
+msgstr ""
+
+#: patterns/page-faq.php:144
+msgid "Do you repair items?"
+msgstr ""
+
+#: patterns/page-faq.php:149
+msgid "Yes. Repairs are free in the first year and at cost after that. Contact us and we will send a prepaid label."
+msgstr ""
+
+#: patterns/page-home.php
+msgctxt "Pattern title"
+msgid "Store homepage"
+msgstr ""
+
+#: patterns/page-home.php
+msgctxt "Pattern description"
+msgid "The designed store homepage. Offered when you create a page."
+msgstr ""
+
+#: patterns/page-shipping.php
+msgctxt "Pattern title"
+msgid "Delivery and returns page"
+msgstr ""
+
+#: patterns/page-shipping.php:28
+msgid "Tracked delivery on every order, and 30 days to change your mind."
+msgstr ""
+
+#: patterns/page-shipping.php:36
+msgid "Delivery options"
+msgstr ""
+
+#: patterns/page-shipping.php:40
+msgid "Service"
+msgstr ""
+
+#: patterns/page-shipping.php:40
+msgid "Delivery time"
+msgstr ""
+
+#: patterns/page-shipping.php:40
+msgid "Cost"
+msgstr ""
+
+#: patterns/page-shipping.php:40
+msgid "Standard"
+msgstr ""
+
+#: patterns/page-shipping.php:40
+msgid "2 to 4 working days"
+msgstr ""
+
+#: patterns/page-shipping.php:40
+msgid "$8, free over $75"
+msgstr ""
+
+#: patterns/page-shipping.php:40
+msgid "Express"
+msgstr ""
+
+#: patterns/page-shipping.php:40
+msgid "Next working day"
+msgstr ""
+
+#: patterns/page-shipping.php:40
+msgid "$18"
+msgstr ""
+
+#: patterns/page-shipping.php:40
+msgid "International"
+msgstr ""
+
+#: patterns/page-shipping.php:40
+msgid "5 to 10 working days"
+msgstr ""
+
+#: patterns/page-shipping.php:40
+msgid "Calculated at checkout"
+msgstr ""
+
+#: patterns/page-shipping.php:53
+msgid "Returns in three steps"
+msgstr ""
+
+#: patterns/page-shipping.php:66
+msgid "Start your return"
+msgstr ""
+
+#: patterns/page-shipping.php:70
+msgid "Sign in to your account, choose the order and the items you are sending back."
+msgstr ""
+
+#: patterns/page-shipping.php:82
+msgid "Pack and send"
+msgstr ""
+
+#: patterns/page-shipping.php:86
+msgid "Use the original packaging if you can, attach the prepaid label and drop it off."
+msgstr ""
+
+#: patterns/page-shipping.php:98
+msgid "Get your refund"
+msgstr ""
+
+#: patterns/page-shipping.php:102
+msgid "We refund to your original payment method within five days of receiving it."
+msgstr ""
+
+#: patterns/page-size-guide.php
+msgctxt "Pattern title"
+msgid "Size guide page"
+msgstr ""
+
+#: patterns/page-size-guide.php:20
+msgid "Fit"
+msgstr ""
+
+#: patterns/page-size-guide.php:28
+msgid "Body measurements in centimetres. Each product page also lists the garment's own measurements."
+msgstr ""
+
+#: patterns/page-size-guide.php:36
+msgid "Women"
+msgstr ""
+
+#: patterns/page-size-guide.php:40
+#: patterns/page-size-guide.php:48
+msgid "Size"
+msgstr ""
+
+#: patterns/page-size-guide.php:40
+msgid "UK"
+msgstr ""
+
+#: patterns/page-size-guide.php:40
+msgid "US"
+msgstr ""
+
+#: patterns/page-size-guide.php:40
+msgid "Bust (cm)"
+msgstr ""
+
+#: patterns/page-size-guide.php:40
+#: patterns/page-size-guide.php:48
+msgid "Waist (cm)"
+msgstr ""
+
+#: patterns/page-size-guide.php:40
+msgid "Hips (cm)"
+msgstr ""
+
+#: patterns/page-size-guide.php:44
+msgid "Men"
+msgstr ""
+
+#: patterns/page-size-guide.php:48
+msgid "Chest (cm)"
+msgstr ""
+
+#: patterns/page-size-guide.php:48
+msgid "Sleeve (cm)"
+msgstr ""
+
+#: patterns/page-size-guide.php:57
+msgid "A woman in a soft grey rollneck sweater"
+msgstr ""
+
+#: patterns/page-size-guide.php:64
+msgid "How to measure"
+msgstr ""
+
+#: patterns/page-size-guide.php:69
+msgid "Chest: around the fullest part, under your arms"
+msgstr ""
+
+#: patterns/page-size-guide.php:73
+msgid "Waist: around your natural waistline"
+msgstr ""
+
+#: patterns/page-size-guide.php:77
+msgid "Hips: around the fullest part of your hips"
+msgstr ""
+
+#: patterns/page-size-guide.php:81
+msgid "Sleeve: from the centre back of your neck to your wrist"
+msgstr ""
+
+#: patterns/page-size-guide.php:86
+msgid "Between two sizes? Our pieces are cut relaxed, so choose the smaller size for a closer fit."
+msgstr ""
+
+#: patterns/products-best.php
+msgctxt "Pattern title"
+msgid "Product carousel: best sellers"
+msgstr ""
+
+#: patterns/products-best.php:20
+msgid "Most loved"
+msgstr ""
+
+#: patterns/products-best.php:31
+msgid "Shop best sellers"
+msgstr ""
+
+#: patterns/products-new.php
+msgctxt "Pattern title"
+msgid "Product row: new arrivals"
+msgstr ""
+
+#: patterns/products-new.php:20
+msgid "Just in"
+msgstr ""
+
+#: patterns/products-new.php:31
+msgid "Shop all new"
+msgstr ""
+
+#: patterns/promos.php
+msgctxt "Pattern title"
+msgid "Two promotions"
+msgstr ""
+
+#: patterns/promos.php:19
+msgid "Sale"
+msgstr ""
+
+#: patterns/promos.php:23
+msgid "Up to 40% off outerwear"
+msgstr ""
+
+#: patterns/promos.php:27
+msgid "Last season's coats and jackets, while sizes last."
+msgstr ""
+
+#: patterns/promos.php:32
+msgid "Shop the sale"
+msgstr ""
+
+#: patterns/promos.php:41
+msgid "Just landed"
+msgstr ""
+
+#: patterns/promos.php:45
+msgid "The cashmere capsule"
+msgstr ""
+
+#: patterns/promos.php:49
+msgid "Six pieces, three colours and one very soft fabric."
+msgstr ""
+
+#: patterns/promos.php:54
+msgid "Discover the capsule"
+msgstr ""
+
+#: patterns/reviews.php
+msgctxt "Pattern title"
+msgid "Customer reviews"
+msgstr ""
+
+#: patterns/reviews.php:21
+msgid "Loved by people who wear it every day"
+msgstr ""
+
+#: patterns/reviews.php:33
+msgid "The overcoat is heavier and better made than anything I have bought in years. It arrived in two days, beautifully packed."
+msgstr ""
+
+#: patterns/reviews.php:47
+#: patterns/reviews.php:75
+#: patterns/reviews.php:103
+msgid "Verified buyer"
+msgstr ""
+
+#: patterns/reviews.php:47
+msgid "Wool overcoat"
+msgstr ""
+
+#: patterns/reviews.php:61
+msgid "I sent back one size and had the swap within the week, with no questions asked. That is why I keep coming back."
+msgstr ""
+
+#: patterns/reviews.php:75
+msgid "Merino cardigan"
+msgstr ""
+
+#: patterns/reviews.php:89
+msgid "Soft, warm and it still looks new after a winter of wearing it almost every day. Worth every penny."
+msgstr ""
+
+#: patterns/reviews.php:103
+msgid "Cashmere scarf"
+msgstr ""
+
+#: patterns/spec-table.php
+msgctxt "Pattern title"
+msgid "Details table"
+msgstr ""
+
+#: patterns/spec-table.php:18
+msgid "The details"
+msgstr ""
+
+#: patterns/spec-table.php:22
+msgid "Fabric and care"
+msgstr ""
+
+#: patterns/spec-table.php:31
+msgid "Fibre"
+msgstr ""
+
+#: patterns/spec-table.php:37
+msgid "80% traceable lambswool, 20% recycled nylon"
+msgstr ""
+
+#: patterns/spec-table.php:45
+msgid "Weight"
+msgstr ""
+
+#: patterns/spec-table.php:51
+msgid "12 gauge, 340 g in a size medium"
+msgstr ""
+
+#: patterns/spec-table.php:59
+msgid "Knitted in"
+msgstr ""
+
+#: patterns/spec-table.php:65
+msgid "Hawick, Scotland"
+msgstr ""
+
+#: patterns/spec-table.php:73
+msgid "Care"
+msgstr ""
+
+#: patterns/spec-table.php:79
+msgid "Cool wool wash, dry flat, fold rather than hang"
+msgstr ""
+
+#: patterns/spec-table.php:87
+msgid "Repairs"
+msgstr ""
+
+#: patterns/spec-table.php:93
+msgid "Free in the first year, at cost after that"
+msgstr ""
+
+#: patterns/steps.php
+msgctxt "Pattern title"
+msgid "Numbered steps"
+msgstr ""
+
+#: patterns/steps.php:18
+#: patterns/story.php:25
+msgid "Our craft"
+msgstr ""
+
+#: patterns/steps.php:22
+msgid "How it is made"
+msgstr ""
+
+#: patterns/steps.php:34
+msgid "Choose the fibre"
+msgstr ""
+
+#: patterns/steps.php:38
+msgid "We buy wool by the fleece from farms we have visited, and keep the lot number on the label."
+msgstr ""
+
+#: patterns/steps.php:48
+msgid "Knit in small runs"
+msgstr ""
+
+#: patterns/steps.php:52
+msgid "Sixty pieces at a time on hand-operated machines, so a mistake costs a morning, not a season."
+msgstr ""
+
+#: patterns/steps.php:62
+msgid "Finish by hand"
+msgstr ""
+
+#: patterns/steps.php:66
+msgid "Seams are linked, not overlocked, then the piece is washed, pressed and checked."
+msgstr ""
+
+#: patterns/steps.php:76
+msgid "Repair, don't replace"
+msgstr ""
+
+#: patterns/steps.php:80
+msgid "Send anything back in its first year and we will darn it, re-knit a cuff or replace a button."
+msgstr ""
+
+#: patterns/story.php
+msgctxt "Pattern title"
+msgid "Brand story with photograph"
+msgstr ""
+
+#: patterns/story.php:29
+msgid "Made to be worn for years, not seasons"
+msgstr ""
+
+#: patterns/story.php:33
+msgid "Every piece starts with a fabric we can trace and a maker we have met. We cut in small runs, finish by hand and repair what we sell, so the coat you buy this autumn is still the one you wear in ten years."
+msgstr ""
+
+#: patterns/story.php:38
+msgid "Traceable wool from family-run farms"
+msgstr ""
+
+#: patterns/story.php:42
+msgid "Finished by hand in small batches"
+msgstr ""
+
+#: patterns/story.php:46
+msgid "Free repairs for the first year"
+msgstr ""
+
+#: patterns/story.php:52
+msgid "Read our story"
+msgstr ""
+
+#: patterns/usps.php
+msgctxt "Pattern title"
+msgid "Store promises with icons"
+msgstr ""
+
+#: patterns/usps.php:27
+msgid "Tracked delivery in two to four working days."
+msgstr ""
+
+#: patterns/usps.php:39
+msgid "30-day returns"
+msgstr ""
+
+#: patterns/usps.php:43
+msgid "Changed your mind? Send it back for free."
+msgstr ""
+
+#: patterns/usps.php:59
+msgid "Card, wallet and pay-later options at checkout."
+msgstr ""
+
+#: patterns/usps.php:71
+msgid "Real people"
+msgstr ""
+
+#: patterns/usps.php:75
+msgid "Our team answers every message within a day."
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-2-noir.json
+#: styles/colors/colors-3-sage.json
+#: styles/colors/colors-4-blush.json
+#: styles/colors/colors-5-cobalt.json
+#: styles/colors/colors-6-market.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-espresso.json
+#: styles/colors/colors-9-stride.json
+#: styles/colors/colors-10-oak.json
+#: styles/starters/dew.json
+#: styles/starters/oakhouse.json
+#: styles/starters/roastery.json
+#: styles/starters/stride.json
+#: styles/starters/verdant.json
+msgctxt "Color name"
+msgid "Base"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-2-noir.json
+#: styles/colors/colors-3-sage.json
+#: styles/colors/colors-4-blush.json
+#: styles/colors/colors-5-cobalt.json
+#: styles/colors/colors-6-market.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-espresso.json
+#: styles/colors/colors-9-stride.json
+#: styles/colors/colors-10-oak.json
+#: styles/starters/dew.json
+#: styles/starters/oakhouse.json
+#: styles/starters/roastery.json
+#: styles/starters/stride.json
+#: styles/starters/verdant.json
+msgctxt "Color name"
+msgid "Surface"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-2-noir.json
+#: styles/colors/colors-3-sage.json
+#: styles/colors/colors-4-blush.json
+#: styles/colors/colors-5-cobalt.json
+#: styles/colors/colors-6-market.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-espresso.json
+#: styles/colors/colors-9-stride.json
+#: styles/colors/colors-10-oak.json
+#: styles/starters/dew.json
+#: styles/starters/oakhouse.json
+#: styles/starters/roastery.json
+#: styles/starters/stride.json
+#: styles/starters/verdant.json
+msgctxt "Color name"
+msgid "Contrast"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-2-noir.json
+#: styles/colors/colors-3-sage.json
+#: styles/colors/colors-4-blush.json
+#: styles/colors/colors-5-cobalt.json
+#: styles/colors/colors-6-market.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-espresso.json
+#: styles/colors/colors-9-stride.json
+#: styles/colors/colors-10-oak.json
+#: styles/starters/dew.json
+#: styles/starters/oakhouse.json
+#: styles/starters/roastery.json
+#: styles/starters/stride.json
+#: styles/starters/verdant.json
+msgctxt "Color name"
+msgid "Muted"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-2-noir.json
+#: styles/colors/colors-3-sage.json
+#: styles/colors/colors-4-blush.json
+#: styles/colors/colors-5-cobalt.json
+#: styles/colors/colors-6-market.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-espresso.json
+#: styles/colors/colors-9-stride.json
+#: styles/colors/colors-10-oak.json
+#: styles/starters/dew.json
+#: styles/starters/oakhouse.json
+#: styles/starters/roastery.json
+#: styles/starters/stride.json
+#: styles/starters/verdant.json
+msgctxt "Color name"
+msgid "Primary"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-2-noir.json
+#: styles/colors/colors-3-sage.json
+#: styles/colors/colors-4-blush.json
+#: styles/colors/colors-5-cobalt.json
+#: styles/colors/colors-6-market.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-espresso.json
+#: styles/colors/colors-9-stride.json
+#: styles/colors/colors-10-oak.json
+#: styles/starters/dew.json
+#: styles/starters/oakhouse.json
+#: styles/starters/roastery.json
+#: styles/starters/stride.json
+#: styles/starters/verdant.json
+msgctxt "Color name"
+msgid "Primary deep"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-2-noir.json
+#: styles/colors/colors-3-sage.json
+#: styles/colors/colors-4-blush.json
+#: styles/colors/colors-5-cobalt.json
+#: styles/colors/colors-6-market.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-espresso.json
+#: styles/colors/colors-9-stride.json
+#: styles/colors/colors-10-oak.json
+#: styles/starters/dew.json
+#: styles/starters/oakhouse.json
+#: styles/starters/roastery.json
+#: styles/starters/stride.json
+#: styles/starters/verdant.json
+msgctxt "Color name"
+msgid "On primary"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-2-noir.json
+#: styles/colors/colors-3-sage.json
+#: styles/colors/colors-4-blush.json
+#: styles/colors/colors-5-cobalt.json
+#: styles/colors/colors-6-market.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-espresso.json
+#: styles/colors/colors-9-stride.json
+#: styles/colors/colors-10-oak.json
+#: styles/starters/dew.json
+#: styles/starters/oakhouse.json
+#: styles/starters/roastery.json
+#: styles/starters/stride.json
+#: styles/starters/verdant.json
+msgctxt "Color name"
+msgid "Accent"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-2-noir.json
+#: styles/colors/colors-3-sage.json
+#: styles/colors/colors-4-blush.json
+#: styles/colors/colors-5-cobalt.json
+#: styles/colors/colors-6-market.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-espresso.json
+#: styles/colors/colors-9-stride.json
+#: styles/colors/colors-10-oak.json
+#: styles/starters/dew.json
+#: styles/starters/oakhouse.json
+#: styles/starters/roastery.json
+#: styles/starters/stride.json
+#: styles/starters/verdant.json
+msgctxt "Color name"
+msgid "Sale"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-2-noir.json
+#: styles/colors/colors-3-sage.json
+#: styles/colors/colors-4-blush.json
+#: styles/colors/colors-5-cobalt.json
+#: styles/colors/colors-6-market.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-espresso.json
+#: styles/colors/colors-9-stride.json
+#: styles/colors/colors-10-oak.json
+#: styles/starters/dew.json
+#: styles/starters/oakhouse.json
+#: styles/starters/roastery.json
+#: styles/starters/stride.json
+#: styles/starters/verdant.json
+msgctxt "Color name"
+msgid "On sale"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-2-noir.json
+#: styles/colors/colors-3-sage.json
+#: styles/colors/colors-4-blush.json
+#: styles/colors/colors-5-cobalt.json
+#: styles/colors/colors-6-market.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-espresso.json
+#: styles/colors/colors-9-stride.json
+#: styles/colors/colors-10-oak.json
+#: styles/starters/dew.json
+#: styles/starters/oakhouse.json
+#: styles/starters/roastery.json
+#: styles/starters/stride.json
+#: styles/starters/verdant.json
+msgctxt "Color name"
+msgid "Success"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-2-noir.json
+#: styles/colors/colors-3-sage.json
+#: styles/colors/colors-4-blush.json
+#: styles/colors/colors-5-cobalt.json
+#: styles/colors/colors-6-market.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-espresso.json
+#: styles/colors/colors-9-stride.json
+#: styles/colors/colors-10-oak.json
+#: styles/starters/dew.json
+#: styles/starters/oakhouse.json
+#: styles/starters/roastery.json
+#: styles/starters/stride.json
+#: styles/starters/verdant.json
+msgctxt "Color name"
+msgid "Dark"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-2-noir.json
+#: styles/colors/colors-3-sage.json
+#: styles/colors/colors-4-blush.json
+#: styles/colors/colors-5-cobalt.json
+#: styles/colors/colors-6-market.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-espresso.json
+#: styles/colors/colors-9-stride.json
+#: styles/colors/colors-10-oak.json
+#: styles/starters/dew.json
+#: styles/starters/oakhouse.json
+#: styles/starters/roastery.json
+#: styles/starters/stride.json
+#: styles/starters/verdant.json
+msgctxt "Color name"
+msgid "On dark"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-2-noir.json
+#: styles/colors/colors-3-sage.json
+#: styles/colors/colors-4-blush.json
+#: styles/colors/colors-5-cobalt.json
+#: styles/colors/colors-6-market.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-espresso.json
+#: styles/colors/colors-9-stride.json
+#: styles/colors/colors-10-oak.json
+#: styles/starters/dew.json
+#: styles/starters/oakhouse.json
+#: styles/starters/roastery.json
+#: styles/starters/stride.json
+#: styles/starters/verdant.json
+msgctxt "Color name"
+msgid "Divider"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-2-noir.json
+#: styles/colors/colors-3-sage.json
+#: styles/colors/colors-4-blush.json
+#: styles/colors/colors-5-cobalt.json
+#: styles/colors/colors-6-market.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-espresso.json
+#: styles/colors/colors-9-stride.json
+#: styles/colors/colors-10-oak.json
+#: styles/starters/dew.json
+#: styles/starters/oakhouse.json
+#: styles/starters/roastery.json
+#: styles/starters/stride.json
+#: styles/starters/verdant.json
+msgctxt "Color name"
+msgid "Overlay"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Instrument Serif"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Figtree"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "DM Serif Text"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Karla"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Anton"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Archivo"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Young Serif"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Instrument Sans"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Newsreader"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Hanken Grotesk"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Albert Sans"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "System sans"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Tiny"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "X Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XX Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Huge"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Colossal"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "10"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "20"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "30"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "40"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "50"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "60"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "70"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "80"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Soft"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Lifted"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page without title"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Wide page"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Checkout header"
+msgstr ""
+
+#: styles/colors/colors-2-noir.json
+msgctxt "Style variation name"
+msgid "Noir"
+msgstr ""
+
+#: styles/colors/colors-3-sage.json
+msgctxt "Style variation name"
+msgid "Sage"
+msgstr ""
+
+#: styles/colors/colors-4-blush.json
+msgctxt "Style variation name"
+msgid "Blush"
+msgstr ""
+
+#: styles/colors/colors-5-cobalt.json
+msgctxt "Style variation name"
+msgid "Cobalt"
+msgstr ""
+
+#: styles/colors/colors-6-market.json
+msgctxt "Style variation name"
+msgid "Market"
+msgstr ""
+
+#: styles/colors/colors-7-midnight.json
+msgctxt "Style variation name"
+msgid "Midnight"
+msgstr ""
+
+#: styles/colors/colors-8-espresso.json
+msgctxt "Style variation name"
+msgid "Espresso"
+msgstr ""
+
+#: styles/colors/colors-9-stride.json
+#: styles/starters/stride.json
+msgctxt "Style variation name"
+msgid "Stride"
+msgstr ""
+
+#: styles/colors/colors-10-oak.json
+msgctxt "Style variation name"
+msgid "Oak"
+msgstr ""
+
+#: styles/starters/dew.json
+msgctxt "Style variation name"
+msgid "Dew"
+msgstr ""
+
+#: styles/starters/oakhouse.json
+msgctxt "Style variation name"
+msgid "Oakhouse"
+msgstr ""
+
+#: styles/starters/roastery.json
+msgctxt "Style variation name"
+msgid "Roastery"
+msgstr ""
+
+#: styles/starters/verdant.json
+msgctxt "Style variation name"
+msgid "Verdant"
+msgstr ""
+
+#: styles/typography/type-2-system.json
+msgctxt "Style variation name"
+msgid "System fonts"
+msgstr ""
+
+#: styles/typography/type-3-roaster.json
+msgctxt "Style variation name"
+msgid "Roaster"
+msgstr ""
+
+#: styles/typography/type-4-poster.json
+msgctxt "Style variation name"
+msgid "Poster"
+msgstr ""
+
+#: styles/typography/type-5-garden.json
+msgctxt "Style variation name"
+msgid "Garden"
+msgstr ""
+
+#: styles/typography/type-6-apothecary.json
+msgctxt "Style variation name"
+msgid "Apothecary"
+msgstr ""
+
+#: styles/typography/type-7-workshop.json
+msgctxt "Style variation name"
+msgid "Workshop"
+msgstr ""
