@@ -587,7 +587,8 @@ def header_pattern():
     for slug, title, layout, bar in (
             ("header-left", "Header: logo on the left", "left", True),
             ("header-minimal", "Header: minimal with menu button", "minimal", True),
-            ("header-no-announcement", "Header: centred logo without announcement bar", "centered", False)):
+            ("header-no-announcement", "Header: centred logo without announcement bar", "centered", False),
+            ("header-left-no-announcement", "Header: logo on the left without announcement bar", "left", False)):
         write_pattern(slug, title, header_markup(layout, bar), categories=["header"],
                       block_types=["core/template-part/header"],
                       description="Swap it in from the Site Editor: select the header and choose Replace.")

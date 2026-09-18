@@ -1,0 +1,17 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Poster",
+	"styles": {
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--archivo)"
+		},
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--anton)"
+				}
+			}
+		}
+	}
+}

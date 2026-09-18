@@ -57,6 +57,13 @@ COLOR_SETS = collections.OrderedDict([
         "accent": "#b86b4b", "sale": "#a3402a", "on-sale": "#ffffff", "success": "#2f6b43",
         "dark": "#1f1b17", "on-dark": "#d8cfc4", "divider": "#e3dbd0", "overlay": "#ffffff",
     })),
+    # Black and white with one electric accent, for sneakers and drops.
+    ("colors-9-stride", ("Stride", {
+        "base": "#ffffff", "surface": "#f3f3f5", "contrast": "#0a0a0b", "muted": "#55555c",
+        "primary": "#0a0a0b", "primary-deep": "#2c2c33", "on-primary": "#ffffff",
+        "accent": "#2545d6", "sale": "#c92a2a", "on-sale": "#ffffff", "success": "#12795a",
+        "dark": "#0a0a0b", "on-dark": "#c6c6cc", "divider": "#e3e3e8", "overlay": "#ffffff",
+    })),
     # Stark black and white, for luxury and streetwear.
     ("colors-2-noir", ("Noir", {
         "base": "#ffffff", "surface": "#f4f4f4", "contrast": "#0a0a0a", "muted": "#5c5c5c",
@@ -142,6 +149,10 @@ FAMILIES = collections.OrderedDict([
                           [("400", "normal"), ("400", "italic")])),
     ("figtree", ("Figtree", "Figtree, system-ui, -apple-system, 'Segoe UI', sans-serif",
                  [("400", "normal"), ("500", "normal"), ("600", "normal")])),
+    ("anton", ("Anton", "Anton, 'Haettenschweiler', 'Arial Narrow', sans-serif",
+               [("400", "normal")])),
+    ("archivo", ("Archivo", "Archivo, 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                 [("400", "normal"), ("500", "normal"), ("600", "normal")])),
     ("young-serif", ("Young Serif",
                      "'Young Serif', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif",
                      [("400", "normal")])),
@@ -156,6 +167,8 @@ TYPE_SETS = collections.OrderedDict([
     ("type-2-system", ("System fonts", "system", "system")),
     # Slab-ish serif headings over a neutral grotesque: shop signage, not fashion.
     ("type-3-roaster", ("Roaster", "young-serif", "instrument-sans")),
+    # Tall condensed capitals over a workhorse grotesque: posters and drops.
+    ("type-4-poster", ("Poster", "anton", "archivo")),
 ])
 
 # A starter's look, as one style a person can also pick in the Site Editor
@@ -163,6 +176,7 @@ TYPE_SETS = collections.OrderedDict([
 # own name.
 STARTER_SETS = collections.OrderedDict([
     ("roastery", ("Roastery", "colors-8-espresso", "type-3-roaster")),
+    ("stride", ("Stride", "colors-9-stride", "type-4-poster")),
 ])
 
 
