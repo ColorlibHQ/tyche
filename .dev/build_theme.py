@@ -85,6 +85,13 @@ COLOR_SETS = collections.OrderedDict([
         "accent": "#d9a3a8", "sale": "#a82c3c", "on-sale": "#ffffff", "success": "#2f6b43",
         "dark": "#2d1a22", "on-dark": "#e3cfd6", "divider": "#eedcd5", "overlay": "#ffffff",
     })),
+    # Furniture and homeware. Warm putty, black ink, an oak accent.
+    ("colors-10-oak", ("Oak", {
+        "base": "#efeeea", "surface": "#e2e0da", "contrast": "#262420", "muted": "#5f5a51",
+        "primary": "#262420", "primary-deep": "#46413a", "on-primary": "#efeeea",
+        "accent": "#8a6f52", "sale": "#9c4221", "on-sale": "#ffffff", "success": "#2f6b43",
+        "dark": "#262420", "on-dark": "#cfcabf", "divider": "#d5d2c9", "overlay": "#ffffff",
+    })),
     # Electronics and gadgets. Cool paper, cobalt.
     ("colors-5-cobalt", ("Cobalt", {
         "base": "#ffffff", "surface": "#f1f4f9", "contrast": "#0e1726", "muted": "#526075",
@@ -170,6 +177,8 @@ FAMILIES = collections.OrderedDict([
     ("hanken-grotesk", ("Hanken Grotesk",
                         "'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif",
                         [("400", "normal"), ("500", "normal"), ("600", "normal")])),
+    ("albert-sans", ("Albert Sans", "'Albert Sans', system-ui, -apple-system, 'Segoe UI', sans-serif",
+                     [("400", "normal"), ("500", "normal"), ("600", "normal"), ("700", "normal")])),
     ("system", ("System sans", "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif", [])),
 ])
 
@@ -186,6 +195,9 @@ TYPE_SETS = collections.OrderedDict([
     # A quiet text serif over a soft grotesque: the shelf of a chemist that
     # would rather be read than shouted at.
     ("type-6-apothecary", ("Apothecary", "newsreader", "hanken-grotesk")),
+    # One grotesque doing both jobs, heavy and tight in the headings: a maker's
+    # catalogue, where the photographs are the decoration.
+    ("type-7-workshop", ("Workshop", "albert-sans", "albert-sans")),
 ])
 
 # A starter's look, as one style a person can also pick in the Site Editor
@@ -196,6 +208,7 @@ STARTER_SETS = collections.OrderedDict([
     ("stride", ("Stride", "colors-9-stride", "type-4-poster")),
     ("verdant", ("Verdant", "colors-3-sage", "type-5-garden")),
     ("dew", ("Dew", "colors-4-blush", "type-6-apothecary")),
+    ("oakhouse", ("Oakhouse", "colors-10-oak", "type-7-workshop")),
 ])
 
 

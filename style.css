@@ -7,7 +7,7 @@ Description: Tyche is a WooCommerce block theme for fashion, lifestyle and indep
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 2.0.0-dev.16
+Version: 2.0.0-dev.17
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: tyche
@@ -1045,6 +1045,31 @@ a {
 	font-size: var(--wp--preset--font-size--small);
 	margin: 0;
 	padding: 0.45rem 0.9rem;
+}
+
+/* Two photographs and a headline ------------------------------------------- */
+
+/* A shop whose product only makes sense in a room, and whose quality only
+   shows up close, opens on both: the room on one side, the joint on the other,
+   and the words between them. The second photograph drops below the first so
+   the three columns read as a composition rather than a row. */
+.tyche-collage.wp-block-columns {
+	align-items: center;
+}
+
+.tyche-collage__late {
+	margin-block-start: var(--wp--preset--spacing--60);
+}
+
+.tyche-collage img {
+	border-radius: var(--wp--custom--radius--medium);
+}
+
+@media (max-width: 781px) {
+	/* Stacked, an offset is just a gap. */
+	.tyche-collage__late {
+		margin-block-start: 0;
+	}
 }
 
 /* One product, held up ------------------------------------------------------ */

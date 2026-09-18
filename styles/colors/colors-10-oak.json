@@ -1,0 +1,86 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "Oak",
+	"settings": {
+		"color": {
+			"palette": [
+				{
+					"name": "Base",
+					"slug": "base",
+					"color": "#efeeea"
+				},
+				{
+					"name": "Surface",
+					"slug": "surface",
+					"color": "#e2e0da"
+				},
+				{
+					"name": "Contrast",
+					"slug": "contrast",
+					"color": "#262420"
+				},
+				{
+					"name": "Muted",
+					"slug": "muted",
+					"color": "#5f5a51"
+				},
+				{
+					"name": "Primary",
+					"slug": "primary",
+					"color": "#262420"
+				},
+				{
+					"name": "Primary deep",
+					"slug": "primary-deep",
+					"color": "#46413a"
+				},
+				{
+					"name": "On primary",
+					"slug": "on-primary",
+					"color": "#efeeea"
+				},
+				{
+					"name": "Accent",
+					"slug": "accent",
+					"color": "#8a6f52"
+				},
+				{
+					"name": "Sale",
+					"slug": "sale",
+					"color": "#9c4221"
+				},
+				{
+					"name": "On sale",
+					"slug": "on-sale",
+					"color": "#ffffff"
+				},
+				{
+					"name": "Success",
+					"slug": "success",
+					"color": "#2f6b43"
+				},
+				{
+					"name": "Dark",
+					"slug": "dark",
+					"color": "#262420"
+				},
+				{
+					"name": "On dark",
+					"slug": "on-dark",
+					"color": "#cfcabf"
+				},
+				{
+					"name": "Divider",
+					"slug": "divider",
+					"color": "#d5d2c9"
+				},
+				{
+					"name": "Overlay",
+					"slug": "overlay",
+					"color": "#ffffff"
+				}
+			]
+		}
+	}
+}
