@@ -48,15 +48,19 @@ add_action( 'after_setup_theme', 'tyche_woocommerce_support' );
  * @return string[]
  */
 function tyche_header_patterns_place_their_own_icons( $patterns ) {
-	return array_merge(
-		(array) $patterns,
-		array(
-			'tyche/header',
-			'tyche/header-left',
-			'tyche/header-minimal',
-			'tyche/header-no-announcement',
-			'tyche/header-left-no-announcement',
-		)
-	);
+	// Every header the theme ships, read off disk rather than listed by hand:
+	// the list was written when there were five, and the two stacked headers
+	// added after it went out with two carts and two account icons in the bar.
+	// The registry cannot be asked, because this runs while it is being filled.
+	static $headers = null;
+	if ( null === $headers ) {
+		$headers = array();
+		foreach ( (array) glob( get_template_directory() . '/patterns/header*.php' ) as $file ) {
+			$data      = get_file_data( $file, array( 'slug' => 'Slug' ) );
+			$headers[] = $data['slug'] ? $data['slug'] : 'tyche/' . basename( $file, '.php' );
+		}
+	}
+
+	return array_merge( (array) $patterns, $headers );
 }
 add_filter( 'woocommerce_hooked_blocks_pattern_exclude_list', 'tyche_header_patterns_place_their_own_icons' );
