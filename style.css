@@ -264,7 +264,18 @@ a {
 	display: inline-flex;
 }
 
-@media (max-width: 599px) {
+/* Core collapses the menu into the button at 600px, which is right for a short
+   menu and wrong for a store: six or seven categories beside a wordmark wrap
+   onto a second line somewhere around a tablet. The menu folds away here
+   instead, and the button takes over.
+
+   Both halves are inside the query on purpose: giving the button a display
+   outside one puts a hamburger next to the open menu on every desktop. */
+@media (max-width: 1099px) {
+	.tyche-header .wp-block-navigation__responsive-container:not(.is-menu-open):not(.has-modal-open) {
+		display: none;
+	}
+
 	.tyche-header .wp-block-navigation__responsive-container-open:not(.always-shown) {
 		display: inline-flex;
 	}
