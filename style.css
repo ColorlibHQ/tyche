@@ -7,7 +7,7 @@ Description: Tyche is a WooCommerce block theme for fashion, lifestyle and indep
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 2.0.0-dev.6
+Version: 2.0.0-dev.7
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: tyche
@@ -118,6 +118,19 @@ a {
 
 .wp-block-button.is-style-tyche-outline > .wp-block-button__link:hover {
 	background: color-mix(in srgb, currentColor 10%, transparent);
+}
+
+/* An outline button on a photograph has nothing behind its label but the
+   picture, so it reads at whatever contrast that part of the photograph
+   happens to give: on the skate-park underpass it measured 3.8:1. A dark
+   ground behind it costs nothing on a photograph that is already dimmed, and
+   it is the one place the outline style cannot simply be trusted. */
+.wp-block-cover .wp-block-button.is-style-tyche-outline > .wp-block-button__link {
+	background: rgba(12, 10, 8, 0.45);
+}
+
+.wp-block-cover .wp-block-button.is-style-tyche-outline > .wp-block-button__link:hover {
+	background: rgba(12, 10, 8, 0.62);
 }
 
 .wp-block-button.is-style-tyche-link > .wp-block-button__link {
