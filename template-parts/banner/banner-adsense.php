@@ -4,7 +4,7 @@
  *
  * @package Tyche
  */
-wp_enqueue_script( 'adsenseloader' );
+wp_enqueue_script( 'tyche-adsenseloader' );
 $code = get_theme_mod( 'tyche_banner_adsense_code', '' );
 
 /**
