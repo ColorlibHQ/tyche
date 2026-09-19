@@ -5,7 +5,6 @@
  * Categories: tyche-pages
  * Keywords: home, front page
  * Block Types: core/post-content
- * Template Types: front-page
  * Post Types: page
  * Description: The designed store homepage. Offered when you create a page.
  * Viewport Width: 1400

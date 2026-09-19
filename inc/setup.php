@@ -29,7 +29,7 @@ function tyche_setup() {
 
 	// The stylesheet styles blocks, so the editor canvas has to load it too or
 	// the product cards and header look nothing like the front end while editing.
-	add_editor_style( array( 'style.css', 'assets/css/woocommerce.css' ) );
+	add_editor_style( array( 'style.css', 'assets/css/woocommerce.css', 'assets/css/editor.css' ) );
 }
 add_action( 'after_setup_theme', 'tyche_setup' );
 

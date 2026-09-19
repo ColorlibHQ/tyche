@@ -16,7 +16,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'TYCHE_VERSION', '2.0.0' );
+define( 'TYCHE_VERSION', '2.0.1' );
 
 require get_template_directory() . '/inc/setup.php';
 require get_template_directory() . '/inc/template-tags.php';
@@ -24,5 +24,4 @@ require get_template_directory() . '/inc/block-styles.php';
 require get_template_directory() . '/inc/patterns.php';
 require get_template_directory() . '/inc/icons.php';
 require get_template_directory() . '/inc/woocommerce.php';
-require get_template_directory() . '/inc/front-page.php';
 require get_template_directory() . '/inc/upgrade.php';

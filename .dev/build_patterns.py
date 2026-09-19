@@ -1356,7 +1356,7 @@ def main():
         write_pattern(slug, title, fn(), categories=PAGES, keywords=keywords, block_types=["core/post-content"],
                       post_types=["page"], description="A complete page layout, offered when you create a page.")
     write_pattern("page-home", "Store homepage", "\n\n".join(pattern_ref(s[0]) for s in HOME_SECTIONS),
-                  categories=PAGES, keywords=["home", "front page"], template_types=["front-page"],
+                  categories=PAGES, keywords=["home", "front page"],
                   block_types=["core/post-content"], post_types=["page"],
                   description="The designed store homepage. Offered when you create a page.")
 
@@ -1396,7 +1396,6 @@ def main():
     for name, body in templates.items():
         write_file("templates/%s.html" % name, page_template(body))
     write_file("templates/page-checkout.html", page_template("hidden-checkout", header="checkout-header", footer=None))
-    write_file("templates/front-page.html", page_template("page-home"))
 
     print("%d files written" % len(WRITTEN))
 

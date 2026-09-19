@@ -1,0 +1,26 @@
+/* Editor-only corrections
+   ==========================================================================
+   Loaded through add_editor_style(), so none of this reaches the front end.
+   ========================================================================== */
+
+/* The title field is not the page's heading.
+   ---------------------------------------------------------------------------
+   WordPress always shows a title field above the content, including on the
+   pages whose template deliberately never prints one: the homepage, and
+   anything else using "Page without title". At the theme's own h1 size that is
+   64px of "Home" sitting above a design that will never contain it, which
+   reads as part of the page and is not. Size it as what it is -- a field --
+   while leaving every real h1 in the content alone. */
+.editor-styles-wrapper .editor-post-title,
+.editor-styles-wrapper .editor-post-title__input {
+	font-family: var(--wp--preset--font-family--figtree, inherit);
+	font-size: var(--wp--preset--font-size--xx-large);
+	letter-spacing: 0;
+	line-height: 1.2;
+	margin-bottom: var(--wp--preset--spacing--30);
+	opacity: 0.75;
+}
+
+.editor-styles-wrapper .editor-post-title__input:focus {
+	opacity: 1;
+}
