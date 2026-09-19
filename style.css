@@ -7,7 +7,7 @@ Description: Tyche is a WooCommerce block theme for fashion, lifestyle and indep
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 2.0.1
+Version: 2.0.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: tyche
@@ -256,6 +256,59 @@ a {
 .tyche-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item__content {
 	font-family: var(--wp--preset--font-family--instrument-serif);
 	font-size: var(--wp--preset--font-size--xx-large);
+}
+
+/* Search bar with departments under it */
+
+/* The bar is a three-column grid everywhere else, with the middle column sized
+   to its content. A grocery is searched rather than browsed, so here the middle
+   column takes whatever the brand and the icons leave. */
+.tyche-header__bar--search.tyche-header__bar {
+	grid-template-columns: auto minmax(0, 1fr) auto;
+}
+
+.tyche-header__search--wide {
+	/* Capped so the field does not become a trough on a wide screen, and
+	   centred in its column so the space left over falls either side of it
+	   rather than all on one side. */
+	justify-self: center;
+	max-width: 42rem;
+	width: 100%;
+}
+
+.tyche-header__search--wide .wp-block-search__inside-wrapper {
+	background: var(--wp--preset--color--surface);
+	border: 1px solid var(--wp--preset--color--divider);
+	border-radius: var(--wp--custom--radius--pill);
+	padding-inline-start: 0.35rem;
+	width: 100%;
+}
+
+.tyche-header__search--wide .wp-block-search__input.wp-block-search__input {
+	background: transparent;
+	border: 0;
+	flex: 1 1 auto;
+	font-size: var(--wp--preset--font-size--small);
+	height: 2.5rem;
+	margin: 0;
+	width: auto;
+}
+
+.tyche-header--search .tyche-header__subnav--left {
+	margin-top: var(--wp--preset--spacing--20);
+}
+
+@media (max-width: 899px) {
+	/* The field takes its own line rather than shrinking to an icon. */
+	.tyche-header__bar--search.tyche-header__bar {
+		grid-template-columns: minmax(0, 1fr) auto;
+	}
+
+	.tyche-header__search--wide {
+		grid-column: 1 / -1;
+		max-width: none;
+		order: 3;
+	}
 }
 
 /* Logo above a centred menu */

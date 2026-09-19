@@ -179,6 +179,11 @@ FAMILIES = collections.OrderedDict([
                         [("400", "normal"), ("500", "normal"), ("600", "normal")])),
     ("albert-sans", ("Albert Sans", "'Albert Sans', system-ui, -apple-system, 'Segoe UI', sans-serif",
                      [("400", "normal"), ("500", "normal"), ("600", "normal"), ("700", "normal")])),
+    ("bricolage-grotesque", ("Bricolage Grotesque",
+                             "'Bricolage Grotesque', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+                             [("400", "normal"), ("700", "normal")])),
+    ("rubik", ("Rubik", "Rubik, system-ui, -apple-system, 'Segoe UI', sans-serif",
+               [("400", "normal"), ("500", "normal"), ("600", "normal")])),
     ("system", ("System sans", "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif", [])),
 ])
 
@@ -198,6 +203,9 @@ TYPE_SETS = collections.OrderedDict([
     # One grotesque doing both jobs, heavy and tight in the headings: a maker's
     # catalogue, where the photographs are the decoration.
     ("type-7-workshop", ("Workshop", "albert-sans", "albert-sans")),
+    # A wide, slightly odd grotesque over a plain one: a market board written
+    # in chalk rather than a brand book.
+    ("type-8-market", ("Market", "bricolage-grotesque", "rubik")),
 ])
 
 # A starter's look, as one style a person can also pick in the Site Editor
@@ -209,6 +217,7 @@ STARTER_SETS = collections.OrderedDict([
     ("verdant", ("Verdant", "colors-3-sage", "type-5-garden")),
     ("dew", ("Dew", "colors-4-blush", "type-6-apothecary")),
     ("oakhouse", ("Oakhouse", "colors-10-oak", "type-7-workshop")),
+    ("pantry", ("Pantry", "colors-6-market", "type-8-market")),
 ])
 
 

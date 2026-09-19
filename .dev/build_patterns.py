@@ -529,12 +529,13 @@ def main_group(inner, pad=("50", "80"), cls=None, content_size=None):
 # Header and footer
 # ---------------------------------------------------------------------------
 def header_markup(layout="centered", announcement=True):
-    """The header in one of four layouts.
+    """The header in one of five layouts.
 
     centered: menu left, brand centred, icons right (the default).
     left:     brand left, menu next to it, icons right.
     minimal:  brand left, icons and a menu button right, the menu always in the overlay.
     stacked:  brand centred on its own line, the menu centred under it.
+    search:   brand, a wide search field, icons; departments on a second line.
     """
     bar_announcement = group(
         para(FREE_DELIVERY + tk(' &middot; Free 30-day returns') +
@@ -560,6 +561,31 @@ def header_markup(layout="centered", announcement=True):
         actions_inner.append(nav)
     actions = group("\n".join(actions_inner), cls="tyche-header__actions", layout="flex", wrap="nowrap",
                     justify="right", gap="30")
+
+    if "search" == layout:
+        # A grocery is searched rather than browsed, so the field is the widest
+        # thing in the bar and the departments run underneath it.
+        # button-inside rather than button-only: the field stays open with the
+        # magnifier in it. A grocery's search is the point of the header, not
+        # something to click an icon to reveal.
+        wide_search = block("search", {"label": "SEARCH_LABEL", "showLabel": False,
+                                       "placeholder": "SEARCH_HINT", "buttonText": "SEARCH_LABEL",
+                                       "buttonPosition": "button-inside", "buttonUseIcon": True,
+                                       "query": {"post_type": "product"}, "width": 100, "widthUnit": "%",
+                                       "className": "tyche-header__search tyche-header__search--wide"})
+        store_actions = group(pattern_ref("header-store-actions"), cls="tyche-header__actions",
+                              layout="flex", wrap="nowrap", justify="right", gap="30")
+        top = group("\n".join([brand, wide_search, store_actions]),
+                    cls="tyche-header__bar tyche-header__bar--search", align="wide",
+                    layout="flex", wrap="nowrap", justify="space-between")
+        under = group(nav, cls="tyche-header__subnav tyche-header__subnav--left", align="wide",
+                      layout="flex", justify="left")
+        main = group(top + "\n\n" + under, cls="tyche-header tyche-header--search", align="full",
+                     bg="base", pad="30")
+        content = (bar_announcement + "\n\n" + main) if announcement else main
+        content = content.replace('"SEARCH_LABEL"', '"%s"' % "<?php echo esc_attr__( 'Search', 'tyche' ); ?>")
+        content = content.replace('"SEARCH_HINT"', '"%s"' % "<?php echo esc_attr__( 'Search the shop', 'tyche' ); ?>")
+        return content.replace('"SEARCH_PLACEHOLDER"', '"%s"' % "<?php echo esc_attr__( 'Search products', 'tyche' ); ?>")
 
     if "stacked" == layout:
         # The brand sits alone on the first line, so the row either side of it
@@ -606,7 +632,9 @@ def header_pattern():
             ("header-left-no-announcement", "Header: logo on the left without announcement bar", "left", False),
             ("header-stacked", "Header: logo above a centred menu", "stacked", True),
             ("header-stacked-no-announcement", "Header: logo above a centred menu, without announcement bar", "stacked", False),
-            ("header-minimal-no-announcement", "Header: minimal with menu button, without announcement bar", "minimal", False)):
+            ("header-minimal-no-announcement", "Header: minimal with menu button, without announcement bar", "minimal", False),
+            ("header-search", "Header: search bar with departments under it", "search", True),
+            ("header-search-no-announcement", "Header: search bar with departments, without announcement bar", "search", False)):
         write_pattern(slug, title, header_markup(layout, bar), categories=["header"],
                       block_types=["core/template-part/header"],
                       description="Swap it in from the Site Editor: select the header and choose Replace.")

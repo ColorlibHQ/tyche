@@ -16,7 +16,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'TYCHE_VERSION', '2.0.1' );
+define( 'TYCHE_VERSION', '2.0.2' );
 
 require get_template_directory() . '/inc/setup.php';
 require get_template_directory() . '/inc/template-tags.php';
