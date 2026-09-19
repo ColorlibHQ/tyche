@@ -13,6 +13,28 @@
 
 /* WooCommerce's responsive grid derives its column count from a fixed 1.25em
    gap, so a wider gap silently drops a column. Count the columns explicitly. */
+/* Boxed product cards
+   --------------------------------------------------------------------------
+   A grocery shows forty things at once, and a card with an edge is easier to
+   scan than forty photographs floating on one ground. Opt in per row with
+   tyche-product-cards--boxed, so the shops that want their products on the
+   page rather than in boxes are unaffected. */
+.tyche-product-cards--boxed .wc-block-product {
+	background: var(--wp--preset--color--base);
+	border: 1px solid var(--wp--preset--color--divider);
+	border-radius: var(--wp--custom--radius--medium);
+	overflow: hidden;
+	padding-bottom: var(--wp--preset--spacing--30);
+}
+
+.tyche-product-cards--boxed .wc-block-product > *:not(.wc-block-components-product-image):not(.wp-block-woocommerce-product-image) {
+	padding-inline: var(--wp--preset--spacing--30);
+}
+
+.tyche-product-cards--boxed .wc-block-product .wc-block-components-product-image {
+	margin-bottom: var(--wp--preset--spacing--30);
+}
+
 .wc-block-product-template.tyche-product-cards:not(.is-flex-container):not(.is-product-collection-layout-carousel) {
 	column-gap: var(--wp--preset--spacing--40);
 	display: grid;
