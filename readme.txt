@@ -4,7 +4,7 @@ Contributors: colorlib
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.0.2
+Stable tag: 2.0.3
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: e-commerce, full-site-editing, block-patterns, block-styles, style-variations, template-editing, wide-blocks, custom-colors, custom-logo, custom-menu, editor-style, featured-images, one-column, two-columns, left-sidebar, translation-ready, threaded-comments

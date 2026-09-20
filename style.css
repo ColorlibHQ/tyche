@@ -7,7 +7,7 @@ Description: Tyche is a WooCommerce block theme for fashion, lifestyle and indep
 Requires at least: 7.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Version: 2.0.2
+Version: 2.0.3
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: tyche
@@ -263,14 +263,28 @@ a {
 /* The bar is a three-column grid everywhere else, with the middle column sized
    to its content. A grocery is searched rather than browsed, so here the middle
    column takes whatever the brand and the icons leave. */
+/* The brand and the store icons are never the same width, so a field centred
+   in the column between them sits off the middle of the page -- 21px on the
+   Pantry demo, which reads as a header that is slightly broken rather than one
+   that is deliberately asymmetric. Giving both outer columns the same 1fr puts
+   the field on the centre line; flooring them at max-content stops the icons
+   being squeezed when the field is at its widest. */
 .tyche-header__bar--search.tyche-header__bar {
-	grid-template-columns: auto minmax(0, 1fr) auto;
+	grid-template-columns: minmax(max-content, 1fr) minmax(0, 42rem) minmax(max-content, 1fr);
+}
+
+/* The outer columns are now wider than what sits in them, so say which edge
+   each one belongs to. Without this the wordmark floats to the middle of its
+   column and stands indented from the menu directly beneath it. */
+.tyche-header__bar--search > .tyche-header__brand {
+	justify-self: start;
+}
+
+.tyche-header__bar--search > .tyche-header__actions {
+	justify-self: end;
 }
 
 .tyche-header__search--wide {
-	/* Capped so the field does not become a trough on a wide screen, and
-	   centred in its column so the space left over falls either side of it
-	   rather than all on one side. */
 	justify-self: center;
 	max-width: 42rem;
 	width: 100%;
@@ -987,9 +1001,17 @@ a {
 }
 
 /* Aligned wide so the words start where the tiles start, but a headline and a
-   sentence still want a readable measure rather than the full width. */
+   sentence still want a readable measure rather than the full width.
+
+   48rem rather than 46: "Order tonight, eat it tomorrow" needs 741px to set as
+   two lines and 46rem gives it 736, so it broke to three -- 658px, then "eat
+   it" alone at 240px, then 476px -- which reads as a headline that failed
+   rather than one that was set. Measured against every starter: at 48rem each
+   of the other five headlines wraps exactly as it did, and at 50rem Verdant's
+   starts breaking badly, so this is the one value that fixes Pantry and moves
+   nothing else. */
 .tyche-tiles-hero__words > * {
-	max-width: 46rem;
+	max-width: 48rem;
 }
 
 .tyche-tiles-hero__words > p:not(.is-style-tyche-eyebrow) {

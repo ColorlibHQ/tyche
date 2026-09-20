@@ -1,3 +1,12 @@
+Tyche v2.0.3
+
+- The search header centres its field on the page rather than in the column between
+  the wordmark and the store icons, which are never the same width. The field sat 21px
+  off centre and the wordmark stood indented from the menu below it.
+- Widened the hero headline measure from 46rem to 48rem. A headline needing 741px to
+  set as two lines broke into three, the middle one two words long, which reads as a
+  headline that failed to load rather than one that was set.
+
 Tyche v2.0.0
 
 - Rebuilt as a WooCommerce block theme on WooCommerce's own blocks: header with search,
